@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: tutorials/signalr
-ms.openlocfilehash: 59c296f3388e71254badb02fa3ae4279005c359c
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: 1dad2264250bf43ec6c1df679b8754a82a5addfd
+ms.sourcegitcommit: aa85f2911792a1e4783bcabf0da3b3e7e218f63a
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93056875"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95417663"
 ---
 # <a name="tutorial-get-started-with-aspnet-core-no-locsignalr"></a>Tutorial: introdução ao ASP.NET Core SignalR
 
@@ -62,15 +62,15 @@ No final, você terá um aplicativo de chat funcionando:
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio/)
 
-* No menu, selecione **Arquivo > Novo Projeto** .
+* No menu, selecione **Arquivo > Novo Projeto**.
 
-* Na caixa de diálogo **Criar novo projeto** , selecione **Aplicativo Web ASP.NET Core** e depois selecione **Avançar** .
+* Na caixa de diálogo **Criar novo projeto**, selecione **Aplicativo Web ASP.NET Core** e depois selecione **Avançar**.
 
-* Na caixa de diálogo **configurar seu novo projeto** , nomeie o projeto como *SignalR chat* e, em seguida, selecione **criar** .
+* Na caixa de diálogo **configurar seu novo projeto** , nomeie o projeto como *SignalR chat* e, em seguida, selecione **criar**.
 
-* Na caixa de diálogo **criar um novo aplicativo web ASP.NET Core** , selecione **.net Core** e **ASP.NET Core 3,1** . 
+* Na caixa de diálogo **criar um novo aplicativo web ASP.NET Core** , selecione **.net Core** e **ASP.NET Core 3,1**. 
 
-* Selecione **aplicativo Web** para criar um projeto que usa Razor páginas e, em seguida, selecione **criar** .
+* Selecione **aplicativo Web** para criar um projeto que usa Razor páginas e, em seguida, selecione **criar**.
 
   ![Caixa de diálogo Novo Projeto no Visual Studio](signalr/_static/3.x/signalr-new-project-dialog.png)
 
@@ -82,36 +82,37 @@ No final, você terá um aplicativo de chat funcionando:
 
    ```dotnetcli
    dotnet new webapp -o SignalRChat
-   code -r SignalRChat
+   cd SignalRChat
+   code -r .
    ```
 
 # <a name="visual-studio-for-mac"></a>[Visual Studio para Mac](#tab/visual-studio-mac)
 
-* No menu, selecione **Arquivo > Nova Solução** .
+* No menu, selecione **Arquivo > Nova Solução**.
 
-* Selecione **.NET Core > Aplicativo > Aplicativo Web** (não selecione **Aplicativo Web (Model-View-Controller)** ) e, em seguida, selecione **Avançar** .
+* Selecione **.NET Core > Aplicativo > Aplicativo Web** (não selecione **Aplicativo Web (Model-View-Controller)**) e, em seguida, selecione **Avançar**.
 
-* Verifique se a **estrutura de destino** está definida como **.NET Core 3,1** e, em seguida, selecione **Avançar** .
+* Verifique se a **estrutura de destino** está definida como **.NET Core 3,1** e, em seguida, selecione **Avançar**.
 
-* Nomeie o projeto como *SignalR chat* e, em seguida, selecione **criar** .
+* Nomeie o projeto como *SignalR chat* e, em seguida, selecione **criar**.
 
 ---
 
 ## <a name="add-the-no-locsignalr-client-library"></a>Adicionar a SignalR biblioteca de cliente
 
-A SignalR biblioteca de servidores está incluída na estrutura compartilhada do ASP.NET Core 3,1. A biblioteca de clientes do JavaScript não é incluída automaticamente no projeto. No cenário deste tutorial, você usará o Gerenciador de Bibliotecas (LibMan) para baixar a biblioteca de clientes do *unpkg* . unpkg é uma CDN (rede de distribuição de conteúdo) que pode entregar qualquer coisa encontrada no NPM, o Gerenciador de pacotes Node.js.
+A SignalR biblioteca de servidores está incluída na estrutura compartilhada do ASP.NET Core 3,1. A biblioteca de clientes do JavaScript não é incluída automaticamente no projeto. No cenário deste tutorial, você usará o Gerenciador de Bibliotecas (LibMan) para baixar a biblioteca de clientes do *unpkg*. unpkg é uma CDN (rede de distribuição de conteúdo) que pode entregar qualquer coisa encontrada no NPM, o Gerenciador de pacotes Node.js.
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio/)
 
-* No **Gerenciador de Soluções** , clique com o botão direito do mouse no projeto e selecione **Adicionar** > **Biblioteca do Lado do Cliente** .
+* No **Gerenciador de Soluções**, clique com o botão direito do mouse no projeto e selecione **Adicionar** > **Biblioteca do Lado do Cliente**.
 
-* Na caixa de diálogo **Adicionar Biblioteca do Lado do Cliente** , para **Provedor** , selecione **unpkg** .
+* Na caixa de diálogo **Adicionar Biblioteca do Lado do Cliente**, para **Provedor**, selecione **unpkg**.
 
-* Para **Biblioteca** , insira `@microsoft/signalr@latest`.
+* Para **Biblioteca**, insira `@microsoft/signalr@latest`.
 
-* Selecione **Escolher arquivos específicos** , expanda a pasta *distribuidor/navegador* e selecione *signalr.js* e *signalr.min.js* .
+* Selecione **Escolher arquivos específicos**, expanda a pasta *distribuidor/navegador* e selecione *signalr.js* e *signalr.min.js*.
 
-* Defina **local de destino** como *wwwroot/js/signalr/* e selecione **instalar** .
+* Defina **local de destino** como *wwwroot/js/signalr/* e selecione **instalar**.
 
   ![Caixa de diálogo Adicionar Biblioteca do Lado do Cliente – selecionar biblioteca](signalr/_static/3.x/find-signalr-client-libs-select-files.png)
 
@@ -146,7 +147,7 @@ A SignalR biblioteca de servidores está incluída na estrutura compartilhada do
 
 # <a name="visual-studio-for-mac"></a>[Visual Studio para Mac](#tab/visual-studio-mac)
 
-* No **Terminal** , execute o comando a seguir para instalar o LibMan.
+* No **Terminal**, execute o comando a seguir para instalar o LibMan.
 
   ```dotnetcli
   dotnet tool install -g Microsoft.Web.LibraryManager.Cli
@@ -181,7 +182,7 @@ Um *hub* é uma classe que funciona como um pipeline de alto nível que lida com
 
 * Na SignalR pasta do projeto de chat, crie uma pasta *hubs* .
 
-* Na pasta *Hubs* , crie um arquivo *ChatHub.cs* com o código a seguir:
+* Na pasta *Hubs*, crie um arquivo *ChatHub.cs* com o código a seguir:
 
   [!code-csharp[ChatHub](signalr/sample-snapshot/3.x/ChatHub.cs)]
 
@@ -193,7 +194,7 @@ Um *hub* é uma classe que funciona como um pipeline de alto nível que lida com
 
 O SignalR servidor deve ser configurado para passar SignalR solicitações para SignalR .
 
-* Adicione o seguinte código realçado ao arquivo *Startup.cs* .
+* Adicione o seguinte código realçado ao arquivo *Startup.cs*.
 
   [!code-csharp[Startup](signalr/sample-snapshot/3.x/Startup.cs?highlight=11,28,55)]
 
@@ -211,7 +212,7 @@ O SignalR servidor deve ser configurado para passar SignalR solicitações para 
   * Cria uma lista com `id="messagesList"` para exibir mensagens recebidas do SignalR Hub.
   * Inclui referências de script para SignalR o e o código do aplicativo *chat.js* que você cria na próxima etapa.
 
-* Na pasta *wwwroot/js* , crie um arquivo *chat.js* com o código a seguir:
+* Na pasta *wwwroot/js*, crie um arquivo *chat.js* com o código a seguir:
 
   [!code-javascript[chat](signalr/sample-snapshot/3.x/chat.js)]
 
@@ -237,13 +238,13 @@ O SignalR servidor deve ser configurado para passar SignalR solicitações para 
 
 # <a name="visual-studio-for-mac"></a>[Visual Studio para Mac](#tab/visual-studio-mac)
 
-* No menu, selecione **Executar > Iniciar sem Depuração** .
+* No menu, selecione **Executar > Iniciar sem Depuração**.
 
 ---
 
 * Copie a URL da barra de endereços, abra outra instância ou guia do navegador e cole a URL na barra de endereços.
 
-* Escolha qualquer navegador, insira um nome e uma mensagem e selecione o botão **Enviar Mensagem** .
+* Escolha qualquer navegador, insira um nome e uma mensagem e selecione o botão **Enviar Mensagem**.
 
   O nome e a mensagem são exibidos em ambas as páginas instantaneamente.
 
@@ -293,15 +294,15 @@ No final, você terá um aplicativo de chat de trabalho: ![ ::: no-Loc (signalr)
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio/)  
 
-* No menu, selecione **Arquivo > Novo Projeto** . 
+* No menu, selecione **Arquivo > Novo Projeto**. 
 
-* Na caixa de diálogo **Novo Projeto** , selecione **Instalado > Visual C# > Web > Aplicativo Web ASP.NET Core** . Nomeie o projeto como *SignalR chat* .   
+* Na caixa de diálogo **Novo Projeto**, selecione **Instalado > Visual C# > Web > Aplicativo Web ASP.NET Core**. Nomeie o projeto como *SignalR chat*.   
 
   ![Caixa de diálogo Novo Projeto no Visual Studio](signalr/_static/2.x/signalr-new-project-dialog.png)    
 
 * Selecione **aplicativo Web** para criar um projeto que usa Razor páginas.   
 
-* Selecione uma estrutura de destino do **.NET Core** , selecione **ASP.NET Core 2.2** e clique em **OK** .    
+* Selecione uma estrutura de destino do **.NET Core**, selecione **ASP.NET Core 2.2** e clique em **OK**.    
 
   ![Caixa de diálogo Novo Projeto no Visual Studio](signalr/_static/2.x/signalr-new-project-choose-type.png)   
 
@@ -318,33 +319,33 @@ No final, você terá um aplicativo de chat de trabalho: ![ ::: no-Loc (signalr)
 
 # <a name="visual-studio-for-mac"></a>[Visual Studio para Mac](#tab/visual-studio-mac)   
 
-* No menu, selecione **Arquivo > Nova Solução** .    
+* No menu, selecione **Arquivo > Nova Solução**.    
 
-* Selecione **.NET Core > Aplicativo > Aplicativo Web ASP.NET Core** (não selecione **Aplicativo Web ASP.NET Core (MVC)** ).  
+* Selecione **.NET Core > Aplicativo > Aplicativo Web ASP.NET Core** (não selecione **Aplicativo Web ASP.NET Core (MVC)**).  
 
-* Selecione **Avançar** .  
+* Selecione **Avançar**.  
 
-* Nomeie o projeto como *SignalR chat* e, em seguida, selecione **criar** . 
+* Nomeie o projeto como *SignalR chat* e, em seguida, selecione **criar**. 
 
 --- 
 
 ## <a name="add-the-no-locsignalr-client-library"></a>Adicionar a SignalR biblioteca de cliente 
 
-A SignalR biblioteca de servidores está incluída no `Microsoft.AspNetCore.App` metapacote. A biblioteca de clientes do JavaScript não é incluída automaticamente no projeto. No cenário deste tutorial, você usará o Gerenciador de Bibliotecas (LibMan) para baixar a biblioteca de clientes do *unpkg* . unpkg é uma CDN (rede de distribuição de conteúdo) que pode entregar qualquer coisa encontrada no NPM, o Gerenciador de pacotes Node.js.   
+A SignalR biblioteca de servidores está incluída no `Microsoft.AspNetCore.App` metapacote. A biblioteca de clientes do JavaScript não é incluída automaticamente no projeto. No cenário deste tutorial, você usará o Gerenciador de Bibliotecas (LibMan) para baixar a biblioteca de clientes do *unpkg*. unpkg é uma CDN (rede de distribuição de conteúdo) que pode entregar qualquer coisa encontrada no NPM, o Gerenciador de pacotes Node.js.   
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio/)  
 
-* No **Gerenciador de Soluções** , clique com o botão direito do mouse no projeto e selecione **Adicionar** > **Biblioteca do Lado do Cliente** .  
+* No **Gerenciador de Soluções**, clique com o botão direito do mouse no projeto e selecione **Adicionar** > **Biblioteca do Lado do Cliente**.  
 
-* Na caixa de diálogo **Adicionar Biblioteca do Lado do Cliente** , para **Provedor** , selecione **unpkg** . 
+* Na caixa de diálogo **Adicionar Biblioteca do Lado do Cliente**, para **Provedor**, selecione **unpkg**. 
 
-* Para **Biblioteca** , insira `@microsoft/signalr@3` e selecione a versão mais recente que não seja uma versão prévia.  
+* Para **Biblioteca**, insira `@microsoft/signalr@3` e selecione a versão mais recente que não seja uma versão prévia.  
 
   ![Caixa de diálogo Adicionar Biblioteca do Lado do Cliente – selecionar biblioteca](signalr/_static/2.x/libman1.png)   
 
-* Selecione **Escolher arquivos específicos** , expanda a pasta *distribuidor/navegador* e selecione *signalr.js* e *signalr.min.js* . 
+* Selecione **Escolher arquivos específicos**, expanda a pasta *distribuidor/navegador* e selecione *signalr.js* e *signalr.min.js*. 
 
-* Defina **Localização de Destino** como *wwwroot/lib/signalr/* e selecione **Instalar** .    
+* Defina **Localização de Destino** como *wwwroot/lib/signalr/* e selecione **Instalar**.    
 
   ![Caixa de diálogo Adicionar Biblioteca do Lado do Cliente – selecionar arquivos e destino](signalr/_static/2.x/libman2.png) 
 
@@ -366,7 +367,7 @@ A SignalR biblioteca de servidores está incluída no `Microsoft.AspNetCore.App`
 
   Os parâmetros especificam as seguintes opções: 
   * Use o provedor unpkg. 
-  * Copie os arquivos para o destino *wwwroot/lib/signalr* .    
+  * Copie os arquivos para o destino *wwwroot/lib/signalr*.    
   * Copie apenas os arquivos especificados.  
 
   A saída se parece com o seguinte exemplo:  
@@ -379,7 +380,7 @@ A SignalR biblioteca de servidores está incluída no `Microsoft.AspNetCore.App`
 
 # <a name="visual-studio-for-mac"></a>[Visual Studio para Mac](#tab/visual-studio-mac)   
 
-* No **Terminal** , execute o comando a seguir para instalar o LibMan. 
+* No **Terminal**, execute o comando a seguir para instalar o LibMan. 
 
   ```dotnetcli  
   dotnet tool install -g Microsoft.Web.LibraryManager.Cli   
@@ -395,7 +396,7 @@ A SignalR biblioteca de servidores está incluída no `Microsoft.AspNetCore.App`
 
   Os parâmetros especificam as seguintes opções: 
   * Use o provedor unpkg. 
-  * Copie os arquivos para o destino *wwwroot/lib/signalr* .    
+  * Copie os arquivos para o destino *wwwroot/lib/signalr*.    
   * Copie apenas os arquivos especificados.  
 
   A saída se parece com o seguinte exemplo:  
@@ -414,7 +415,7 @@ Um *hub* é uma classe que funciona como um pipeline de alto nível que lida com
 
 * Na SignalR pasta do projeto de chat, crie uma pasta *hubs* .  
 
-* Na pasta *Hubs* , crie um arquivo *ChatHub.cs* com o código a seguir: 
+* Na pasta *Hubs*, crie um arquivo *ChatHub.cs* com o código a seguir: 
 
   [!code-csharp[Startup](signalr/sample-snapshot/2.x/ChatHub.cs)]   
 
@@ -426,7 +427,7 @@ Um *hub* é uma classe que funciona como um pipeline de alto nível que lida com
 
 O SignalR servidor deve ser configurado para passar SignalR solicitações para SignalR .    
 
-* Adicione o seguinte código realçado ao arquivo *Startup.cs* .  
+* Adicione o seguinte código realçado ao arquivo *Startup.cs*.  
 
   [!code-csharp[Startup](signalr/sample-snapshot/2.x/Startup.cs?highlight=7,33,52-55)]  
 
@@ -444,7 +445,7 @@ O SignalR servidor deve ser configurado para passar SignalR solicitações para 
   * Cria uma lista com `id="messagesList"` para exibir mensagens recebidas do SignalR Hub.   
   * Inclui referências de script para SignalR o e o código do aplicativo *chat.js* que você cria na próxima etapa.    
 
-* Na pasta *wwwroot/js* , crie um arquivo *chat.js* com o código a seguir:  
+* Na pasta *wwwroot/js*, crie um arquivo *chat.js* com o código a seguir:  
 
   [!code-javascript[Index](signalr/sample-snapshot/2.x/chat.js)]    
 
@@ -470,13 +471,13 @@ O SignalR servidor deve ser configurado para passar SignalR solicitações para 
 
 # <a name="visual-studio-for-mac"></a>[Visual Studio para Mac](#tab/visual-studio-mac)
 
-* No menu, selecione **Executar > Iniciar sem Depuração** .
+* No menu, selecione **Executar > Iniciar sem Depuração**.
 
 ---
 
 * Copie a URL da barra de endereços, abra outra instância ou guia do navegador e cole a URL na barra de endereços.
 
-* Escolha qualquer navegador, insira um nome e uma mensagem e selecione o botão **Enviar Mensagem** .  
+* Escolha qualquer navegador, insira um nome e uma mensagem e selecione o botão **Enviar Mensagem**.  
 
   O nome e a mensagem são exibidos em ambas as páginas instantaneamente.   
 

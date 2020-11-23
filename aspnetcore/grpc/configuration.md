@@ -5,7 +5,7 @@ description: Saiba como configurar o gRPC para aplicativos .NET.
 monikerRange: '>= aspnetcore-3.0'
 ms.author: jamesnk
 ms.custom: mvc
-ms.date: 05/26/2020
+ms.date: 11/23/2020
 no-loc:
 - appsettings.json
 - ASP.NET Core Identity
@@ -19,18 +19,18 @@ no-loc:
 - Razor
 - SignalR
 uid: grpc/configuration
-ms.openlocfilehash: e0b782a254cafc440638ca77a3b9ac885dc3575e
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: 617c042c628dc431391f39c2ecb2d2f9c9463fa5
+ms.sourcegitcommit: aa85f2911792a1e4783bcabf0da3b3e7e218f63a
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93059956"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95417585"
 ---
 # <a name="grpc-for-net-configuration"></a>configuração do gRPC para .NET
 
 ## <a name="configure-services-options"></a>Configurar opções de serviços
 
-os serviços gRPCs são configurados com o `AddGrpc` no *Startup.cs* . A tabela a seguir descreve as opções para configurar os serviços gRPCs:
+os serviços gRPCs são configurados com o `AddGrpc` no *Startup.cs*. A tabela a seguir descreve as opções para configurar os serviços gRPCs:
 
 | Opção | Valor padrão | Descrição |
 | ------ | ------------- | ----------- |
@@ -65,6 +65,7 @@ a configuração do cliente gRPC está definida em `GrpcChannelOptions` . A tabe
 | <span style="word-break:normal;word-wrap:normal">MaxReceiveMessageSize</span> | 4 MB | O tamanho máximo da mensagem em bytes que pode ser recebido pelo cliente. Se o cliente receber uma mensagem que exceda esse limite, ele lançará uma exceção. Aumentar esse valor permite que o cliente receba mensagens maiores, mas pode afetar negativamente o consumo de memória. Quando definido como `null` , o tamanho da mensagem é ilimitado. |
 | Credenciais | `null` | Uma instância de `ChannelCredentials`. As credenciais são usadas para adicionar metadados de autenticação a chamadas gRPC. |
 | CompressionProviders | gzip | Uma coleção de provedores de compactação usados para compactar e descompactar mensagens. Os provedores de compactação personalizados podem ser criados e adicionados à coleção. Os provedores configurados padrão dão suporte à compactação **gzip** . |
+| ThrowOperationCanceledOnCancellation | `false` | Se definido como `true` , os clientes lançam <xref:System.OperationCanceledException> quando uma chamada é cancelada ou seu prazo final é excedido. |
 
 O seguinte código:
 

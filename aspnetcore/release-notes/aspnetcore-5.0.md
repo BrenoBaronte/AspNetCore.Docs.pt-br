@@ -18,12 +18,12 @@ no-loc:
 - SignalR
 - Kestrel
 uid: aspnetcore-5.0
-ms.openlocfilehash: 7f90e4c424aa4bb76be7c226acd2f16261e0dfe6
-ms.sourcegitcommit: 8363e44f630fcc6433ccd2a85f7aa9567cd274ed
+ms.openlocfilehash: 8e848ef57a9164501fd3c4f29f47ad7c72118507
+ms.sourcegitcommit: aa85f2911792a1e4783bcabf0da3b3e7e218f63a
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94981941"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95417546"
 ---
 # <a name="whats-new-in-aspnet-core-50"></a>O que há de novo no ASP.NET Core 5,0
 
@@ -361,7 +361,7 @@ Antes do .NET 5,0, a criação e a publicação de um *Dockerfile* para um aplic
 
 ### <a name="azure-active-directory-authentication-with-microsoftno-locidentityweb"></a>Azure Active Directory autenticação com a Microsoft. Identity . Site
 
-Os modelos de projeto ASP.NET Core agora se integram <xref:Microsoft.Identity.Web?displayProperty=fullName> ao para lidar com a autenticação com o Azure AD ( [diretório de atividades do Azure](/azure/active-directory/fundamentals/active-directory-whatis) ). O [Microsoft. Identity . O pacote da Web](https://www.nuget.org/packages/Microsoft.Identity.Web/) fornece:
+Os modelos de projeto ASP.NET Core agora se integram <xref:Microsoft.Identity.Web?displayProperty=fullName> ao para lidar com a autenticação com o [Azure Active Directory](/azure/active-directory/fundamentals/active-directory-whatis) (AD do Azure). O [Microsoft. Identity . O pacote da Web](https://www.nuget.org/packages/Microsoft.Identity.Web/) fornece:
 
 * Uma melhor experiência de autenticação por meio do Azure AD.
 * Uma maneira mais fácil de acessar os recursos do Azure em nome de seus usuários, incluindo [Microsoft Graph](/graph/overview). Consulte o [Microsoft. Identity . Exemplo da Web](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2), que começa com um logon básico e avança por meio de multilocação, usando as APIs do Azure, usando Microsoft Graph e protegendo suas próprias APIs. `Microsoft.Identity.Web` está disponível junto com o .NET 5.

@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/forms-validation
-ms.openlocfilehash: fe232b40a2255732dd375cc266937576d5b2d5d9
-ms.sourcegitcommit: 1be547564381873fe9e84812df8d2088514c622a
+ms.openlocfilehash: 827045775d3bca3cd2c467b12172c53f5f9b0625
+ms.sourcegitcommit: aa85f2911792a1e4783bcabf0da3b3e7e218f63a
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94507818"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95417390"
 ---
 # <a name="aspnet-core-no-locblazor-forms-and-validation"></a>ASP.NET Core Blazor formulários e validação
 
@@ -337,49 +337,46 @@ using System.Collections.Generic;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Forms;
 
-namespace BlazorSample.Client
+public class CustomValidator : ComponentBase
 {
-    public class CustomValidator : ComponentBase
+    private ValidationMessageStore messageStore;
+
+    [CascadingParameter]
+    private EditContext CurrentEditContext { get; set; }
+
+    protected override void OnInitialized()
     {
-        private ValidationMessageStore messageStore;
-
-        [CascadingParameter]
-        private EditContext CurrentEditContext { get; set; }
-
-        protected override void OnInitialized()
+        if (CurrentEditContext == null)
         {
-            if (CurrentEditContext == null)
-            {
-                throw new InvalidOperationException(
-                    $"{nameof(CustomValidator)} requires a cascading " +
-                    $"parameter of type {nameof(EditContext)}. " +
-                    $"For example, you can use {nameof(CustomValidator)} " +
-                    $"inside an {nameof(EditForm)}.");
-            }
-
-            messageStore = new ValidationMessageStore(CurrentEditContext);
-
-            CurrentEditContext.OnValidationRequested += (s, e) => 
-                messageStore.Clear();
-            CurrentEditContext.OnFieldChanged += (s, e) => 
-                messageStore.Clear(e.FieldIdentifier);
+            throw new InvalidOperationException(
+                $"{nameof(CustomValidator)} requires a cascading " +
+                $"parameter of type {nameof(EditContext)}. " +
+                $"For example, you can use {nameof(CustomValidator)} " +
+                $"inside an {nameof(EditForm)}.");
         }
 
-        public void DisplayErrors(Dictionary<string, List<string>> errors)
-        {
-            foreach (var err in errors)
-            {
-                messageStore.Add(CurrentEditContext.Field(err.Key), err.Value);
-            }
+        messageStore = new ValidationMessageStore(CurrentEditContext);
 
-            CurrentEditContext.NotifyValidationStateChanged();
-        }
-
-        public void ClearErrors()
-        {
+        CurrentEditContext.OnValidationRequested += (s, e) => 
             messageStore.Clear();
-            CurrentEditContext.NotifyValidationStateChanged();
+        CurrentEditContext.OnFieldChanged += (s, e) => 
+            messageStore.Clear(e.FieldIdentifier);
+    }
+
+    public void DisplayErrors(Dictionary<string, List<string>> errors)
+    {
+        foreach (var err in errors)
+        {
+            messageStore.Add(CurrentEditContext.Field(err.Key), err.Value);
         }
+
+        CurrentEditContext.NotifyValidationStateChanged();
+    }
+
+    public void ClearErrors()
+    {
+        messageStore.Clear();
+        CurrentEditContext.NotifyValidationStateChanged();
     }
 }
 ```
@@ -451,7 +448,7 @@ A validação do servidor pode ser realizada com um [componente de validador](#v
 * Processe a validação do lado do cliente no formulário com o <xref:Microsoft.AspNetCore.Components.Forms.DataAnnotationsValidator> componente.
 * Quando o formulário passar na validação do lado do cliente ( <xref:Microsoft.AspNetCore.Components.Forms.EditForm.OnValidSubmit> é chamado), envie o <xref:Microsoft.AspNetCore.Components.Forms.EditContext.Model?displayProperty=nameWithType> para uma API de servidor de back-end para processamento de formulário.
 * Validação do modelo de processo no servidor.
-* A API do servidor inclui a validação interna das anotações de dados da estrutura e a lógica de validação personalizada fornecida pelo desenvolvedor. Se a validação passar no servidor, processe o formulário e envie de volta um código de status de êxito ( *200-OK* ). Se a validação falhar, retorne um código de status de falha ( *400-solicitação inadequada* ) e os erros de validação de campo.
+* A API do servidor inclui a validação interna das anotações de dados da estrutura e a lógica de validação personalizada fornecida pelo desenvolvedor. Se a validação passar no servidor, processe o formulário e envie de volta um código de status de êxito (*200-OK*). Se a validação falhar, retorne um código de status de falha (*400-solicitação inadequada*) e os erros de validação de campo.
 * Desabilite o formulário em caso de êxito ou exiba os erros.
 
 O exemplo a seguir se baseia em:
@@ -483,7 +480,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using BlazorSample.Shared;
 
-namespace BlazorSample.Server.Controllers
+namespace {ASSEMBLY NAME}.Controllers
 {
     [Authorize]
     [ApiController]
@@ -528,6 +525,8 @@ namespace BlazorSample.Server.Controllers
     }
 }
 ```
+
+No exemplo anterior, o espaço reservado `{ASSEMBLY NAME}` é o nome do assembly do aplicativo (por exemplo, `BlazorSample.Server` ).
 
 Quando ocorre um erro de validação de associação de modelo no servidor, um [`ApiController`](xref:web-api/index) ( <xref:Microsoft.AspNetCore.Mvc.ApiControllerAttribute> ) normalmente retorna uma [resposta de solicitação inadequada padrão](xref:web-api/index#default-badrequest-response) com um <xref:Microsoft.AspNetCore.Mvc.ValidationProblemDetails> . A resposta contém mais dados do que apenas os erros de validação, conforme mostrado no exemplo a seguir quando todos os campos do formulário de banco de dados *Starfleet Starship* não são enviados e o formulário falha na validação:
 
