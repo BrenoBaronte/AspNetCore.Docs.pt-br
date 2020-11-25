@@ -9,3 +9,5 @@ A seguinte caixa de diálogo é exibida:
 ![Caixa de diálogo de aviso de segurança](~/getting-started/_static/cert.png)
 
 Selecione **Sim** se você concordar com confiar no certificado de desenvolvimento.
+
+[!INCLUDE[trust FF](~/includes/trust-ff.md)]

@@ -20,12 +20,12 @@ no-loc:
 - Razor
 - SignalR
 uid: tutorials/razor-pages/razor-pages-start
-ms.openlocfilehash: b4dcbe9536107cdc5b0342782abc4bad0b89a8dc
-ms.sourcegitcommit: 342588e10ae0054a6d6dc0fd11dae481006be099
+ms.openlocfilehash: fa113a3e0a2a69fb4aa1318056dcfc6e261490f6
+ms.sourcegitcommit: 8b867c4cb0c3b39bbc4d2d87815610d2ef858ae7
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94360900"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "96025014"
 ---
 # <a name="tutorial-get-started-with-no-locrazor-pages-in-aspnet-core"></a>Tutorial: introdução às Razor páginas no ASP.NET Core
 
@@ -79,7 +79,7 @@ No final deste tutorial, você terá um Razor aplicativo Web de páginas de trab
 
     ![novo Aplicativo Web ASP.NET Core](razor-pages-start/_static/5/np.png)
     
-1. Na caixa de diálogo **configurar seu novo projeto** , digite `RazorPagesMovie` para **nome do projeto**. É importante nomear o projeto *Razor PagesMovie* , incluindo a correspondência de maiúsculas e minúsculas, de modo que os namespaces corresponderão quando você copiar e colar o código de exemplo.
+1. Na caixa de diálogo **configurar seu novo projeto** , digite `RazorPagesMovie` para **nome do projeto**. É importante nomear o projeto *Razor PagesMovie*, incluindo a correspondência de maiúsculas e minúsculas, de modo que os namespaces corresponderão quando você copiar e colar o código de exemplo.
 
 1. Selecione **Create**.
 
@@ -125,7 +125,7 @@ No final deste tutorial, você terá um Razor aplicativo Web de páginas de trab
 1. Na caixa de diálogo **Configurar o novo aplicativo Web** :
 
     1. Confirme se a **autenticação** está definida como **sem autenticação**.
-    1. Se for apresentada uma opção para selecionar uma **estrutura de destino** , selecione a versão mais recente do .NET 5. x.
+    1. Se for apresentada uma opção para selecionar uma **estrutura de destino**, selecione a versão mais recente do .NET 5. x.
     1. Selecione **Avançar**.
 
 1. Nomeie o projeto *Razor PagesMovie* e selecione **Create** .
@@ -251,7 +251,7 @@ No final deste tutorial, você terá um Razor aplicativo Web de páginas de trab
 
 * Depois que o ícone de chama de OmniSharp da barra de status fica verde, uma caixa de diálogo solicita **que os ativos necessários compilem e depurem estão faltando em ' Razor PagesMovie '. Adicioná-los?** Selecione **Sim** na barra superior.
 
-  Um diretório *.vscode* , contendo os arquivos *launch.json* e *tasks.json* , é adicionado ao diretório raiz do projeto.
+  Um diretório *.vscode*, contendo os arquivos *launch.json* e *tasks.json*, é adicionado ao diretório raiz do projeto.
 
 # <a name="visual-studio-for-mac"></a>[Visual Studio para Mac](#tab/visual-studio-mac)
 
@@ -266,7 +266,7 @@ No final deste tutorial, você terá um Razor aplicativo Web de páginas de trab
 * Na caixa de diálogo **Configurar o novo aplicativo Web** :
 
   * Confirme se a **autenticação** está definida como **sem autenticação**.
-  * Se for apresentada uma opção para selecionar uma **estrutura de destino** , selecione a versão 3. x mais recente.
+  * Se for apresentada uma opção para selecionar uma **estrutura de destino**, selecione a versão 3. x mais recente.
 
   Selecione **Avançar**.
 
@@ -397,7 +397,7 @@ No final deste tutorial, você terá um Razor aplicativo Web de páginas de trab
 
 * Depois que o ícone de chama de OmniSharp da barra de status fica verde, uma caixa de diálogo solicita **que os ativos necessários compilem e depurem estão faltando em ' Razor PagesMovie '. Adicioná-los?** Selecione **Sim** na barra superior.
 
-  Um diretório *.vscode* , contendo os arquivos *launch.json* e *tasks.json* , é adicionado ao diretório raiz do projeto.
+  Um diretório *.vscode*, contendo os arquivos *launch.json* e *tasks.json*, é adicionado ao diretório raiz do projeto.
 
 # <a name="visual-studio-for-mac"></a>[Visual Studio para Mac](#tab/visual-studio-mac)
 
@@ -410,7 +410,7 @@ No final deste tutorial, você terá um Razor aplicativo Web de páginas de trab
 * Na caixa de diálogo **Configurar o novo aplicativo Web** :
 
   * Confirme se a **autenticação** está definida como **sem autenticação**.
-  * Se for apresentada uma opção para selecionar uma **estrutura de destino** , selecione a versão 2. x mais recente.
+  * Se for apresentada uma opção para selecionar uma **estrutura de destino**, selecione a versão 2. x mais recente.
 
   Selecione **Avançar**.
 
@@ -429,7 +429,6 @@ No final deste tutorial, você terá um Razor aplicativo Web de páginas de trab
 * Pressione Ctrl + F5 para execução sem o depurador.
 
   Iniciar o aplicativo com <kbd>Ctrl + F5</kbd> (modo não depurar) permite que você faça alterações de código, salve o arquivo, atualize o navegador e veja as alterações de código. Muitos desenvolvedores preferem usar o modo sem depuração para iniciar o aplicativo rapidamente e exibir as alterações.
-
 
   [!INCLUDE[](~/includes/trustCertVS.md)]
 

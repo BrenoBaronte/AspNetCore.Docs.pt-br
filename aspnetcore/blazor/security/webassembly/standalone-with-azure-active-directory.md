@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/security/webassembly/standalone-with-azure-active-directory
-ms.openlocfilehash: 4e8c22c56b7023301499fd273a9194b8c7b58f3d
-ms.sourcegitcommit: 45aa1c24c3fdeb939121e856282b00bdcf00ea55
+ms.openlocfilehash: 4f203e57fe69c3a14dc267c0693094fcefa3dd80
+ms.sourcegitcommit: 59d95a9106301d5ec5c9f612600903a69c4580ef
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93343697"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96024650"
 ---
 # <a name="secure-an-aspnet-core-no-locblazor-webassembly-standalone-app-with-azure-active-directory"></a>Proteger um Blazor WebAssembly aplicativo ASP.NET Core autônomo com Azure Active Directory
 
@@ -35,11 +35,15 @@ Este artigo aborda como criar um [ Blazor WebAssembly aplicativo autônomo](xref
 ::: moniker range=">= aspnetcore-5.0"
 
 > [!NOTE]
-> Para Blazor WebAssembly aplicativos criados no Visual Studio que são configurados para dar suporte a contas em um diretório organizacional do AAD, o Visual Studio não configura o aplicativo corretamente na geração do projeto. Isso será abordado em uma versão futura do Visual Studio. Este artigo mostra como criar o aplicativo com o comando do CLI do .NET Core `dotnet new` . Se você preferir criar o aplicativo com o Visual Studio antes de o IDE ser atualizado para os Blazor modelos mais recentes no ASP.NET Core 5,0, consulte cada seção deste artigo e confirme ou atualize a configuração do aplicativo após o Visual Studio criar o aplicativo.
+> Para Blazor WebAssembly aplicativos criados no Visual Studio que são configurados para dar suporte a contas em um diretório organizacional do AAD, o Visual Studio atualmente não configura portal do Azure registros de aplicativo corretamente na geração do projeto. Isso será abordado em uma versão futura do Visual Studio.
+>
+> Este artigo mostra como criar a solução e o registro do portal de aplicativo do Azure com o comando da CLI do .NET `dotnet new` e criando manualmente o registro do aplicativo no portal do Azure.
+>
+> Se você preferir criar a solução e o registro de aplicativo do Azure com o Visual Studio antes da atualização do IDE, consulte **_cada seção deste artigo_** e confirme ou atualize a configuração do aplicativo e o registro do aplicativo depois que o Visual Studio criar a solução.
 
 Registre um aplicativo do AAD na área **Azure Active Directory** > **registros de aplicativo** do portal do Azure:
 
-1. Forneça um **nome** para o aplicativo (por exemplo, **Blazor AAD autônomo** ).
+1. Forneça um **nome** para o aplicativo (por exemplo, **Blazor AAD autônomo**).
 1. Escolha um **tipo de conta com suporte**. Você pode selecionar **contas neste diretório organizacional somente** para esta experiência.
 1. Defina a lista suspensa **URI de redirecionamento** para o **aplicativo de página única (Spa)** e forneça o seguinte URI de redirecionamento: `https://localhost:{PORT}/authentication/login-callback` . A porta padrão para um aplicativo em execução no Kestrel é 5001. Se o aplicativo for executado em uma porta Kestrel diferente, use a porta do aplicativo. Por IIS Express, a porta gerada aleatoriamente para o aplicativo pode ser encontrada nas propriedades do aplicativo no painel de **depuração** . Como o aplicativo não existe neste ponto e a porta de IIS Express não é conhecida, retorne a essa etapa depois que o aplicativo for criado e atualize o URI de redirecionamento. Um comentário aparece mais adiante neste tópico para lembrar IIS Express usuários para atualizar o URI de redirecionamento.
 1. Desmarque a caixa de seleção **permissões** > **conceder consentimento de administrador às permissões OpenID e offline_access** .
@@ -50,10 +54,10 @@ Registre as seguintes informações:
 * ID do aplicativo (cliente) (por exemplo, `41451fa7-82d9-4673-8fa5-69eff5a761fd` )
 * ID do diretório (locatário) (por exemplo, `e86c78e2-8bb4-4c41-aefd-918e0565a45e` )
 
-Em configurações de plataforma de **autenticação** > **Platform configurations** > **, um aplicativo de página única (Spa)** :
+Em configurações de plataforma de **autenticação** > **Platform configurations** > **, um aplicativo de página única (Spa)**:
 
 1. Confirme se o **URI de redirecionamento** do `https://localhost:{PORT}/authentication/login-callback` está presente.
-1. Para **concessão implícita** , verifique se as caixas de seleção para **tokens de acesso** e **tokens de ID** **não** estão selecionadas.
+1. Para **concessão implícita**, verifique se as caixas de seleção para **tokens de acesso** e **tokens de ID** **não** estão selecionadas.
 1. Os padrões restantes para o aplicativo são aceitáveis para essa experiência.
 1. Selecione o botão **Salvar**.
 
@@ -63,7 +67,7 @@ Em configurações de plataforma de **autenticação** > **Platform configuratio
 
 Registre um aplicativo do AAD na área **Azure Active Directory** > **registros de aplicativo** do portal do Azure:
 
-1. Forneça um **nome** para o aplicativo (por exemplo, **Blazor AAD autônomo** ).
+1. Forneça um **nome** para o aplicativo (por exemplo, **Blazor AAD autônomo**).
 1. Escolha um **tipo de conta com suporte**. Você pode selecionar **contas neste diretório organizacional somente** para esta experiência.
 1. Deixe a lista suspensa **URI de redirecionamento** definida como **Web** e forneça o seguinte URI de redirecionamento: `https://localhost:{PORT}/authentication/login-callback` . A porta padrão para um aplicativo em execução no Kestrel é 5001. Se o aplicativo for executado em uma porta Kestrel diferente, use a porta do aplicativo. Por IIS Express, a porta gerada aleatoriamente para o aplicativo pode ser encontrada nas propriedades do aplicativo no painel de **depuração** . Como o aplicativo não existe neste ponto e a porta de IIS Express não é conhecida, retorne a essa etapa depois que o aplicativo for criado e atualize o URI de redirecionamento. Um comentário aparece mais adiante neste tópico para lembrar IIS Express usuários para atualizar o URI de redirecionamento.
 1. Desmarque a caixa de seleção **permissões** > **conceder consentimento de administrador às permissões OpenID e offline_access** .
@@ -74,10 +78,10 @@ Registre as seguintes informações:
 * ID do aplicativo (cliente) (por exemplo, `41451fa7-82d9-4673-8fa5-69eff5a761fd` )
 * ID do diretório (locatário) (por exemplo, `e86c78e2-8bb4-4c41-aefd-918e0565a45e` )
 
-Em **Authentication** > **configurações da plataforma** de autenticação > **Web** :
+Em **Authentication** > **configurações da plataforma** de autenticação > **Web**:
 
 1. Confirme se o **URI de redirecionamento** do `https://localhost:{PORT}/authentication/login-callback` está presente.
-1. Para **concessão implícita** , marque as caixas de seleção para **tokens de acesso** e **tokens de ID**.
+1. Para **concessão implícita**, marque as caixas de seleção para **tokens de acesso** e **tokens de ID**.
 1. Os padrões restantes para o aplicativo são aceitáveis para essa experiência.
 1. Selecione o botão **Salvar**.
 

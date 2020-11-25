@@ -19,12 +19,12 @@ no-loc:
 - SignalR
 - Models
 uid: tutorials/first-web-api
-ms.openlocfilehash: 569744b2cbec062ec9abab9db1c94960f1f912e7
-ms.sourcegitcommit: 1ea3f23bec63e96ffc3a927992f30a5fc0de3ff9
+ms.openlocfilehash: 9299ba685c95ced522fc725854a66252e67fc799
+ms.sourcegitcommit: aa85f2911792a1e4783bcabf0da3b3e7e218f63a
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94570244"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "96024950"
 ---
 # <a name="tutorial-create-a-web-api-with-aspnet-core"></a>Tutorial: criar uma API Web com ASP.NET Core
 
@@ -149,7 +149,7 @@ Pressione Ctrl + F5 para execução sem o depurador.
   O Visual Studio é iniciado:
 
 * O servidor Web IIS Express.
-* O navegador padrão e navega para `https://localhost:<port>/https://localhost:5001/swagger/index.html` , em que `<port>` é um número de porta escolhido aleatoriamente.
+* O navegador padrão e navega para `https://localhost:<port>/swagger/index.html` , em que `<port>` é um número de porta escolhido aleatoriamente.
 
 # <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
@@ -215,7 +215,7 @@ Um JSON semelhante ao seguinte será retornado:
 
 ### <a name="update-the-launchurl"></a>Atualizar o launchUrl
 
-No *Properties\launchSettings.jsem* , atualize `launchUrl` do `"swagger"` para `"api/TodoItems"` :
+No *Properties\launchSettings.jsem*, atualize `launchUrl` do `"swagger"` para `"api/TodoItems"` :
 
 ```json
 "launchUrl": "api/TodoItems",
@@ -229,7 +229,7 @@ Um *modelo* é um conjunto de classes que representam os dados gerenciados pelo 
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-* Em **Gerenciador de soluções** , clique com o botão direito do mouse no projeto. Selecione **Adicionar**  >  **nova pasta**. Nomeie a pasta *Models* .
+* Em **Gerenciador de soluções**, clique com o botão direito do mouse no projeto. Selecione **Adicionar**  >  **nova pasta**. Nomeie a pasta *Models* .
 
 * Clique com o botão direito do mouse na *Models* pasta e selecione **Adicionar**  >  **classe**. Dê à classe o nome *TodoItem* e selecione **Adicionar**.
 
@@ -269,11 +269,9 @@ O *contexto de banco de dados* é a classe principal que coordena a funcionalida
 
 ### <a name="add-nuget-packages"></a>Adicionar pacotes NuGet
 
-* No menu **Ferramentas** , selecione **Gerenciador de Pacotes do NuGet > Gerenciar Pacotes do NuGet para a Solução**.
-* Selecione a guia **procurar** e, em seguida, insira * * Microsoft.
-**EntityFrameworkCore. SqlServer** na caixa de pesquisa.
+* No menu **Ferramentas**, selecione **Gerenciador de Pacotes do NuGet > Gerenciar Pacotes do NuGet para a Solução**.
+* Selecione a guia **Procurar** e, em seguida, insira **Microsoft.EntityFrameworkCore.SqlServer** na caixa de pesquisa.
 <!-- https://github.com/dotnet/AspNetCore.Docs/issues/19782 Delete this line at RTM -->
-* Marque a caixa de seleção **incluir pré-lançamento** para que a versão 5,0 RC esteja disponível. 
 * Selecione **Microsoft. EntityFrameworkCore. SqlServer** no painel esquerdo.
 * Selecione a caixa de seleção **Projeto** no painel direito e, em seguida, selecione **Instalar**.
 * Use as instruções anteriores para adicionar o pacote NuGet **Microsoft. EntityFrameworkCore. inmemory** .
@@ -317,7 +315,7 @@ O código anterior:
 * Clique com o botão direito do mouse na pasta *Controllers*.
 * Selecione **Adicionar** > **Novo item com scaffold**.
 * Selecione **Controlador de API com ações, usando o Entity Framework** e, em seguida, selecione **Adicionar**.
-* Na caixa de diálogo **Adicionar Controlador de API com ações, usando o Entity Framework** :
+* Na caixa de diálogo **Adicionar Controlador de API com ações, usando o Entity Framework**:
 
   * Selecione **TodoItem (TodoApi. Models )** na **classe Model**.
   * Selecione **TodoContext (TodoApi. Models )** na **classe de contexto de dados**.
@@ -330,8 +328,8 @@ Execute os seguintes comandos:
 ```dotnetcli
 dotnet add package Microsoft.VisualStudio.Web.CodeGeneration.Design
 dotnet add package Microsoft.EntityFrameworkCore.Design
-dotnet tool install --global dotnet-aspnet-codegenerator
-dotnet tool update -g Dotnet-aspnet-codegenerator
+dotnet tool install -g dotnet-aspnet-codegenerator
+dotnet tool update -g dotnet-aspnet-codegenerator
 dotnet aspnet-codegenerator controller -name TodoItemsController -async -api -m TodoItem -dc TodoContext -outDir Controllers
 ```
 
@@ -379,7 +377,7 @@ Este tutorial usa o Postman para testar a API Web.
 * Inicie o aplicativo Web.
 * Inicie o Postman.
 * Desabilite a **Verificação do certificado SSL**
-  * Em **Arquivo** > **Configurações** (guia **Geral** ), desabilite **Verificação de certificado SSL**.
+  * Em **Arquivo** > **Configurações** (guia **Geral**), desabilite **Verificação de certificado SSL**.
     > [!WARNING]
     > Habilite novamente a verificação do certificado SSL depois de testar o controlador.
 
@@ -413,7 +411,7 @@ O URI do cabeçalho do local pode ser testado no navegador. Copie e cole o URI d
 Para testar no postmaster:
 
 * Selecione a guia **Cabeçalhos** no painel **Resposta**.
-* Copie o valor do cabeçalho **Local** :
+* Copie o valor do cabeçalho **Local**:
 
   ![Guia Cabeçalhos do console do Postman](first-web-api/_static/3/create.png)
 
@@ -725,7 +723,7 @@ Um *modelo* é um conjunto de classes que representam os dados gerenciados pelo 
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-* Em **Gerenciador de soluções** , clique com o botão direito do mouse no projeto. Selecione **Adicionar**  >  **nova pasta**. Nomeie a pasta *Models* .
+* Em **Gerenciador de soluções**, clique com o botão direito do mouse no projeto. Selecione **Adicionar**  >  **nova pasta**. Nomeie a pasta *Models* .
 
 * Clique com o botão direito do mouse na *Models* pasta e selecione **Adicionar**  >  **classe**. Dê à classe o nome *TodoItem* e selecione **Adicionar**.
 
@@ -765,7 +763,7 @@ O *contexto de banco de dados* é a classe principal que coordena a funcionalida
 
 ### <a name="add-nuget-packages"></a>Adicionar pacotes NuGet
 
-* No menu **Ferramentas** , selecione **Gerenciador de Pacotes do NuGet > Gerenciar Pacotes do NuGet para a Solução**.
+* No menu **Ferramentas**, selecione **Gerenciador de Pacotes do NuGet > Gerenciar Pacotes do NuGet para a Solução**.
 * Selecione a guia **Procurar** e, em seguida, insira **Microsoft.EntityFrameworkCore.SqlServer** na caixa de pesquisa.
 * Selecione **Microsoft. EntityFrameworkCore. SqlServer** no painel esquerdo.
 * Selecione a caixa de seleção **Projeto** no painel direito e, em seguida, selecione **Instalar**.
@@ -808,7 +806,7 @@ O código anterior:
 * Clique com o botão direito do mouse na pasta *Controllers*.
 * Selecione **Adicionar** > **Novo item com scaffold**.
 * Selecione **Controlador de API com ações, usando o Entity Framework** e, em seguida, selecione **Adicionar**.
-* Na caixa de diálogo **Adicionar Controlador de API com ações, usando o Entity Framework** :
+* Na caixa de diálogo **Adicionar Controlador de API com ações, usando o Entity Framework**:
 
   * Selecione **TodoItem (TodoApi. Models )** na **classe Model**.
   * Selecione **TodoContext (TodoApi. Models )** na **classe de contexto de dados**.
@@ -870,7 +868,7 @@ Este tutorial usa o Postman para testar a API Web.
 * Inicie o aplicativo Web.
 * Inicie o Postman.
 * Desabilite a **Verificação do certificado SSL**
-  * Em **Arquivo** > **Configurações** (guia **Geral** ), desabilite **Verificação de certificado SSL**.
+  * Em **Arquivo** > **Configurações** (guia **Geral**), desabilite **Verificação de certificado SSL**.
     > [!WARNING]
     > Habilite novamente a verificação do certificado SSL depois de testar o controlador.
 
@@ -900,7 +898,7 @@ Este tutorial usa o Postman para testar a API Web.
 ### <a name="test-the-location-header-uri-with-postman"></a>Testar o URI do cabeçalho do local com o postmaster
 
 * Selecione a guia **Cabeçalhos** no painel **Resposta**.
-* Copie o valor do cabeçalho **Local** :
+* Copie o valor do cabeçalho **Local**:
 
   ![Guia Cabeçalhos do console do Postman](first-web-api/_static/3/create.png)
 
@@ -1101,7 +1099,7 @@ O diagrama a seguir mostra o design do aplicativo.
 * No menu **arquivo** , selecione **novo** > **projeto**.
 * Selecione o modelo **Aplicativo Web ASP.NET Core** e clique em **Próximo**.
 * Nomeie o projeto como *TodoApi* e clique em **Criar**.
-* Na caixa de diálogo **Criar um aplicativo Web ASP.NET Core** , confirme se **.NET Core** e **ASP.NET Core 2.2** estão selecionados. Selecione o modelo **API** e clique em **Criar**. **Não** selecione **Habilitar Suporte ao Docker**.
+* Na caixa de diálogo **Criar um aplicativo Web ASP.NET Core**, confirme se **.NET Core** e **ASP.NET Core 2.2** estão selecionados. Selecione o modelo **API** e clique em **Criar**. **Não** selecione **Habilitar Suporte ao Docker**.
 
 ![Caixa de diálogo Novo projeto do VS](first-web-api/_static/vs.png)
 
@@ -1168,7 +1166,7 @@ Um *modelo* é um conjunto de classes que representam os dados gerenciados pelo 
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-* Em **Gerenciador de soluções** , clique com o botão direito do mouse no projeto. Selecione **Adicionar**  >  **nova pasta**. Nomeie a pasta *Models* .
+* Em **Gerenciador de soluções**, clique com o botão direito do mouse no projeto. Selecione **Adicionar**  >  **nova pasta**. Nomeie a pasta *Models* .
 
 * Clique com o botão direito do mouse na *Models* pasta e selecione **Adicionar**  >  **classe**. Dê à classe o nome *TodoItem* e selecione **Adicionar**.
 
@@ -1238,14 +1236,14 @@ O código anterior:
 
 * Clique com o botão direito do mouse na pasta *Controllers*.
 * Selecione **Adicionar** > **novo item**.
-* Na caixa de diálogo **Adicionar Novo Item** , selecione o modelo **Classe do Controlador de API**.
+* Na caixa de diálogo **Adicionar Novo Item**, selecione o modelo **Classe do Controlador de API**.
 * Dê à classe o nome *TodoController* e selecione **Adicionar**.
 
   ![Caixa de diálogo Adicionar Novo Item com o controlador na caixa de pesquisa e o controlador da API Web selecionados](first-web-api/_static/new_controller.png)
 
 # <a name="visual-studio-code--visual-studio-for-mac"></a>[Visual Studio Code/Visual Studio para Mac](#tab/visual-studio-code+visual-studio-mac)
 
-* Na pasta *Controllers* , crie uma classe chamada `TodoController`.
+* Na pasta *Controllers*, crie uma classe chamada `TodoController`.
 
 ---
 
@@ -1325,7 +1323,7 @@ Este tutorial usa o Postman para testar a API Web.
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-* Em **Arquivo** > **Configurações** (guia **Geral** ), desabilite **Verificação de certificado SSL**.
+* Em **Arquivo** > **Configurações** (guia **Geral**), desabilite **Verificação de certificado SSL**.
 
 # <a name="visual-studio-code--visual-studio-for-mac"></a>[Visual Studio Code/Visual Studio para Mac](#tab/visual-studio-code+visual-studio-mac)
 
@@ -1346,7 +1344,7 @@ Este tutorial usa o Postman para testar a API Web.
 
 ## <a name="add-a-create-method-21"></a>Adicionar um método Create 2,1
 
-Adicione o seguinte método `PostTodoItem` dentro de *Controllers/TodoController.cs* : 
+Adicione o seguinte método `PostTodoItem` dentro de *Controllers/TodoController.cs*: 
 
 [!code-csharp[](first-web-api/samples/2.2/TodoApi/Controllers/TodoController.cs?name=snippet_Create)]
 
@@ -1386,7 +1384,7 @@ O método `CreatedAtAction`:
 ### <a name="test-the-location-header-uri-21"></a>Testar o URI do cabeçalho do local 2,1
 
 * Selecione a guia **Cabeçalhos** no painel **Resposta**.
-* Copie o valor do cabeçalho **Local** :
+* Copie o valor do cabeçalho **Local**:
 
   ![Guia Cabeçalhos do console do Postman](first-web-api/_static/pmc2.png)
 
@@ -1454,7 +1452,7 @@ Adicione um arquivo HTML chamado *index.html* ao diretório *wwwroot*. Substitua
 
 [!code-html[](first-web-api/samples/2.2/TodoApi/wwwroot/index.html)]
 
-Adicione um arquivo JavaScript chamado *site.js* ao diretório *wwwroot*. Substitua o conteúdo pelo seguinte código:
+Adicione um arquivo JavaScript chamado *site.js* ao diretório *wwwroot*. Substitua o conteúdo pelo código a seguir:
 
 [!code-javascript[](first-web-api/samples/2.2/TodoApi/wwwroot/site.js?name=snippet_SiteJs)]
 
