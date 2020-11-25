@@ -18,18 +18,18 @@ no-loc:
 - Razor
 - SignalR
 uid: security/authentication/social/index
-ms.openlocfilehash: 1f7c8cd0716f1ada3517add0d37a09e419f38774
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: ca5fd8f746e759d1994dde9a2a0d5b5fd6c88d1a
+ms.sourcegitcommit: 59d95a9106301d5ec5c9f612600903a69c4580ef
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93053300"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95870445"
 ---
 # <a name="facebook-google-and-external-provider-authentication-in-aspnet-core"></a>Autenticação de Facebook, Google e de provedor externo no ASP.NET Core
 
 Por [Valeriy Novytskyy](https://github.com/01binary) e [Rick Anderson](https://twitter.com/RickAndMSFT)
 
-Este tutorial demonstra como criar um aplicativo ASP.NET Core 3,0 que permite que os usuários entrem usando o OAuth 2,0 com credenciais de provedores de autenticação externa.
+Este tutorial demonstra como criar um aplicativo ASP.NET Core que permite que os usuários entrem usando o OAuth 2,0 com credenciais de provedores de autenticação externa.
 
 Os provedores do [Facebook](xref:security/authentication/facebook-logins), [Twitter](xref:security/authentication/twitter-logins), [Google](xref:security/authentication/google-logins)e [Microsoft](xref:security/authentication/microsoft-logins) são abordados nas seções a seguir e usam o projeto inicial criado neste artigo. Outros provedores estão disponíveis em pacotes de terceiros, como [AspNet.Security.OAuth.Providers](https://github.com/aspnet-contrib/AspNet.Security.OAuth.Providers) e [AspNet.Security.OpenId.Providers](https://github.com/aspnet-contrib/AspNet.Security.OpenId.Providers).
 
@@ -45,11 +45,11 @@ Para obter exemplos de como os logons sociais podem impulsionar o tráfego e as 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 * Criar um novo projeto.
-* Selecione **Aplicativo Web ASP.NET Core** e **Próximo** .
-* Forneça um **Nome do projeto** e confirme ou altere a **localização** . Selecione **Criar** .
-* Selecione a versão mais recente do ASP.NET Core na lista suspensa ( **ASP.NET Core {X. Y}** ) e, em seguida, selecione **aplicativo Web** .
-* Selecione **Autenticação** selecione **Mudar** e configure a autenticação para **Contas de Usuário Individuais** . Selecione **OK** .
-* Na janela **Criar novo aplicativo Web ASP.NET Core** , selecione **Criar** .
+* Selecione **Aplicativo Web ASP.NET Core** e **Próximo**.
+* Forneça um **Nome do projeto** e confirme ou altere a **localização**. Selecione **Criar**.
+* Selecione a versão mais recente do ASP.NET Core na lista suspensa (**ASP.NET Core {X. Y}**) e, em seguida, selecione **aplicativo Web**.
+* Selecione **Autenticação** selecione **Mudar** e configure a autenticação para **Contas de Usuário Individuais**. Selecione **OK**.
+* Na janela **Criar novo aplicativo Web ASP.NET Core**, selecione **Criar**.
 
 # <a name="visual-studio-code--visual-studio-for-mac"></a>[Visual Studio Code/Visual Studio para Mac](#tab/visual-studio-code+visual-studio-mac)
 
@@ -78,8 +78,8 @@ Para obter exemplos de como os logons sociais podem impulsionar o tráfego e as 
 
 ## <a name="apply-migrations"></a>Aplicar migrações
 
-* Execute o aplicativo e selecione o link **Registrar** .
-* Insira o email e a senha para a nova conta e, em seguida, selecione **Registrar** .
+* Execute o aplicativo e selecione o link **Registrar**.
+* Insira o email e a senha para a nova conta e, em seguida, selecione **Registrar**.
 * Siga as instruções para aplicar as migrações.
 
 [!INCLUDE[Forward request information when behind a proxy or load balancer section](includes/forwarded-headers-middleware.md)]
@@ -111,7 +111,7 @@ Ao registrar um provedor de logon externo, você não precisa ter uma senha regi
 
 Para criar uma senha e entrar usando seu email definido durante o processo de entrada com provedores externos:
 
-* Selecione o link **Olá,&lt;&gt;alias de email** no canto superior direito para navegar até a exibição **Gerenciar** .
+* Selecione o link **Olá,&lt;&gt;alias de email** no canto superior direito para navegar até a exibição **Gerenciar**.
 
 ![Exibição Gerenciar do Aplicativo Web](index/_static/pass1a.png)
 

@@ -5,7 +5,7 @@ description: Crie um Blazor aplicativo passo a passo.
 monikerRange: '>= aspnetcore-3.0'
 ms.author: riande
 ms.custom: mvc
-ms.date: 11/12/2020
+ms.date: 11/24/2020
 no-loc:
 - appsettings.json
 - ASP.NET Core Identity
@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: tutorials/build-a-blazor-app
-ms.openlocfilehash: 1efcd167d9a45b2def271b239c9b360749d72791
-ms.sourcegitcommit: 1ea3f23bec63e96ffc3a927992f30a5fc0de3ff9
+ms.openlocfilehash: a32655b8afedb73ad436f023d2f821b6920c2edd
+ms.sourcegitcommit: 59d95a9106301d5ec5c9f612600903a69c4580ef
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94570179"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95870432"
 ---
 # <a name="build-a-no-locblazor-todo-list-app"></a>Compilar um Blazor aplicativo de lista de tarefas pendentes
 
@@ -85,6 +85,8 @@ No final deste tutorial, você terá um aplicativo de lista de tarefas em funcio
    <h3>Todo</h3>
    ```
 
+   Salve o arquivo `Pages/Todo.razor`.
+
 1. Adicione o componente `Todo` à barra de navegação.
 
    O `NavMenu` componente ( `Shared/NavMenu.razor` ) é usado no layout do aplicativo. Layouts são componentes que permitem que você evite a duplicação de conteúdo no aplicativo.
@@ -99,7 +101,9 @@ No final deste tutorial, você terá um aplicativo de lista de tarefas em funcio
    </li>
    ```
 
-1. Compile e execute o aplicativo executando o `dotnet run` comando no Shell de comando da `TodoList` pasta. Visite a nova página todo em `https://localhost:5001/todo` para confirmar que o link para o `Todo` componente funciona.
+   Salve o arquivo `Shared/NavMenu.razor`.
+
+1. Compile e execute o aplicativo executando o [`dotnet watch run`](/aspnet/core/tutorials/dotnet-watch) comando no Shell de comando da `TodoList` pasta. Visite a nova página todo em `https://localhost:5001/todo` para confirmar que o link de navegação da barra lateral para o `Todo` componente funciona.
 
 1. Adicione um `TodoItem.cs` arquivo à raiz do projeto (a `TodoList` pasta) para manter uma classe que representa um item de tarefas pendentes. Use o seguinte código C# para a classe `TodoItem`:
 
@@ -116,7 +120,9 @@ No final deste tutorial, você terá um aplicativo de lista de tarefas em funcio
 
    [!code-razor[](build-a-blazor-app/samples_snapshot/ToDo3.razor?highlight=12-13)]
 
-1. Pare o aplicativo em execução no Shell de comando. Muitos shells de comando aceitam o comando de teclado <kbd>Ctrl</kbd> + <kbd>c</kbd> para interromper um aplicativo. Recompile e execute o aplicativo com o `dotnet run` comando. Quando o **`Add todo`** botão é selecionado, nada acontece porque um manipulador de eventos não está conectado ao botão.
+1. Salve o `TodoItem.cs` arquivo e o `Pages/Todo.razor` arquivo atualizado. No Shell de comando, o aplicativo é recriado automaticamente quando os arquivos são salvos. O navegador perde temporariamente sua conexão com o aplicativo e, em seguida, recarrega a página quando a conexão é restabelecida.
+
+1. Quando o **`Add todo`** botão é selecionado, nada acontece porque um manipulador de eventos não está anexado ao botão.
 
 1. Adicione um método `AddTodo` ao componente `Todo` e registre-o para seleções de botão usando o atributo `@onclick`. O método C# `AddTodo` é chamado quando o botão é selecionado:
 
@@ -134,7 +140,7 @@ No final deste tutorial, você terá um aplicativo de lista de tarefas em funcio
 
    [!code-razor[](build-a-blazor-app/samples_snapshot/ToDo6.razor?highlight=19-26)]
 
-1. Pare o aplicativo em execução no Shell de comando. Recompile e execute o aplicativo com o `dotnet run` comando. Adicione alguns itens de tarefas à lista de tarefas para testar o novo código.
+1. Salve o arquivo `Pages/ToDo.razor`. O aplicativo é recriado automaticamente no Shell de comando. A página é recarregada no navegador depois que o navegador se reconecta ao aplicativo.
 
 1. O texto do título de cada item de tarefa pode ser editável, e uma caixa de seleção pode ajudar o usuário a manter o controle dos itens concluídos. Adicione uma entrada de caixa de seleção para cada item de tarefa pendente e associe seu valor à propriedade `IsDone`. Altere `@todo.Title` para um elemento `<input>` associado a `@todo.Title`:
 
@@ -150,7 +156,11 @@ No final deste tutorial, você terá um aplicativo de lista de tarefas em funcio
 
    [!code-razor[](build-a-blazor-app/samples_snapshot/Todo1.razor)]
 
-1. Pare o aplicativo em execução no Shell de comando. Recompile e execute o aplicativo com o `dotnet run` comando. Adicione itens de tarefa pendente para testar o novo código.
+1. Salve o arquivo `Pages/ToDo.razor`. O aplicativo é recriado automaticamente no Shell de comando. A página é recarregada no navegador depois que o navegador se reconecta ao aplicativo.
+
+1. Adicione itens de tarefa pendente para testar o novo código.
+
+1. Quando terminar, desligue o aplicativo no Shell de comando. Muitos shells de comando aceitam o comando de teclado <kbd>Ctrl</kbd> + <kbd>c</kbd> para interromper um aplicativo.
 
 ## <a name="next-steps"></a>Próximas etapas
 
