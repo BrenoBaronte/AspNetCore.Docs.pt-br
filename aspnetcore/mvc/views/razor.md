@@ -17,18 +17,18 @@ no-loc:
 - Razor
 - SignalR
 uid: mvc/views/razor
-ms.openlocfilehash: c1278b0cd3e58814b1c06dca81efd662c3de0c54
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: 91e35a7cbd97e2bd6e77566362f02409915de7d7
+ms.sourcegitcommit: 3f0ad1e513296ede1bff39a05be6c278e879afed
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93059189"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96035704"
 ---
 # <a name="no-locrazor-syntax-reference-for-aspnet-core"></a>Razor referência de sintaxe para ASP.NET Core
 
 Por [Rick Anderson](https://twitter.com/RickAndMSFT), [Taylor Mullen](https://twitter.com/ntaylormullen)e [Dan Vicarel](https://github.com/Rabadash8820)
 
-Razor é uma sintaxe de marcação para inserir código baseado em servidor em páginas da Web. A Razor sintaxe consiste em Razor marcação, C# e HTML. Os arquivos que contêm Razor geralmente têm uma extensão de arquivo *. cshtml* . Razortambém é encontrado em arquivos de [ Razor componentes](xref:blazor/components/index) ( *. Razor* ).
+Razor é uma sintaxe de marcação para inserir código baseado em servidor em páginas da Web. A Razor sintaxe consiste em Razor marcação, C# e HTML. Os arquivos que contêm Razor geralmente têm uma extensão de arquivo *. cshtml* . Razortambém é encontrado em arquivos de [ Razor componentes](xref:blazor/components/index) (*. Razor*).
 
 ## <a name="rendering-html"></a>Renderização de HTML
 
@@ -73,7 +73,7 @@ Com exceção da palavra-chave C# `await`, expressões implícitas não devem co
 <p>@await DoSomething("hello", "world")</p>
 ```
 
-Expressões implícitas **não podem** conter elementos genéricos de C#, pois caracteres dentro de colchetes (`<>`) são interpretados como uma marca HTML. O código a seguir é **inválido** :
+Expressões implícitas **não podem** conter elementos genéricos de C#, pois caracteres dentro de colchetes (`<>`) são interpretados como uma marca HTML. O código a seguir é **inválido**:
 
 ```cshtml
 <p>@GenericMethod<int>()</p>
@@ -118,7 +118,7 @@ Expressões explícitas podem ser usadas para concatenar texto com um resultado 
 
 Sem a expressão explícita, `<p>Age@joe.Age</p>` é tratado como um endereço de email e `<p>Age@joe.Age</p>` é renderizado. Quando escrito como uma expressão explícita, `<p>Age33</p>` é renderizado.
 
-Expressões explícitas podem ser usadas para renderizar a saída de métodos genéricos em arquivos *.cshtml* . A marcação a seguir mostra como corrigir o erro mostrado anteriormente causado pelos colchetes de um C# genérico. O código é escrito como uma expressão explícita:
+Expressões explícitas podem ser usadas para renderizar a saída de métodos genéricos em arquivos *.cshtml*. A marcação a seguir mostra como corrigir o erro mostrado anteriormente causado pelos colchetes de um C# genérico. O código é escrito como uma expressão explícita:
 
 ```cshtml
 <p>@(GenericMethod<int>())</p>
@@ -658,7 +658,7 @@ A diretiva `@namespace`:
 
 Para o Razor exemplo de páginas mostrado na tabela a seguir:
 
-* Cada página importa *Pages/_ViewImports.cshtml* .
+* Cada página importa *Pages/_ViewImports.cshtml*.
 * *Pages/_ViewImports.cshtml* contém `@namespace Hello.World`.
 * Cada página tem `Hello.World` como a raiz do namespace.
 
@@ -694,6 +694,20 @@ A diretiva `@page` tem efeitos diferentes dependendo do tipo do arquivo em que a
 ::: moniker range="< aspnetcore-3.0"
 
 A `@page` diretiva na primeira linha de um arquivo *. cshtml* indica que o arquivo é uma Razor página. Para obter mais informações, consulte <xref:razor-pages/index>.
+
+::: moniker-end
+
+::: moniker range=">= aspnetcore-5.0"
+
+### `@preservewhitespace`
+
+*Esse cenário se aplica somente aos Razor componentes ( `.razor` ).*
+
+Quando definido como `false` (padrão), o espaço em branco na marcação renderizada de Razor Components ( `.razor` ) será removido se:
+
+* À esquerda ou à direita dentro de um elemento.
+* À esquerda ou à direita dentro de um `RenderFragment` parâmetro. Por exemplo, conteúdo filho passado para outro componente.
+* Ele precede ou segue um bloco de código C#, como `@if` ou `@foreach` .
 
 ::: moniker-end
 
@@ -950,7 +964,7 @@ Considere a seguinte estrutura de diretório em um projeto de páginas ASP.NET C
    Index.cshtml.cs
   ```
 
-A criação do projeto na configuração de *Depuração* produz o seguinte diretório *obj* :
+A criação do projeto na configuração de *Depuração* produz o seguinte diretório *obj*:
 
 ```
  obj/
@@ -969,7 +983,7 @@ A criação do projeto na configuração de *Depuração* produz o seguinte dire
            Index.g.cshtml.cs
 ```
 
-Para exibir a classe gerada para *pages/index. cshtml* , abra *obj/Debug/netcoreapp 2.1/ Razor /pages/index.g.cshtml.cs* .
+Para exibir a classe gerada para *pages/index. cshtml*, abra *obj/Debug/netcoreapp 2.1/ Razor /pages/index.g.cshtml.cs*.
 
 ::: moniker-end
 
@@ -994,8 +1008,8 @@ Defina o ponto de interrupção `CustomTemplateEngine` na instrução `return cs
 O Razor mecanismo de exibição executa pesquisas que diferenciam maiúsculas de minúsculas para exibições. No entanto, a pesquisa real é determinada pelo sistema de arquivos subjacente:
 
 * Origem baseada em arquivo:
-  * Em sistemas operacionais com sistemas de arquivos que não diferenciam maiúsculas e minúsculas (por exemplo, Windows), pesquisas no provedor de arquivos físico não diferenciam maiúsculas de minúsculas. Por exemplo, `return View("Test")` resulta em correspondências para */Views/Home/Test.cshtml* , */Views/home/test.cshtml* e qualquer outra variação de maiúsculas e minúsculas.
-  * Em sistemas de arquivos que diferenciam maiúsculas de minúsculas (por exemplo, Linux, OSX e com `EmbeddedFileProvider`), as pesquisas diferenciam maiúsculas de minúsculas. Por exemplo, `return View("Test")` corresponde especificamente a */Views/Home/Test.cshtml* .
+  * Em sistemas operacionais com sistemas de arquivos que não diferenciam maiúsculas e minúsculas (por exemplo, Windows), pesquisas no provedor de arquivos físico não diferenciam maiúsculas de minúsculas. Por exemplo, `return View("Test")` resulta em correspondências para */Views/Home/Test.cshtml*, */Views/home/test.cshtml* e qualquer outra variação de maiúsculas e minúsculas.
+  * Em sistemas de arquivos que diferenciam maiúsculas de minúsculas (por exemplo, Linux, OSX e com `EmbeddedFileProvider`), as pesquisas diferenciam maiúsculas de minúsculas. Por exemplo, `return View("Test")` corresponde especificamente a */Views/Home/Test.cshtml*.
 * Exibições pré-compiladas: com o ASP.NET Core 2.0 e posteriores, pesquisar em exibições pré-compiladas não diferencia maiúsculas de minúsculas em nenhum sistema operacional. O comportamento é idêntico ao comportamento do provedor de arquivos físico no Windows. Se duas exibições pré-compiladas diferirem apenas quanto ao padrão de maiúsculas e minúsculas, o resultado da pesquisa não será determinístico.
 
 Os desenvolvedores são incentivados a fazer a correspondência entre as maiúsculas e minúsculas dos nomes dos arquivos e de diretórios com o uso de maiúsculas e minúsculas em:

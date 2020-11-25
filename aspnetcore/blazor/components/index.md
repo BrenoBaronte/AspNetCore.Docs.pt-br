@@ -5,7 +5,7 @@ description: Saiba como criar e usar Razor componentes, incluindo como associar 
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 11/09/2020
+ms.date: 11/25/2020
 no-loc:
 - appsettings.json
 - ASP.NET Core Identity
@@ -19,16 +19,16 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/components/index
-ms.openlocfilehash: cc4604f7f67a6648c96e099572ff27bfed838916
-ms.sourcegitcommit: 8363e44f630fcc6433ccd2a85f7aa9567cd274ed
+ms.openlocfilehash: b87986442bb8127f03df1f7ecff8167cafa27fdf
+ms.sourcegitcommit: 3f0ad1e513296ede1bff39a05be6c278e879afed
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94981863"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96035678"
 ---
 # <a name="create-and-use-aspnet-core-no-locrazor-components"></a>Criar e usar componentes de ASP.NET Core Razor
 
-Por [Luke Latham](https://github.com/guardrex), [Daniel Roth](https://github.com/danroth27)e [Tobias Bartsch](https://www.aveo-solutions.com/)
+Por [Luke Latham](https://github.com/guardrex), [Daniel Roth](https://github.com/danroth27), [Scott Addie](https://github.com/scottaddie)e [Tobias Bartsch](https://www.aveo-solutions.com/)
 
 [Exibir ou baixar código de exemplo](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/blazor/common/samples/) ([como baixar](xref:index#how-to-download-a-sample))
 
@@ -578,7 +578,7 @@ No exemplo anterior, `NotifierService` invoca o método do componente `OnNotify`
 
 Ao renderizar uma lista de elementos ou componentes e os elementos ou componentes subsequentemente mudam, o Blazor algoritmo de diferenciação do deve decidir quais elementos ou componentes anteriores podem ser retidos e como os objetos de modelo devem ser mapeados para eles. Normalmente, esse processo é automático e pode ser ignorado, mas há casos em que você talvez queira controlar o processo.
 
-Considere o exemplo a seguir:
+Considere o seguinte exemplo:
 
 ```csharp
 @foreach (var person in People)
@@ -886,6 +886,64 @@ Da mesma forma, as imagens SVG têm suporte nas regras de CSS de um arquivo de f
 ```
 
 No entanto, a marcação SVG embutida não tem suporte em todos os cenários. Se você posicionar uma `<svg>` marca diretamente em um arquivo de componente ( `.razor` ), a renderização básica da imagem terá suporte, mas muitos cenários avançados ainda não têm suporte. Por exemplo, as `<use>` marcas não são respeitadas atualmente e [`@bind`][10] não podem ser usadas com algumas marcas SVG. Para obter mais informações, consulte [suporte a SVG em Blazor (dotNet/aspnetcore #18271)](https://github.com/dotnet/aspnetcore/issues/18271).
+
+## <a name="whitespace-rendering-behavior"></a>Comportamento de renderização de espaço em branco
+
+::: moniker range=">= aspnetcore-5.0"
+
+A menos que a [`@preservewhitespace`](xref:mvc/views/razor#preservewhitespace) diretiva seja usada com um valor de `true` , espaço em branco extra será removido por padrão se:
+
+* À esquerda ou à direita dentro de um elemento.
+* À esquerda ou à direita dentro de um `RenderFragment` parâmetro. Por exemplo, conteúdo filho passado para outro componente.
+* Ele precede ou segue um bloco de código C#, como `@if` ou `@foreach` .
+
+A remoção de espaço em branco pode afetar a saída renderizada ao usar uma regra de CSS, como `white-space: pre` . Para desabilitar essa otimização de desempenho e preservar o espaço em branco, execute uma das seguintes ações:
+
+* Adicione a `@preservewhitespace true` diretiva na parte superior do `.razor` arquivo para aplicar a preferência a um componente específico.
+* Adicione a `@preservewhitespace true` diretiva dentro de um `_Imports.razor` arquivo para aplicar a preferência a um subdiretório inteiro ou a todo o projeto.
+
+Na maioria dos casos, nenhuma ação é necessária, pois os aplicativos normalmente continuam a se comportar normalmente (mas com mais rapidez). Se a remoção de espaço em branco causar qualquer problema para um componente específico, use- `@preservewhitespace true` o nesse componente para desabilitar essa otimização.
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-5.0"
+
+O espaço em branco é mantido no código-fonte de um componente. Texto somente em espaços em branco é renderizado no Modelo de Objeto do Documento do navegador (DOM) mesmo quando não há nenhum efeito visual.
+
+Considere o seguinte Razor código de componente:
+
+```razor
+<ul>
+    @foreach (var item in Items)
+    {
+        <li>
+            @item.Text
+        </li>
+    }
+</ul>
+```
+
+O exemplo anterior processa o seguinte espaço em branco desnecessário:
+
+* Fora do `@foreach` bloco de código.
+* Em volta do `<li>` elemento.
+* Em volta da `@item.Text` saída.
+
+Uma lista contendo 100 itens resulta em 402 áreas de espaço em branco, e nenhum espaço em branco extra afeta visualmente a saída renderizada.
+
+Ao renderizar HTML estático para componentes, o espaço em branco dentro de uma marca não é preservado. Por exemplo, exiba a origem do seguinte componente na saída renderizada:
+
+```razor
+<img     alt="My image"   src="img.png"     />
+```
+
+O espaço em branco não é preservado da Razor marcação anterior:
+
+```razor
+<img alt="My image" src="img.png" />
+```
+
+::: moniker-end
 
 ## <a name="additional-resources"></a>Recursos adicionais
 

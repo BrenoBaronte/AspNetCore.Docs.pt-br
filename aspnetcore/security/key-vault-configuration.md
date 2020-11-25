@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: security/key-vault-configuration
-ms.openlocfilehash: fcd5524bed11cca2380ffd8956f437f742729b55
-ms.sourcegitcommit: aa85f2911792a1e4783bcabf0da3b3e7e218f63a
+ms.openlocfilehash: 7f5cd3de38f1e45d9b188c513a0e62ca658b2992
+ms.sourcegitcommit: 3f0ad1e513296ede1bff39a05be6c278e879afed
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95417599"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96035899"
 ---
 # <a name="azure-key-vault-configuration-provider-in-aspnet-core"></a>Azure Key Vault provedor de configuração no ASP.NET Core
 
@@ -54,7 +54,7 @@ Para obter mais informações sobre como configurar um aplicativo de exemplo usa
 
 ## <a name="secret-storage-in-the-development-environment"></a>Armazenamento de segredo no ambiente de desenvolvimento
 
-Defina os segredos localmente usando a [ferramenta Gerenciador de segredo](xref:security/app-secrets). Quando o aplicativo de exemplo é executado no computador local no ambiente de desenvolvimento, os segredos são carregados do repositório do Gerenciador de segredo local.
+Defina os segredos localmente usando a [ferramenta Gerenciador de segredo](xref:security/app-secrets). Quando o aplicativo de exemplo é executado no computador local no ambiente de desenvolvimento, os segredos são carregados do armazenamento de segredos do usuário local.
 
 A ferramenta Gerenciador de segredo requer uma `<UserSecretsId>` propriedade no arquivo de projeto do aplicativo. Defina o valor da propriedade ( `{GUID}` ) para qualquer Guid exclusivo:
 
@@ -143,7 +143,7 @@ O aplicativo de exemplo usa uma ID de aplicativo e um certificado X. 509 quando 
 1. Abra **permissões de segredo** e forneça ao aplicativo as permissões **Get** e **list** .
 1. Selecione **selecionar entidade de segurança** e selecione o aplicativo registrado por nome. Escolha o botão **Selecionar**.
 1. Selecione **OK**.
-1. Selecione **Salvar**.
+1. Clique em **Salvar**.
 1. Implante o aplicativo.
 
 O `Certificate` aplicativo de exemplo obtém seus valores de configuração de `IConfigurationRoot` com o mesmo nome que o nome do segredo:
@@ -398,7 +398,7 @@ Para obter mais informações sobre como configurar um aplicativo de exemplo usa
 
 ## <a name="secret-storage-in-the-development-environment"></a>Armazenamento de segredo no ambiente de desenvolvimento
 
-Defina os segredos localmente usando a [ferramenta Gerenciador de segredo](xref:security/app-secrets). Quando o aplicativo de exemplo é executado no computador local no ambiente de desenvolvimento, os segredos são carregados do repositório do Gerenciador de segredo local.
+Defina os segredos localmente usando a [ferramenta Gerenciador de segredo](xref:security/app-secrets). Quando o aplicativo de exemplo é executado no computador local no ambiente de desenvolvimento, os segredos são carregados do armazenamento de segredos do usuário local.
 
 A ferramenta Gerenciador de segredo requer uma `<UserSecretsId>` propriedade no arquivo de projeto do aplicativo. Defina o valor da propriedade ( `{GUID}` ) para qualquer Guid exclusivo:
 
@@ -487,7 +487,7 @@ O aplicativo de exemplo usa uma ID de aplicativo e um certificado X. 509 quando 
 1. Abra **permissões de segredo** e forneça ao aplicativo as permissões **Get** e **list** .
 1. Selecione **selecionar entidade de segurança** e selecione o aplicativo registrado por nome. Escolha o botão **Selecionar**.
 1. Selecione **OK**.
-1. Selecione **Salvar**.
+1. Clique em **Salvar**.
 1. Implante o aplicativo.
 
 O `Certificate` aplicativo de exemplo obtém seus valores de configuração de `IConfigurationRoot` com o mesmo nome que o nome do segredo:
