@@ -1,9 +1,9 @@
-<span data-ttu-id="2bd48-101">O `LoginDisplay` componente ( `Shared/LoginDisplay.razor` ) é renderizado no `MainLayout` componente ( `Shared/MainLayout.razor` ) e gerencia os seguintes comportamentos:</span><span class="sxs-lookup"><span data-stu-id="2bd48-101">The `LoginDisplay` component (`Shared/LoginDisplay.razor`) is rendered in the `MainLayout` component (`Shared/MainLayout.razor`) and manages the following behaviors:</span></span>
+<span data-ttu-id="f40dc-101">O `LoginDisplay` componente ( `Shared/LoginDisplay.razor` ) é renderizado no `MainLayout` componente ( `Shared/MainLayout.razor` ) e gerencia os seguintes comportamentos:</span><span class="sxs-lookup"><span data-stu-id="f40dc-101">The `LoginDisplay` component (`Shared/LoginDisplay.razor`) is rendered in the `MainLayout` component (`Shared/MainLayout.razor`) and manages the following behaviors:</span></span>
 
-* <span data-ttu-id="2bd48-102">Para usuários autenticados:</span><span class="sxs-lookup"><span data-stu-id="2bd48-102">For authenticated users:</span></span>
-  * <span data-ttu-id="2bd48-103">Exibe o nome de usuário atual.</span><span class="sxs-lookup"><span data-stu-id="2bd48-103">Displays the current username.</span></span>
-  * <span data-ttu-id="2bd48-104">Oferece um botão para fazer logoff do aplicativo.</span><span class="sxs-lookup"><span data-stu-id="2bd48-104">Offers a button to log out of the app.</span></span>
-* <span data-ttu-id="2bd48-105">Para usuários anônimos, o oferece a opção de fazer logon.</span><span class="sxs-lookup"><span data-stu-id="2bd48-105">For anonymous users, offers the option to log in.</span></span>
+* <span data-ttu-id="f40dc-102">Para usuários autenticados:</span><span class="sxs-lookup"><span data-stu-id="f40dc-102">For authenticated users:</span></span>
+  * <span data-ttu-id="f40dc-103">Exibe o nome de usuário atual.</span><span class="sxs-lookup"><span data-stu-id="f40dc-103">Displays the current username.</span></span>
+  * <span data-ttu-id="f40dc-104">Oferece um botão para fazer logoff do aplicativo.</span><span class="sxs-lookup"><span data-stu-id="f40dc-104">Offers a button to log out of the app.</span></span>
+* <span data-ttu-id="f40dc-105">Para usuários anônimos, o oferece a opção de fazer logon.</span><span class="sxs-lookup"><span data-stu-id="f40dc-105">For anonymous users, offers the option to log in.</span></span>
 
 ```razor
 @using Microsoft.AspNetCore.Components.Authorization
