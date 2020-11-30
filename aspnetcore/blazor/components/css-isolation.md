@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/components/css-isolation
-ms.openlocfilehash: 4fec0fa750b9209849030d0d6b7de8f4e163d62f
-ms.sourcegitcommit: 1ea3f23bec63e96ffc3a927992f30a5fc0de3ff9
+ms.openlocfilehash: 92545eab4004f6b67080f79d64b94bb424d5a102
+ms.sourcegitcommit: 43a540e703b9096921de27abc6b66bc0783fe905
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94570127"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96320077"
 ---
 # <a name="aspnet-core-no-locblazor-css-isolation"></a>BlazorIsolamento ASP.NET Core CSS
 
@@ -143,7 +143,7 @@ O `h1` estilo agora se aplica aos `Parent` `Child` componentes e sem a necessida
 
 Os pré-processadores CSS são úteis para melhorar o desenvolvimento de CSS utilizando recursos como variáveis, aninhamento, módulos, mesclas e herança. Embora o isolamento CSS não dê suporte nativo a pré-processadores CSS, como o Sass ou menos, a integração de pré-processadores CSS é direta, desde que a compilação do pré-processador ocorra antes de Blazor regravar os seletores CSS durante o processo de compilação. Usando o Visual Studio, por exemplo, configure a compilação de pré-processador existente como uma tarefa de **compilação anterior** no Gerenciador de executores de tarefas do Visual Studio.
 
-Muitos pacotes NuGet de terceiros, como o [delegate. SassBuilder](https://www.nuget.org/packages/Delegate.SassBuilder), podem COMPILAR arquivos Sass/SCSS no início do processo de compilação antes que o isolamento de CSS ocorra, e nenhuma configuração adicional adicional é necessária.
+Muitos pacotes NuGet de terceiros, como o [delegate. SassBuilder](https://www.nuget.org/packages/Delegate.SassBuilder), podem COMPILAR arquivos Sass/SCSS no início do processo de compilação antes que o isolamento de CSS ocorra, e nenhuma configuração adicional é necessária.
 
 ## <a name="css-isolation-configuration"></a>Configuração de isolamento de CSS
 
