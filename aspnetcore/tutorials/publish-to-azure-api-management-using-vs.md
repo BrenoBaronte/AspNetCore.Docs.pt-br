@@ -4,14 +4,14 @@ author: codemillmatt
 description: Saiba como publicar uma API da Web do ASP.NET Core no gerenciamento de API do Azure usando o Visual Studio.
 ms.author: masoucou
 ms.custom: devx-track-csharp, mvc
-ms.date: 08/26/2020
+ms.date: 11/22/2020
 uid: tutorials/publish-to-azure-api-management-using-vs
-ms.openlocfilehash: 3cc6b8c0bd93f133151e1c8ad18a55b11975a9be
-ms.sourcegitcommit: 47c9a59ff8a359baa6bca2637d3af87ddca1245b
+ms.openlocfilehash: 395b5981a3018486235c38f032893f985ab71383
+ms.sourcegitcommit: 619200f2981656ede6d89adb6a22ad1a0e16da22
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88945633"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96332189"
 ---
 # <a name="publish-an-aspnet-core-web-api-to-azure-api-management-with-visual-studio"></a>Publicar uma API da Web do ASP.NET Core no gerenciamento de API do Azure com o Visual Studio
 
@@ -47,7 +47,7 @@ Adicionar definições de Swagger à API Web do ASP.NET Core permite que o geren
 
 ### <a name="change-the-api-routing"></a>Alterar o roteamento de API
 
-Em seguida, você alterará a estrutura de URL necessária para acessar a `Get` ação do `WeatherForecastController` . Concluir as seguintes etapas:
+Em seguida, você alterará a estrutura de URL necessária para acessar a `Get` ação do `WeatherForecastController` . Conclua as seguintes etapas:
 
 1. Abra o arquivo *WeatherForecastController.cs* .
 1. Exclua o `[Route("[controller]")]` atributo de nível de classe. A definição de classe se parecerá com o seguinte:
@@ -108,11 +108,15 @@ Neste ponto, você precisa adicionar uma API ao serviço de gerenciamento de API
 
 1. Abra a instância do serviço de gerenciamento de API criada anteriormente no portal do Azure. Selecione a folha **APIs** :
 
-    ![Folha de APIs selecionada na instância do serviço de gerenciamento de API](publish-to-azure-api-management-using-vs/_static/portal_api_overview.png)
+  ![Folha de APIs selecionada na instância do serviço de gerenciamento de API](publish-to-azure-api-management-using-vs/_static/portal_api_overview.png)
+
+1. Selecione os 3 pontos ao lado de **API de eco** e, em seguida, selecione **excluir** no menu pop-up para removê-lo.
+
+  ![Excluindo a API de eco da instância do serviço de gerenciamento de API](publish-to-azure-api-management-using-vs/_static/portal_delete_echo.png)
 
 1. No painel **Adicionar uma nova API** , selecione o bloco **API em branco** :
 
-    ![Tela mostrando o bloco de API em branco realçado](publish-to-azure-api-management-using-vs/_static/portal_api_create_blank.png)
+  ![Tela mostrando o bloco de API em branco realçado](publish-to-azure-api-management-using-vs/_static/portal_api_create_blank.png)
 
 1. Insira os seguintes valores na caixa de diálogo **criar uma API em branco** que aparece:    
 

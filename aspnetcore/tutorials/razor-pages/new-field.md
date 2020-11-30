@@ -21,12 +21,12 @@ no-loc:
 - Razor
 - SignalR
 uid: tutorials/razor-pages/new-field
-ms.openlocfilehash: 2dca5a9552dd2800212f8cd78ace0578b3d38cdb
-ms.sourcegitcommit: 342588e10ae0054a6d6dc0fd11dae481006be099
+ms.openlocfilehash: 5263063d82d79dbeeca3e4cec007d240ca8a452a
+ms.sourcegitcommit: 619200f2981656ede6d89adb6a22ad1a0e16da22
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94360873"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96332174"
 ---
 # <a name="part-7-add-a-new-field-to-a-no-locrazor-page-in-aspnet-core"></a>Parte 7, adicione um novo campo a uma Razor página no ASP.NET Core
 
@@ -97,7 +97,7 @@ Compile a solução.
 
 ### <a name="add-a-migration-for-the-rating-field"></a>Adicionar uma migração para o campo de classificação
 
-1.  No menu **Ferramentas** , selecione **Gerenciador de Pacotes NuGet > Console do Gerenciador de Pacotes**.
+1.  No menu **Ferramentas**, selecione **Gerenciador de Pacotes NuGet > Console do Gerenciador de Pacotes**.
 2. No PMC, insira os seguintes comandos:
 
    ```powershell
@@ -238,7 +238,7 @@ Compile a solução.
 
 ### <a name="add-a-migration-for-the-rating-field"></a>Adicionar uma migração para o campo de classificação
 
-1.  No menu **Ferramentas** , selecione **Gerenciador de Pacotes NuGet > Console do Gerenciador de Pacotes**.
+1.  No menu **Ferramentas**, selecione **Gerenciador de Pacotes NuGet > Console do Gerenciador de Pacotes**.
 2. No PMC, insira os seguintes comandos:
 
    ```powershell
@@ -378,7 +378,7 @@ Compile a solução.
 
 ### <a name="add-a-migration-for-the-rating-field"></a>Adicionar uma migração para o campo de classificação
 
- No menu **Ferramentas** , selecione **Gerenciador de Pacotes NuGet > Console do Gerenciador de Pacotes**.
+ No menu **Ferramentas**, selecione **Gerenciador de Pacotes NuGet > Console do Gerenciador de Pacotes**.
 No PMC, insira os seguintes comandos:
 
 ```powershell
@@ -397,7 +397,7 @@ O comando `Update-Database` informa à estrutura para aplicar as alterações de
 
 <a name="ssox"></a>
 
-Se você excluir todos os registros no DdatabaseB, o inicializador propagará o DdatabaseB e incluirá o `Rating` campo. Faça isso com os links Excluir no navegador ou no [SSOX](xref:tutorials/razor-pages/sql#ssox) (Pesquisador de Objetos do SQL Server).
+Se você excluir todos os registros no banco de dados, o inicializador propagará o banco de dados e incluirá o `Rating` campo. Faça isso com os links Excluir no navegador ou no [SSOX](xref:tutorials/razor-pages/sql#ssox) (Pesquisador de Objetos do SQL Server).
 
 Outra opção é excluir o banco de dados e usar as migrações para recriar o banco de dados. Para excluir o banco de dados no SSOX:
 
@@ -432,7 +432,7 @@ Outra opção é excluir o banco de dados e usar as migrações para recriar o b
 > * [Propagação de dados](/ef/core/modeling/data-seeding)
 > * [Instrução SQLite ALTER TABLE](https://sqlite.org/lang_altertable.html)
 
-Delete o banco de dados e usa migrações para recriar o banco de dados. Para excluir o banco de dados, exclua o arquivo de banco de dados ( *MvcMovie.db* ). Em seguida, execute o comando `ef database update`:
+Delete o banco de dados e usa migrações para recriar o banco de dados. Para excluir o banco de dados, exclua o arquivo de banco de dados (*MvcMovie.db*). Em seguida, execute o comando `ef database update`:
 
 ```dotnetcli
 dotnet ef database update
