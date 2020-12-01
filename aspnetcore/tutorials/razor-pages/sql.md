@@ -6,8 +6,6 @@ ms.author: riande
 ms.date: 09/26/2020
 no-loc:
 - Index
-- Create
-- Delete
 - appsettings.json
 - ASP.NET Core Identity
 - cookie
@@ -20,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: tutorials/razor-pages/sql
-ms.openlocfilehash: 2c5bc221901d9e41984fb591755a8ad94e7e1420
-ms.sourcegitcommit: 1ea3f23bec63e96ffc3a927992f30a5fc0de3ff9
+ms.openlocfilehash: 6627825239d815d2c8bcad98e22340f07f921ab9
+ms.sourcegitcommit: db0a6eb0be7bd7f22810a71fe9bf30e957fd116a
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94570231"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96420013"
 ---
 # <a name="part-4-of-tutorial-series-on-no-locrazor-pages"></a>Parte 4 da série de tutoriais em Razor páginas
 
@@ -35,7 +33,7 @@ Por [Rick Anderson](https://twitter.com/RickAndMSFT) e [Joe Audette](https://twi
 
 [Exiba ou baixe o código de exemplo](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie50) ([como baixar](xref:index#how-to-download-a-sample)).
 
-O objeto `RazorPagesMovieContext` cuida da tarefa de se conectar ao banco de dados e mapear objetos `Movie` para registros do banco de dados. O contexto de banco de dados é registrado com o contêiner [Injeção de Dependência](xref:fundamentals/dependency-injection) no método `ConfigureServices` em *Startup.cs* :
+O objeto `RazorPagesMovieContext` cuida da tarefa de se conectar ao banco de dados e mapear objetos `Movie` para registros do banco de dados. O contexto de banco de dados é registrado com o contêiner [Injeção de Dependência](xref:fundamentals/dependency-injection) no método `ConfigureServices` em *Startup.cs*:
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
@@ -70,11 +68,11 @@ Quando o aplicativo é implantado em um servidor de teste ou de produção, uma 
 O LocalDB é uma versão leve do mecanismo de banco de dados do SQL Server Express direcionada para o desenvolvimento de programas. O LocalDB é iniciado sob demanda e executado no modo de usuário e, portanto, não há nenhuma configuração complexa. Por padrão, o banco de dados LocalDB cria arquivos `*.mdf` no diretório `C:\Users\<user>\`.
 
 <a name="ssox"></a>
-1. No menu **Exibir** , abra **SSOX** (Pesquisador de Objetos do SQL Server).
+1. No menu **Exibir**, abra **SSOX** (Pesquisador de Objetos do SQL Server).
 
    ![Menu de exibição](sql/_static/5/ssox.png)
 
-1. Clique com o botão direito do mouse na `Movie` tabela e selecione **Exibir Designer** :
+1. Clique com o botão direito do mouse na `Movie` tabela e selecione **Exibir Designer**:
 
    ![Menus contextuais abertos na tabela Movie](sql/_static/5/design.png)
 
@@ -82,7 +80,7 @@ O LocalDB é uma versão leve do mecanismo de banco de dados do SQL Server Expre
 
    Observe o ícone de chave ao lado de `ID`. Por padrão, o EF cria uma propriedade chamada `ID` para a chave primária.
 
-1. Clique com o botão direito do mouse na `Movie` tabela e selecione **exibir dados** :
+1. Clique com o botão direito do mouse na `Movie` tabela e selecione **exibir dados**:
 
    ![Tabela Movie aberta mostrando os dados da tabela](sql/_static/vd22.png)
 
@@ -118,7 +116,7 @@ Há muitas ferramentas de terceiros que você pode baixar para gerenciar e exibi
 
 ## <a name="seed-the-database"></a>Propagar o banco de dados
 
-Create uma nova classe denominada `SeedData` na pasta *modelos* com o seguinte código:
+Crie uma classe chamada `SeedData` na pasta *Models* com o seguinte código:
 
 [!code-csharp[](razor-pages-start/sample/RazorPagesMovie30/Models/SeedData.cs?name=snippet_1)]
 
@@ -154,11 +152,11 @@ A seguinte exceção ocorre quando `Update-Database` não foi executada:
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-1. Delete todos os registros no banco de dados. Usar os links de exclusão no navegador ou do [SSOX](xref:tutorials/razor-pages/new-field#ssox)
+1. Exclua todos os registros no banco de dados. Usar os links de exclusão no navegador ou do [SSOX](xref:tutorials/razor-pages/new-field#ssox)
 
 1. Force o aplicativo a ser inicializado chamando os métodos na `Startup` classe, para que o método semente seja executado. Para forçar a inicialização, o IIS Express deve ser interrompido e reiniciado. Pare e reinicie o IIS com qualquer uma das seguintes abordagens:
 
-   1. Clique com o botão direito do mouse no ícone da bandeja do sistema IIS Express na área de notificação e selecione **sair** ou **parar site** :
+   1. Clique com o botão direito do mouse no ícone da bandeja do sistema IIS Express na área de notificação e selecione **sair** ou **parar site**:
 
       ![Ícone de bandeja do sistema do IIS Express](../first-mvc-app/working-with-sql/_static/iisExIcon.png)
 
@@ -169,7 +167,7 @@ A seguinte exceção ocorre quando `Update-Database` não foi executada:
 
 # <a name="visual-studio-code--visual-studio-for-mac"></a>[Visual Studio Code/Visual Studio para Mac](#tab/visual-studio-code+visual-studio-mac)
 
-Delete todos os registros no banco de dados, portanto, o método de semente será executado. Interrompa e inicie o aplicativo para propagar o banco de dados.
+Exclua todos os registros no banco de dados, para que o método de semente seja executado. Interrompa e inicie o aplicativo para propagar o banco de dados.
 
 ---
 
@@ -189,7 +187,7 @@ O aplicativo mostra os dados propagados:
 
 [Exiba ou baixe o código de exemplo](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie30) ([como baixar](xref:index#how-to-download-a-sample)).
 
-O objeto `RazorPagesMovieContext` cuida da tarefa de se conectar ao banco de dados e mapear objetos `Movie` para registros do banco de dados. O contexto de banco de dados é registrado com o contêiner [Injeção de Dependência](xref:fundamentals/dependency-injection) no método `ConfigureServices` em *Startup.cs* :
+O objeto `RazorPagesMovieContext` cuida da tarefa de se conectar ao banco de dados e mapear objetos `Movie` para registros do banco de dados. O contexto de banco de dados é registrado com o contêiner [Injeção de Dependência](xref:fundamentals/dependency-injection) no método `ConfigureServices` em *Startup.cs*:
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
@@ -224,11 +222,11 @@ Quando o aplicativo é implantado em um servidor de teste ou de produção, uma 
 O LocalDB é uma versão leve do mecanismo de banco de dados do SQL Server Express direcionada para o desenvolvimento de programas. O LocalDB é iniciado sob demanda e executado no modo de usuário e, portanto, não há nenhuma configuração complexa. Por padrão, o banco de dados LocalDB cria arquivos `*.mdf` no diretório `C:\Users\<user>\`.
 
 <a name="ssox"></a>
-* No menu **Exibir** , abra **SSOX** (Pesquisador de Objetos do SQL Server).
+* No menu **Exibir**, abra **SSOX** (Pesquisador de Objetos do SQL Server).
 
   ![Menu de exibição](sql/_static/ssox.png)
 
-* Clique com o botão direito do mouse na `Movie` tabela e selecione **Exibir Designer** :
+* Clique com o botão direito do mouse na `Movie` tabela e selecione **Exibir Designer**:
 
   ![Menus contextuais abertos na tabela Movie](sql/_static/design.png)
 
@@ -236,7 +234,7 @@ O LocalDB é uma versão leve do mecanismo de banco de dados do SQL Server Expre
 
 Observe o ícone de chave ao lado de `ID`. Por padrão, o EF cria uma propriedade chamada `ID` para a chave primária.
 
-* Clique com o botão direito do mouse na `Movie` tabela e selecione **exibir dados** :
+* Clique com o botão direito do mouse na `Movie` tabela e selecione **exibir dados**:
 
   ![Tabela Movie aberta mostrando os dados da tabela](sql/_static/vd22.png)
 
@@ -272,7 +270,7 @@ Há muitas ferramentas de terceiros que você pode baixar para gerenciar e exibi
 
 ## <a name="seed-the-database"></a>Propagar o banco de dados
 
-Create uma nova classe denominada `SeedData` na pasta *modelos* com o seguinte código:
+Crie uma classe chamada `SeedData` na pasta *Models* com o seguinte código:
 
 [!code-csharp[](razor-pages-start/sample/RazorPagesMovie30/Models/SeedData.cs?name=snippet_1)]
 
@@ -308,10 +306,10 @@ A seguinte exceção ocorre quando `Update-Database` não foi executada:
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-* Delete todos os registros no banco de dados. Use os links de exclusão no navegador ou em [SSOX](xref:tutorials/razor-pages/new-field#ssox).
+* Exclua todos os registros no banco de dados. Use os links de exclusão no navegador ou em [SSOX](xref:tutorials/razor-pages/new-field#ssox).
 * Force o aplicativo a ser inicializado chamando os métodos na `Startup` classe, para que o método semente seja executado. Para forçar a inicialização, o IIS Express deve ser interrompido e reiniciado. Pare e reinicie o IIS com qualquer uma das seguintes abordagens:
 
-  * Clique com botão direito do mouse no ícone na bandeja do sistema do IIS Express na área de notificação e toque em **Sair** ou em **Parar site** :
+  * Clique com botão direito do mouse no ícone na bandeja do sistema do IIS Express na área de notificação e toque em **Sair** ou em **Parar site**:
 
     ![Ícone de bandeja do sistema do IIS Express](../first-mvc-app/working-with-sql/_static/iisExIcon.png)
 
@@ -322,7 +320,7 @@ A seguinte exceção ocorre quando `Update-Database` não foi executada:
 
 # <a name="visual-studio-code--visual-studio-for-mac"></a>[Visual Studio Code/Visual Studio para Mac](#tab/visual-studio-code+visual-studio-mac)
 
-Delete todos os registros no banco de dados, portanto, o método de semente será executado. Interrompa e inicie o aplicativo para propagar o banco de dados.
+Exclua todos os registros no banco de dados, para que o método de semente seja executado. Interrompa e inicie o aplicativo para propagar o banco de dados.
 
 ---
 
@@ -342,7 +340,7 @@ O aplicativo mostra os dados propagados:
 
 [Exiba ou baixe o código de exemplo](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/tutorials/razor-pages/razor-pages-start) ([como baixar](xref:index#how-to-download-a-sample)).
 
-O objeto `RazorPagesMovieContext` cuida da tarefa de se conectar ao banco de dados e mapear objetos `Movie` para registros do banco de dados. O contexto de banco de dados é registrado com o contêiner [Injeção de Dependência](xref:fundamentals/dependency-injection) no método `ConfigureServices` em *Startup.cs* :
+O objeto `RazorPagesMovieContext` cuida da tarefa de se conectar ao banco de dados e mapear objetos `Movie` para registros do banco de dados. O contexto de banco de dados é registrado com o contêiner [Injeção de Dependência](xref:fundamentals/dependency-injection) no método `ConfigureServices` em *Startup.cs*:
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
@@ -386,11 +384,11 @@ Quando o aplicativo é implantado em um servidor de teste ou de produção, uma 
 O LocalDB é uma versão leve do mecanismo de banco de dados do SQL Server Express direcionada para o desenvolvimento de programas. O LocalDB é iniciado sob demanda e executado no modo de usuário e, portanto, não há nenhuma configuração complexa. Por padrão, o banco de dados LocalDB cria arquivos `*.mdf` no diretório `C:/Users/<user/>`.
 
 <a name="ssox"></a>
-* No menu **Exibir** , abra **SSOX** (Pesquisador de Objetos do SQL Server).
+* No menu **Exibir**, abra **SSOX** (Pesquisador de Objetos do SQL Server).
 
   ![Menu de exibição](sql/_static/ssox.png)
 
-* Clique com o botão direito do mouse na `Movie` tabela e selecione **Exibir Designer** :
+* Clique com o botão direito do mouse na `Movie` tabela e selecione **Exibir Designer**:
 
   ![Menu contextual aberto na tabela Movie](sql/_static/design.png)
 
@@ -398,7 +396,7 @@ O LocalDB é uma versão leve do mecanismo de banco de dados do SQL Server Expre
 
 Observe o ícone de chave ao lado de `ID`. Por padrão, o EF cria uma propriedade chamada `ID` para a chave primária.
 
-* Clique com o botão direito do mouse na `Movie` tabela e selecione **exibir dados** :
+* Clique com o botão direito do mouse na `Movie` tabela e selecione **exibir dados**:
 
   ![Tabela Movie aberta mostrando os dados da tabela](sql/_static/vd22.png)
 
@@ -416,7 +414,7 @@ Observe o ícone de chave ao lado de `ID`. Por padrão, o EF cria uma propriedad
 
 ## <a name="seed-the-database"></a>Propagar o banco de dados
 
-Create uma nova classe denominada `SeedData` na pasta *modelos* com o seguinte código:
+Crie uma classe chamada `SeedData` na pasta *Models* com o seguinte código:
 
 [!code-csharp[](razor-pages-start/sample/RazorPagesMovie22/Models/SeedData.cs?name=snippet_1)]
 
@@ -452,10 +450,10 @@ O logon falhou para o usuário 'user name'.
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-* Delete todos os registros no banco de dados. Você pode fazer isso com os links de exclusão no navegador ou em [SSOX](xref:tutorials/razor-pages/new-field#ssox)
+* Exclua todos os registros no banco de dados. Você pode fazer isso com os links de exclusão no navegador ou em [SSOX](xref:tutorials/razor-pages/new-field#ssox)
 * Force o aplicativo a ser inicializado chamando os métodos na `Startup` classe, para que o método semente seja executado. Para forçar a inicialização, o IIS Express deve ser interrompido e reiniciado. Faça isso com uma das seguintes abordagens:
 
-  * Clique com botão direito do mouse no ícone na bandeja do sistema do IIS Express na área de notificação e toque em **Sair** ou em **Parar site** :
+  * Clique com botão direito do mouse no ícone na bandeja do sistema do IIS Express na área de notificação e toque em **Sair** ou em **Parar site**:
 
     ![Ícone de bandeja do sistema do IIS Express](../first-mvc-app/working-with-sql/_static/iisExIcon.png)
 
@@ -466,11 +464,11 @@ O logon falhou para o usuário 'user name'.
 
 # <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
-Delete todos os registros no banco de dados, portanto, o método de semente será executado. Interrompa e inicie o aplicativo para propagar o banco de dados.
+Exclua todos os registros no banco de dados, para que o método de semente seja executado. Interrompa e inicie o aplicativo para propagar o banco de dados.
 
 # <a name="visual-studio-for-mac"></a>[Visual Studio para Mac](#tab/visual-studio-mac)
 
-Delete todos os registros no banco de dados, portanto, o método de semente será executado. Interrompa e inicie o aplicativo para propagar o banco de dados.
+Exclua todos os registros no banco de dados, para que o método de semente seja executado. Interrompa e inicie o aplicativo para propagar o banco de dados.
 
 ---
 

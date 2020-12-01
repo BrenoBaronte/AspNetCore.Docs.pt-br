@@ -7,8 +7,6 @@ ms.custom: mvc
 ms.date: 09/29/2020
 no-loc:
 - Index
-- Create
-- Delete
 - appsettings.json
 - ASP.NET Core Identity
 - cookie
@@ -21,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: tutorials/razor-pages/validation
-ms.openlocfilehash: d69ab3452f4f15e916049e5c772a20fe9f9fac65
-ms.sourcegitcommit: 1ea3f23bec63e96ffc3a927992f30a5fc0de3ff9
+ms.openlocfilehash: f155922c9cb5ea7fdbad0963221ceddd19f4fe60
+ms.sourcegitcommit: db0a6eb0be7bd7f22810a71fe9bf30e957fd116a
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94570218"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96419948"
 ---
 # <a name="part-8-of-tutorial-series-on-no-locrazor-pages"></a>Parte 8 da série de tutoriais em Razor páginas.
 
@@ -36,7 +34,7 @@ Nesta seção, a lógica de validação é adicionada para o modelo `Movie`. As 
 
 ## <a name="validation"></a>Validação
 
-Um princípio-chave do desenvolvimento de software é chamado [DRY](https://wikipedia.org/wiki/Don%27t_repeat_yourself) (“ **D** on't **R** epeat **Y** ourself”). Razor As páginas incentivam o desenvolvimento onde a funcionalidade é especificada uma vez e é refletida em todo o aplicativo. O DRY pode ajudar a:
+Um princípio-chave do desenvolvimento de software é chamado [DRY](https://wikipedia.org/wiki/Don%27t_repeat_yourself) (“**D** on't **R** epeat **Y** ourself”). Razor As páginas incentivam o desenvolvimento onde a funcionalidade é especificada uma vez e é refletida em todo o aplicativo. O DRY pode ajudar a:
 
 * Reduzir a quantidade de código em um aplicativo.
 * Fazer com que o código seja menos propenso a erros e mais fácil de ser testado e mantido.
@@ -85,7 +83,7 @@ Ter regras de validação automaticamente impostas pelo ASP.NET Core ajuda a:
 
 Execute o aplicativo e navegue para Pages/Movies.
 
-Selecione o link **Create novo** . Preencha o formulário com alguns valores inválidos. Quando a validação do lado do cliente do jQuery detecta o erro, ela exibe uma mensagem de erro.
+Selecione o link **Criar Novo**. Preencha o formulário com alguns valores inválidos. Quando a validação do lado do cliente do jQuery detecta o erro, ela exibe uma mensagem de erro.
 
 ![Formulário da exibição de filmes com vários erros de validação do lado do cliente do jQuery](validation/_static/val.png)
 
@@ -93,11 +91,11 @@ Selecione o link **Create novo** . Preencha o formulário com alguns valores inv
 
 Observe como o formulário renderizou automaticamente uma mensagem de erro de validação em cada campo que contém um valor inválido. Os erros são impostos no lado do cliente, usando JavaScript e jQuery, e no lado do servidor, quando um usuário tem o JavaScript desabilitado.
 
-Um benefício significativo é que **nenhuma** alteração de código era necessária nas Create páginas ou editar. Depois que as anotações de dados forem aplicadas ao modelo, a interface do usuário de validação foi habilitada. As Razor páginas criadas neste tutorial captam automaticamente as regras de validação, usando atributos de validação nas propriedades da `Movie` classe de modelo. Validação do teste usando a página Editar: a mesma validação é aplicada.
+Um benefício significativo é que **nenhuma** alteração de código foi necessária nas páginas criar ou editar. Depois que as anotações de dados forem aplicadas ao modelo, a interface do usuário de validação foi habilitada. As Razor páginas criadas neste tutorial captam automaticamente as regras de validação, usando atributos de validação nas propriedades da `Movie` classe de modelo. Validação do teste usando a página Editar: a mesma validação é aplicada.
 
 Os dados de formulário não serão postados no servidor enquanto houver erros de validação do lado do cliente. Verifique se os dados de formulário não são postados por uma ou mais das seguintes abordagens:
 
-* Coloque um ponto de interrupção no método `OnPostAsync`. Envie o formulário selecionando **Create** ou **salvando**. O ponto de interrupção nunca é atingido.
+* Coloque um ponto de interrupção no método `OnPostAsync`. Envie o formulário selecionando **criar** ou **salvar**. O ponto de interrupção nunca é atingido.
 * Use a [ferramenta Fiddler](https://www.telerik.com/fiddler).
 * Use as ferramentas do desenvolvedor do navegador para monitorar o tráfego de rede.
 
@@ -108,7 +106,7 @@ Quando o JavaScript está desabilitado no navegador, o envio do formulário com 
 (Opcional) Teste a validação do servidor:
 
 1. Desabilite o JavaScript no navegador. O JavaScript pode ser desabilitado usando as ferramentas de desenvolvedor do navegador. Se o JavaScript não puder ser desabilitado no navegador, tente outro navegador.
-1. Defina um ponto de interrupção no `OnPostAsync` método da Create página ou edição.
+1. Defina um ponto de interrupção no método `OnPostAsync` da página Criar ou Editar.
 1. Envie um formulário com dados inválidos.
 1. Verifique se o estado do modelo é inválido:
 
@@ -121,7 +119,7 @@ Quando o JavaScript está desabilitado no navegador, o envio do formulário com 
   
 Como alternativa, [desabilite a validação do lado do cliente no servidor](xref:mvc/models/validation#disable-client-side-validation).
 
-O código a seguir mostra uma parte da página *Create . cshtml* com Scaffold anteriormente no tutorial. Ele é usado pelas Create páginas e editar para:
+O código a seguir mostra uma parte da página *Create.cshtml* gerada anteriormente com scaffold no tutorial. Ele é usado pelas páginas criar e editar para:
 
 * Exibir o formulário inicial.
 * Reexiba o formulário no caso de um erro.
@@ -130,7 +128,7 @@ O código a seguir mostra uma parte da página *Create . cshtml* com Scaffold an
 
 O [Auxiliar de Marcação de Entrada](xref:mvc/views/working-with-forms) usa os atributos de [DataAnnotations](/aspnet/mvc/overview/older-versions/mvc-music-store/mvc-music-store-part-6) e produz os atributos HTML necessários para a Validação do jQuery no lado do cliente. O [Auxiliar de Marcação de Validação](xref:mvc/views/working-with-forms#the-validation-tag-helpers) exibe erros de validação. Consulte [Validação](xref:mvc/models/validation) para obter mais informações.
 
-As Create páginas e editar não têm nenhuma regra de validação. As regras de validação e as cadeias de caracteres de erro são especificadas somente na classe `Movie`. Essas regras de validação são aplicadas automaticamente a Razor páginas que editam o `Movie` modelo.
+As páginas Criar e Editar não têm nenhuma regra de validação. As regras de validação e as cadeias de caracteres de erro são especificadas somente na classe `Movie`. Essas regras de validação são aplicadas automaticamente a Razor páginas que editam o `Movie` modelo.
 
 Quando a lógica de validação precisa ser alterada, ela é feita apenas no modelo. A validação é aplicada consistentemente em todo o aplicativo, a lógica de validação é definida em um único local. A validação em um único lugar ajuda a manter o código limpo e facilita sua manutenção e atualização.
 
@@ -216,7 +214,7 @@ CREATE TABLE [dbo].[Movie] (
 
 As alterações do esquema anterior não fazem com que o EF lance uma exceção. No entanto, crie uma migração de forma que o esquema seja consistente com o modelo.
 
- No menu **Ferramentas** , selecione **Gerenciador de Pacotes NuGet > Console do Gerenciador de Pacotes**.
+ No menu **Ferramentas**, selecione **Gerenciador de Pacotes NuGet > Console do Gerenciador de Pacotes**.
 No PMC, insira os seguintes comandos:
 
 ```powershell

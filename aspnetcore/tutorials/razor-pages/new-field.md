@@ -7,8 +7,6 @@ ms.custom: mvc
 ms.date: 09/28/2020
 no-loc:
 - Index
-- Create
-- Delete
 - appsettings.json
 - ASP.NET Core Identity
 - cookie
@@ -21,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: tutorials/razor-pages/new-field
-ms.openlocfilehash: 5263063d82d79dbeeca3e4cec007d240ca8a452a
-ms.sourcegitcommit: 619200f2981656ede6d89adb6a22ad1a0e16da22
+ms.openlocfilehash: 6b6856731c61957a9e23f76e2bc15befe56ea57d
+ms.sourcegitcommit: db0a6eb0be7bd7f22810a71fe9bf30e957fd116a
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96332174"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96420000"
 ---
 # <a name="part-7-add-a-new-field-to-a-no-locrazor-page-in-aspnet-core"></a>Parte 7, adicione um novo campo a uma Razor página no ASP.NET Core
 
@@ -63,8 +61,8 @@ A verificação automática de que o esquema e o modelo estão em sincronia faci
    [!code-cshtml[](razor-pages-start/sample/RazorPagesMovie50/SnapShots/IndexRating.cshtml?highlight=40-42,62-64)]
 
 1. Atualize as seguintes páginas:
-   1. Adicione o `Rating` campo às Delete páginas e detalhes.
-   1. Update [ Create . cshtml](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie50/Pages/Movies/Create.cshtml) com um `Rating` campo.
+   1. Adicione o campo `Rating` às páginas Excluir e Detalhes.
+   1. Atualize [Create.cshtml](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie50/Pages/Movies/Create.cshtml) com um campo `Rating`.
    1. Adicione o campo `Rating` à página Editar.
 
 O aplicativo não funcionará até que o banco de dados seja atualizado para incluir o novo campo. Executar o aplicativo sem uma atualização para o banco de dados gera um `SqlException` :
@@ -108,7 +106,7 @@ Compile a solução.
 O comando `Add-Migration` informa à estrutura:
 
 * Compare o `Movie` modelo com o `Movie` esquema de banco de dados.
-* Create código para migrar o esquema de banco de dados para o novo modelo.
+* Crie um código para migrar o esquema de banco de dados para o novo modelo.
 
 O nome “Classificação” é arbitrário e é usado para nomear o arquivo de migração. É útil usar um nome significativo para o arquivo de migração.
 
@@ -121,7 +119,7 @@ Se você excluir todos os registros no banco de dados, o inicializador propagar�
 Outra opção é excluir o banco de dados e usar as migrações para recriar o banco de dados. Para excluir o banco de dados no SSOX:
 
 1. Selecione o banco de dados no SSOX.
-1. Clique com o botão direito do mouse no banco de dados e selecione **Delete** .
+1. Clique com o botão direito do mouse no banco de dados e selecione **excluir**.
 1. Marque **fechar conexões existentes**.
 1. Selecione **OK**.
 1. No [PMC](xref:tutorials/razor-pages/new-field#pmc), atualize o banco de dados:
@@ -151,7 +149,7 @@ Outra opção é excluir o banco de dados e usar as migrações para recriar o b
 > * [Propagação de dados](/ef/core/modeling/data-seeding)
 > * [Instrução SQLite ALTER TABLE](https://sqlite.org/lang_altertable.html)
 
-1. Delete a pasta de migração.  
+1. Exclua a pasta de migração.  
 
 1. Use os comandos a seguir para recriar o banco de dados.
 
@@ -204,8 +202,8 @@ A verificação automática de que o esquema e o modelo estão em sincronia faci
    [!code-cshtml[](razor-pages-start/sample/RazorPagesMovie30/SnapShots/IndexRating.cshtml?highlight=40-42,62-64)]
 
 1. Atualize as seguintes páginas:
-   1. Adicione o `Rating` campo às Delete páginas e detalhes.
-   1. Update [ Create . cshtml](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie30/Pages/Movies/Create.cshtml) com um `Rating` campo.
+   1. Adicione o campo `Rating` às páginas Excluir e Detalhes.
+   1. Atualize [Create.cshtml](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie30/Pages/Movies/Create.cshtml) com um campo `Rating`.
    1. Adicione o campo `Rating` à página Editar.
 
 O aplicativo não funcionará até que o banco de dados seja atualizado para incluir o novo campo. Executar o aplicativo sem uma atualização para o banco de dados gera um `SqlException` :
@@ -249,7 +247,7 @@ Compile a solução.
 O comando `Add-Migration` informa à estrutura:
 
 * Compare o `Movie` modelo com o `Movie` esquema de banco de dados.
-* Create código para migrar o esquema de banco de dados para o novo modelo.
+* Crie um código para migrar o esquema de banco de dados para o novo modelo.
 
 O nome “Classificação” é arbitrário e é usado para nomear o arquivo de migração. É útil usar um nome significativo para o arquivo de migração.
 
@@ -262,7 +260,7 @@ Se você excluir todos os registros no banco de dados, o inicializador propagar�
 Outra opção é excluir o banco de dados e usar as migrações para recriar o banco de dados. Para excluir o banco de dados no SSOX:
 
 * Selecione o banco de dados no SSOX.
-* Clique com o botão direito do mouse no banco de dados e selecione **Delete** .
+* Clique com o botão direito do mouse no banco de dados e selecione **excluir**.
 * Marque **fechar conexões existentes**.
 * Selecione **OK**.
 * No [PMC](xref:tutorials/razor-pages/new-field#pmc), atualize o banco de dados:
@@ -292,7 +290,7 @@ Outra opção é excluir o banco de dados e usar as migrações para recriar o b
 > * [Propagação de dados](/ef/core/modeling/data-seeding)
 > * [Instrução SQLite ALTER TABLE](https://sqlite.org/lang_altertable.html)
 
-1. Delete a pasta de migração.  
+1. Exclua a pasta de migração.  
 
 1. Use os comandos a seguir para recriar o banco de dados.
 
@@ -344,8 +342,8 @@ Edite *pages/Movies/ Index . cshtml* e adicione um `Rating` campo:
 
 Atualize as seguintes páginas:
 
-* Adicione o `Rating` campo às Delete páginas e detalhes.
-* Update [ Create . cshtml](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie22/Pages/Movies/Create.cshtml) com um `Rating` campo.
+* Adicione o campo `Rating` às páginas Excluir e Detalhes.
+* Atualize [Create.cshtml](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie22/Pages/Movies/Create.cshtml) com um campo `Rating`.
 * Adicione o campo `Rating` à página Editar.
 
 O aplicativo não funcionará até que o banco de dados seja atualizado para incluir o novo campo. Se o aplicativo for executado agora, o aplicativo lançará `SqlException` :
@@ -389,7 +387,7 @@ Update-Database
 O comando `Add-Migration` informa à estrutura:
 
 * Compare o `Movie` modelo com o `Movie` esquema de banco de dados.
-* Create código para migrar o esquema de banco de dados para o novo modelo.
+* Crie um código para migrar o esquema de banco de dados para o novo modelo.
 
 O nome “Classificação” é arbitrário e é usado para nomear o arquivo de migração. É útil usar um nome significativo para o arquivo de migração.
 
@@ -402,7 +400,7 @@ Se você excluir todos os registros no banco de dados, o inicializador propagar�
 Outra opção é excluir o banco de dados e usar as migrações para recriar o banco de dados. Para excluir o banco de dados no SSOX:
 
 * Selecione o banco de dados no SSOX.
-* Clique com o botão direito do mouse no banco de dados e selecione **Delete** .
+* Clique com o botão direito do mouse no banco de dados e selecione **excluir**.
 * Marque **fechar conexões existentes**.
 * Selecione **OK**.
 * No [PMC](xref:tutorials/razor-pages/new-field#pmc), atualize o banco de dados:
@@ -432,7 +430,7 @@ Outra opção é excluir o banco de dados e usar as migrações para recriar o b
 > * [Propagação de dados](/ef/core/modeling/data-seeding)
 > * [Instrução SQLite ALTER TABLE](https://sqlite.org/lang_altertable.html)
 
-Delete o banco de dados e usa migrações para recriar o banco de dados. Para excluir o banco de dados, exclua o arquivo de banco de dados (*MvcMovie.db*). Em seguida, execute o comando `ef database update`:
+Excluir o banco de dados e usar as migrações para recriar o banco de dados. Para excluir o banco de dados, exclua o arquivo de banco de dados (*MvcMovie.db*). Em seguida, execute o comando `ef database update`:
 
 ```dotnetcli
 dotnet ef database update

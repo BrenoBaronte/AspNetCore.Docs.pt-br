@@ -6,8 +6,6 @@ ms.author: riande
 ms.date: 09/20/2020
 no-loc:
 - Index
-- Create
-- Delete
 - appsettings.json
 - ASP.NET Core Identity
 - cookie
@@ -20,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: tutorials/razor-pages/da1
-ms.openlocfilehash: 7146c1955a578502a63578de4f1abce932cb8b32
-ms.sourcegitcommit: 342588e10ae0054a6d6dc0fd11dae481006be099
+ms.openlocfilehash: 460950413d1dd2d3539c1d62b0eb11f6bb5144a9
+ms.sourcegitcommit: db0a6eb0be7bd7f22810a71fe9bf30e957fd116a
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94360587"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96419961"
 ---
 # <a name="part-5-update-the-generated-pages-in-an-aspnet-core-app"></a>Parte 5, atualizar as páginas geradas em um aplicativo ASP.NET Core
 
@@ -55,7 +53,7 @@ Navegue até *páginas/filmes* e passe o mouse sobre um link de **edição** par
 
 ![São mostrados uma janela do navegador com o mouse sobre o link de edição e um link da URL https://localhost:1234/Movies/Edit/5](~/tutorials/razor-pages/da1/edit7.png)
 
-A **edição** , os **detalhes** e os **Delete** links são gerados pelo [auxiliar de marca de âncora](xref:mvc/views/tag-helpers/builtin-th/anchor-tag-helper) no arquivo *pages/Movies/ Index . cshtml* .
+Os links **Editar**, **detalhes** e **excluir** são gerados pelo auxiliar de [marca de âncora](xref:mvc/views/tag-helpers/builtin-th/anchor-tag-helper) no arquivo *pages/Movies/ Index . cshtml* .
 
 [!code-cshtml[](~/tutorials/razor-pages/razor-pages-start/snapshot_sample/RazorPagesMovie/Pages/Movies/Index.cshtml?highlight=16-18&range=32-)]
 
@@ -77,7 +75,7 @@ Use o **modo de exibição de origem** de um navegador para examinar a marcaçã
 
 ### <a name="add-route-template"></a>Adicionar modelo de rota
 
-Atualize a edição, os detalhes e as Delete Razor páginas para usar o `{id:int}` modelo de rota. Altere a diretiva de página de cada uma dessas páginas de `@page` para `@page "{id:int}"`. Execute o aplicativo e, em seguida, exiba o código-fonte.
+Atualize as páginas editar, detalhes e excluir Razor para usar o `{id:int}` modelo de rota. Altere a diretiva de página de cada uma dessas páginas de `@page` para `@page "{id:int}"`. Execute o aplicativo e, em seguida, exiba o código-fonte.
 
 O HTML gerado adiciona a ID à parte do caminho da URL:
 
@@ -107,7 +105,7 @@ Com a diretiva `@page "{id:int}"`, o ponto de interrupção nunca é atingido. O
 
 ### <a name="review-concurrency-exception-handling"></a>Examinar o tratamento de exceção de simultaneidade
 
-Examine o método `OnPostAsync` no arquivo *Pages/Movies/Edit.cshtml.cs* :
+Examine o método `OnPostAsync` no arquivo *Pages/Movies/Edit.cshtml.cs*:
 
 [!code-csharp[](~/tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie30/Pages/Movies/Edit.cshtml.cs?name=snippet)]
 
@@ -117,14 +115,14 @@ Para testar o bloco `catch`:
 
 1. Defina um ponto de interrupção em `catch (DbUpdateConcurrencyException)` .
 1. Selecione **Editar** para um filme, faça alterações, mas não insira **Salvar**.
-1. Em outra janela do navegador, selecione o **Delete** link para o mesmo filme e, em seguida, exclua o filme.
+1. Em outra janela do navegador, selecione o link **Excluir** do mesmo filme e, em seguida, exclua o filme.
 1. Na janela do navegador anterior, poste as alterações no filme.
 
 O código de produção talvez deseje detectar conflitos de simultaneidade. Confira [Lidar com conflitos de simultaneidade](xref:data/ef-rp/concurrency) para obter mais informações.
 
 ### <a name="posting-and-binding-review"></a>Análise de postagem e associação
 
-Examine o arquivo *Pages/Movies/Edit.cshtml.cs* : 
+Examine o arquivo *Pages/Movies/Edit.cshtml.cs*: 
 
 [!code-csharp[](~/tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie30/SnapShots/Edit.cshtml.cs?name=snippet2)]
 
@@ -146,7 +144,7 @@ Quando a página Movies/Edit é postada:
 * Se houver erros no estado do modelo, por exemplo, `ReleaseDate` não puder ser convertido em uma data, o formulário será exibido novamente com os valores enviados.
 * Se não houver erros do modelo, o filme será salvo.
 
-Os métodos GET HTTP nas Index páginas, Create e Delete Razor seguem um padrão semelhante. O método HTTP POST `OnPostAsync` na Create Razor página segue um padrão semelhante ao `OnPostAsync` método na Razor página Editar.
+Os métodos GET HTTP nas Index páginas, criar e excluir Razor seguem um padrão semelhante. O método HTTP POST `OnPostAsync` na página Criar Razor segue um padrão semelhante ao `OnPostAsync` método na Razor página Editar.
 
 ## <a name="additional-resources"></a>Recursos adicionais
 
@@ -176,7 +174,7 @@ Procure Pages/Movies e focalize um link **Editar** para ver a URL de destino.
 
 ![São mostrados uma janela do navegador com o mouse sobre o link de edição e um link da URL http://localhost:1234/Movies/Edit/5](~/tutorials/razor-pages/da1/edit7.png)
 
-A **edição** , os **detalhes** e os **Delete** links são gerados pelo [auxiliar de marca de âncora](xref:mvc/views/tag-helpers/builtin-th/anchor-tag-helper) no arquivo *pages/Movies/ Index . cshtml* .
+Os links **Editar**, **detalhes** e **excluir** são gerados pelo auxiliar de [marca de âncora](xref:mvc/views/tag-helpers/builtin-th/anchor-tag-helper) no arquivo *pages/Movies/ Index . cshtml* .
 
 [!code-cshtml[](~/tutorials/razor-pages/razor-pages-start/snapshot_sample/RazorPagesMovie/Pages/Movies/Index.cshtml?highlight=16-18&range=32-)]
 
@@ -194,7 +192,7 @@ Use o **modo de exibição de origem** de um navegador para examinar a marcaçã
 
 Os links gerados dinamicamente passam a ID do filme com uma cadeia de caracteres de consulta. Por exemplo, o `?id=1` no  `https://localhost:5001/Movies/Details?id=1` .
 
-Atualize a edição, os detalhes e as Delete Razor páginas para usar o modelo de rota "{ID: int}". Altere a diretiva de página de cada uma dessas páginas de `@page` para `@page "{id:int}"`. Execute o aplicativo e, em seguida, exiba o código-fonte. O HTML gerado adiciona a ID à parte do caminho da URL:
+Atualize as páginas editar, detalhes e excluir Razor para usar o modelo de rota "{ID: int}". Altere a diretiva de página de cada uma dessas páginas de `@page` para `@page "{id:int}"`. Execute o aplicativo e, em seguida, exiba o código-fonte. O HTML gerado adiciona a ID à parte do caminho da URL:
 
 ```html
 <td>
@@ -222,7 +220,7 @@ Com a diretiva `@page "{id:int}"`, o ponto de interrupção nunca é atingido. O
 
 ### <a name="review-concurrency-exception-handling"></a>Examinar o tratamento de exceção de simultaneidade
 
-Examine o método `OnPostAsync` no arquivo *Pages/Movies/Edit.cshtml.cs* :
+Examine o método `OnPostAsync` no arquivo *Pages/Movies/Edit.cshtml.cs*:
 
 [!code-csharp[](~/tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie22/Pages/Movies/Edit.cshtml.cs?name=snippet)]
 
@@ -232,14 +230,14 @@ Para testar o bloco `catch`:
 
 * Definir um ponto de interrupção em `catch (DbUpdateConcurrencyException)`
 * Selecione **Editar** para um filme, faça alterações, mas não insira **Salvar**.
-* Em outra janela do navegador, selecione o **Delete** link para o mesmo filme e, em seguida, exclua o filme.
+* Em outra janela do navegador, selecione o link **Excluir** do mesmo filme e, em seguida, exclua o filme.
 * Na janela do navegador anterior, poste as alterações no filme.
 
 O código de produção talvez deseje detectar conflitos de simultaneidade. Confira [Lidar com conflitos de simultaneidade](xref:data/ef-rp/concurrency) para obter mais informações.
 
 ### <a name="posting-and-binding-review"></a>Análise de postagem e associação
 
-Examine o arquivo *Pages/Movies/Edit.cshtml.cs* : 
+Examine o arquivo *Pages/Movies/Edit.cshtml.cs*: 
 
 [!code-csharp[](~/tutorials/razor-pages/razor-pages-start/snapshot_sample/RazorPagesMovie/Pages/Movies/Edit21.cshtml.cs?name=snippet2)]
 
@@ -261,7 +259,7 @@ Quando a página Movies/Edit é postada:
 * Se houver erros no estado do modelo, por exemplo, `ReleaseDate` não puder ser convertido em uma data, o formulário será exibido com os valores enviados.
 * Se não houver erros do modelo, o filme será salvo.
 
-Os métodos GET HTTP nas Index páginas, Create e Delete Razor seguem um padrão semelhante. O método HTTP POST `OnPostAsync` na Create Razor página segue um padrão semelhante ao `OnPostAsync` método na Razor página Editar.
+Os métodos GET HTTP nas Index páginas, criar e excluir Razor seguem um padrão semelhante. O método HTTP POST `OnPostAsync` na página Criar Razor segue um padrão semelhante ao `OnPostAsync` método na Razor página Editar.
 
 A pesquisa é adicionada no próximo tutorial.
 

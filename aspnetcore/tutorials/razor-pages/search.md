@@ -6,8 +6,6 @@ ms.author: riande
 ms.date: 12/05/2019
 no-loc:
 - Index
-- Create
-- Delete
 - appsettings.json
 - ASP.NET Core Identity
 - cookie
@@ -20,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: tutorials/razor-pages/search
-ms.openlocfilehash: 00c1be2704d92c7d4f868e6eaa346bd8e9901dbf
-ms.sourcegitcommit: 342588e10ae0054a6d6dc0fd11dae481006be099
+ms.openlocfilehash: 3b95fe117895555ebcd44f971e7bb9d1173e1697
+ms.sourcegitcommit: db0a6eb0be7bd7f22810a71fe9bf30e957fd116a
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94360821"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96419974"
 ---
 # <a name="part-6-add-search-to-aspnet-core-no-locrazor-pages"></a>Parte 6, adicionar pesquisa a ASP.NET Core Razor páginas
 
@@ -47,7 +45,7 @@ De [Rick Anderson](https://twitter.com/RickAndMSFT)
 
 Nas seções a seguir, a pesquisa de filmes por *gênero* ou *nome* é adicionada.
 
-Adicione o seguinte realçado usando a instrução e as propriedades a *pages/Movies/ Index . cshtml.cs* :
+Adicione o seguinte realçado usando a instrução e as propriedades a *pages/Movies/ Index . cshtml.cs*:
 
 [!code-csharp[](razor-pages-start/sample/RazorPagesMovie30/Pages/Movies/Index.cshtml.cs?name=snippet_newProps&highlight=3,23,24,25,26,27)]
 
@@ -97,7 +95,7 @@ A restrição da rota anterior permite a pesquisa do título como dados de rota 
 
 ![::: no-Loc (index)::: View com a palavra fantasma adicionada à URL e uma lista de filmes retornada de dois filmes, Ghostbusters e Ghostbusters 2](search/_static/g2.png)
 
-O runtime do ASP.NET Core usa o [model binding](xref:mvc/models/model-binding) para definir o valor da propriedade `SearchString` na cadeia de consulta (`?searchString=Ghost`) ou nos dados de rota (`https://localhost:5001/Movies/Ghost`). A associação de modelo é * *_não_* diferencia maiúsculas de minúsculas.
+O runtime do ASP.NET Core usa o [model binding](xref:mvc/models/model-binding) para definir o valor da propriedade `SearchString` na cadeia de consulta (`?searchString=Ghost`) ou nos dados de rota (`https://localhost:5001/Movies/Ghost`). A associação de modelo é **_não_* diferencia maiúsculas de minúsculas.
 
 No entanto, não se espera que os usuários modifiquem a URL para pesquisar um filme. Nesta etapa, a interface do usuário é adicionada para filtrar filmes. Se você adicionou a restrição de rota `"{searchString?}"`, remova-a.
 
@@ -150,7 +148,7 @@ O `SelectList` de gêneros é criado com a projeção dos gêneros distintos.
 
 Nas seções a seguir, a pesquisa de filmes por *gênero* ou *nome* é adicionada.
 
-Adicione as seguintes propriedades realçadas a *pages/Movies/ Index . cshtml.cs* :
+Adicione as seguintes propriedades realçadas a *pages/Movies/ Index . cshtml.cs*:
 
 [!code-csharp[](razor-pages-start/sample/RazorPagesMovie22/Pages/Movies/Index.cshtml.cs?name=snippet_newProps&highlight=11-999)]
 
@@ -197,7 +195,7 @@ A restrição da rota anterior permite a pesquisa do título como dados de rota 
 
 ![::: no-Loc (index)::: View com a palavra fantasma adicionada à URL e uma lista de filmes retornada de dois filmes, Ghostbusters e Ghostbusters 2](search/_static/g2.png)
 
-O runtime do ASP.NET Core usa o [model binding](xref:mvc/models/model-binding) para definir o valor da propriedade `SearchString` na cadeia de consulta (`?searchString=Ghost`) ou nos dados de rota (`https://localhost:5001/Movies/Ghost`). A associação de modelo é * *_não_* diferencia maiúsculas de minúsculas.
+O runtime do ASP.NET Core usa o [model binding](xref:mvc/models/model-binding) para definir o valor da propriedade `SearchString` na cadeia de consulta (`?searchString=Ghost`) ou nos dados de rota (`https://localhost:5001/Movies/Ghost`). A associação de modelo é **_não_* diferencia maiúsculas de minúsculas.
 
 No entanto, não se espera que os usuários modifiquem a URL para pesquisar um filme. Nesta etapa, a interface do usuário é adicionada para filtrar filmes. Se você adicionou a restrição de rota `"{searchString?}"`, remova-a.
 
