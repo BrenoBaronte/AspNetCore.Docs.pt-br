@@ -1301,6 +1301,8 @@
       uid: mvc/compatibility-version
     - name: Gravar middleware
       uid: fundamentals/middleware/write
+    - name: APIs JSON básicas com rota para código
+      uid: web-api/route-to-code
     - name: Operações de solicitação e de resposta
       displayName: middleware
       uid: fundamentals/middleware/request-response
