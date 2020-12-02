@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: tutorials/signalr-blazor-webassembly
-ms.openlocfilehash: 2975ee699a2535cdf63ef2f5af5790f178a09f93
-ms.sourcegitcommit: e087b6a38e3d38625ebb567a973e75b4d79547b9
+ms.openlocfilehash: 89aeb20d5566447ff86581dfa1d7946d20b9ed2d
+ms.sourcegitcommit: 94c8cc1a8ce2bdba0ebdd9d37c155bf42d3cc62b
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 11/15/2020
-ms.locfileid: "94637724"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96473710"
 ---
 # <a name="use-aspnet-core-no-locsignalr-with-a-hosted-no-locblazor-webassembly-app"></a>Usar ASP.NET Core SignalR com um Blazor WebAssembly aplicativo hospedado
 
@@ -121,7 +121,7 @@ Siga as orientações para sua escolha de ferramentas:
 
 1. Escolha o modelo de **Blazor WebAssembly aplicativo** .
 
-1. Em **avançado** , marque a caixa de seleção **ASP.NET Core hospedado** .
+1. Em **avançado**, marque a caixa de seleção **ASP.NET Core hospedado** .
 
 1. Selecione **Criar**.
 
@@ -169,7 +169,7 @@ dotnet new blazorwasm --hosted --output BlazorSignalRApp
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio/)
 
-1. Em **Gerenciador de soluções** , clique com o botão direito do mouse no `BlazorSignalRApp.Client` projeto e selecione **gerenciar pacotes NuGet**.
+1. Em **Gerenciador de soluções**, clique com o botão direito do mouse no `BlazorSignalRApp.Client` projeto e selecione **gerenciar pacotes NuGet**.
 
 1. Na caixa de diálogo **gerenciar pacotes NuGet** , confirme se a **origem do pacote** está definida como `nuget.org` .
 
@@ -183,7 +183,7 @@ dotnet new blazorwasm --hosted --output BlazorSignalRApp
 
 # <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code/)
 
-No **terminal integrado** ( **Exibir**  >  **terminal** na barra de ferramentas), execute os seguintes comandos:
+No **terminal integrado** (**Exibir**  >  **terminal** na barra de ferramentas), execute os seguintes comandos:
 
 ```dotnetcli
 dotnet add Client package Microsoft.AspNetCore.SignalR.Client
@@ -242,7 +242,7 @@ No `BlazorSignalRApp.Server` projeto, crie uma `Hubs` pasta (plural) e adicione 
 
 ::: moniker range=">= aspnetcore-5.0"
 
-   [!code-csharp[](signalr-blazor-webassembly/samples/5.x/BlazorSignalRApp/Server/Startup.cs?name=snippet_ConfigureServices&highlight=3,5-9)]
+   [!code-csharp[](signalr-blazor-webassembly/samples/5.x/BlazorSignalRApp/Server/Startup.cs?name=snippet_ConfigureServices&highlight=3,6-10)]
 
 ::: moniker-end
 
@@ -259,7 +259,7 @@ No `BlazorSignalRApp.Server` projeto, crie uma `Hubs` pasta (plural) e adicione 
 
 ::: moniker range=">= aspnetcore-5.0"
 
-   [!code-csharp[](signalr-blazor-webassembly/samples/5.x/BlazorSignalRApp/Server/Startup.cs?name=snippet_Configure&highlight=3,25)]
+   [!code-csharp[](signalr-blazor-webassembly/samples/5.x/BlazorSignalRApp/Server/Startup.cs?name=snippet_Configure&highlight=3,26)]
 
 ::: moniker-end
 
@@ -293,7 +293,7 @@ No `BlazorSignalRApp.Server` projeto, crie uma `Hubs` pasta (plural) e adicione 
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-1. Em **Gerenciador de soluções** , selecione o `BlazorSignalRApp.Server` projeto. Pressione <kbd>F5</kbd> para executar o aplicativo com depuração ou <kbd>Ctrl</kbd> + <kbd>F5</kbd> para executar o aplicativo sem depuração.
+1. Em **Gerenciador de soluções**, selecione o `BlazorSignalRApp.Server` projeto. Pressione <kbd>F5</kbd> para executar o aplicativo com depuração ou <kbd>Ctrl</kbd> + <kbd>F5</kbd> para executar o aplicativo sem depuração.
 
 1. Copie a URL da barra de endereços, abra outra instância ou guia do navegador e cole a URL na barra de endereços.
 
