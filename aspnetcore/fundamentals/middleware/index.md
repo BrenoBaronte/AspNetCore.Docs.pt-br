@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: fundamentals/middleware/index
-ms.openlocfilehash: aa51e53284bc25629b3975ff0e6de967b9a2b866
-ms.sourcegitcommit: 0bcc0d6df3145a0727da7c4be2f4bda8f27eeaa3
+ms.openlocfilehash: bdeccf81a3bb620c2e1fe15a798d5a83375842c8
+ms.sourcegitcommit: 92439194682dc788b8b5b3a08bd2184dc00e200b
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96513116"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96556535"
 ---
 # <a name="aspnet-core-middleware"></a>Middleware do ASP.NET Core
 
@@ -113,9 +113,9 @@ Com o código anterior, a CPU poderia ser salva armazenando em cache a resposta 
 A ordenação a seguir combina arquivos estáticos para permitir o Caching de arquivos estáticos compactados:
 
 ```csharp
-app.UseResponseCaching
-app.UseResponseCompression
-app.UseStaticFiles
+app.UseResponseCaching();
+app.UseResponseCompression();
+app.UseStaticFiles();
 ```
 
 O método `Startup.Configure` a seguir adiciona componentes de middleware para cenários de aplicativo comuns:
@@ -193,6 +193,8 @@ public void Configure(IApplicationBuilder app)
     // Static files aren't compressed by Static File Middleware.
     app.UseStaticFiles();
 
+    app.UseRouting();
+
     app.UseResponseCompression();
 
     app.UseEndpoints(endpoints =>
@@ -260,7 +262,7 @@ A tabela a seguir mostra as solicitações e as respostas de `http://localhost:1
 
 <xref:Microsoft.AspNetCore.Builder.UseWhenExtensions.UseWhen%2A> também ramifica o pipeline de solicitação com base no resultado do predicado fornecido. Ao contrário `MapWhen` do com o, esse Branch será reassociado ao pipeline principal se ele não for curto-Circuit ou contiver um middleware de terminal:
 
-[!code-csharp[](index/snapshot/Chain/StartupUseWhen.cs?highlight=25-26)]
+[!code-csharp[](index/snapshot/Chain/StartupUseWhen.cs?highlight=18-19)]
 
 No exemplo anterior, uma resposta de "Olá do pipeline principal". é gravado para todas as solicitações. Se a solicitação incluir uma variável de cadeia de caracteres de consulta `branch` , seu valor será registrado antes que o pipeline principal seja reassociado.
 

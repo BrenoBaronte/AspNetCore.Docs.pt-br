@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/fundamentals/dependency-injection
-ms.openlocfilehash: 0cec9a1ea6f6df52103ab190c85518ddc42a573f
-ms.sourcegitcommit: 1be547564381873fe9e84812df8d2088514c622a
+ms.openlocfilehash: c68deb5237754872e11bfd9c83275b9a3b147319
+ms.sourcegitcommit: 92439194682dc788b8b5b3a08bd2184dc00e200b
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94507922"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96556509"
 ---
 # <a name="aspnet-core-no-locblazor-dependency-injection"></a>Injeção de dependência de ASP.NET Core Blazor
 
@@ -154,7 +154,7 @@ Os serviços podem ser configurados com os tempos de vida mostrados na tabela a 
 
 | Tempo de vida | Descrição |
 | -------- | ----------- |
-| <xref:Microsoft.Extensions.DependencyInjection.ServiceDescriptor.Scoped%2A> | Blazor WebAssembly Atualmente, os aplicativos não têm um conceito de escopos de DI. `Scoped`-serviços registrados se comportam como `Singleton` serviços. No entanto, o Blazor Server modelo de hospedagem dá suporte ao `Scoped` tempo de vida. Em Blazor Server aplicativos, um registro de serviço com escopo é definido para a *conexão*. Por esse motivo, o uso de serviços com escopo é preferencial para serviços que devem ser delimitados para o usuário atual, mesmo que a intenção atual seja executar o lado do cliente no navegador em um Blazor WebAssembly aplicativo. |
+| <xref:Microsoft.Extensions.DependencyInjection.ServiceDescriptor.Scoped%2A> | <p>Blazor WebAssembly Atualmente, os aplicativos não têm um conceito de escopos de DI. `Scoped`-serviços registrados se comportam como `Singleton` serviços.</p><p>O Blazor Server modelo de hospedagem dá suporte ao `Scoped` tempo de vida entre solicitações HTTP, mas não em mensagens de conexão/circuito SingalR entre componentes que são carregados no cliente. A Razor parte páginas ou MVC do aplicativo trata os serviços com escopo normalmente e recria os serviços em *cada solicitação HTTP* ao navegar entre páginas ou exibições, ou de uma página ou exibição para um componente. Os serviços com escopo não são reconstruídos ao navegar entre componentes no cliente, em que a comunicação com o servidor ocorre pela SignalR conexão do circuito do usuário, não por meio de solicitações HTTP. Nos cenários de componente a seguir no cliente, os serviços com escopo são reconstruídos porque um novo circuito é criado para o usuário:</p><ul><li>O usuário fecha a janela do navegador. O usuário abre uma nova janela e navega de volta para o aplicativo.</li><li>O usuário fecha a última guia do aplicativo em uma janela do navegador. O usuário abre uma nova guia e navega de volta para o aplicativo.</li><li>O usuário seleciona o botão recarregar/atualizar do navegador.</li></ul><p>Para obter mais informações sobre como preservar o estado do usuário entre serviços com escopo em Blazor Server aplicativos, consulte <xref:blazor/hosting-models?pivots=server> .</p> |
 | <xref:Microsoft.Extensions.DependencyInjection.ServiceDescriptor.Singleton%2A> | DI cria uma *única instância* do serviço. Todos os componentes que exigem um `Singleton` serviço recebem uma instância do mesmo serviço. |
 | <xref:Microsoft.Extensions.DependencyInjection.ServiceDescriptor.Transient%2A> | Sempre que um componente Obtém uma instância de um `Transient` serviço do contêiner de serviço, ele recebe uma *nova instância* do serviço. |
 

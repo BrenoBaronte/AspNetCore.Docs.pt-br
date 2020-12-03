@@ -20,12 +20,12 @@ no-loc:
 - SignalR
 - Route-to-code
 uid: web-api/route-to-code
-ms.openlocfilehash: 1f5f532053f8f5ca7f73df8c1a910a484e2488d9
-ms.sourcegitcommit: 0bcc0d6df3145a0727da7c4be2f4bda8f27eeaa3
+ms.openlocfilehash: f8a3804a887ebfa0f5284d8991e903c978b18208
+ms.sourcegitcommit: 92439194682dc788b8b5b3a08bd2184dc00e200b
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96513090"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96556600"
 ---
 # <a name="basic-json-apis-with-no-locroute-to-code-in-aspnet-core"></a>APIs JSON básicas com Route-to-code no ASP.NET Core
 
@@ -76,14 +76,14 @@ O código anterior:
 
 Há duas maneiras de personalizar a serialização JSON:
 
-* As opções de serialização padrão podem ser configuradas com `JsonOptions` o no `Startup.ConfigureServices` método.
-* `WriteAsJsonAsync` e `ReadFromJsonAsync` têm sobrecargas que aceitam um `JsonSerializerOptions` objeto. Esse `JsonSerializerOptions` objeto substitui as opções padrão.
+* As opções de serialização padrão podem ser configuradas com <xref:Microsoft.AspNetCore.Http.Json.JsonOptions> o no `Startup.ConfigureServices` método.
+* `WriteAsJsonAsync` e `ReadFromJsonAsync` têm sobrecargas que aceitam um <xref:System.Text.Json.JsonSerializerOptions> objeto. Esse objeto de opções substitui as opções padrão.
 
 [!code-csharp[](route-to-code/sample/Startup6.cs?name=snippet)]
 
 ## <a name="authentication-and-authorization"></a>Autenticação e autorização
 
-Route-to-code dá suporte à autenticação e autorização. Atributos, como `[Authorize]` e `[AllowAnonymous]` , não podem ser colocados em pontos de extremidade que são mapeados para um delegado de solicitação. Em vez disso, os metadados de autorização são adicionados usando os `RequireAuthorization` `AllowAnonymous` métodos de extensão e.
+Route-to-code dá suporte à autenticação e autorização. Atributos, como `[Authorize]` e `[AllowAnonymous]` , não podem ser colocados em pontos de extremidade que são mapeados para um delegado de solicitação. Em vez disso, os metadados de autorização são adicionados usando os <xref:Microsoft.AspNetCore.Builder.AuthorizationEndpointConventionBuilderExtensions.RequireAuthorization%2A> <xref:Microsoft.AspNetCore.Builder.AuthorizationEndpointConventionBuilderExtensions.AllowAnonymous%2A> métodos de extensão e.
 
 [!code-csharp[](route-to-code/sample/Startup.cs?name=snippet&highlight=30)]
 
@@ -123,7 +123,7 @@ Recursos não fornecidos pelo Route-to-code incluem:
 * OpenAPI/Swagger
 * Negociação de conteúdo
 * Injeção de dependência de Construtor
-* `ProblemDetails` ([https://tools.ietf.org/html/rfc7807](RFC 7807))
+* `ProblemDetails` ([RFC 7807](https://tools.ietf.org/html/rfc7807))
 
 Considere usar [ASP.NET Core API Web](xref:web-api/index) para criar uma API se ela exigir alguns dos recursos na lista anterior.
 

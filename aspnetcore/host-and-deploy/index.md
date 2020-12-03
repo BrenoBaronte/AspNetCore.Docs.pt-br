@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: host-and-deploy/index
-ms.openlocfilehash: 19e888859cea35624491a516404c57e30aa9db05
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: 4f3d4c29a189cf6aa14eb10f570f0b35d8ff9abc
+ms.sourcegitcommit: 92439194682dc788b8b5b3a08bd2184dc00e200b
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93057213"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96556613"
 ---
 # <a name="host-and-deploy-aspnet-core"></a>Hospedar e implantar o ASP.NET Core
 
@@ -38,15 +38,26 @@ Em geral, implantar um aplicativo ASP.NET Core em um ambiente de hospedagem:
 
 ## <a name="publish-to-a-folder"></a>Publicar em uma pasta
 
-O comando [dotnet publish](/dotnet/core/tools/dotnet-publish) compila o código do aplicativo e copia os arquivos necessários para executar o aplicativo em uma pasta *publish* . Ao implantar do Visual Studio, a etapa `dotnet publish` ocorre automaticamente antes de os arquivos serem copiados para o destino da implantação.
+O comando [dotnet publish](/dotnet/core/tools/dotnet-publish) compila o código do aplicativo e copia os arquivos necessários para executar o aplicativo em uma pasta *publish*. Ao implantar do Visual Studio, a etapa `dotnet publish` ocorre automaticamente antes de os arquivos serem copiados para o destino da implantação.
+
+## <a name="publish-settings-files"></a>Publicar arquivos de configurações
+
+`*.json` os arquivos são publicados por padrão. Para publicar outros arquivos de configurações, especifique-os em um [`<ItemGroup><Content Include= ... />`](/visualstudio/msbuild/common-msbuild-project-items#content) elemento no arquivo de projeto. O exemplo a seguir publica arquivos XML:
+
+```xml
+<ItemGroup>
+  <Content Include="**\*.xml" Exclude="bin\**\*;obj\**\*"
+    CopyToOutputDirectory="PreserveNewest" />
+</ItemGroup>
+```
 
 ### <a name="folder-contents"></a>Conteúdo da pasta
 
 A pasta *publish* contém um ou mais arquivos do assembly, dependências e, opcionalmente, o runtime do .NET.
 
-Um aplicativo .NET Core pode ser publicado como uma *implantação autocontida* ou uma *implantação dependente de estrutura* . Se o aplicativo for autocontido, os arquivos do assembly que contêm o runtime do .NET serão incluídos na pasta *publish* . Se o aplicativo depender da estrutura, os arquivos de runtime do .NET não serão incluídos porque o aplicativo tem uma referência para uma versão do .NET que está instalada no servidor. O modelo de implantação padrão é dependente da estrutura. Para obter mais informações, consulte [implantação de aplicativos do .NET Core](/dotnet/core/deploying/).
+Um aplicativo .NET Core pode ser publicado como uma *implantação autocontida* ou uma *implantação dependente de estrutura*. Se o aplicativo for autocontido, os arquivos do assembly que contêm o runtime do .NET serão incluídos na pasta *publish*. Se o aplicativo depender da estrutura, os arquivos de runtime do .NET não serão incluídos porque o aplicativo tem uma referência para uma versão do .NET que está instalada no servidor. O modelo de implantação padrão é dependente da estrutura. Para obter mais informações, consulte [implantação de aplicativos do .NET Core](/dotnet/core/deploying/).
 
-Além de arquivos *.exe* e *.dll* , a pasta *publish* para um aplicativo ASP.NET Core normalmente contém arquivos de configuração, ativos estáticos e exibições do MVC. Para obter mais informações, consulte <xref:host-and-deploy/directory-structure>.
+Além de arquivos *.exe* e *.dll*, a pasta *publish* para um aplicativo ASP.NET Core normalmente contém arquivos de configuração, ativos estáticos e exibições do MVC. Para obter mais informações, consulte <xref:host-and-deploy/directory-structure>.
 
 ## <a name="set-up-a-process-manager"></a>Configure um gerenciador de processo
 
@@ -71,7 +82,7 @@ Configuração adicional pode ser necessária para aplicativos hospedados atrás
 
 ## <a name="use-visual-studio-and-msbuild-to-automate-deployments"></a>Usar o Visual Studio e o MSBuild para automatizar as implantações
 
-A implantação muitas vezes requer tarefas adicionais além de copiar a saída da [dotnet publish](/dotnet/core/tools/dotnet-publish) para um servidor. Por exemplo, arquivos extras podem ser necessários ou excluídos da pasta *publish* . O Visual Studio usa o [MSBuild](/visualstudio/msbuild/msbuild) para implantação na Web e o MSBuild pode ser personalizado para realizar muitas outras tarefas durante a implantação. Para saber mais, confira <xref:host-and-deploy/visual-studio-publish-profiles> e o livro [Using MSBuild and Team Foundation Build](http://msbuildbook.com/).
+A implantação muitas vezes requer tarefas adicionais além de copiar a saída da [dotnet publish](/dotnet/core/tools/dotnet-publish) para um servidor. Por exemplo, arquivos extras podem ser necessários ou excluídos da pasta *publish*. O Visual Studio usa o [MSBuild](/visualstudio/msbuild/msbuild) para implantação na Web e o MSBuild pode ser personalizado para realizar muitas outras tarefas durante a implantação. Para saber mais, confira <xref:host-and-deploy/visual-studio-publish-profiles> e o livro [Using MSBuild and Team Foundation Build](http://msbuildbook.com/).
 
 Você pode implantar diretamente do Visual Studio para o Serviço de Aplicativo do Azure usando [o recurso Publicar na Web](xref:tutorials/publish-to-azure-webapp-using-vs) ou usando o [suporte ao Git interno](xref:host-and-deploy/azure-apps/azure-continuous-deployment). O Azure DevOps Services dá suporte à [implantação contínua para o Serviço de Aplicativo do Azure](/azure/devops/pipelines/targets/webapp). Para obter mais informações, confira [DevOps com ASP.NET Core e Azure](xref:azure/devops/index).
 
@@ -116,15 +127,15 @@ Em geral, implantar um aplicativo ASP.NET Core em um ambiente de hospedagem:
 
 ## <a name="publish-to-a-folder"></a>Publicar em uma pasta
 
-O comando [dotnet publish](/dotnet/core/tools/dotnet-publish) compila o código do aplicativo e copia os arquivos necessários para executar o aplicativo em uma pasta *publish* . Ao implantar do Visual Studio, a etapa `dotnet publish` ocorre automaticamente antes de os arquivos serem copiados para o destino da implantação.
+O comando [dotnet publish](/dotnet/core/tools/dotnet-publish) compila o código do aplicativo e copia os arquivos necessários para executar o aplicativo em uma pasta *publish*. Ao implantar do Visual Studio, a etapa `dotnet publish` ocorre automaticamente antes de os arquivos serem copiados para o destino da implantação.
 
 ### <a name="folder-contents"></a>Conteúdo da pasta
 
 A pasta *publish* contém um ou mais arquivos do assembly, dependências e, opcionalmente, o runtime do .NET.
 
-Um aplicativo .NET Core pode ser publicado como uma *implantação autocontida* ou uma *implantação dependente de estrutura* . Se o aplicativo for autocontido, os arquivos do assembly que contêm o runtime do .NET serão incluídos na pasta *publish* . Se o aplicativo depender da estrutura, os arquivos de runtime do .NET não serão incluídos porque o aplicativo tem uma referência para uma versão do .NET que está instalada no servidor. O modelo de implantação padrão é dependente da estrutura. Para obter mais informações, consulte [implantação de aplicativos do .NET Core](/dotnet/core/deploying/).
+Um aplicativo .NET Core pode ser publicado como uma *implantação autocontida* ou uma *implantação dependente de estrutura*. Se o aplicativo for autocontido, os arquivos do assembly que contêm o runtime do .NET serão incluídos na pasta *publish*. Se o aplicativo depender da estrutura, os arquivos de runtime do .NET não serão incluídos porque o aplicativo tem uma referência para uma versão do .NET que está instalada no servidor. O modelo de implantação padrão é dependente da estrutura. Para obter mais informações, consulte [implantação de aplicativos do .NET Core](/dotnet/core/deploying/).
 
-Além de arquivos *.exe* e *.dll* , a pasta *publish* para um aplicativo ASP.NET Core normalmente contém arquivos de configuração, ativos estáticos e exibições do MVC. Para obter mais informações, consulte <xref:host-and-deploy/directory-structure>.
+Além de arquivos *.exe* e *.dll*, a pasta *publish* para um aplicativo ASP.NET Core normalmente contém arquivos de configuração, ativos estáticos e exibições do MVC. Para obter mais informações, consulte <xref:host-and-deploy/directory-structure>.
 
 ## <a name="set-up-a-process-manager"></a>Configure um gerenciador de processo
 
@@ -149,7 +160,7 @@ Configuração adicional pode ser necessária para aplicativos hospedados atrás
 
 ## <a name="use-visual-studio-and-msbuild-to-automate-deployments"></a>Usar o Visual Studio e o MSBuild para automatizar as implantações
 
-A implantação muitas vezes requer tarefas adicionais além de copiar a saída da [dotnet publish](/dotnet/core/tools/dotnet-publish) para um servidor. Por exemplo, arquivos extras podem ser necessários ou excluídos da pasta *publish* . O MSBuild, que é usado pelo Visual Studio para implantação da Web, pode ser personalizado para fazer muitas outras tarefas durante a implantação. Para saber mais, confira <xref:host-and-deploy/visual-studio-publish-profiles> e o livro [Using MSBuild and Team Foundation Build](http://msbuildbook.com/).
+A implantação muitas vezes requer tarefas adicionais além de copiar a saída da [dotnet publish](/dotnet/core/tools/dotnet-publish) para um servidor. Por exemplo, arquivos extras podem ser necessários ou excluídos da pasta *publish*. O MSBuild, que é usado pelo Visual Studio para implantação da Web, pode ser personalizado para fazer muitas outras tarefas durante a implantação. Para saber mais, confira <xref:host-and-deploy/visual-studio-publish-profiles> e o livro [Using MSBuild and Team Foundation Build](http://msbuildbook.com/).
 
 Você pode implantar diretamente do Visual Studio para o Serviço de Aplicativo do Azure usando [o recurso Publicar na Web](xref:tutorials/publish-to-azure-webapp-using-vs) ou usando o [suporte ao Git interno](xref:host-and-deploy/azure-apps/azure-continuous-deployment). O Azure DevOps Services dá suporte à [implantação contínua para o Serviço de Aplicativo do Azure](/azure/devops/pipelines/targets/webapp). Para obter mais informações, confira [DevOps com ASP.NET Core e Azure](xref:azure/devops/index).
 
