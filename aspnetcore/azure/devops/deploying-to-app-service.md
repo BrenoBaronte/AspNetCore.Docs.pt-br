@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: azure/devops/deploy-to-app-service
-ms.openlocfilehash: 52c4905ecb3a76f1dd10629f834b2b541b698774
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: f1c7acba0b7fb7dc07da576b188e580328ff4b89
+ms.sourcegitcommit: 6af9016d1ffc2dffbb2454c7da29c880034cefcd
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93052351"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96901152"
 ---
 # <a name="deploy-an-app-to-app-service"></a>Implantar um aplicativo no serviço de aplicativo
 
@@ -95,7 +95,7 @@ Para implantar o aplicativo, você precisará criar um [aplicativo Web](/azure/a
     webappname=mywebapp$RANDOM
     ```
 
-    b. Crie um grupo de recursos. Os grupos de recursos fornecem um meio de agregar recursos do Azure a serem gerenciados como um grupo.
+    b. Crie um grupos de recursos. Os grupos de recursos fornecem um meio de agregar recursos do Azure a serem gerenciados como um grupo.
 
     ```azurecli
     az group create --location centralus --name AzureTutorial
@@ -121,13 +121,13 @@ Para implantar o aplicativo, você precisará criar um [aplicativo Web](/azure/a
     az webapp deployment user set --user-name REPLACE_WITH_USER_NAME --password REPLACE_WITH_PASSWORD
     ```
 
-    f. Configure o aplicativo Web para aceitar implantações do git local e exibir a *URL de implantação do git* . **Anote essa URL para referência mais tarde** .
+    f. Configure o aplicativo Web para aceitar implantações do git local e exibir a *URL de implantação do git*. **Anote essa URL para referência mais tarde**.
 
     ```azurecli
     echo Git deployment URL: $(az webapp deployment source config-local-git --name $webappname --resource-group AzureTutorial --query url --output tsv)
     ```
 
-    g. Exiba a *URL do aplicativo Web* . Navegue até essa URL para ver o aplicativo Web em branco. **Anote essa URL para referência mais tarde** .
+    g. Exiba a *URL do aplicativo Web*. Navegue até essa URL para ver o aplicativo Web em branco. **Anote essa URL para referência mais tarde**.
 
     ```console
     echo Web app URL: http://$webappname.azurewebsites.net
@@ -141,7 +141,7 @@ Para implantar o aplicativo, você precisará criar um [aplicativo Web](/azure/a
     git remote add azure-prod GIT_DEPLOYMENT_URL
     ```
 
-    b. Envie por push o Branch *mestre* local para o Branch *mestre* do *Azure-prod* remoto.
+    b. Envie por push o Branch padrão local (*mestre*) para a ramificação padrão do *Azure-prod* remoto (*mestre*).
 
     ```console
     git push azure-prod master
@@ -158,14 +158,14 @@ Para implantar o aplicativo, você precisará criar um [aplicativo Web](/azure/a
 O aplicativo já foi implantado a partir do Shell de comando. Vamos usar as ferramentas integradas do Visual Studio para implantar uma atualização para o aplicativo. Nos bastidores, o Visual Studio realiza a mesma coisa que as ferramentas de linha de comando, mas dentro da interface do usuário familiar do Visual Studio.
 
 1. Abra *SimpleFeedReader. sln* no Visual Studio.
-2. Em Gerenciador de Soluções, abra *Pages\Index.cshtml* . Alterar `<h2>Simple Feed Reader</h2>` para `<h2>Simple Feed Reader - V2</h2>`.
+2. Em Gerenciador de Soluções, abra *Pages\Index.cshtml*. Alterar `<h2>Simple Feed Reader</h2>` para `<h2>Simple Feed Reader - V2</h2>`.
 3. Pressione **Ctrl** + **Shift** + **B** para compilar o aplicativo.
-4. Em Gerenciador de Soluções, clique com o botão direito do mouse no projeto e clique em **publicar** .
+4. Em Gerenciador de Soluções, clique com o botão direito do mouse no projeto e clique em **publicar**.
 
     ![Captura de tela mostrando clique com o botão direito do mouse, publicar](./media/deploying-to-app-service/publish.png)
-5. O Visual Studio pode criar um novo recurso do serviço de aplicativo, mas essa atualização será publicada na implantação existente. Na caixa de diálogo **escolher um destino de publicação** , selecione **serviço de aplicativo** na lista à esquerda e selecione **selecionar existente** . Clique em **Publicar** .
+5. O Visual Studio pode criar um novo recurso do serviço de aplicativo, mas essa atualização será publicada na implantação existente. Na caixa de diálogo **escolher um destino de publicação** , selecione **serviço de aplicativo** na lista à esquerda e selecione **selecionar existente**. Clique em **Publicar**.
 6. Na caixa de diálogo **serviço de aplicativo** , confirme se a conta da Microsoft ou da organização usada para criar sua assinatura do Azure é exibida no canto superior direito. Se não estiver, clique na lista suspensa e adicione-a.
-7. Confirme se a **assinatura** correta do Azure está selecionada. Para **exibição** , selecione **grupo de recursos** . Expanda o grupo de recursos **AzureTutorial** e selecione o aplicativo Web existente. Clique em **OK** .
+7. Confirme se a **assinatura** correta do Azure está selecionada. Para **exibição**, selecione **grupo de recursos**. Expanda o grupo de recursos **AzureTutorial** e selecione o aplicativo Web existente. Clique em **OK**.
 
     ![Captura de tela mostrando a caixa de diálogo Publicar serviço de aplicativo](./media/deploying-to-app-service/publish-dialog.png)
 
@@ -180,19 +180,19 @@ Os slots de implantação dão suporte à preparação de alterações sem afeta
 1. Entre no [Azure cloud Shell](https://shell.azure.com/bash), se ainda não tiver feito logon.
 2. Crie o slot de preparo.
 
-    a. Crie um slot de implantação com o nome de *preparo* .
+    a. Crie um slot de implantação com o nome de *preparo*.
 
     ```azurecli
     az webapp deployment slot create --name $webappname --resource-group AzureTutorial --slot staging
     ```
 
-    b. Configure o slot de preparo para usar a implantação do git local e obtenha a URL de implantação de **preparo** . **Anote essa URL para referência mais tarde** .
+    b. Configure o slot de preparo para usar a implantação do git local e obtenha a URL de implantação de **preparo** . **Anote essa URL para referência mais tarde**.
 
     ```azurecli
     echo Git deployment URL for staging: $(az webapp deployment source config-local-git --name $webappname --resource-group AzureTutorial --slot staging --query url --output tsv)
     ```
 
-    c. Exiba a URL do slot de preparo. Navegue até a URL para ver o slot de preparo vazio. **Anote essa URL para referência mais tarde** .
+    c. Exiba a URL do slot de preparo. Navegue até a URL para ver o slot de preparo vazio. **Anote essa URL para referência mais tarde**.
 
     ```console
     echo Staging web app URL: http://$webappname-staging.azurewebsites.net
@@ -214,7 +214,7 @@ Os slots de implantação dão suporte à preparação de alterações sem afeta
     git remote add azure-staging <Git_staging_deployment_URL>
     ```
 
-    b. Envie por push o Branch *mestre* local para o Branch *mestre* do *Azure-preparo* remoto.
+    b. Envie por push a ramificação padrão local (*mestre*) para a ramificação padrão do *Azure-preparo* remoto (*mestre*).
 
     ```console
     git push azure-staging master
