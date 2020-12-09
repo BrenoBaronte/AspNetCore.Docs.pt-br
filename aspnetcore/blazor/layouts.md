@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/layouts
-ms.openlocfilehash: 9462b73ad67394e79de08e7d2b13bf6a3145a04e
-ms.sourcegitcommit: 1be547564381873fe9e84812df8d2088514c622a
+ms.openlocfilehash: c6f9815f473380f96092d663cdd785fd19109701
+ms.sourcegitcommit: a71bb61f7add06acb949c9258fe506914dfe0c08
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94507961"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96855294"
 ---
 # <a name="aspnet-core-no-locblazor-layouts"></a>BlazorLayouts de ASP.NET Core
 
@@ -34,10 +34,10 @@ Alguns elementos do aplicativo, como menus, mensagens de direitos autorais e log
 
 Tecnicamente, um layout é apenas outro componente. Um layout é definido em um Razor modelo ou em código C# e pode usar [Associação de dados](xref:blazor/components/data-binding), [injeção de dependência](xref:blazor/fundamentals/dependency-injection)e outros cenários de componente.
 
-Para transformar um *componente* em um *layout* , o componente:
+Para converter um componente em um layout:
 
-* Herda de <xref:Microsoft.AspNetCore.Components.LayoutComponentBase> , que define uma <xref:Microsoft.AspNetCore.Components.LayoutComponentBase.Body> propriedade para o conteúdo renderizado dentro do layout.
-* Usa a Razor sintaxe `@Body` para especificar o local na marcação de layout onde o conteúdo é renderizado.
+* Herdar o componente de <xref:Microsoft.AspNetCore.Components.LayoutComponentBase> . O <xref:Microsoft.AspNetCore.Components.LayoutComponentBase> define uma <xref:Microsoft.AspNetCore.Components.LayoutComponentBase.Body> propriedade para o conteúdo renderizado dentro do layout.
+* Use a Razor sintaxe `@Body` para especificar o local na marcação de layout onde o conteúdo é renderizado.
 
 O exemplo de código a seguir mostra o Razor modelo de um componente de layout, `MainLayout.razor` . O layout herda <xref:Microsoft.AspNetCore.Components.LayoutComponentBase> e define o `@Body` entre a barra de navegação e o rodapé:
 

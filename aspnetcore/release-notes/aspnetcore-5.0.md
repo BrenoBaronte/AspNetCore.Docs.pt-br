@@ -18,12 +18,12 @@ no-loc:
 - SignalR
 - Kestrel
 uid: aspnetcore-5.0
-ms.openlocfilehash: 8e848ef57a9164501fd3c4f29f47ad7c72118507
-ms.sourcegitcommit: aa85f2911792a1e4783bcabf0da3b3e7e218f63a
+ms.openlocfilehash: d7ffcb67637593ab2909885a9e1f6de74a78361b
+ms.sourcegitcommit: a71bb61f7add06acb949c9258fe506914dfe0c08
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95417546"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96855489"
 ---
 # <a name="whats-new-in-aspnet-core-50"></a>O que há de novo no ASP.NET Core 5,0
 
@@ -285,7 +285,7 @@ Foi adicionado suporte para a configuração de Kestrel opções específicas do
 * Protocolos HTTP usados
 * Protocolos TLS usados
 * Certificado selecionado
-* Modo de certificado cient
+* Modo de certificado do cliente
 
 A configuração permite especificar qual certificado é selecionado com base no nome do servidor especificado. O nome do servidor faz parte da extensão de Indicação de Nome de Servidor (SNI) para o protocolo TLS, conforme indicado pelo cliente. Kestrela configuração do também dá suporte a um prefixo curinga no nome do host.
 

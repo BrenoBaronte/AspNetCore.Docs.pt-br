@@ -14,7 +14,7 @@ O código anterior cria uma propriedade `DbSet` para o conjunto de entidades. Na
 
 ### <a name="add-a-database-connection-string"></a>Adicionar uma cadeia de conexão de banco de dados
 
-Adicione uma seqüência de conexões ao arquivo *appsettings.json:*
+Adicione uma cadeia de conexão à *appsettings.jsno* arquivo:
 
 [!code-json[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie3/appsettings_SQLite.json?highlight=10-12)]
 
@@ -53,7 +53,7 @@ O código anterior cria uma propriedade `DbSet` para o conjunto de entidades. Na
 
 ### <a name="add-a-database-connection-string"></a>Adicionar uma cadeia de conexão de banco de dados
 
-Adicione uma seqüência de conexões ao arquivo *appsettings.json:*
+Adicione uma cadeia de conexão à *appsettings.jsno* arquivo:
 
 [!code-json[](~/tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie/appsettings_SQLite.json?highlight=8-10)]
 

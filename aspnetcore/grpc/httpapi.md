@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: grpc/httpapi
-ms.openlocfilehash: 64d18114e2fe9ee10edb902a98a281c3cd9f3393
-ms.sourcegitcommit: aa85f2911792a1e4783bcabf0da3b3e7e218f63a
+ms.openlocfilehash: cb2855f0293a6bc800bb5758cd1a8400d4434a24
+ms.sourcegitcommit: a71bb61f7add06acb949c9258fe506914dfe0c08
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95417572"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96855450"
 ---
 # <a name="create-json-web-apis-from-grpc"></a>Criar APIs da Web JSON do gRPC
 
@@ -105,6 +105,21 @@ info: Microsoft.AspNetCore.Hosting.Diagnostics[2]
 ```
 
 Este é um exemplo básico. Consulte [HttpRule](https://cloud.google.com/service-infrastructure/docs/service-management/reference/rpc/google.api#google.api.HttpRule) para obter mais opções de personalização.
+
+### <a name="enable-swaggeropenapi-support"></a>Habilitar suporte a Swagger/OpenAPI
+
+O Swagger (OpenAPI) é uma especificação independente de linguagem para descrever as APIs REST. a API HTTP gRPC pode ser integrada com [swashbuckle](https://github.com/domaindrivendev/Swashbuckle.AspNetCore) para gerar um ponto de extremidade do Swagger para serviços gRPC RESTful. O ponto de extremidade do Swagger pode ser usado com a [interface do usuário do Swagger](https://swagger.io/swagger-ui/) e outras ferramentas.
+
+Para habilitar o Swagger com a API HTTP gRPC:
+
+1. Adicione uma referência de pacote a [Microsoft. AspNetCore. Grpc. Swagger](https://www.nuget.org/packages/Microsoft.AspNetCore.Grpc.Swagger).
+2. Configure swashbuckle em *Startup.cs*. O `AddGrpcSwagger` método configura swashbuckle para incluir pontos de extremidade de API http gRPC.
+
+[!code-csharp[](~/grpc/httpapi/Startup.cs?name=snippet_1&highlight=6-10,15-19)]
+
+Para confirmar se swashbuckle está gerando Swagger para os serviços gRPC RESTful, inicie o aplicativo e navegue até a página da interface do usuário do Swagger:
+
+![IU do Swagger](~/grpc/httpapi/static/swaggerui.png)
 
 ### <a name="grpc-http-api-vs-grpc-web"></a>API HTTP do gRPC vs gRPC-Web
 

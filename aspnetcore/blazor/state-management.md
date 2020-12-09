@@ -20,12 +20,12 @@ no-loc:
 - SignalR
 uid: blazor/state-management
 zone_pivot_groups: blazor-hosting-models
-ms.openlocfilehash: 7e79836e3dd1da175a62a84e11dfd30fee7b2f1b
-ms.sourcegitcommit: 1ea3f23bec63e96ffc3a927992f30a5fc0de3ff9
+ms.openlocfilehash: 24f845bc1d98331f2ee54710d17beb6ffa95ad88
+ms.sourcegitcommit: a71bb61f7add06acb949c9258fe506914dfe0c08
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94570140"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96855411"
 ---
 # <a name="aspnet-core-no-locblazor-state-management"></a>BlazorGerenciamento de estado ASP.NET Core
 
@@ -43,6 +43,9 @@ Exemplos de estado do usuário mantido na memória do navegador incluem:
 * Os valores definidos por meio de chamadas de [interoperabilidade do JavaScript](xref:blazor/call-javascript-from-dotnet) .
 
 Quando um usuário fecha e abre novamente o navegador ou recarrega a página, o estado do usuário mantido na memória do navegador é perdido.
+
+> [!NOTE]
+> O [armazenamento de navegador protegido](xref:blazor/state-management?pivots=server#aspnet-core-protected-browser-storage) ( <xref:Microsoft.AspNetCore.Components.Server.ProtectedBrowserStorage?displayProperty=fullName> namespace) depende do ASP.NET Core proteção de dados e só tem suporte para Blazor Server aplicativos.
 
 ## <a name="persist-state-across-browser-sessions"></a>Persistir o estado entre as sessões do navegador
 
@@ -73,7 +76,7 @@ Para persistência de dados permanente que abrange vários usuários e dispositi
 * Armazenamento de Blobs
 * Armazenamento de chave-valor
 * Banco de dados relacional
-* Armazenamento de tabelas
+* Armazenamento de tabela
 
 Depois que os dados são salvos, o estado do usuário é mantido e está disponível em qualquer nova sessão do navegador.
 
@@ -182,7 +185,7 @@ Para persistência de dados permanente que abrange vários usuários e dispositi
 * Armazenamento de Blobs
 * Armazenamento de chave-valor
 * Banco de dados relacional
-* Armazenamento de tabelas
+* Armazenamento de tabela
 
 Depois que os dados são salvos, o estado do usuário é mantido e está disponível em qualquer circuito novo.
 

@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/host-and-deploy/webassembly
-ms.openlocfilehash: 7ae462ff9abd06fe4ab4b3e00a71515b76b0ee7d
-ms.sourcegitcommit: bb475e69cb647f22cf6d2c6f93d0836c160080d7
+ms.openlocfilehash: 7edba338716a0545390ec53775f69eaef141d389
+ms.sourcegitcommit: a71bb61f7add06acb949c9258fe506914dfe0c08
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94339978"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96855281"
 ---
 # <a name="host-and-deploy-aspnet-core-no-locblazor-webassembly"></a>Hospedar e implantar ASP.NET Core Blazor WebAssembly
 
@@ -133,7 +133,7 @@ Confira como implantar o Serviço de Aplicativo do Azure em <xref:tutorials/publ
 
 ## <a name="hosted-deployment-with-multiple-no-locblazor-webassembly-apps"></a>Implantação hospedada com vários Blazor WebAssembly aplicativos
 
-### <a name="app-configuration"></a>Configuração do aplicativo
+### <a name="app-configuration"></a>Configuração de aplicativo
 
 Para configurar uma solução hospedada Blazor para atender a vários Blazor WebAssembly aplicativos:
 
@@ -436,7 +436,7 @@ Uma *implantação autônoma* serve o Blazor WebAssembly aplicativo como um conj
 
 Os ativos de implantação autônomo são publicados na `/bin/Release/{TARGET FRAMEWORK}/publish/wwwroot` pasta.
 
-### <a name="azure-app-service"></a>Serviço de aplicativo do Azure
+### <a name="azure-app-service"></a>Serviço de Aplicativo do Azure
 
 Blazor WebAssembly os aplicativos podem ser implantados em serviços Azure App no Windows, que hospedam o aplicativo no [IIS](#iis).
 
@@ -922,7 +922,7 @@ Quando um aplicativo é compilado, o `blazor.boot.json` manifesto gerado descrev
 
 Motivos comuns pelos quais isso falha são:
 
- * A resposta do servidor Web é um erro (por exemplo, um *404-não encontrado* ou um *erro de servidor interno 500* ) em vez do arquivo solicitado pelo navegador. Isso é relatado pelo navegador como uma falha de verificação de integridade e não como uma falha de resposta.
+ * A resposta do servidor Web é um erro (por exemplo, um *404-não encontrado* ou um *erro de servidor interno 500*) em vez do arquivo solicitado pelo navegador. Isso é relatado pelo navegador como uma falha de verificação de integridade e não como uma falha de resposta.
  * Algo alterou o conteúdo dos arquivos entre a compilação e a entrega dos arquivos para o navegador. Isso pode acontecer:
    * Se você ou criar ferramentas, modifique manualmente a saída da compilação.
    * Se algum aspecto do processo de implantação tiver modificado os arquivos. Por exemplo, se você usar um mecanismo de implantação baseado em git, tenha em mente que o Git converte de forma transparente as terminações de linha no estilo do Windows para as terminações de linha em estilo UNIX se você confirmar arquivos no Windows e verificá-los no Linux. Alterar as terminações de linha de arquivo altera os hashes SHA-256. Para evitar esse problema, considere [usar `.gitattributes` para tratar artefatos de compilação como `binary` arquivos](https://git-scm.com/book/en/v2/Customizing-Git-Git-Attributes).
@@ -934,11 +934,33 @@ Para diagnosticar quais delas se aplicam no seu caso:
  1. Abra as ferramentas de desenvolvedor do navegador e procure na guia *rede* . Se necessário, recarregue a página para ver a lista de solicitações e respostas. Localize o arquivo que está disparando o erro nessa lista.
  1. Verifique o código de status HTTP na resposta. Se o servidor retornar algo diferente de *200-OK* (ou outro código de status 2xx), você terá um problema no lado do servidor para diagnosticar. Por exemplo, o código de status 403 significa que há um problema de autorização, enquanto o código de status 500 significa que o servidor está falhando de maneira não especificada. Consulte os logs do lado do servidor para diagnosticar e corrigir o aplicativo.
  1. Se o código de status for *200-OK* para o recurso, examine o conteúdo da resposta nas ferramentas de desenvolvedor do navegador e verifique se o conteúdo corresponde aos dados esperados. Por exemplo, um problema comum é configurar incorretamente o roteamento para que as solicitações retornem seus `index.html` dados mesmo para outros arquivos. Verifique se as respostas a `.wasm` solicitações são binários de Webassembly e se `.dll` as respostas a solicitações são binários de assembly .net. Caso contrário, você tem um problema de roteamento no lado do servidor para diagnosticar.
+ 1. Busque para validar a saída publicada e implantada do aplicativo com o [script do PowerShell de integridade de solução de problemas](#troubleshoot-integrity-powershell-script).
 
 Se você confirmar que o servidor está retornando os dados corretos do plausível, deve haver outra coisa modificando o conteúdo entre a compilação e a entrega do arquivo. Para investigar isso:
 
  * Examine o mecanismo de implantação e ferramentas de compilação caso eles estejam modificando arquivos depois que os arquivos forem criados. Um exemplo disso é quando o Git transforma as terminações de linha de arquivo, conforme descrito anteriormente.
  * Examine o servidor Web ou a configuração da CDN caso eles estejam configurados para modificar as respostas dinamicamente (por exemplo, tentando reduzir HTML). É bom que o servidor Web implemente a compactação HTTP (por exemplo, retornando `content-encoding: br` ou `content-encoding: gzip` ), já que isso não afeta o resultado após a descompactação. No entanto, *não* há problema para o servidor Web modificar os dados descompactados.
+
+### <a name="troubleshoot-integrity-powershell-script"></a>Solucionar problemas de script do PowerShell de integridade
+
+Use o [`integrity.ps1`](https://github.com/dotnet/AspNetCore.Docs/blob/master/aspnetcore/blazor/host-and-deploy/webassembly/_samples/integrity.ps1?raw=true) script do PowerShell para validar um aplicativo publicado e implantado Blazor . O script é fornecido como um ponto de partida quando o aplicativo tem problemas de integridade que a Blazor estrutura não pode identificar. A personalização do script pode ser necessária para seus aplicativos.
+
+O script verifica os arquivos na `publish` pasta e baixados do aplicativo implantado para detectar problemas nos diferentes manifestos que contêm hashes de integridade. Essas verificações devem detectar os problemas mais comuns:
+
+* Você modificou um arquivo na saída publicada sem perceber.
+* O aplicativo não foi implantado corretamente no destino de implantação ou algo foi alterado no ambiente do destino da implantação.
+* Há diferenças entre o aplicativo implantado e a saída da publicação do aplicativo.
+
+Invoque o script com o seguinte comando em um shell de comando do PowerShell:
+
+```powershell
+.\integrity.ps1 {BASE URL} {PUBLISH OUTPUT FOLDER}
+```
+
+Espaços reservados
+
+* `{BASE URL}`: A URL do aplicativo implantado.
+* `{PUBLISH OUTPUT FOLDER}`: O caminho para a `publish` pasta ou o local do aplicativo em que o aplicativo é publicado para implantação.
 
 ### <a name="disable-integrity-checking-for-non-pwa-apps"></a>Desabilitar verificação de integridade para aplicativos não PWA
 
