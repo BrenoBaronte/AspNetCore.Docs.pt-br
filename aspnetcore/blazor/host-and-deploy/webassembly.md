@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/host-and-deploy/webassembly
-ms.openlocfilehash: 7edba338716a0545390ec53775f69eaef141d389
-ms.sourcegitcommit: a71bb61f7add06acb949c9258fe506914dfe0c08
+ms.openlocfilehash: 5983cbc1e0256f7cf8e85fb07f9ba1bbc1bf08db
+ms.sourcegitcommit: c321518bfe367280ef262aecaada287f17fe1bc5
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96855281"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97011865"
 ---
 # <a name="host-and-deploy-aspnet-core-no-locblazor-webassembly"></a>Hospedar e implantar ASP.NET Core Blazor WebAssembly
 
@@ -436,7 +436,7 @@ Uma *implantação autônoma* serve o Blazor WebAssembly aplicativo como um conj
 
 Os ativos de implantação autônomo são publicados na `/bin/Release/{TARGET FRAMEWORK}/publish/wwwroot` pasta.
 
-### <a name="azure-app-service"></a>Serviço de Aplicativo do Azure
+### <a name="azure-app-service"></a>Serviço de aplicativo do Azure
 
 Blazor WebAssembly os aplicativos podem ser implantados em serviços Azure App no Windows, que hospedam o aplicativo no [IIS](#iis).
 
@@ -910,9 +910,7 @@ Quando Blazor WebAssembly o baixa os arquivos de inicialização de um aplicativ
 
 Se o servidor Web retornar respostas que não correspondam aos hashes SHA-256 esperados, você verá um erro semelhante ao mostrado a seguir no console do desenvolvedor do navegador:
 
-```
-Failed to find a valid digest in the 'integrity' attribute for resource 'https://myapp.example.com/_framework/MyBlazorApp.dll' with computed SHA-256 integrity 'IIa70iwvmEg5WiDV17OpQ5eCztNYqL186J56852RpJY='. The resource has been blocked.
-```
+> Falha ao localizar um resumo válido no atributo ' integridade ' para o recurso ' https://myapp.example.com/\_framework/My BlazorApp.dll ' com a integridade SHA-256 computada ' IIa70iwvmEg5WiDV17OpQ5eCztNYqL186J56852RpJY = '. O recurso foi bloqueado.
 
 Na maioria dos casos, isso *não* é um problema com a verificação de integridade. Em vez disso, isso significa que há algum outro problema, e a verificação de integridade é avisado sobre esse outro problema.
 
@@ -961,6 +959,13 @@ Espaços reservados
 
 * `{BASE URL}`: A URL do aplicativo implantado.
 * `{PUBLISH OUTPUT FOLDER}`: O caminho para a `publish` pasta ou o local do aplicativo em que o aplicativo é publicado para implantação.
+
+> [!NOTE]
+> Para clonar o `dotnet/AspNetCore.Docs` repositório do GitHub em um sistema que usa o scanner de vírus [BitDefender](https://www.bitdefender.com) , adicione uma exceção a BitDefender para o `integrity.ps1` script. Adicione a exceção a BitDefender antes de clonar o repositório para evitar que o script seja colocado em quarentena pelo verificador de vírus. O exemplo a seguir é um caminho típico para o script para o repositório clonado em um sistema Windows. Ajuste o caminho conforme necessário. O espaço reservado `{USER}` é o segmento de caminho do usuário.
+>
+> ```
+> C:\Users\{USER}\Documents\GitHub\AspNetCore.Docs\aspnetcore\blazor\host-and-deploy\webassembly\_samples\integrity.ps1
+> ```
 
 ### <a name="disable-integrity-checking-for-non-pwa-apps"></a>Desabilitar verificação de integridade para aplicativos não PWA
 
