@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/fundamentals/additional-scenarios
-ms.openlocfilehash: ef37c539d377f14a2744c3ead28234d8497df700
-ms.sourcegitcommit: e087b6a38e3d38625ebb567a973e75b4d79547b9
+ms.openlocfilehash: b7fc3710fe5ad1efba907edf98f590a42e2a83ae
+ms.sourcegitcommit: 6299f08aed5b7f0496001d093aae617559d73240
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 11/15/2020
-ms.locfileid: "94637672"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97485869"
 ---
 # <a name="aspnet-core-no-locblazor-hosting-model-configuration"></a>ASP.NET Core Blazor configuração do modelo de hospedagem
 
@@ -167,7 +167,7 @@ Para executar tarefas adicionais, como a inicialização de interoperabilidade d
 
 ### <a name="configure-the-no-locsignalr-client"></a>Configurar o SignalR cliente
 
-#### <a name="logging"></a>Registrando em log
+#### <a name="logging"></a>Registro em log
 
 Para configurar SignalR o log do cliente, passe um objeto de configuração ( `configureSignalR` ) que chame `configureLogging` com o nível de log no construtor do cliente:
 
@@ -212,8 +212,8 @@ Para modificar os eventos de conexão, registre os retornos de chamada para as s
     <script>
       Blazor.start({
         reconnectionHandler: {
-          onConnectionDown: (options, error) => console.error(error);
-          onConnectionUp: () => console.log("Up, up, and away!");
+          onConnectionDown: (options, error) => console.error(error),
+          onConnectionUp: () => console.log("Up, up, and away!")
         }
       });
     </script>

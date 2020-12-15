@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/templates
-ms.openlocfilehash: 602ad2908d607703a3b77b2047d51d912645b043
-ms.sourcegitcommit: 8b867c4cb0c3b39bbc4d2d87815610d2ef858ae7
+ms.openlocfilehash: 6d24e65acd44f98540575a3f3880fb137bfc822f
+ms.sourcegitcommit: 6299f08aed5b7f0496001d093aae617559d73240
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94703716"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97485908"
 ---
 # <a name="aspnet-core-no-locblazor-templates"></a>Modelos de ASP.NET Core Blazor
 
@@ -54,7 +54,7 @@ Os seguintes arquivos e pastas compõem um Blazor aplicativo gerado a partir de 
 
   * [Host](xref:fundamentals/host/generic-host) ASP.NET Core ( Blazor Server )
   * Host Webassembly ( Blazor WebAssembly ): o código nesse arquivo é exclusivo para aplicativos criados a partir do Blazor WebAssembly modelo ( `blazorwasm` ).
-    * O `App` componente é o componente raiz do aplicativo. O `App` componente é especificado como o `app` elemento DOM ( `<div id="app">Loading...</div>` in `wwwroot/index.html` ) para o conjunto de componentes raiz ( `builder.RootComponents.Add<App>("#app")` ).
+    * O `App` componente é o componente raiz do aplicativo. O `App` componente é especificado como o `div` elemento DOM com um `id` de `app` ( `<div id="app">Loading...</div>` in `wwwroot/index.html` ) para o conjunto de componentes raiz ( `builder.RootComponents.Add<App>("#app")` ).
     * Os [Serviços](xref:blazor/fundamentals/dependency-injection) são adicionados e configurados (por exemplo, `builder.Services.AddSingleton<IMyDependency, MyDependency>()` ).
 
 ::: moniker-end
@@ -77,12 +77,27 @@ Os seguintes arquivos e pastas compõem um Blazor aplicativo gerado a partir de 
     * <xref:Microsoft.AspNetCore.Builder.ComponentEndpointRouteBuilderExtensions.MapBlazorHub%2A> é chamado para configurar um ponto de extremidade para a conexão em tempo real com o navegador. A conexão é criada com [SignalR](xref:signalr/introduction) , que é uma estrutura para adicionar funcionalidade da Web em tempo real a aplicativos.
     * [`MapFallbackToPage("/_Host")`](xref:Microsoft.AspNetCore.Builder.RazorPagesEndpointRouteBuilderExtensions.MapFallbackToPage*) é chamado para configurar a página raiz do aplicativo ( `Pages/_Host.cshtml` ) e habilitar a navegação.
 
+::: moniker range=">= aspnetcore-5.0"
+
 * `wwwroot/index.html` ( Blazor WebAssembly ): A página raiz do aplicativo implementada como uma página HTML:
   * Quando qualquer página do aplicativo é solicitada inicialmente, essa página é renderizada e retornada na resposta.
-  * A página especifica onde o `App` componente raiz é renderizado. O componente é renderizado no local do `app` elemento DOM ( `<app>...</app>` ).
+  * A página especifica onde o `App` componente raiz é renderizado. O componente é renderizado no local do `div` elemento DOM com um `id` de `app` ( `<div id="app">Loading...</div>` ).
   * O `_framework/blazor.webassembly.js` arquivo JavaScript é carregado, que:
     * Baixa o tempo de execução do .NET, o aplicativo e as dependências do aplicativo.
     * Inicializa o tempo de execução para executar o aplicativo.
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-5.0"
+
+* `wwwroot/index.html` ( Blazor WebAssembly ): A página raiz do aplicativo implementada como uma página HTML:
+  * Quando qualquer página do aplicativo é solicitada inicialmente, essa página é renderizada e retornada na resposta.
+  * A página especifica onde o `App` componente raiz é renderizado. O componente é renderizado no local do `app` elemento DOM ( `<app>Loading...</app>` ).
+  * O `_framework/blazor.webassembly.js` arquivo JavaScript é carregado, que:
+    * Baixa o tempo de execução do .NET, o aplicativo e as dependências do aplicativo.
+    * Inicializa o tempo de execução para executar o aplicativo.
+    
+::: moniker-end
 
 * `App.razor`: O componente raiz do aplicativo que configura o roteamento do lado do cliente usando o <xref:Microsoft.AspNetCore.Components.Routing.Router> componente. O <xref:Microsoft.AspNetCore.Components.Routing.Router> componente intercepta a navegação do navegador e renderiza a página que corresponde ao endereço solicitado.
 
