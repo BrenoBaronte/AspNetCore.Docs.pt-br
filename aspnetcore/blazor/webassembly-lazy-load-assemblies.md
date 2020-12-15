@@ -19,18 +19,18 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/webassembly-lazy-load-assemblies
-ms.openlocfilehash: 6a1feffb5341d432d6d1949a9e26b9537b85ba03
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: 6e7fa6e231e97793fbf7e1ac1d208bf3013c6fce
+ms.sourcegitcommit: 6b87f2e064cea02e65dacd206394b44f5c604282
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93054782"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97506560"
 ---
 # <a name="lazy-load-assemblies-in-aspnet-core-no-locblazor-webassembly"></a>Assemblies de carga lenta no ASP.NET Core Blazor WebAssembly
 
 Por [Safia Abdalla](https://safia.rocks) e [Luke Latham](https://github.com/guardrex)
 
-Blazor WebAssembly o desempenho de inicialização do aplicativo pode ser melhorado ao adiar o carregamento de alguns assemblies de aplicativo até que eles sejam necessários, o que é chamado de *carregamento lento* . Por exemplo, os assemblies que são usados somente para processar um único componente podem ser configurados para carregar somente se o usuário navegar para esse componente. Após o carregamento, os assemblies são armazenados em cache no lado do cliente e estão disponíveis para todas as navegações futuras.
+Blazor WebAssembly o desempenho de inicialização do aplicativo pode ser melhorado ao adiar o carregamento de alguns assemblies de aplicativo até que eles sejam necessários, o que é chamado de *carregamento lento*. Por exemplo, os assemblies que são usados somente para processar um único componente podem ser configurados para carregar somente se o usuário navegar para esse componente. Após o carregamento, os assemblies são armazenados em cache no lado do cliente e estão disponíveis para todas as navegações futuras.
 
 Blazoro recurso de carregamento lento do permite que você marque os assemblies de aplicativo para carregamento lento, que carrega os assemblies durante o tempo de execução quando o usuário navega para uma rota específica. O recurso consiste em alterações no arquivo do projeto e alterações no roteador do aplicativo.
 
@@ -74,6 +74,8 @@ No componente do aplicativo `Router` ( `App.razor` ):
     }
 }
 ```
+
+[!INCLUDE[](~/blazor/includes/prefer-exact-matches.md)]
 
 Se o `OnNavigateAsync` retorno de chamada lançar uma exceção sem tratamento, a [ Blazor interface do usuário de erro](xref:blazor/fundamentals/handle-errors#detailed-errors-during-development) será invocada.
 
@@ -133,6 +135,8 @@ Durante o carregamento de assemblies, que pode levar vários segundos, o `Router
 ...
 ```
 
+[!INCLUDE[](~/blazor/includes/prefer-exact-matches.md)]
+
 ### <a name="handle-cancellations-in-onnavigateasync"></a>Manipular cancelamentos em `OnNavigateAsync`
 
 O `NavigationContext` objeto passado para o `OnNavigateAsync` retorno de chamada contém um `CancellationToken` que é definido quando um novo evento de navegação ocorre. O `OnNavigateAsync` retorno de chamada deve gerar quando esse token de cancelamento é definido para evitar continuar a executar o `OnNavigateAsync` retorno de chamada em uma navegação desatualizada.
@@ -169,6 +173,8 @@ Se um usuário navegar para rotear a e, em seguida, imediatamente para a rota B,
     }
 }
 ```
+
+[!INCLUDE[](~/blazor/includes/prefer-exact-matches.md)]
 
 > [!NOTE]
 > Não lançar se o token de cancelamento no `NavigationContext` for cancelado pode resultar em um comportamento indesejado, como a renderização de um componente de uma navegação anterior.
@@ -230,6 +236,8 @@ O componente completo a seguir `Router` demonstra como carregar o `GrantImaharaR
     }
 }
 ```
+
+[!INCLUDE[](~/blazor/includes/prefer-exact-matches.md)]
 
 ## <a name="troubleshoot"></a>Solucionar problemas
 

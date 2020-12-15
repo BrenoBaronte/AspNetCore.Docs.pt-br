@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/fundamentals/routing
-ms.openlocfilehash: d6f64e67ad799847c0992bad8e4353bac07c9901
-ms.sourcegitcommit: 6299f08aed5b7f0496001d093aae617559d73240
+ms.openlocfilehash: ec183f4aadc6bafd8e77f9d97291ba3d47bd92f5
+ms.sourcegitcommit: 6b87f2e064cea02e65dacd206394b44f5c604282
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97485947"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97506923"
 ---
 # <a name="aspnet-core-no-locblazor-routing"></a>Roteamento de ASP.NET Core Blazor
 
@@ -43,6 +43,8 @@ O <xref:Microsoft.AspNetCore.Components.Routing.Router> componente permite o rot
 [!code-razor[](routing/samples_snapshot/5.x/App1.razor)]
 
 ::: moniker-end
+
+[!INCLUDE[](~/blazor/includes/prefer-exact-matches.md)]
 
 ::: moniker range="< aspnetcore-5.0"
 
@@ -94,6 +96,8 @@ No `App` componente, defina conteúdo personalizado no <xref:Microsoft.AspNetCor
 
 ::: moniker-end
 
+[!INCLUDE[](~/blazor/includes/prefer-exact-matches.md)]
+
 ::: moniker range="< aspnetcore-5.0"
 
 [!code-razor[](routing/samples_snapshot/3.x/App2.razor?highlight=5-8)]
@@ -113,6 +117,8 @@ Use o <xref:Microsoft.AspNetCore.Components.Routing.Router.AdditionalAssemblies>
 [!code-razor[](routing/samples_snapshot/5.x/App3.razor)]
 
 ::: moniker-end
+
+[!INCLUDE[](~/blazor/includes/prefer-exact-matches.md)]
 
 ::: moniker range="< aspnetcore-5.0"
 

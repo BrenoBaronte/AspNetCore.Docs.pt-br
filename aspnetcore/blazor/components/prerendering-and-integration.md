@@ -20,12 +20,12 @@ no-loc:
 - SignalR
 uid: blazor/components/prerendering-and-integration
 zone_pivot_groups: blazor-hosting-models
-ms.openlocfilehash: affca6c9b585b91787f94a13144d07bedfefdd37
-ms.sourcegitcommit: fe5a287fa6b9477b130aa39728f82cdad57611ee
+ms.openlocfilehash: 3402117334548f9d90880d4f536e8baa288e7bc9
+ms.sourcegitcommit: 6b87f2e064cea02e65dacd206394b44f5c604282
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94431698"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97506975"
 ---
 # <a name="prerender-and-integrate-aspnet-core-no-locrazor-components"></a>PreRender e integre componentes de ASP.NET Core Razor
 
@@ -241,7 +241,7 @@ Uma Razor página existente ou um aplicativo MVC pode integrar Razor componentes
      <base href="~/" />
      ```
 
-     O `href` valor (o *caminho base do aplicativo* ) no exemplo anterior pressupõe que o aplicativo reside no caminho da URL raiz ( `/` ). Se o aplicativo for um subaplicativo, siga as orientações na seção *caminho base do aplicativo* do <xref:blazor/host-and-deploy/index#app-base-path> artigo.
+     O `href` valor (o *caminho base do aplicativo*) no exemplo anterior pressupõe que o aplicativo reside no caminho da URL raiz ( `/` ). Se o aplicativo for um subaplicativo, siga as orientações na seção *caminho base do aplicativo* do <xref:blazor/host-and-deploy/index#app-base-path> artigo.
 
      O `_Layout.cshtml` arquivo está localizado na `Pages/Shared` pasta em um Razor aplicativo ou pasta de páginas `Views/Shared` em um aplicativo MVC.
 
@@ -307,6 +307,8 @@ Para dar suporte a componentes roteáveis Razor em Razor páginas aplicativos:
        </NotFound>
    </Router>
    ```
+
+   [!INCLUDE[](~/blazor/includes/prefer-exact-matches.md)]
 
 1. Adicione um `_Host.cshtml` arquivo à `Pages` pasta com o seguinte conteúdo:
 
@@ -376,6 +378,8 @@ Para dar suporte a componentes roteáveis Razor em aplicativos MVC:
        </NotFound>
    </Router>
    ```
+
+   [!INCLUDE[](~/blazor/includes/prefer-exact-matches.md)]
 
 1. Adicione um `_Host.cshtml` arquivo à `Views/Home` pasta com o seguinte conteúdo:
 

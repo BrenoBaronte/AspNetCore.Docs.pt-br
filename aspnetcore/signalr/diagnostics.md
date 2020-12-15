@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: signalr/diagnostics
-ms.openlocfilehash: 6e5e9d866a1e03e69856cc63dcfe30284048dd6d
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: 49029bbd53b98425a05bdb82517238e3aa2e3b1f
+ms.sourcegitcommit: 6b87f2e064cea02e65dacd206394b44f5c604282
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93061308"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97506624"
 ---
 # <a name="logging-and-diagnostics-in-aspnet-core-no-locsignalr"></a>Registro em log e diagnóstico no ASP.NET Core SignalR
 
@@ -73,7 +73,7 @@ Se você estiver executando o em um aplicativo de console, o [agente de log do c
 
 O Visual Studio exibe a saída de log na janela **saída** . Selecione a opção de menu suspenso do **ASP.NET Core Web Server** .
 
-### <a name="azure-app-service"></a>Serviço de aplicativo do Azure
+### <a name="azure-app-service"></a>Serviço de Aplicativo do Azure
 
 Habilite a opção de **log do aplicativo (Filesystem)** na seção **logs de diagnóstico** do portal do serviço Azure app e configure o **nível** como `Verbose` . Os logs devem estar disponíveis no serviço de **streaming de log** e nos logs no sistema de arquivos do serviço de aplicativo. Para obter mais informações, consulte [Azure log streaming](xref:fundamentals/logging/index#azure-log-streaming).
 
@@ -117,7 +117,7 @@ Se você quiser enviar logs para um sistema de registro em log personalizado, po
 
 Para obter logs do cliente .NET, você pode usar o `ConfigureLogging` método em `HubConnectionBuilder` . Isso funciona da mesma maneira que o `ConfigureLogging` método em `WebHostBuilder` e `HostBuilder` . Você pode configurar os mesmos provedores de log usados no ASP.NET Core. No entanto, você precisa instalar e habilitar manualmente os pacotes NuGet para os provedores de log individuais.
 
-Para adicionar o log de cliente .NET a um Blazor WebAssembly aplicativo, consulte <xref:blazor/fundamentals/logging#blazor-webassembly-signalr-net-client-logging> .
+Para adicionar o log de cliente .NET a um Blazor WebAssembly aplicativo, consulte <xref:blazor/fundamentals/logging#signalr-net-client-logging> .
 
 ### <a name="console-logging"></a>Log de console
 

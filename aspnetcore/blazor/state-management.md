@@ -20,12 +20,12 @@ no-loc:
 - SignalR
 uid: blazor/state-management
 zone_pivot_groups: blazor-hosting-models
-ms.openlocfilehash: 24f845bc1d98331f2ee54710d17beb6ffa95ad88
-ms.sourcegitcommit: a71bb61f7add06acb949c9258fe506914dfe0c08
+ms.openlocfilehash: 6e6f3047da30490caff4f820003a3018e8c26aaa
+ms.sourcegitcommit: 6b87f2e064cea02e65dacd206394b44f5c604282
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96855411"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97506599"
 ---
 # <a name="aspnet-core-no-locblazor-state-management"></a>BlazorGerenciamento de estado ASP.NET Core
 
@@ -73,14 +73,14 @@ Existem localizações comuns para o estado persistente:
 
 Para persistência de dados permanente que abrange vários usuários e dispositivos, o aplicativo pode usar armazenamento independente do lado do servidor acessado por meio de uma API da Web. As opções incluem:
 
-* Armazenamento de Blobs
+* Armazenamento de blob
 * Armazenamento de chave-valor
 * Banco de dados relacional
 * Armazenamento de tabela
 
 Depois que os dados são salvos, o estado do usuário é mantido e está disponível em qualquer nova sessão do navegador.
 
-Como Blazor WebAssembly os aplicativos são executados inteiramente no navegador do usuário, eles exigem medidas adicionais para acessar sistemas externos seguros, como bancos de dados e serviços de armazenamento. Blazor WebAssembly os aplicativos são protegidos da mesma maneira que os aplicativos de página única (SPAs). Normalmente, um aplicativo autentica um usuário por meio [OAuth](https://oauth.net) / [do OAuth OpenID Connect (OIDC)](https://openid.net/connect/) e, em seguida, interage com os serviços de armazenamento e bancos de dados por meio de chamadas à API da Web para um aplicativo do lado do servidor. O aplicativo do lado do servidor Media a transferência de dados entre o Blazor WebAssembly aplicativo e o serviço ou banco de dados do armazenamento. O Blazor WebAssembly aplicativo mantém uma conexão efêmera com o aplicativo do lado do servidor, enquanto o aplicativo do lado do servidor tem uma conexão persistente com o armazenamento.
+Como Blazor WebAssembly os aplicativos são executados inteiramente no navegador do usuário, eles exigem medidas adicionais para acessar sistemas externos seguros, como bancos de dados e serviços de armazenamento. Blazor WebAssembly os aplicativos são protegidos da mesma maneira que os aplicativos de página única (SPAs). Normalmente, um aplicativo autentica um usuário por meio [](https://oauth.net) / [do OAuth OpenID Connect (OIDC)](https://openid.net/connect/) e, em seguida, interage com os serviços de armazenamento e bancos de dados por meio de chamadas à API da Web para um aplicativo do lado do servidor. O aplicativo do lado do servidor Media a transferência de dados entre o Blazor WebAssembly aplicativo e o serviço ou banco de dados do armazenamento. O Blazor WebAssembly aplicativo mantém uma conexão efêmera com o aplicativo do lado do servidor, enquanto o aplicativo do lado do servidor tem uma conexão persistente com o armazenamento.
 
 Para obter mais informações, consulte os seguintes recursos:
 
@@ -126,7 +126,7 @@ Em geral, `sessionStorage` é mais seguro usar. `sessionStorage` evita o risco d
 
 <h2 id="in-memory-state-container-service-wasm">Serviço de contêiner de estado na memória</h2>
 
-[!INCLUDE[](~/includes/blazor-state-management/state-container.md)]
+[!INCLUDE[](~/blazor/includes/state-container.md)]
 
 ## <a name="additional-resources"></a>Recursos adicionais
 
@@ -182,7 +182,7 @@ Existem localizações comuns para o estado persistente:
 
 Para persistência de dados permanente que abrange vários usuários e dispositivos, o aplicativo pode usar o armazenamento do lado do servidor. As opções incluem:
 
-* Armazenamento de Blobs
+* Armazenamento de blob
 * Armazenamento de chave-valor
 * Banco de dados relacional
 * Armazenamento de tabela
@@ -427,6 +427,8 @@ Para usar o `CounterStateProvider` componente, empacote uma instância do compon
 </CounterStateProvider>
 ```
 
+[!INCLUDE[](~/blazor/includes/prefer-exact-matches.md)]
+
 Os componentes encapsulados recebem e podem modificar o estado do contador persistente. O componente a seguir `Counter` implementa o padrão:
 
 ```razor
@@ -670,6 +672,8 @@ Para usar o `CounterStateProvider` componente, empacote uma instância do compon
 </CounterStateProvider>
 ```
 
+[!INCLUDE[](~/blazor/includes/prefer-exact-matches.md)]
+
 Os componentes encapsulados recebem e podem modificar o estado do contador persistente. O componente a seguir `Counter` implementa o padrão:
 
 ```razor
@@ -705,6 +709,6 @@ Para persistir muitos objetos de estado diferentes e consumir diferentes subconj
 
 <h2 id="in-memory-state-container-service-server">Serviço de contêiner de estado na memória</h2>
 
-[!INCLUDE[](~/includes/blazor-state-management/state-container.md)]
+[!INCLUDE[](~/blazor/includes/state-container.md)]
 
 ::: zone-end
