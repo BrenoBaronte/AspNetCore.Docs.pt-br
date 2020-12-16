@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: security/enforcing-ssl
-ms.openlocfilehash: 209d055f6205eceb9efb5434427c303345791809
-ms.sourcegitcommit: 8363e44f630fcc6433ccd2a85f7aa9567cd274ed
+ms.openlocfilehash: 3277fda0d1dcb5121a2172b3fc1e4869ed6f8430
+ms.sourcegitcommit: fc4cce2767e34f81079510f34bd54e9d0aa86497
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94981954"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97592863"
 ---
 # <a name="enforce-https-in-aspnet-core"></a>Impor HTTPS em ASP.NET Core
 
@@ -397,9 +397,11 @@ O subsistema do Windows para Linux (WSL) gera um certificado HTTPS autoassinado.
 
 Esta seção fornece ajuda quando o ASP.NET Core certificado de desenvolvimento HTTPS foi [instalado e é confiável](#trust), mas você ainda tem avisos do navegador de que o certificado não é confiável. O certificado de desenvolvimento de ASP.NET Core HTTPS é usado pelo [Kestrel](xref:fundamentals/servers/kestrel).
 
+Para reparar o certificado de IIS Express, consulte este problema de [StackOverflow](https://stackoverflow.com/a/20048613/502537) .
+
 ### <a name="all-platforms---certificate-not-trusted"></a>Todas as plataformas-certificado não confiável
 
-Execute os seguintes comandos:
+Execute os comandos a seguir:
 
 ```dotnetcli
 dotnet dev-certs https --clean
@@ -420,7 +422,7 @@ Os comandos anteriores resolvem a maioria dos problemas de confiança do navegad
 
 * Verifique os certificados no repositório de certificados. Deve haver um `localhost` certificado com o `ASP.NET Core HTTPS development certificate` nome amigável em `Current User > Personal > Certificates` e `Current User > Trusted root certification authorities > Certificates`
 * Remova todos os certificados encontrados das autoridades de certificação raiz pessoais e confiáveis. **Não** remova o IIS Express certificado localhost.
-* Execute os seguintes comandos:
+* Execute os comandos a seguir:
 
 ```dotnetcli
 dotnet dev-certs https --clean
@@ -436,7 +438,7 @@ Feche todas as instâncias do navegador abertas. Abra uma nova janela do navegad
 * Verifique a presença de um certificado localhost.
 * Verifique se ele contém um `+` símbolo no ícone para indicar que ele é confiável para todos os usuários.
 * Remova o certificado do conjunto de chaves do sistema.
-* Execute os seguintes comandos:
+* Execute os comandos a seguir:
 
 ```dotnetcli
 dotnet dev-certs https --clean
