@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/index
-ms.openlocfilehash: ecdf4f59aca0fe71bbfcfe61a99109127c8b92df
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: 79c225a0714562a01afe67bf8e59f3b3f98a6265
+ms.sourcegitcommit: e9b8835a02f75b6378b766edb8bab23b14a4192b
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93055706"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97666853"
 ---
 # <a name="introduction-to-aspnet-core-no-locblazor"></a>Introdução ao ASP.NET Core Blazor
 
@@ -50,7 +50,7 @@ Usar o .NET para desenvolvimento web do lado do cliente oferece as seguintes van
 
 ## <a name="components"></a>Componentes
 
-Blazor os aplicativos são baseados em *componentes* . Um componente no Blazor é um elemento da interface do usuário, como um formulário de página, caixa de diálogo ou entrada de dados.
+Blazor os aplicativos são baseados em *componentes*. Um componente no Blazor é um elemento da interface do usuário, como um formulário de página, caixa de diálogo ou entrada de dados.
 
 Os componentes são classes .NET C# embutidas em [assemblies .net](/dotnet/standard/assembly/) que:
 
@@ -59,7 +59,7 @@ Os componentes são classes .NET C# embutidas em [assemblies .net](/dotnet/stand
 * Podem ser aninhados e reutilizados.
 * Pode ser compartilhado e distribuído como [ Razor bibliotecas de classes](xref:razor-pages/ui-class) ou [pacotes NuGet](/nuget/what-is-nuget).
 
-A classe de componente geralmente é escrita na forma de uma [Razor](xref:mvc/views/razor) página de marcação com uma `.razor` extensão de arquivo. Os componentes no Blazor são formalmente chamados de *Razor componentes* . Razor é uma sintaxe para combinar marcação HTML com código C# projetado para a produtividade do desenvolvedor. Razor permite que você alterne entre marcação HTML e C# no mesmo arquivo com suporte à programação [IntelliSense](/visualstudio/ide/using-intellisense) no Visual Studio. Razor As páginas e MVC também usam o Razor . Ao contrário de Razor páginas e MVC, que são criadas em um modelo de solicitação/resposta, os componentes são usados especificamente para a lógica e a composição da interface do usuário do lado do cliente.
+A classe de componente geralmente é escrita na forma de uma [Razor](xref:mvc/views/razor) página de marcação com uma `.razor` extensão de arquivo. Os componentes no Blazor são formalmente chamados de *Razor componentes*. Razor é uma sintaxe para combinar marcação HTML com código C# projetado para a produtividade do desenvolvedor. Razor permite que você alterne entre marcação HTML e C# no mesmo arquivo com suporte à programação [IntelliSense](/visualstudio/ide/using-intellisense) no Visual Studio. Razor As páginas e MVC também usam o Razor . Ao contrário de Razor páginas e MVC, que são criadas em um modelo de solicitação/resposta, os componentes são usados especificamente para a lógica e a composição da interface do usuário do lado do cliente.
 
 Blazor usa marcas HTML naturais para composição da interface do usuário. A marcação a seguir Razor demonstra um componente ( `Dialog.razor` ) que exibe uma caixa de diálogo e processa um evento quando o usuário seleciona um botão:
 
@@ -108,7 +108,7 @@ A caixa de diálogo é renderizada quando o `Index` componente é acessado em um
 
 ![Componente de caixa de diálogo renderizado no navegador aninhado dentro do componente de índice. O console de ferramentas de desenvolvedor do navegador mostra a mensagem escrita pelo código C# quando o usuário seleciona Sim! na interface do usuário.](index/_static/dialog.png)
 
-Os componentes são renderizados em uma representação na memória do Modelo de Objeto do Documento do navegador [(dom)](https://developer.mozilla.org/docs/Web/API/Document_Object_Model/Introduction) chamado de *árvore de renderização* , que é usada para atualizar a interface do usuário de maneira flexível e eficiente.
+Os componentes são renderizados em uma representação na memória do Modelo de Objeto do Documento do navegador [(dom)](https://developer.mozilla.org/docs/Web/API/Document_Object_Model/Introduction) chamado de *árvore de renderização*, que é usada para atualizar a interface do usuário de maneira flexível e eficiente.
 
 ## Blazor WebAssembly
 
@@ -116,7 +116,7 @@ Blazor WebAssembly o é uma [estrutura de Spa (aplicativo de página única)](/d
 
 A execução de código .NET dentro de navegadores da Web é possibilitada pelo [Webassembly](https://webassembly.org) (abreviado `wasm` ). O WebAssembly é um formato de código de bytes compacto, otimizado para download rápido e máxima velocidade de execução. O WebAssembly é um padrão aberto da Web compatível com navegadores da Web sem plug-ins.
 
-O código Webassembly pode acessar a funcionalidade completa do navegador via JavaScript, chamada de *interoperabilidade de JavaScript* , geralmente reduzida para interoperabilidade de *JavaScript* ou de *js* . O código .NET executado por meio da WebAssembly no navegador é executado na área restrita do JavaScript do navegador com as proteções que a área restrita oferece contra ações mal intencionadas no computador cliente.
+O código Webassembly pode acessar a funcionalidade completa do navegador via JavaScript, chamada de *interoperabilidade de JavaScript*, geralmente reduzida para interoperabilidade de *JavaScript* ou de *js*. O código .NET executado por meio da WebAssembly no navegador é executado na área restrita do JavaScript do navegador com as proteções que a área restrita oferece contra ações mal intencionadas no computador cliente.
 
 ![::: no-Loc (Webassembly do mais alto)::: executa o código .NET no navegador com Webassembly.](index/_static/blazor-webassembly.png)
 
@@ -126,7 +126,7 @@ Quando um Blazor WebAssembly aplicativo é compilado e executado em um navegador
 * Os assemblies e o [tempo de execução do .net](/dotnet/framework/get-started/overview) são baixados para o navegador.
 * Blazor WebAssembly Inicializa o tempo de execução do .NET e configura o tempo de execução para carregar os assemblies para o aplicativo. O Blazor WebAssembly tempo de execução usa a interoperabilidade JavaScript para lidar com a manipulação de Dom e chamadas de API de navegador
 
-O tamanho do aplicativo publicado, seu *tamanho de payload* , é um fator de desempenho crítico para a utilidade do aplicativo. Um aplicativo grande leva um tempo relativamente longo para baixar para um navegador, o que afeta a experiência do usuário. Blazor WebAssembly otimiza o tamanho da carga para reduzir os tempos de download:
+O tamanho do aplicativo publicado, seu *tamanho de carga*, é um fator de desempenho crítico para a usabilidade de um aplicativo. Um aplicativo grande leva um tempo relativamente longo para baixar para um navegador, o que afeta a experiência do usuário. Blazor WebAssembly otimiza o tamanho da carga para reduzir os tempos de download:
 
 ::: moniker range=">= aspnetcore-5.0"
 
