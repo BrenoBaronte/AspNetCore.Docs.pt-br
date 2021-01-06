@@ -19,10 +19,10 @@ no-loc:
 - SignalR
 uid: host-and-deploy/docker/building-net-docker-images
 ms.openlocfilehash: 81daa1d4a996519f44e513b4f61c27cdf2b6ef5e
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 01/04/2021
 ms.locfileid: "93059800"
 ---
 # <a name="docker-images-for-aspnet-core"></a>Imagens do Docker para o ASP.NET Core
@@ -86,7 +86,7 @@ O exemplo de Dockerfile usa o [recurso de build de vários estágios do Docker](
 
 ## <a name="run-the-app-locally"></a>Executar o aplicativo localmente
 
-* Navegue até a pasta do projeto em *dotnet-docker/samples/aspnetapp/aspnetapp* .
+* Navegue até a pasta do projeto em *dotnet-docker/samples/aspnetapp/aspnetapp*.
 
 * Execute o seguinte comando para compilar e executar o aplicativo localmente:
 
@@ -102,7 +102,7 @@ O exemplo de Dockerfile usa o [recurso de build de vários estágios do Docker](
 
 * No cliente do Docker, [alterne para contêineres do Linux](https://docs.docker.com/docker-for-windows/#switch-between-windows-and-linux-containers).
 
-* Navegue até a pasta do Dockerfile em *dotnet-docker/samples/aspnetapp* .
+* Navegue até a pasta do Dockerfile em *dotnet-docker/samples/aspnetapp*.
 
 * Execute os seguintes comandos para compilar e executar a amostra no Docker:
 
@@ -158,7 +158,7 @@ Navegue até a pasta do arquivo do docker em `dotnet-docker/samples/aspnetapp`.
 
 Em alguns cenários, talvez você queira implantar um aplicativo em um contêiner copiando nele os arquivos do aplicativo que são necessários no tempo de execução. Esta seção mostra como realizar a implantação manual.
 
-* Navegue até a pasta do projeto em *dotnet-docker/samples/aspnetapp/aspnetapp* .
+* Navegue até a pasta do projeto em *dotnet-docker/samples/aspnetapp/aspnetapp*.
 
 * Execute o comando [dotnet publish](/dotnet/core/tools/dotnet-publish):
 
@@ -168,9 +168,9 @@ Em alguns cenários, talvez você queira implantar um aplicativo em um contêine
 
   Os argumentos do comando:
   * Compile o aplicativo no modo de versão (o padrão é o modo de depuração).
-  * Crie os arquivos na pasta *published* .
+  * Crie os arquivos na pasta *published*.
 
-* Executar o aplicativo.
+* Execute o aplicativo.
 
   * Windows:
 

@@ -19,10 +19,10 @@ no-loc:
 - SignalR
 uid: razor-pages/filter
 ms.openlocfilehash: a6d25c1b88e09560c1aad9aefd9148f7fe293909
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 01/04/2021
 ms.locfileid: "93056823"
 ---
 # <a name="filter-methods-for-no-locrazor-pages-in-aspnet-core"></a>Métodos de filtro para Razor páginas no ASP.NET Core
@@ -73,7 +73,7 @@ O código a seguir habilita o `SampleAsyncPageFilter` na classe `Startup`:
 
 [!code-csharp[Main](filter/3.1sample/PageFilter/Startup.cs?name=snippet2)]
 
-O código a seguir chama <xref:Microsoft.AspNetCore.Mvc.ApplicationModels.PageConventionCollection.AddFolderApplicationModelConvention*> para aplicar as `SampleAsyncPageFilter` somente páginas em */Movies* :
+O código a seguir chama <xref:Microsoft.AspNetCore.Mvc.ApplicationModels.PageConventionCollection.AddFolderApplicationModelConvention*> para aplicar as `SampleAsyncPageFilter` somente páginas em */Movies*:
 
 [!code-csharp[Main](filter/3.1sample/PageFilter/Startup2.cs?name=snippet2)]
 
@@ -103,7 +103,7 @@ O código a seguir se aplica ao atributo `AddHeader`:
 
 [!code-csharp[Main](filter/3.1sample/PageFilter/Pages/Movies/Test.cshtml.cs)]
 
-Use uma ferramenta como as ferramentas de desenvolvedor do navegador para examinar os cabeçalhos. Em **cabeçalhos de resposta** , `author: Rick` é exibido.
+Use uma ferramenta como as ferramentas de desenvolvedor do navegador para examinar os cabeçalhos. Em **cabeçalhos de resposta**, `author: Rick` é exibido.
 
 Confira [Substituindo a ordem padrão](xref:mvc/controllers/filters#overriding-the-default-order) para obter instruções sobre a substituição da ordem.
 
@@ -169,7 +169,7 @@ O código a seguir mostra a classe `Startup` completa:
 
 [!code-csharp[Main](filter/sample/PageFilter/Startup.cs?name=snippet1)]
 
-O código a seguir chama `AddFolderApplicationModelConvention` para aplicar o `SampleAsyncPageFilter` somente às páginas em */subFolder* :
+O código a seguir chama `AddFolderApplicationModelConvention` para aplicar o `SampleAsyncPageFilter` somente às páginas em */subFolder*:
 
 [!code-csharp[Main](filter/sample/PageFilter/Startup2.cs?name=snippet2)]
 

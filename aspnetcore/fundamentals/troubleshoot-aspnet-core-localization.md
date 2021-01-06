@@ -18,10 +18,10 @@ no-loc:
 - SignalR
 uid: fundamentals/troubleshoot-aspnet-core-localization
 ms.openlocfilehash: 995db4c8c9d0c0f1f77b1fd3665e707975406a7f
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 01/04/2021
 ms.locfileid: "93053612"
 ---
 # <a name="troubleshoot-aspnet-core-localization"></a>Solucionar problemas de Localização no ASP.NET Core
@@ -118,4 +118,4 @@ Quando o namespace raiz de um assembly for diferente do nome do assembly, a loca
 
 ## <a name="resources--build-action"></a>Recursos e ação de build
 
-Se você usa arquivos de recurso para localização, é importante que eles tenham uma ação de build correta. Eles precisam ser um **Recurso inserido** ; caso contrário, o `ResourceStringLocalizer` não conseguirá localizar os recursos.
+Se você usa arquivos de recurso para localização, é importante que eles tenham uma ação de build correta. Eles precisam ser um **Recurso inserido**; caso contrário, o `ResourceStringLocalizer` não conseguirá localizar os recursos.

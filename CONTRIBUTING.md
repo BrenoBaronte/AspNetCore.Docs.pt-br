@@ -4,7 +4,7 @@ Este documento aborda o processo para contribuir para os artigos e exemplos de c
 
 ## <a name="how-to-make-a-simple-correction-or-suggestion"></a>Como fazer uma correção ou sugestão simples
 
-Artigos são armazenados no repositório, como arquivos de Markdown. São feitas alterações simples ao conteúdo de um arquivo Markdown no navegador selecionando o link **Editar** no canto superior direito da janela do navegador. (Em uma janela estreita do navegador, expanda a barra **de opções** para ver o link **Editar.)** Siga as instruções para criar uma solicitação de tração (PR). Vamos examinar a PR e aceitá-la ou sugerir alterações.
+Artigos são armazenados no repositório, como arquivos de Markdown. São feitas alterações simples ao conteúdo de um arquivo Markdown no navegador selecionando o link **Editar** no canto superior direito da janela do navegador. (Em uma janela estreita do navegador, expanda a barra de **Opções** para ver o link **Editar** .) Siga as instruções para criar uma solicitação de pull (PR). Vamos examinar a PR e aceitá-la ou sugerir alterações.
 
 ## <a name="how-to-make-a-more-complex-submission"></a>Como fazer um envio mais complexo
 

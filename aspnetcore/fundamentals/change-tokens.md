@@ -19,10 +19,10 @@ no-loc:
 - SignalR
 uid: fundamentals/change-tokens
 ms.openlocfilehash: f20d44c7767b284f727ce19a46224dae0cf6a5e1
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 01/04/2021
 ms.locfileid: "93053768"
 ---
 # <a name="detect-changes-with-change-tokens-in-aspnet-core"></a>Detectar alterações com tokens de alteração no ASP.NET Core
@@ -67,7 +67,7 @@ Os tokens de alteração são usados nas áreas proeminentes do ASP.NET Core par
 
 ## <a name="monitor-for-configuration-changes"></a>Monitorar as alterações de configuração
 
-Por padrão, os modelos de ASP.NET Core usam [arquivos de configuração JSON](xref:fundamentals/configuration/index#json-configuration-provider) ( *appsettings.json* , *appsettings.Development.jsem* e *appsettings.Production.jsem* ) para carregar as definições de configuração de aplicativo.
+Por padrão, os modelos de ASP.NET Core usam [arquivos de configuração JSON](xref:fundamentals/configuration/index#json-configuration-provider) ( *appsettings.json* , *appsettings.Development.jsem* e *appsettings.Production.jsem*) para carregar as definições de configuração de aplicativo.
 
 Esses arquivos são configurados com o método de extensão [AddJsonFile(IConfigurationBuilder, String, Boolean, Boolean)](xref:Microsoft.Extensions.Configuration.JsonConfigurationExtensions.AddJsonFile*) no <xref:Microsoft.Extensions.Configuration.ConfigurationBuilder> que aceita um parâmetro `reloadOnChange`. `reloadOnChange` indica se a configuração deve ser recarregada após alterações de arquivo. Essa configuração é exibida no método de conveniência <xref:Microsoft.Extensions.Hosting.Host.CreateDefaultBuilder*> de <xref:Microsoft.Extensions.Hosting.Host>:
 
@@ -85,7 +85,7 @@ O aplicativo de exemplo demonstra duas implementações para monitorar as altera
 
 O `FileSystemWatcher` de um arquivo de configuração pode disparar vários retornos de chamada de token para uma única alteração de arquivo de configuração. Para garantir que o código personalizado é executado somente depois que os vários retornos de chamada de token são acionados, a implementação da amostra verifica os hashes do arquivo. O exemplo usa o hash de arquivo SHA1. Uma nova tentativa é implementada com uma retirada exponencial. A nova tentativa está presente porque o bloqueio de arquivo pode ocorrer, o que impede temporariamente a computação de um novo hash em um arquivo.
 
-*Utilities/Utilities.cs* :
+*Utilities/Utilities.cs*:
 
 [!code-csharp[](change-tokens/samples/3.x/SampleApp/Utilities/Utilities.cs?name=snippet1)]
 
@@ -115,7 +115,7 @@ A amostra implementa:
 
 A amostra estabelece uma interface `IConfigurationMonitor`.
 
-*Extensions/ConfigurationMonitor.cs* :
+*Extensions/ConfigurationMonitor.cs*:
 
 [!code-csharp[](change-tokens/samples/3.x/SampleApp/Extensions/ConfigurationMonitor.cs?name=snippet1)]
 
@@ -141,7 +141,7 @@ Uma instância `ConfigurationMonitor` é registrada como um serviço em `Startup
 
 A página Índice oferece ao usuário o controle sobre o monitoramento de configuração. A instância de `IConfigurationMonitor` é injetada no `IndexModel`.
 
-*Pages/Index.cshtml.cs* :
+*Pages/Index.cshtml.cs*:
 
 [!code-csharp[](change-tokens/samples/3.x/SampleApp/Pages/Index.cshtml.cs?name=snippet1)]
 
@@ -153,7 +153,7 @@ Quando `OnPostStartMonitoring` é disparado, o monitoramento é habilitado e o e
 
 Os botões na interface do usuário habilitam e desabilitar o monitoramento.
 
-*Pages/index. cshtml* :
+*Pages/index. cshtml*:
 
 [!code-cshtml[](change-tokens/samples/3.x/SampleApp/Pages/Index.cshtml?name=snippet_Buttons)]
 
@@ -170,11 +170,11 @@ A amostra usa `GetFileContent` para:
 * Retornar o conteúdo do arquivo.
 * Implementar um algoritmo de repetição com retirada exponencial para abranger casos em que um bloqueio de arquivo impede temporariamente a leitura do arquivo.
 
-*Utilities/Utilities.cs* :
+*Utilities/Utilities.cs*:
 
 [!code-csharp[](change-tokens/samples/3.x/SampleApp/Utilities/Utilities.cs?name=snippet2)]
 
-Um `FileService` é criado para manipular pesquisas de arquivos armazenados em cache. A chamada de método `GetFileContent` do serviço tenta obter o conteúdo do arquivo do cache em memória e retorná-lo para o chamador ( *Services/FileService.cs* ).
+Um `FileService` é criado para manipular pesquisas de arquivos armazenados em cache. A chamada de método `GetFileContent` do serviço tenta obter o conteúdo do arquivo do cache em memória e retorná-lo para o chamador (*Services/FileService.cs*).
 
 Se o conteúdo armazenado em cache não é encontrado com a chave de cache, as seguintes ações são executadas:
 
@@ -194,7 +194,7 @@ Em `Startup.ConfigureServices`:
 
 O modelo de página carrega o conteúdo do arquivo usando o serviço.
 
-No método `OnGet` da página de índice ( *Pages/Index.cshtml.cs* ):
+No método `OnGet` da página de índice (*Pages/Index.cshtml.cs*):
 
 [!code-csharp[](change-tokens/samples/3.x/SampleApp/Pages/Index.cshtml.cs?name=snippet3)]
 
@@ -265,7 +265,7 @@ Os tokens de alteração são usados nas áreas proeminentes do ASP.NET Core par
 
 ## <a name="monitor-for-configuration-changes"></a>Monitorar as alterações de configuração
 
-Por padrão, os modelos de ASP.NET Core usam [arquivos de configuração JSON](xref:fundamentals/configuration/index#json-configuration-provider) ( *appsettings.json* , *appsettings.Development.jsem* e *appsettings.Production.jsem* ) para carregar as definições de configuração de aplicativo.
+Por padrão, os modelos de ASP.NET Core usam [arquivos de configuração JSON](xref:fundamentals/configuration/index#json-configuration-provider) ( *appsettings.json* , *appsettings.Development.jsem* e *appsettings.Production.jsem*) para carregar as definições de configuração de aplicativo.
 
 Esses arquivos são configurados com o método de extensão [AddJsonFile(IConfigurationBuilder, String, Boolean, Boolean)](xref:Microsoft.Extensions.Configuration.JsonConfigurationExtensions.AddJsonFile*) no <xref:Microsoft.Extensions.Configuration.ConfigurationBuilder> que aceita um parâmetro `reloadOnChange`. `reloadOnChange` indica se a configuração deve ser recarregada após alterações de arquivo. Essa configuração é exibida no método de conveniência <xref:Microsoft.AspNetCore.WebHost.CreateDefaultBuilder*> de <xref:Microsoft.AspNetCore.WebHost>:
 
@@ -283,7 +283,7 @@ O aplicativo de exemplo demonstra duas implementações para monitorar as altera
 
 O `FileSystemWatcher` de um arquivo de configuração pode disparar vários retornos de chamada de token para uma única alteração de arquivo de configuração. Para garantir que o código personalizado é executado somente depois que os vários retornos de chamada de token são acionados, a implementação da amostra verifica os hashes do arquivo. O exemplo usa o hash de arquivo SHA1. Uma nova tentativa é implementada com uma retirada exponencial. A nova tentativa está presente porque o bloqueio de arquivo pode ocorrer, o que impede temporariamente a computação de um novo hash em um arquivo.
 
-*Utilities/Utilities.cs* :
+*Utilities/Utilities.cs*:
 
 [!code-csharp[](change-tokens/samples/2.x/SampleApp/Utilities/Utilities.cs?name=snippet1)]
 
@@ -313,7 +313,7 @@ A amostra implementa:
 
 A amostra estabelece uma interface `IConfigurationMonitor`.
 
-*Extensions/ConfigurationMonitor.cs* :
+*Extensions/ConfigurationMonitor.cs*:
 
 [!code-csharp[](change-tokens/samples/2.x/SampleApp/Extensions/ConfigurationMonitor.cs?name=snippet1)]
 
@@ -339,7 +339,7 @@ Uma instância `ConfigurationMonitor` é registrada como um serviço em `Startup
 
 A página Índice oferece ao usuário o controle sobre o monitoramento de configuração. A instância de `IConfigurationMonitor` é injetada no `IndexModel`.
 
-*Pages/Index.cshtml.cs* :
+*Pages/Index.cshtml.cs*:
 
 [!code-csharp[](change-tokens/samples/2.x/SampleApp/Pages/Index.cshtml.cs?name=snippet1)]
 
@@ -351,7 +351,7 @@ Quando `OnPostStartMonitoring` é disparado, o monitoramento é habilitado e o e
 
 Os botões na interface do usuário habilitam e desabilitar o monitoramento.
 
-*Pages/index. cshtml* :
+*Pages/index. cshtml*:
 
 [!code-cshtml[](change-tokens/samples/2.x/SampleApp/Pages/Index.cshtml?name=snippet_Buttons)]
 
@@ -368,11 +368,11 @@ A amostra usa `GetFileContent` para:
 * Retornar o conteúdo do arquivo.
 * Implementar um algoritmo de repetição com retirada exponencial para abranger casos em que um bloqueio de arquivo impede temporariamente a leitura do arquivo.
 
-*Utilities/Utilities.cs* :
+*Utilities/Utilities.cs*:
 
 [!code-csharp[](change-tokens/samples/2.x/SampleApp/Utilities/Utilities.cs?name=snippet2)]
 
-Um `FileService` é criado para manipular pesquisas de arquivos armazenados em cache. A chamada de método `GetFileContent` do serviço tenta obter o conteúdo do arquivo do cache em memória e retorná-lo para o chamador ( *Services/FileService.cs* ).
+Um `FileService` é criado para manipular pesquisas de arquivos armazenados em cache. A chamada de método `GetFileContent` do serviço tenta obter o conteúdo do arquivo do cache em memória e retorná-lo para o chamador (*Services/FileService.cs*).
 
 Se o conteúdo armazenado em cache não é encontrado com a chave de cache, as seguintes ações são executadas:
 
@@ -392,7 +392,7 @@ Em `Startup.ConfigureServices`:
 
 O modelo de página carrega o conteúdo do arquivo usando o serviço.
 
-No método `OnGet` da página de índice ( *Pages/Index.cshtml.cs* ):
+No método `OnGet` da página de índice (*Pages/Index.cshtml.cs*):
 
 [!code-csharp[](change-tokens/samples/2.x/SampleApp/Pages/Index.cshtml.cs?name=snippet3)]
 

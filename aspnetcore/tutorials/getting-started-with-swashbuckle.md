@@ -19,10 +19,10 @@ no-loc:
 - SignalR
 uid: tutorials/get-started-with-swashbuckle
 ms.openlocfilehash: 9fbd4bc5e91d8f05afc99a4f04c706399f83a518
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 01/04/2021
 ms.locfileid: "93057603"
 ---
 # <a name="get-started-with-swashbuckle-and-aspnet-core"></a>Introdução ao Swashbuckle e ao ASP.NET Core
@@ -45,7 +45,7 @@ O Swashbuckle pode ser adicionado com as seguintes abordagens:
 
 ### <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-* Da janela **Console do Gerenciador de Pacotes** :
+* Da janela **Console do Gerenciador de Pacotes**:
   * Ir para **Exibir**  >  **outro**  >  **console do Gerenciador de pacotes** do Windows
   * Navegue para o diretório no qual o arquivo *TodoApi.csproj* está localizado
   * Execute o seguinte comando:
@@ -54,7 +54,7 @@ O Swashbuckle pode ser adicionado com as seguintes abordagens:
     Install-Package Swashbuckle.AspNetCore -Version 5.5.0
     ```
 
-* Da caixa de diálogo **Gerenciar Pacotes NuGet** :
+* Da caixa de diálogo **Gerenciar Pacotes NuGet**:
   * Clique com o botão direito do mouse no projeto no **Gerenciador de soluções**  >  **gerenciar pacotes NuGet**
   * Defina a **Origem do pacote** para "nuget.org"
   * Verifique se a opção "Incluir pré-lançamento" está habilitada
@@ -71,7 +71,7 @@ O Swashbuckle pode ser adicionado com as seguintes abordagens:
 
 ### <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
-Execute o comando a seguir do **Terminal Integrado** :
+Execute o comando a seguir do **Terminal Integrado**:
 
 ```dotnetcli
 dotnet add TodoApi.csproj package Swashbuckle.AspNetCore -v 5.5.0
@@ -79,7 +79,7 @@ dotnet add TodoApi.csproj package Swashbuckle.AspNetCore -v 5.5.0
 
 ### <a name="net-core-cli"></a>[CLI do .NET Core](#tab/netcore-cli)
 
-Execute o seguinte comando:
+Execute o comando a seguir:
 
 ```dotnetcli
 dotnet add TodoApi.csproj package Swashbuckle.AspNetCore -v 5.5.0
@@ -180,8 +180,8 @@ Comentários XML podem ser habilitados com as seguintes abordagens:
 
 ::: moniker range=">= aspnetcore-2.0"
 
-* Clique com o botão direito do mouse no projeto no **Gerenciador de Soluções** e selecione **Editar <nome_do_projeto>.csproj** .
-* Manualmente, adicione as linhas destacadas ao arquivo *.csproj* :
+* Clique com o botão direito do mouse no projeto no **Gerenciador de Soluções** e selecione **Editar <nome_do_projeto>.csproj**.
+* Manualmente, adicione as linhas destacadas ao arquivo *.csproj*:
 
 [!code-xml[](../tutorials/web-api-help-pages-using-swagger/samples/2.1/TodoApi.Swashbuckle/TodoApi.csproj?name=snippet_SuppressWarnings&highlight=1-2,4)]
 
@@ -189,7 +189,7 @@ Comentários XML podem ser habilitados com as seguintes abordagens:
 
 ::: moniker range="<= aspnetcore-1.1"
 
-* Clique com o botão direito do mouse no projeto em **Gerenciador de soluções** e selecione **Propriedades** .
+* Clique com o botão direito do mouse no projeto em **Gerenciador de soluções** e selecione **Propriedades**.
 * Marque a caixa **arquivo de documentação XML** na seção **saída** da guia **Compilar** .
 
 ::: moniker-end
@@ -198,8 +198,8 @@ Comentários XML podem ser habilitados com as seguintes abordagens:
 
 ::: moniker range=">= aspnetcore-2.0"
 
-* No *Painel de Soluções* , pressione **control** e clique no nome do projeto. Navegue até **ferramentas**  >  **Editar arquivo** .
-* Manualmente, adicione as linhas destacadas ao arquivo *.csproj* :
+* No *Painel de Soluções*, pressione **control** e clique no nome do projeto. Navegue até **ferramentas**  >  **Editar arquivo**.
+* Manualmente, adicione as linhas destacadas ao arquivo *.csproj*:
 
 [!code-xml[](../tutorials/web-api-help-pages-using-swagger/samples/2.1/TodoApi.Swashbuckle/TodoApi.csproj?name=snippet_SuppressWarnings&highlight=1-2,4)]
 
@@ -214,7 +214,7 @@ Comentários XML podem ser habilitados com as seguintes abordagens:
 
 #### <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
-Manualmente, adicione as linhas destacadas ao arquivo *.csproj* :
+Manualmente, adicione as linhas destacadas ao arquivo *.csproj*:
 
 ::: moniker range=">= aspnetcore-2.0"
 
@@ -230,7 +230,7 @@ Manualmente, adicione as linhas destacadas ao arquivo *.csproj* :
 
 #### <a name="net-core-cli"></a>[CLI do .NET Core](#tab/netcore-cli)
 
-Manualmente, adicione as linhas destacadas ao arquivo *.csproj* :
+Manualmente, adicione as linhas destacadas ao arquivo *.csproj*:
 
 ::: moniker range=">= aspnetcore-2.0"
 
@@ -409,7 +409,7 @@ A presença desse atributo altera o comportamento da interface do usuário e alt
 },
 ```
 
-Adicione o atributo `[Produces("application/json")]` ao controlador da API. Sua finalidade é declarar que as ações do controlador permitem o tipo de conteúdo de resposta *application/json* :
+Adicione o atributo `[Produces("application/json")]` ao controlador da API. Sua finalidade é declarar que as ações do controlador permitem o tipo de conteúdo de resposta *application/json*:
 
 ::: moniker range="<= aspnetcore-2.0"
 

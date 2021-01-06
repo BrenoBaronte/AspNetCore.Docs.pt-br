@@ -20,10 +20,10 @@ no-loc:
 - SignalR
 uid: blazor/fundamentals/handle-errors
 ms.openlocfilehash: c789928252417ef1cf95c60deb7edef24d58126e
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 01/04/2021
 ms.locfileid: "93055991"
 ---
 # <a name="handle-errors-in-aspnet-core-no-locblazor-apps"></a>Tratar erros em Blazor aplicativos ASP.NET Core
@@ -91,7 +91,7 @@ O `blazor-error-ui` elemento é oculto pelos estilos incluídos nos Blazor model
 
 ## <a name="how-a-no-locblazor-server-app-reacts-to-unhandled-exceptions"></a>Como um Blazor Server aplicativo reage a exceções sem tratamento
 
-Blazor Server é uma estrutura com estado. Enquanto os usuários interagem com um aplicativo, eles mantêm uma conexão com o servidor conhecido como um *circuito* . O circuito contém instâncias de componentes ativos, além de muitos outros aspectos do estado, como:
+Blazor Server é uma estrutura com estado. Enquanto os usuários interagem com um aplicativo, eles mantêm uma conexão com o servidor conhecido como um *circuito*. O circuito contém instâncias de componentes ativos, além de muitos outros aspectos do estado, como:
 
 * A saída renderizada mais recente dos componentes.
 * O conjunto atual de delegados de manipulação de eventos que poderia ser disparado por eventos do lado do cliente.

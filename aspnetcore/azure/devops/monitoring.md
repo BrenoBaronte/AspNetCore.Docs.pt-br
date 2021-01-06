@@ -19,10 +19,10 @@ no-loc:
 - SignalR
 uid: azure/devops/monitor
 ms.openlocfilehash: 74e789828bf5d54e3457f235657f8ed7086df80d
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 01/04/2021
 ms.locfileid: "93056745"
 ---
 # <a name="monitor-and-debug"></a>Monitorar e depurar
@@ -49,11 +49,11 @@ Os aplicativos Web do serviço de aplicativo são facilmente monitorados em temp
 
     ![Captura de tela mostrando o painel Visão geral](./media/monitoring/overview.png)
 
-    * **Http 5xx** : contagem de erros do lado do servidor, geralmente exceções no código ASP.NET Core.
-    * **Dados em** : entrada de dados que entra em seu aplicativo Web.
-    * **Saída de dados** : dados de saída de seu aplicativo Web para clientes.
-    * **Solicitações** : contagem de solicitações HTTP.
-    * **Tempo médio de resposta** : tempo médio para o aplicativo Web responder a solicitações HTTP.
+    * **Http 5xx**: contagem de erros do lado do servidor, geralmente exceções no código ASP.NET Core.
+    * **Dados em**: entrada de dados que entra em seu aplicativo Web.
+    * **Saída de dados**: dados de saída de seu aplicativo Web para clientes.
+    * **Solicitações**: contagem de solicitações HTTP.
+    * **Tempo médio de resposta**: tempo médio para o aplicativo Web responder a solicitações HTTP.
 
     Várias ferramentas de autoatendimento para solução de problemas e otimização também são encontradas nesta página.
 
@@ -80,8 +80,8 @@ Os aplicativos Web do serviço de aplicativo são facilmente monitorados em temp
 
     ![Application Insights configuração](./media/monitoring/new-app-insights.png)
 
-1. Para **tempo de execução/estrutura** , selecione **ASP.NET Core** . Aceite as configurações padrão.
-1. Selecione **OK** . Se for solicitado a confirmar, selecione **continuar** .
+1. Para **tempo de execução/estrutura**, selecione **ASP.NET Core**. Aceite as configurações padrão.
+1. Selecione **OK**. Se for solicitado a confirmar, selecione **continuar**.
 1. Depois que o recurso tiver sido criado, clique no nome do Application Insights recurso para navegar diretamente para a página Application Insights.
 
     ![Novo recurso de Application Insights está pronto](./media/monitoring/new-app-insights-done.png)
@@ -92,19 +92,19 @@ Conforme o aplicativo é usado, os dados são acumulados. Selecione **Atualizar*
 
 Application Insights fornece informações úteis do lado do servidor sem nenhuma configuração adicional. Para obter o maior valor de Application Insights, [Instrumente seu aplicativo com o SDK do Application insights](/azure/application-insights/app-insights-asp-net-core). Quando configurado corretamente, o serviço fornece monitoramento de ponta a ponta no servidor Web e no navegador, incluindo o desempenho do lado do cliente. Para obter mais informações, consulte a [documentação do Application insights](/azure/application-insights/app-insights-overview).
 
-## <a name="logging"></a>Registrando em log
+## <a name="logging"></a>Log
 
 Os logs do servidor Web e do aplicativo são desabilitados por padrão no serviço Azure App. Habilite os logs com as seguintes etapas:
 
 1. Abra o [portal do Azure](https://portal.azure.com)e navegue até o serviço de aplicativo *myWebApp \<unique_number\>* .
-1. No menu à esquerda, role para baixo até a seção **monitoramento** . Selecione **logs de diagnóstico** .
+1. No menu à esquerda, role para baixo até a seção **monitoramento** . Selecione **logs de diagnóstico**.
 
     ![Link de logs de diagnóstico](./media/monitoring/logging.png)
 
-1. Ative o **registro em log do aplicativo (Filesystem)** . Se solicitado, clique na caixa para instalar as extensões para habilitar o log de aplicativo no aplicativo Web.
-1. Defina o **log do servidor Web** no **sistema de arquivos** .
+1. Ative o **registro em log do aplicativo (Filesystem)**. Se solicitado, clique na caixa para instalar as extensões para habilitar o log de aplicativo no aplicativo Web.
+1. Defina o **log do servidor Web** no **sistema de arquivos**.
 1. Insira o **período de retenção** em dias. Por exemplo, 30.
-1. Clique em **Save** (Salvar).
+1. Clique em **Salvar**.
 
 Os logs do ASP.NET Core e do servidor Web (serviço de aplicativo) são gerados para o aplicativo Web. Eles podem ser baixados usando as informações de FTP/FTPS exibidas. A senha é a mesma que as credenciais de implantação criadas anteriormente neste guia. Os logs podem ser [transmitidos diretamente para seu computador local com o PowerShell ou CLI do Azure](/azure/app-service/web-sites-enable-diagnostic-log#download). Os logs também podem ser [exibidos em Application insights](/azure/app-service/web-sites-enable-diagnostic-log#how-to-view-logs-in-application-insights).
 
@@ -113,7 +113,7 @@ Os logs do ASP.NET Core e do servidor Web (serviço de aplicativo) são gerados 
 Os logs do aplicativo e do servidor Web podem ser transmitidos em tempo real por meio do Portal.
 
 1. Abra o [portal do Azure](https://portal.azure.com)e navegue até o serviço de aplicativo *myWebApp \<unique_number\>* .
-1. No menu à esquerda, role para baixo até a seção **monitoramento** e selecione **fluxo de log** .
+1. No menu à esquerda, role para baixo até a seção **monitoramento** e selecione **fluxo de log**.
 
     ![Captura de tela mostrando link de fluxo de log](./media/monitoring/log-stream.png)
 

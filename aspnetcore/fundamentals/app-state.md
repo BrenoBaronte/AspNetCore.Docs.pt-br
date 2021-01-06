@@ -19,10 +19,10 @@ no-loc:
 - SignalR
 uid: fundamentals/app-state
 ms.openlocfilehash: c11b748f9d79235b14c9541019da6e1fb3428af6
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 01/04/2021
 ms.locfileid: "93051402"
 ---
 # <a name="session-and-state-management-in-aspnet-core"></a>Gerenciamento de sessão e estado no ASP.NET Core
@@ -142,7 +142,7 @@ Para substituir cookie os padrões de sessão, use <xref:Microsoft.AspNetCore.Bu
 
 O aplicativo usa a <xref:Microsoft.AspNetCore.Builder.SessionOptions.IdleTimeout> propriedade para determinar por quanto tempo uma sessão pode ficar ociosa antes que seu conteúdo no cache do servidor seja abandonado. Essa propriedade é independente da cookie expiração. Cada solicitação que passa pelo [Middleware da Sessão](xref:Microsoft.AspNetCore.Session.SessionMiddleware) redefine o tempo limite.
 
-Estado de sessão é *sem bloqueio* . Se duas solicitações tentarem simultaneamente modificar o conteúdo de uma sessão, a última solicitação substituirá a primeira. `Session` é implementado como uma *sessão coerente* , o que significa que todo o conteúdo é armazenado junto. Quando duas solicitações buscam modificar valores de sessão diferentes, a última solicitação pode substituir as alterações de sessão feitas pelo primeira.
+Estado de sessão é *sem bloqueio*. Se duas solicitações tentarem simultaneamente modificar o conteúdo de uma sessão, a última solicitação substituirá a primeira. `Session` é implementado como uma *sessão coerente*, o que significa que todo o conteúdo é armazenado junto. Quando duas solicitações buscam modificar valores de sessão diferentes, a última solicitação pode substituir as alterações de sessão feitas pelo primeira.
 
 ### <a name="set-and-get-session-values"></a>Definir e obter valores de Session
 
@@ -402,7 +402,7 @@ Para substituir cookie os padrões de sessão, use `SessionOptions` :
 
 O aplicativo usa a <xref:Microsoft.AspNetCore.Builder.SessionOptions.IdleTimeout> propriedade para determinar por quanto tempo uma sessão pode ficar ociosa antes que seu conteúdo no cache do servidor seja abandonado. Essa propriedade é independente da cookie expiração. Cada solicitação que passa pelo [Middleware da Sessão](xref:Microsoft.AspNetCore.Session.SessionMiddleware) redefine o tempo limite.
 
-Estado de sessão é *sem bloqueio* . Se duas solicitações tentarem simultaneamente modificar o conteúdo de uma sessão, a última solicitação substituirá a primeira. `Session` é implementado como uma *sessão coerente* , o que significa que todo o conteúdo é armazenado junto. Quando duas solicitações buscam modificar valores de sessão diferentes, a última solicitação pode substituir as alterações de sessão feitas pelo primeira.
+Estado de sessão é *sem bloqueio*. Se duas solicitações tentarem simultaneamente modificar o conteúdo de uma sessão, a última solicitação substituirá a primeira. `Session` é implementado como uma *sessão coerente*, o que significa que todo o conteúdo é armazenado junto. Quando duas solicitações buscam modificar valores de sessão diferentes, a última solicitação pode substituir as alterações de sessão feitas pelo primeira.
 
 ### <a name="set-and-get-session-values"></a>Definir e obter valores de Session
 

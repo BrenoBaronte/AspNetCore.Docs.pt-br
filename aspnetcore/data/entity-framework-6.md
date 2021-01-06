@@ -17,10 +17,10 @@ no-loc:
 - SignalR
 uid: data/entity-framework-6
 ms.openlocfilehash: 086418c161677f585b08ed360555c93d8575e701
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 01/04/2021
 ms.locfileid: "93059449"
 ---
 # <a name="aspnet-core-and-entity-framework-6"></a>ASP.NET Core e Entity Framework 6
@@ -50,7 +50,7 @@ Para usar o Entity Framework 6, o projeto precisa ser compilado no .NET Framewor
 
 A maneira recomendada para usar o Entity Framework 6 em um aplicativo ASP.NET Core é colocar o contexto EF6 e as classes de modelo em um projeto de biblioteca de classes direcionado .NET Framework. Adicione uma referência à biblioteca de classes do projeto ASP.NET Core. Consulte a [solução de exemplo do Visual Studio com projetos EF6 e ASP.NET Core](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/data/entity-framework-6/sample/).  
 
-Não é possível colocar um contexto do EF6 em um projeto ASP.NET Core, pois projetos .NET Core não dão suporte a todas as funcionalidades exigidas pelo EF6, como *Enable-Migrations* , que é obrigatória.    
+Não é possível colocar um contexto do EF6 em um projeto ASP.NET Core, pois projetos .NET Core não dão suporte a todas as funcionalidades exigidas pelo EF6, como *Enable-Migrations*, que é obrigatória.    
 
 Seja qual for o tipo de projeto em que você localize o contexto do EF6, somente ferramentas de linha de comando do EF6 funcionam com um contexto do EF6. Por exemplo, `Scaffold-DbContext` está disponível apenas no Entity Framework Core. Se você precisar fazer engenharia reversa de um banco de dados em um modelo EF6, consulte <https://docs.microsoft.com/ef/ef6/modeling/code-first/workflows/existing-database> .    
 
@@ -60,7 +60,7 @@ Seu projeto de ASP.NET Core precisa direcionar .NET Framework e fazer referênci
 
 [!code-xml[](entity-framework-6/sample/MVCCore/MVCCore.csproj?range=3-9&highlight=2)]   
 
-Ao criar um novo projeto, use o modelo **Aplicativo Web ASP.NET Core (.NET Framework)** .    
+Ao criar um novo projeto, use o modelo **Aplicativo Web ASP.NET Core (.NET Framework)**.    
 
 ## <a name="handle-connection-strings"></a>Manipular as cadeias de conexão    
 
@@ -105,7 +105,7 @@ Esta amostra pode ser criada do zero pelas seguintes etapas no Visual Studio:
 
 * No projeto Core, adicione uma referência de projeto ao projeto de biblioteca de classes.    
 
-* No projeto Core, em *Startup.cs* , registre o contexto para DI.    
+* No projeto Core, em *Startup.cs*, registre o contexto para DI.    
 
 * No projeto principal, no *appsettings.json* , adicione a cadeia de conexão.  
 

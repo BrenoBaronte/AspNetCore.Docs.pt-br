@@ -19,10 +19,10 @@ no-loc:
 - SignalR
 uid: data/ef-rp/complex-data-model
 ms.openlocfilehash: 1ac9d6303daac82f3973c5d027fe1f453dc32e02
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 01/04/2021
 ms.locfileid: "93054093"
 ---
 # <a name="part-5-no-locrazor-pages-with-ef-core-in-aspnet-core---data-model"></a>Parte 5, Razor páginas com EF Core no modelo de dados ASP.NET Core
@@ -113,7 +113,7 @@ O atributo `StringLength` não impede que um usuário insira um espaço em branc
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-No **SSOX** (Pesquisador de Objetos do SQL Server), abra o designer de tabela Aluno clicando duas vezes na tabela **Aluno** .
+No **SSOX** (Pesquisador de Objetos do SQL Server), abra o designer de tabela Aluno clicando duas vezes na tabela **Aluno**.
 
 ![Tabela Alunos no SSOX antes das migrações](complex-data-model/_static/ssox-before-migration.png)
 
@@ -222,7 +222,7 @@ SqliteException: SQLite Error 1: 'no such column: s.FirstName'.
 
 Para este tutorial, a maneira de passar esse erro é excluir e recriar a migração inicial. Para obter mais informações, confira a nota de aviso do SQLite na parte superior do [tutorial de migrações](xref:data/ef-rp/migrations).
 
-* Exclua a pasta *Migração* .
+* Exclua a pasta *Migração*.
 * Execute os seguintes comandos para remover o banco de dados, criar uma nova migração inicial e aplicar a migração:
 
   ```dotnetcli
@@ -473,7 +473,7 @@ Modelos de dados começam simples e aumentam. As PJTs (tabelas de junção sem p
 
 ### <a name="composite-key"></a>Chave composta
 
-As duas FKs em `CourseAssignment` (`InstructorID` e `CourseID`) juntas identificam exclusivamente cada linha da tabela `CourseAssignment`. `CourseAssignment` não exige um PK dedicado. As propriedades `InstructorID` e `CourseID` funcionam como uma PK composta. A única maneira de especificar PKs compostas no EF Core é com a *API fluente* . A próxima seção mostra como configurar a PK composta.
+As duas FKs em `CourseAssignment` (`InstructorID` e `CourseID`) juntas identificam exclusivamente cada linha da tabela `CourseAssignment`. `CourseAssignment` não exige um PK dedicado. As propriedades `InstructorID` e `CourseID` funcionam como uma PK composta. A única maneira de especificar PKs compostas no EF Core é com a *API fluente*. A próxima seção mostra como configurar a PK composta.
 
 A chave composta garante que:
 
@@ -538,7 +538,7 @@ O diagrama acima mostra:
 
 ## <a name="seed-the-database"></a>Propagar o banco de dados
 
-Atualize o código em *Data/DbInitializer.cs* :
+Atualize o código em *Data/DbInitializer.cs*:
 
 [!code-csharp[](intro/samples/cu30/Data/DbInitializer.cs)]
 
@@ -591,7 +591,7 @@ Na próxima seção, você verá como evitar esse erro.
 Agora que você tem um banco de dados existente, precisa pensar sobre como aplicar as alterações a ele. Este tutorial mostra duas alternativas:
 
 * [Remover e recriar o banco de dados](#drop). Escolha esta seção se você estiver usando o SQLite.
-* [Aplique a migração para o banco de dados existente](#applyexisting). As instruções nesta seção funcionam apenas para SQL Server, **não para o SQLite** . 
+* [Aplique a migração para o banco de dados existente](#applyexisting). As instruções nesta seção funcionam apenas para SQL Server, **não para o SQLite**. 
 
 Qualquer opção funciona para o SQL Server. Embora o método apply-migration seja mais complexo e demorado, é a abordagem preferencial para ambientes de produção do mundo real. 
 
@@ -620,9 +620,9 @@ Para forçar o EF Core a criar um novo banco de dados, remova e atualize o banco
 
 # <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
-* Abra uma janela Comando e navegue para a pasta do projeto. A pasta do projeto contém o arquivo *ContosoUniversity.csproj* .
+* Abra uma janela Comando e navegue para a pasta do projeto. A pasta do projeto contém o arquivo *ContosoUniversity.csproj*.
 
-* Execute o seguinte comando:
+* Execute o comando a seguir:
 
   ```dotnetcli
   dotnet ef database drop --force
@@ -643,14 +643,14 @@ Execute o aplicativo. A execução do aplicativo executa o método `DbInitialize
 
 Abra o banco de dados no SSOX:
 
-* Se o SSOX for aberto anteriormente, clique no botão **Atualizar** .
-* Expanda o nó **Tabelas** . As tabelas criadas são exibidas.
+* Se o SSOX for aberto anteriormente, clique no botão **Atualizar**.
+* Expanda o nó **Tabelas**. As tabelas criadas são exibidas.
 
   ![Tabelas no SSOX](complex-data-model/_static/ssox-tables.png)
 
-* Examine a tabela **CourseAssignment** :
+* Examine a tabela **CourseAssignment**:
 
-  * Clique com o botão direito do mouse na tabela **CourseAssignment** e selecione **Exibir Dados** .
+  * Clique com o botão direito do mouse na tabela **CourseAssignment** e selecione **Exibir Dados**.
   * Verifique se a tabela **CourseAssignment** contém dados.
 
   ![Dados de CourseAssignment no SSOX](complex-data-model/_static/ssox-ci-data.png)
@@ -660,7 +660,7 @@ Abra o banco de dados no SSOX:
 Use sua ferramenta SQLite para examinar o banco de dados:
 
 * Novas tabelas e colunas.
-* Dados propagados em tabelas, por exemplo, a tabela **CourseAssignment** .
+* Dados propagados em tabelas, por exemplo, a tabela **CourseAssignment**.
 
 ---
 
@@ -687,7 +687,7 @@ Para fazer a migração `ComplexDataModel` funcionar com os dados existentes:
 
 Na classe de migração `ComplexDataModel`, atualize o método `Up`:
 
-* Abra o arquivo *{timestamp}_ComplexDataModel.cs* .
+* Abra o arquivo *{timestamp}_ComplexDataModel.cs*.
 * Comente a linha de código que adiciona a coluna `DepartmentID` à tabela `Course`.
 
 [!code-csharp[](intro/samples/cu30snapshots/5-complex/Migrations/ComplexDataModel.cs?name=snippet_CommentOut&highlight=9-13)]
@@ -811,7 +811,7 @@ Executar o aplicativo:
 
 ![Página Índice de Alunos mostrando erros de tamanho de cadeia de caracteres](complex-data-model/_static/string-length-errors.png)
 
-No **SSOX** (Pesquisador de Objetos do SQL Server), abra o designer de tabela Aluno clicando duas vezes na tabela **Aluno** .
+No **SSOX** (Pesquisador de Objetos do SQL Server), abra o designer de tabela Aluno clicando duas vezes na tabela **Aluno**.
 
 ![Tabela Alunos no SSOX antes das migrações](complex-data-model/_static/ssox-before-migration.png)
 
@@ -1181,7 +1181,7 @@ Modelos de dados começam simples e aumentam. PJTs (junções sem conteúdo) evo
 
 ### <a name="composite-key"></a>Chave composta
 
-As FKs não permitem valor nulo. As duas FKs em `CourseAssignment` (`InstructorID` e `CourseID`) juntas identificam exclusivamente cada linha da tabela `CourseAssignment`. `CourseAssignment` não exige um PK dedicado. As propriedades `InstructorID` e `CourseID` funcionam como uma PK composta. A única maneira de especificar PKs compostas no EF Core é com a *API fluente* . A próxima seção mostra como configurar a PK composta.
+As FKs não permitem valor nulo. As duas FKs em `CourseAssignment` (`InstructorID` e `CourseID`) juntas identificam exclusivamente cada linha da tabela `CourseAssignment`. `CourseAssignment` não exige um PK dedicado. As propriedades `InstructorID` e `CourseID` funcionam como uma PK composta. A única maneira de especificar PKs compostas no EF Core é com a *API fluente*. A próxima seção mostra como configurar a PK composta.
 
 A chave composta garante:
 
@@ -1196,7 +1196,7 @@ A entidade de junção `Enrollment` define sua própria PK e, portanto, duplicat
 
 ## <a name="update-the-db-context"></a>Atualizar o contexto de BD
 
-Adicione o seguinte código realçado a *Data/SchoolContext.cs* :
+Adicione o seguinte código realçado a *Data/SchoolContext.cs*:
 
 [!code-csharp[](intro/samples/cu21/Data/SchoolContext.cs?name=snippet_BeforeInheritance&highlight=15-18,25-31)]
 
@@ -1246,7 +1246,7 @@ O diagrama acima mostra:
 
 ## <a name="seed-the-db-with-test-data"></a>Propagar o BD com os dados de teste
 
-Atualize o código em *Data/DbInitializer.cs* :
+Atualize o código em *Data/DbInitializer.cs*:
 
 [!code-csharp[](intro/samples/cu21/Data/DbInitializer.cs?name=snippet_Final)]
 
@@ -1290,7 +1290,7 @@ database "ContosoUniversity", table "dbo.Department", column 'DepartmentID'.
 Agora que você tem um banco de dados existente, precisa pensar sobre como aplicar as alterações futuras a ele. Este tutorial mostra duas abordagens:
 
 * [Remover e recriar o banco de dados](#drop)
-* [Aplique a migração para o banco de dados existente](#applyexisting). Embora esse método seja mais complexo e demorado, é a abordagem preferencial para ambientes de produção do mundo real. **Observação** : essa é uma seção opcional do tutorial. Você pode remover e recriar etapas e ignorar esta seção. Se você quiser seguir as etapas nesta seção, não realize as etapas de remover e recriar. 
+* [Aplique a migração para o banco de dados existente](#applyexisting). Embora esse método seja mais complexo e demorado, é a abordagem preferencial para ambientes de produção do mundo real. **Observação**: essa é uma seção opcional do tutorial. Você pode remover e recriar etapas e ignorar esta seção. Se você quiser seguir as etapas nesta seção, não realize as etapas de remover e recriar. 
 
 <a name="drop"></a>
 
@@ -1311,7 +1311,7 @@ Execute `Get-Help about_EntityFrameworkCore` no PMC para obter informações de 
 
 # <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
-Abra uma janela Comando e navegue para a pasta do projeto. A pasta do projeto contém o arquivo *Startup.cs* .
+Abra uma janela Comando e navegue para a pasta do projeto. A pasta do projeto contém o arquivo *Startup.cs*.
 
 Insira o seguinte na janela Comando:
 
@@ -1326,14 +1326,14 @@ Execute o aplicativo. A execução do aplicativo executa o método `DbInitialize
 
 Abra o BD no SSOX:
 
-* Se o SSOX for aberto anteriormente, clique no botão **Atualizar** .
-* Expanda o nó **Tabelas** . As tabelas criadas são exibidas.
+* Se o SSOX for aberto anteriormente, clique no botão **Atualizar**.
+* Expanda o nó **Tabelas**. As tabelas criadas são exibidas.
 
 ![Tabelas no SSOX](complex-data-model/_static/ssox-tables.png)
 
-Examine a tabela **CourseAssignment** :
+Examine a tabela **CourseAssignment**:
 
-* Clique com o botão direito do mouse na tabela **CourseAssignment** e selecione **Exibir Dados** .
+* Clique com o botão direito do mouse na tabela **CourseAssignment** e selecione **Exibir Dados**.
 * Verifique se a tabela **CourseAssignment** contém dados.
 
 ![Dados de CourseAssignment no SSOX](complex-data-model/_static/ssox-ci-data.png)
@@ -1361,7 +1361,7 @@ Para fazer a migração `ComplexDataModel` funcionar com os dados existentes:
 
 Atualize o método `Up` das classes `ComplexDataModel`:
 
-* Abra o arquivo *{timestamp}_ComplexDataModel.cs* .
+* Abra o arquivo *{timestamp}_ComplexDataModel.cs*.
 * Comente a linha de código que adiciona a coluna `DepartmentID` à tabela `Course`.
 
 [!code-csharp[](intro/samples/cu/Migrations/20171027005808_ComplexDataModel.cs?name=snippet_CommentOut&highlight=9-13)]

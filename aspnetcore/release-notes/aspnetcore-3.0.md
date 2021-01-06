@@ -19,10 +19,10 @@ no-loc:
 - SignalR
 uid: aspnetcore-3.0
 ms.openlocfilehash: 235daac5c08248ca2052de6b44e66a8162ce23ad
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 01/04/2021
 ms.locfileid: "93051233"
 ---
 # <a name="whats-new-in-aspnet-core-30"></a>O que há de novo no ASP.NET Core 3,0
@@ -219,7 +219,7 @@ public class ChatHub : Hub
 
 A criação da `DomainRestricted` política pode envolver:
 
-* Em *Startup.cs* , adicionando a nova política.
+* Em *Startup.cs*, adicionando a nova política.
 * Forneça o `DomainRestrictedRequirement` requisito personalizado como um parâmetro.
 * Registrando `DomainRestricted` com o middleware de autorização.
 
@@ -513,7 +513,7 @@ Em versões anteriores do ASP.NET Core, chamando <xref:Microsoft.AspNetCore.Buil
 
 Esse cenário é corrigido no ASP.NET Core 3,0. O host habilita o [middleware de cabeçalhos encaminhados](xref:host-and-deploy/proxy-load-balancer#forwarded-headers-middleware-options) quando a `ASPNETCORE_FORWARDEDHEADERS_ENABLED` variável de ambiente é definida como `true` . `ASPNETCORE_FORWARDEDHEADERS_ENABLED` é definido como `true` em nossas imagens de contêiner.
 
-## <a name="performance-improvements"></a>Aprimoramentos de desempenho
+## <a name="performance-improvements"></a>Melhorias de desempenho
 
 O ASP.NET Core 3,0 inclui muitas melhorias que reduzem o uso de memória e melhoram a taxa de transferência:
 

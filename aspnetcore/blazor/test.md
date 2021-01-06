@@ -20,10 +20,10 @@ no-loc:
 - SignalR
 uid: blazor/test
 ms.openlocfilehash: cd4aee66fd6df6cc0ce520d8ca66e0a2cf130eff
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 01/04/2021
 ms.locfileid: "93054860"
 ---
 # <a name="test-components-in-aspnet-core-no-locblazor"></a>Componentes de teste no ASP.NET Core Blazor
@@ -42,7 +42,7 @@ Para testar um Blazor componente, o *componente em teste* (recortar) é:
 
 Duas abordagens comuns para testar Blazor componentes são testes de E2E (ponta a ponta) e testes de unidade:
 
-* **Teste de unidade** : os [testes de unidade](/dotnet/core/testing/) são gravados com uma biblioteca de testes de unidade que fornece:
+* **Teste de unidade**: os [testes de unidade](/dotnet/core/testing/) são gravados com uma biblioteca de testes de unidade que fornece:
   * Renderização de componente.
   * Inspeção da saída e do estado do componente.
   * Disparo de manipuladores de eventos e métodos de ciclo de vida.
@@ -50,7 +50,7 @@ Duas abordagens comuns para testar Blazor componentes são testes de E2E (ponta 
 
   [bUnit](https://github.com/egil/bUnit) é um exemplo de uma biblioteca que habilita o Razor teste de unidade de componente.
 
-* **Teste de E2E** : um executor de teste executa um Blazor aplicativo que contém o recorte e automatiza uma instância do navegador. A ferramenta de teste inspeciona e interage com o corte através do navegador. [Selenium](https://github.com/SeleniumHQ/selenium) é um exemplo de uma estrutura de teste do e2e que pode ser usada com Blazor aplicativos.
+* **Teste de E2E**: um executor de teste executa um Blazor aplicativo que contém o recorte e automatiza uma instância do navegador. A ferramenta de teste inspeciona e interage com o corte através do navegador. [Selenium](https://github.com/SeleniumHQ/selenium) é um exemplo de uma estrutura de teste do e2e que pode ser usada com Blazor aplicativos.
 
 No teste de unidade, apenas o Blazor componente ( Razor /c #) está envolvido. Dependências externas, como os serviços e a interoperabilidade JS, devem ser simuladas. No teste do E2E, o Blazor componente e toda a sua infraestrutura auxiliar fazem parte do teste, incluindo CSS, js e APIs de navegador e dom.
 
@@ -143,11 +143,11 @@ public void CounterShouldIncrementWhenSelected()
 
 As ações a seguir ocorrem em cada etapa do teste:
 
-* *Organizar* : o `Counter` componente é renderizado usando bUnit `TestContext` . O elemento de parágrafo recortado ( `<p>` ) é encontrado e atribuído a `paraElm` .
+* *Organizar*: o `Counter` componente é renderizado usando bUnit `TestContext` . O elemento de parágrafo recortado ( `<p>` ) é encontrado e atribuído a `paraElm` .
 
-* *Act* : o elemento do botão ( `<button>` ) está localizado e, em seguida, selecionado chamando `Click` , que deve incrementar o contador e atualizar o conteúdo da marca de parágrafo ( `<p>` ). O conteúdo de texto do elemento de parágrafo é obtido chamando `TextContent` .
+* *Act*: o elemento do botão ( `<button>` ) está localizado e, em seguida, selecionado chamando `Click` , que deve incrementar o contador e atualizar o conteúdo da marca de parágrafo ( `<p>` ). O conteúdo de texto do elemento de parágrafo é obtido chamando `TextContent` .
 
-* *Assert* : `MarkupMatches` é chamado no conteúdo de texto para verificar se ele corresponde à cadeia de caracteres esperada, que é `Current count: 1` .
+* *Assert*: `MarkupMatches` é chamado no conteúdo de texto para verificar se ele corresponde à cadeia de caracteres esperada, que é `Current count: 1` .
 
 > [!NOTE]
 > O `MarkupMatches` método Assert difere de uma asserção de comparação de cadeia de caracteres regular (por exemplo, `Assert.Equal("Current count: 1", paraElmText);` ) `MarkupMatches` realiza uma comparação semântica entre a entrada e a marcação HTML esperada. Uma comparação semântica reconhece A semântica HTML, o que significa que coisas como um espaço em branco insignificante são ignoradas. Isso resulta em testes mais estáveis. Para obter mais informações, consulte [Personalizando a comparação de HTML semântico](https://bunit.egilhansen.com/docs/verification/semantic-html-comparison).

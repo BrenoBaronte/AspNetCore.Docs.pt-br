@@ -20,10 +20,10 @@ no-loc:
 - SignalR
 uid: fundamentals/file-providers
 ms.openlocfilehash: 16e5ead9898125c804da4d60322510474201d897
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 01/04/2021
 ms.locfileid: "93059436"
 ---
 # <a name="file-providers-in-aspnet-core"></a>Provedores de arquivos no ASP.NET Core
@@ -115,7 +115,7 @@ Use [padrões glob](#glob-patterns) para especificar um ou mais arquivos a serem
 
 O aplicativo de exemplo *FileProviderSample* cria um `ManifestEmbeddedFileProvider` e passa o assembly atualmente em execução para seu construtor.
 
-*Startup.cs* :
+*Startup.cs*:
 
 ```csharp
 var manifestEmbeddedProvider = 
@@ -162,7 +162,7 @@ Alguns sistemas de arquivos, como contêineres do Docker e compartilhamentos de 
 
 ### <a name="glob-patterns"></a>Padrões glob
 
-Os caminhos do sistema de arquivos usam padrões curinga chamados *padrões glob (ou globbing)* . Especifique grupos de arquivos com esses padrões. Os dois caracteres curinga são `*` e `**`:
+Os caminhos do sistema de arquivos usam padrões curinga chamados *padrões glob (ou globbing)*. Especifique grupos de arquivos com esses padrões. Os dois caracteres curinga são `*` e `**`:
 
 **`*`**  
 Corresponde a qualquer coisa no nível da pasta atual, qualquer nome de arquivo ou qualquer extensão de arquivo. As correspondências são terminadas pelos caracteres `/` e `.` no caminho do arquivo.
@@ -262,7 +262,7 @@ Use [padrões glob](#glob-patterns) para especificar um ou mais arquivos a serem
 
 O aplicativo de amostra cria um `ManifestEmbeddedFileProvider` e passa o assembly atualmente em execução para seu construtor.
 
-*Startup.cs* :
+*Startup.cs*:
 
 ```csharp
 var manifestEmbeddedProvider = 
@@ -304,7 +304,7 @@ Alguns sistemas de arquivos, como contêineres do Docker e compartilhamentos de 
 
 ## <a name="glob-patterns"></a>Padrões glob
 
-Os caminhos do sistema de arquivos usam padrões curinga chamados *padrões glob (ou globbing)* . Especifique grupos de arquivos com esses padrões. Os dois caracteres curinga são `*` e `**`:
+Os caminhos do sistema de arquivos usam padrões curinga chamados *padrões glob (ou globbing)*. Especifique grupos de arquivos com esses padrões. Os dois caracteres curinga são `*` e `**`:
 
 **`*`**  
 Corresponde a qualquer coisa no nível da pasta atual, qualquer nome de arquivo ou qualquer extensão de arquivo. As correspondências são terminadas pelos caracteres `/` e `.` no caminho do arquivo.
@@ -321,9 +321,9 @@ Corresponde a um arquivo específico em um diretório específico.
 Corresponde a todos os arquivos com a extensão *.txt* em um diretório específico.
 
 **`directory/*/appsettings.json`**  
-Corresponde a todos os arquivos `appsettings.json` em diretórios que estão exatamente um nível abaixo da pasta *diretório* .
+Corresponde a todos os arquivos `appsettings.json` em diretórios que estão exatamente um nível abaixo da pasta *diretório*.
 
 **`directory/**/*.txt`**  
-Corresponde a todos os arquivos com a extensão *.txt* encontrados em qualquer lugar abaixo da pasta *diretório* .
+Corresponde a todos os arquivos com a extensão *.txt* encontrados em qualquer lugar abaixo da pasta *diretório*.
 
 ::: moniker-end

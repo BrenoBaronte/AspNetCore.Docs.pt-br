@@ -20,10 +20,10 @@ no-loc:
 - SignalR
 uid: client-side/spa-services
 ms.openlocfilehash: 1b9f5b4b4e066cdd3dd5fbfa666c7a087949979f
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 01/04/2021
 ms.locfileid: "93054639"
 ---
 # <a name="use-javascript-services-to-create-single-page-applications-in-aspnet-core"></a>Use os serviços JavaScript para criar aplicativos de página única no ASP.NET Core
@@ -133,7 +133,7 @@ O `UserName` argumento recebido é serializado usando o serializador JSON intern
 
 [!code-typescript[](../client-side/spa-services/sample/SpaServicesSampleApp/ClientApp/boot-server.ts?range=6,10-21,38-52,79-)]
 
-Os nomes de propriedade passados em auxiliares de marca são representados com notação de **PascalCase** . Compare com JavaScript, em que os mesmos nomes de propriedade são representados com **CamelCase** . A configuração de serialização JSON padrão é responsável por essa diferença.
+Os nomes de propriedade passados em auxiliares de marca são representados com notação de **PascalCase** . Compare com JavaScript, em que os mesmos nomes de propriedade são representados com **CamelCase**. A configuração de serialização JSON padrão é responsável por essa diferença.
 
 Para expandir o exemplo de código anterior, os dados podem ser passados do servidor para a exibição por HYDRATING a `globals` propriedade fornecida para a `resolve` função:
 
@@ -225,7 +225,7 @@ Um método de extensão chamado `MapSpaFallbackRoute` é usado no `Configure` m�
 
 As rotas são avaliadas na ordem em que estão configuradas. Consequentemente, a `default` rota no exemplo de código anterior é usada primeiro para correspondência de padrões.
 
-## <a name="create-a-new-project"></a>Criar um novo projeto
+## <a name="create-a-new-project"></a>Criar um projeto
 
 Os serviços JavaScript fornecem modelos de aplicativo pré-configurados. O SpaServices é usado nesses modelos em conjunto com estruturas e bibliotecas diferentes, como angular, reagir e Redux.
 
@@ -253,10 +253,10 @@ dotnet new angular
 
 Existem dois modos de configuração de tempo de execução primários:
 
-* **Desenvolvimento** :
+* **Desenvolvimento**:
   * Inclui mapas de origem para facilitar a depuração.
   * Não otimiza o código do lado do cliente para desempenho.
-* **Produção** :
+* **Produção**:
   * Exclui mapas de origem.
   * Otimiza o código do lado do cliente por meio de agrupamento e minificação.
 
@@ -290,7 +290,7 @@ Usando o aplicativo angular como um exemplo, dois casos de teste Jasmine já sã
 
 [!code-typescript[](../client-side/spa-services/sample/SpaServicesSampleApp/ClientApp/app/components/counter/counter.component.spec.ts?range=15-28)]
 
-Abra o prompt de comando no diretório *ClientApp* Execute o seguinte comando:
+Abra o prompt de comando no diretório *ClientApp* Execute o comando a seguir:
 
 ```console
 npm test

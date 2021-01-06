@@ -20,10 +20,10 @@ no-loc:
 - SignalR
 uid: fundamentals/middleware/write
 ms.openlocfilehash: 5f33691cbcc00f407fff907ca62547fd80f2aa3c
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 01/04/2021
 ms.locfileid: "93057460"
 ---
 # <a name="write-custom-aspnet-core-middleware"></a>Escrever middleware do ASP.NET Core personalizado
@@ -60,7 +60,7 @@ Os parâmetros adicionais para o construtor e `Invoke`/`InvokeAsync` são preenc
 
 ## <a name="middleware-dependencies"></a>Dependências de middleware
 
-O middleware deve seguir o [princípio de dependências explícitas](/dotnet/standard/modern-web-apps-azure-architecture/architectural-principles#explicit-dependencies) ao expor suas dependências em seu construtor. O middleware é construído uma vez por *tempo de vida do aplicativo* . Confira a seção [Dependências de middleware por solicitação](#per-request-middleware-dependencies) se você precisar compartilhar serviços com middleware em uma solicitação.
+O middleware deve seguir o [princípio de dependências explícitas](/dotnet/standard/modern-web-apps-azure-architecture/architectural-principles#explicit-dependencies) ao expor suas dependências em seu construtor. O middleware é construído uma vez por *tempo de vida do aplicativo*. Confira a seção [Dependências de middleware por solicitação](#per-request-middleware-dependencies) se você precisar compartilhar serviços com middleware em uma solicitação.
 
 Os componentes de middleware podem resolver suas dependências, utilizando a [DI (injeção de dependência)](xref:fundamentals/dependency-injection) por meio de parâmetros do construtor. [UseMiddleware&lt;T&gt;](/dotnet/api/microsoft.aspnetcore.builder.usemiddlewareextensions.usemiddleware#Microsoft_AspNetCore_Builder_UseMiddlewareExtensions_UseMiddleware_Microsoft_AspNetCore_Builder_IApplicationBuilder_System_Type_System_Object___) também pode aceitar parâmetros adicionais diretamente.
 
@@ -101,7 +101,7 @@ O código a seguir chama o middleware de `Startup.Configure`:
 
 ## <a name="additional-resources"></a>Recursos adicionais
 
-* [As opções de tempo de vida e de registro](xref:fundamentals/dependency-injection#lifetime-and-registration-options) contêm um exemplo completo de middleware com serviços de tempo de vida com *escopo* , *transitório* e *singleton* .
+* [As opções de tempo de vida e de registro](xref:fundamentals/dependency-injection#lifetime-and-registration-options) contêm um exemplo completo de middleware com serviços de tempo de vida com *escopo*, *transitório* e *singleton* .
 * <xref:fundamentals/middleware/index>
 * <xref:test/middleware>
 * <xref:migration/http-modules>

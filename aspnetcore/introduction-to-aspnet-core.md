@@ -19,10 +19,10 @@ no-loc:
 - SignalR
 uid: index
 ms.openlocfilehash: 4301e0d59364573767ab4cae25a4818ff84b9abc
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 01/04/2021
 ms.locfileid: "93052221"
 ---
 # <a name="introduction-to-aspnet-core"></a>Introdução ao ASP.NET Core
@@ -58,7 +58,7 @@ O ASP.NET Core MVC fornece recursos que ajudam você a compilar [APIs Web](xref:
 
 ## <a name="client-side-development"></a>Desenvolvimento do lado do cliente
 
-O ASP.NET Core integra-se perfeitamente com estruturas e bibliotecas populares do lado do cliente, [Blazor](xref:blazor/index) incluindo [, angular](xref:spa/angular), [reagir](xref:spa/react)e [Bootstrap](https://getbootstrap.com/). Para obter mais informações, confira <xref:blazor/index> e os tópicos relacionados em *Desenvolvimento do lado do cliente* .
+O ASP.NET Core integra-se perfeitamente com estruturas e bibliotecas populares do lado do cliente, [Blazor](xref:blazor/index) incluindo [, angular](xref:spa/angular), [reagir](xref:spa/react)e [Bootstrap](https://getbootstrap.com/). Para obter mais informações, confira <xref:blazor/index> e os tópicos relacionados em *Desenvolvimento do lado do cliente*.
 
 <a name="target-framework"></a>
 
@@ -137,7 +137,7 @@ O ASP.NET Core MVC fornece recursos que ajudam você a compilar [APIs Web](xref:
 
 ## <a name="client-side-development"></a>Desenvolvimento do lado do cliente
 
-O ASP.NET Core integra-se perfeitamente com estruturas e bibliotecas populares do lado do cliente, [Blazor](xref:blazor/index) incluindo [, angular](xref:spa/angular), [reagir](xref:spa/react)e [Bootstrap](https://getbootstrap.com/). Para obter mais informações, confira <xref:blazor/index> e os tópicos relacionados em *Desenvolvimento do lado do cliente* .
+O ASP.NET Core integra-se perfeitamente com estruturas e bibliotecas populares do lado do cliente, [Blazor](xref:blazor/index) incluindo [, angular](xref:spa/angular), [reagir](xref:spa/react)e [Bootstrap](https://getbootstrap.com/). Para obter mais informações, confira <xref:blazor/index> e os tópicos relacionados em *Desenvolvimento do lado do cliente*.
 
 <a name="target-framework"></a>
 
@@ -199,7 +199,7 @@ Para obter um guia de referência para migrar aplicativos ASP.NET para ASP.NET C
 Muitos dos artigos e tutoriais incluem links para exemplos de código.
 
 1. [Baixe o arquivo zip do repositório ASP.NET](https://codeload.github.com/dotnet/AspNetCore.Docs/zip/master).
-1. Descompacte o arquivo *Docs-master.zip* .
+1. Descompacte o arquivo *Docs-master.zip*.
 1. Use a URL no link de exemplo para ajudá-lo a navegar até o diretório de exemplo.
 
 ### <a name="preprocessor-directives-in-sample-code"></a>Diretivas do pré-processador no código de exemplo

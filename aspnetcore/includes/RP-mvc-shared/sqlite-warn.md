@@ -9,7 +9,7 @@
 >* Remover a tabela antiga.
 >* Renomear a nova tabela.
 >
->Para saber mais, consulte os recursos a seguir:
+>Para obter mais informações, consulte os seguintes recursos:
 >
 > * [Limitações do Provedor de Banco de Dados EF Core do SQLite](/ef/core/providers/sqlite/limitations)
 > * [Personalizar o código de migração](/ef/core/managing-schemas/migrations/#customize-migration-code)

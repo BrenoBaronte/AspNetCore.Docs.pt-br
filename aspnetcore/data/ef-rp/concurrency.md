@@ -19,10 +19,10 @@ no-loc:
 - SignalR
 uid: data/ef-rp/concurrency
 ms.openlocfilehash: 573a509041bfb34faf50a227c451824db03f92ee
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 01/04/2021
 ms.locfileid: "93053989"
 ---
 # <a name="part-8-no-locrazor-pages-with-ef-core-in-aspnet-core---concurrency"></a>Parte 8, Razor páginas com EF Core em ASP.NET Core-Concurrency
@@ -56,7 +56,7 @@ A simultaneidade otimista permite que conflitos de simultaneidade ocorram e, em 
 
 ![Alterando o orçamento para 0](concurrency/_static/change-budget30.png)
 
-Antes que Alice clique em **Salvar** , Julio visita a mesma página e altera o campo Data de Início de 1/9/2007 para 1/9/2013.
+Antes que Alice clique em **Salvar**, Julio visita a mesma página e altera o campo Data de Início de 1/9/2007 para 1/9/2013.
 
 ![Alterando a data de início para 2013](concurrency/_static/change-date30.png)
 
@@ -74,7 +74,7 @@ Julio clica em **Salvar** em uma página Editar que ainda mostra um orçamento d
 
 * Você não pode deixar a alteração de Julio substituir a alteração de Alice.
 
-  Na próxima vez que alguém navegar pelo departamento de inglês, verá 1/9/2013 e o valor de US$ 350.000,00 buscado. Essa abordagem é chamada de um cenário *O cliente vence* ou *O último vence* . (Todos os valores do cliente têm precedência sobre o que está no armazenamento de dados.) Se você não fizer qualquer codificação para manipulação de simultaneidade, o cliente WINS ocorrerá automaticamente.
+  Na próxima vez que alguém navegar pelo departamento de inglês, verá 1/9/2013 e o valor de US$ 350.000,00 buscado. Essa abordagem é chamada de um cenário *O cliente vence* ou *O último vence*. (Todos os valores do cliente têm precedência sobre o que está no armazenamento de dados.) Se você não fizer qualquer codificação para manipulação de simultaneidade, o cliente WINS ocorrerá automaticamente.
 
 * Você pode impedir que as alterações de Julio sejam atualizadas no banco de dados. Normalmente, o aplicativo:
 
@@ -82,7 +82,7 @@ Julio clica em **Salvar** em uma página Editar que ainda mostra um orçamento d
   * Mostra o estado atual dos dados.
   * Permite ao usuário aplicar as alterações novamente.
 
-  Isso é chamado de um cenário *O armazenamento vence* . (Os valores de armazenamento de dados têm precedência sobre os valores enviados pelo cliente.) Você implementa o cenário da loja vence neste tutorial. Esse método garante que nenhuma alteração é substituída sem que um usuário seja alertado.
+  Isso é chamado de um cenário *O armazenamento vence*. (Os valores de armazenamento de dados têm precedência sobre os valores enviados pelo cliente.) Você implementa o cenário da loja vence neste tutorial. Esse método garante que nenhuma alteração é substituída sem que um usuário seja alertado.
 
 ## <a name="conflict-detection-in-ef-core"></a>Detecção de conflitos no EF Core
 
@@ -98,7 +98,7 @@ O EF Core gera exceções `DbConcurrencyException` quando detecta conflitos. O m
 
 ## <a name="add-a-tracking-property"></a>Adicionar uma propriedade de acompanhamento
 
-Em *Models/Department.cs* , adicione uma propriedade de controle chamada RowVersion:
+Em *Models/Department.cs*, adicione uma propriedade de controle chamada RowVersion:
 
 [!code-csharp[](intro/samples/cu30/Models/Department.cs?highlight=26,27)]
 
@@ -176,8 +176,8 @@ Compile o projeto.
 
 Esse comando:
 
-* Cria o arquivo de migração *Migrations/{time stamp}_RowVersion.cs* .
-* Atualizam o arquivo *Migrations/SchoolContextModelSnapshot.cs* . A atualização adiciona o seguinte código realçado ao método `BuildModel`:
+* Cria o arquivo de migração *Migrations/{time stamp}_RowVersion.cs*.
+* Atualizam o arquivo *Migrations/SchoolContextModelSnapshot.cs*. A atualização adiciona o seguinte código realçado ao método `BuildModel`:
 
   [!code-csharp[](intro/samples/cu30/Migrations/SchoolContextModelSnapshot.cs?name=snippet_Department&highlight=15-17)]
 
@@ -216,13 +216,13 @@ Esse comando:
 
 * Siga as instruções em [páginas do aluno do Scaffold](xref:data/ef-rp/intro#scaffold-student-pages) com as seguintes exceções:
 
-* Crie uma pasta *Pages/Departments* .  
+* Crie uma pasta *Pages/Departments*.  
 * Use `Department` para a classe de modelo.
   * Use a classe de contexto existente, em vez de criar uma nova.
 
 # <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
-* Crie uma pasta *Pages/Departments* .
+* Crie uma pasta *Pages/Departments*.
 
 * Execute o comando a seguir para aplicar scaffold das páginas do Departamento.
 
@@ -246,7 +246,7 @@ Compile o projeto.
 
 A ferramenta de scaffolding criou uma coluna `RowVersion` para a página de índice, mas esse campo não seria exibido em um aplicativo de produção. Neste tutorial, o último byte do `RowVersion` é exibido para ajudar a mostrar como funciona a manipulação de simultaneidade. O último byte não tem garantia de ser exclusivo em si.
 
-Atualize a página *Pages\Departments\Index.cshtml* :
+Atualize a página *Pages\Departments\Index.cshtml*:
 
 * Substitua Índice por Departamentos.
 * Altere o código que contém `RowVersion` para mostrar apenas o último byte da matriz de bytes.
@@ -280,7 +280,7 @@ O seguinte código adiciona uma mensagem de erro personalizada a cada coluna que
 
 [!code-csharp[](intro/samples/cu30/Pages/Departments/Edit.cshtml.cs?name=snippet_Error)]
 
-O código realçado a seguir define o valor `RowVersion` com o novo valor recuperado do banco de dados. Na próxima vez que o usuário clicar em **Salvar** , somente os erros de simultaneidade que ocorrerem desde a última exibição da página Editar serão capturados.
+O código realçado a seguir define o valor `RowVersion` com o novo valor recuperado do banco de dados. Na próxima vez que o usuário clicar em **Salvar**, somente os erros de simultaneidade que ocorrerem desde a última exibição da página Editar serão capturados.
 
 [!code-csharp[](intro/samples/cu30/Pages/Departments/Edit.cshtml.cs?name=snippet_TryUpdateModel&highlight=28)]
 
@@ -304,12 +304,12 @@ O código anterior:
 Abra duas instâncias de navegadores de Editar no departamento de inglês:
 
 * Execute o aplicativo e selecione Departamentos.
-* Clique com o botão direito do mouse no hiperlink **Editar** do departamento de inglês e selecione **Abrir em uma nova guia** .
+* Clique com o botão direito do mouse no hiperlink **Editar** do departamento de inglês e selecione **Abrir em uma nova guia**.
 * Na primeira guia, clique no hiperlink **Editar** do departamento de inglês.
 
 As duas guias do navegador exibem as mesmas informações.
 
-Altere o nome na primeira guia do navegador e clique em **Salvar** .
+Altere o nome na primeira guia do navegador e clique em **Salvar**.
 
 ![Página 1 Editar Departamento após a alteração](concurrency/_static/edit-after-change-130.png)
 
@@ -319,7 +319,7 @@ Altere outro campo na segunda guia do navegador.
 
 ![Página 2 Editar Departamento após a alteração](concurrency/_static/edit-after-change-230.png)
 
-Clique em **Save** (Salvar). Você verá mensagens de erro em todos os campos que não correspondem aos valores do banco de dados:
+Clique em **Salvar**. Você verá mensagens de erro em todos os campos que não correspondem aos valores do banco de dados:
 
 ![Mensagem de erro da página Editar Departamento](concurrency/_static/edit-error30.png)
 
@@ -349,7 +349,7 @@ O código anterior faz as seguintes alterações:
 
 * Atualiza a diretiva `page` de `@page` para `@page "{id:int}"`.
 * Adiciona uma mensagem de erro.
-* Substitua FirstMidName por FullName no campo **Administrador** .
+* Substitua FirstMidName por FullName no campo **Administrador**.
 * Altere `RowVersion` para exibir o último byte.
 * Adiciona uma versão de linha oculta. `RowVersion` deve ser adicionado para que o postback associe o valor.
 
@@ -360,12 +360,12 @@ Crie um departamento de teste.
 Abra duas instâncias dos navegadores de Excluir no departamento de teste:
 
 * Execute o aplicativo e selecione Departamentos.
-* Clique com o botão direito do mouse no hiperlink **Excluir** do departamento de teste e selecione **Abrir em uma nova guia** .
+* Clique com o botão direito do mouse no hiperlink **Excluir** do departamento de teste e selecione **Abrir em uma nova guia**.
 * Clique no hiperlink **Editar** do departamento de teste.
 
 As duas guias do navegador exibem as mesmas informações.
 
-Altere o orçamento na primeira guia do navegador e clique em **Salvar** .
+Altere o orçamento na primeira guia do navegador e clique em **Salvar**.
 
 O navegador mostra a página de Índice com o valor alterado e o indicador de rowVersion atualizado. Observe o indicador de rowVersion atualizado: ele é exibido no segundo postback na outra guia.
 
@@ -408,7 +408,7 @@ A simultaneidade otimista permite que conflitos de simultaneidade ocorram e, em 
 
 ![Alterando o orçamento para 0](concurrency/_static/change-budget.png)
 
-Antes que Alice clique em **Salvar** , Julio visita a mesma página e altera o campo Data de Início de 1/9/2007 para 1/9/2013.
+Antes que Alice clique em **Salvar**, Julio visita a mesma página e altera o campo Data de Início de 1/9/2007 para 1/9/2013.
 
 ![Alterando a data de início para 2013](concurrency/_static/change-date.png)
 
@@ -430,7 +430,7 @@ A simultaneidade otimista inclui as seguintes opções:
 
 * Você não pode deixar a alteração de Julio substituir a alteração de Alice.
 
-  Na próxima vez que alguém navegar pelo departamento de inglês, verá 1/9/2013 e o valor de US$ 350.000,00 buscado. Essa abordagem é chamada de um cenário *O cliente vence* ou *O último vence* . (Todos os valores do cliente têm precedência sobre o que está no armazenamento de dados.) Se você não fizer qualquer codificação para manipulação de simultaneidade, o cliente WINS ocorrerá automaticamente.
+  Na próxima vez que alguém navegar pelo departamento de inglês, verá 1/9/2013 e o valor de US$ 350.000,00 buscado. Essa abordagem é chamada de um cenário *O cliente vence* ou *O último vence*. (Todos os valores do cliente têm precedência sobre o que está no armazenamento de dados.) Se você não fizer qualquer codificação para manipulação de simultaneidade, o cliente WINS ocorrerá automaticamente.
 
 * Você pode impedir que as alterações de Julio sejam atualizadas no BD. Normalmente, o aplicativo:
 
@@ -438,7 +438,7 @@ A simultaneidade otimista inclui as seguintes opções:
   * Mostra o estado atual dos dados.
   * Permite ao usuário aplicar as alterações novamente.
 
-  Isso é chamado de um cenário *O armazenamento vence* . (Os valores de armazenamento de dados têm precedência sobre os valores enviados pelo cliente.) Você implementa o cenário da loja vence neste tutorial. Esse método garante que nenhuma alteração é substituída sem que um usuário seja alertado.
+  Isso é chamado de um cenário *O armazenamento vence*. (Os valores de armazenamento de dados têm precedência sobre os valores enviados pelo cliente.) Você implementa o cenário da loja vence neste tutorial. Esse método garante que nenhuma alteração é substituída sem que um usuário seja alertado.
 
 ## <a name="handling-concurrency"></a>Tratamento de simultaneidade 
 
@@ -472,7 +472,7 @@ No EF Core, quando nenhuma linha é atualizada por um comando `Update` ou `Delet
 
 ### <a name="add-a-tracking-property-to-the-department-entity"></a>Adicionar uma propriedade de controle à entidade Department
 
-Em *Models/Department.cs* , adicione uma propriedade de controle chamada RowVersion:
+Em *Models/Department.cs*, adicione uma propriedade de controle chamada RowVersion:
 
 [!code-csharp[](intro/samples/cu/Models/Department.cs?name=snippet_Final&highlight=26,27)]
 
@@ -513,8 +513,8 @@ dotnet ef database update
 
 Os comandos anteriores:
 
-* Adicionam o arquivo de migração *Migrations/{time stamp}_RowVersion.cs* .
-* Atualizam o arquivo *Migrations/SchoolContextModelSnapshot.cs* . A atualização adiciona o seguinte código realçado ao método `BuildModel`:
+* Adicionam o arquivo de migração *Migrations/{time stamp}_RowVersion.cs*.
+* Atualizam o arquivo *Migrations/SchoolContextModelSnapshot.cs*. A atualização adiciona o seguinte código realçado ao método `BuildModel`:
 
   [!code-csharp[](intro/samples/cu/Migrations/SchoolContextModelSnapshot.cs?name=snippet_Department&highlight=14-16)]
 
@@ -530,7 +530,7 @@ Siga as instruções em [Gere um modelo de aluno por scaffold](xref:data/ef-rp/i
 
 # <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
- Execute o seguinte comando:
+ Execute o comando a seguir:
 
   ```dotnetcli
   dotnet aspnet-codegenerator razorpage -m Department -dc SchoolContext -udl -outDir Pages\Departments --referenceScriptLibraries
@@ -576,7 +576,7 @@ O seguinte código adiciona uma mensagem de erro personalizada a cada coluna que
 
 [!code-csharp[](intro/samples/cu/Pages/Departments/Edit.cshtml.cs?name=snippet_err)]
 
-O código realçado a seguir define o valor `RowVersion` com o novo valor recuperado do BD. Na próxima vez que o usuário clicar em **Salvar** , somente os erros de simultaneidade que ocorrerem desde a última exibição da página Editar serão capturados.
+O código realçado a seguir define o valor `RowVersion` com o novo valor recuperado do BD. Na próxima vez que o usuário clicar em **Salvar**, somente os erros de simultaneidade que ocorrerem desde a última exibição da página Editar serão capturados.
 
 [!code-csharp[](intro/samples/cu/Pages/Departments/Edit.cshtml.cs?name=snippet_try&highlight=23)]
 
@@ -600,12 +600,12 @@ A marcação anterior:
 Abra duas instâncias de navegadores de Editar no departamento de inglês:
 
 * Execute o aplicativo e selecione Departamentos.
-* Clique com o botão direito do mouse no hiperlink **Editar** do departamento de inglês e selecione **Abrir em uma nova guia** .
+* Clique com o botão direito do mouse no hiperlink **Editar** do departamento de inglês e selecione **Abrir em uma nova guia**.
 * Na primeira guia, clique no hiperlink **Editar** do departamento de inglês.
 
 As duas guias do navegador exibem as mesmas informações.
 
-Altere o nome na primeira guia do navegador e clique em **Salvar** .
+Altere o nome na primeira guia do navegador e clique em **Salvar**.
 
 ![Página 1 Editar Departamento após a alteração](concurrency/_static/edit-after-change-1.png)
 
@@ -615,7 +615,7 @@ Altere outro campo na segunda guia do navegador.
 
 ![Página 2 Editar Departamento após a alteração](concurrency/_static/edit-after-change-2.png)
 
-Clique em **Save** (Salvar). Você verá mensagens de erro em todos os campos que não correspondem aos valores do BD:
+Clique em **Salvar**. Você verá mensagens de erro em todos os campos que não correspondem aos valores do BD:
 
 ![Mensagem de erro da página Editar Departamento](concurrency/_static/edit-error.png)
 
@@ -647,7 +647,7 @@ O código anterior faz as seguintes alterações:
 
 * Atualiza a diretiva `page` de `@page` para `@page "{id:int}"`.
 * Adiciona uma mensagem de erro.
-* Substitua FirstMidName por FullName no campo **Administrador** .
+* Substitua FirstMidName por FullName no campo **Administrador**.
 * Altere `RowVersion` para exibir o último byte.
 * Adiciona uma versão de linha oculta. `RowVersion` deve ser adicionado para que o postback associe o valor.
 
@@ -658,12 +658,12 @@ Crie um departamento de teste.
 Abra duas instâncias dos navegadores de Excluir no departamento de teste:
 
 * Execute o aplicativo e selecione Departamentos.
-* Clique com o botão direito do mouse no hiperlink **Excluir** do departamento de teste e selecione **Abrir em uma nova guia** .
+* Clique com o botão direito do mouse no hiperlink **Excluir** do departamento de teste e selecione **Abrir em uma nova guia**.
 * Clique no hiperlink **Editar** do departamento de teste.
 
 As duas guias do navegador exibem as mesmas informações.
 
-Altere o orçamento na primeira guia do navegador e clique em **Salvar** .
+Altere o orçamento na primeira guia do navegador e clique em **Salvar**.
 
 O navegador mostra a página de Índice com o valor alterado e o indicador de rowVersion atualizado. Observe o indicador de rowVersion atualizado: ele é exibido no segundo postback na outra guia.
 

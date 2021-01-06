@@ -18,17 +18,17 @@ no-loc:
 - SignalR
 uid: tutorials/first-mvc-app/search
 ms.openlocfilehash: 657072803f59feb99de8b31ddb3a6433d832aa30
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 01/04/2021
 ms.locfileid: "93059618"
 ---
 # <a name="part-7-add-search-to-an-aspnet-core-mvc-app"></a>Parte 7, adicionar pesquisa a um aplicativo ASP.NET Core MVC
 
 De [Rick Anderson](https://twitter.com/RickAndMSFT)
 
-Nesta seção, você adiciona a funcionalidade de pesquisa ao método de ação `Index` que permite pesquisar filmes por *gênero* ou *nome* .
+Nesta seção, você adiciona a funcionalidade de pesquisa ao método de ação `Index` que permite pesquisar filmes por *gênero* ou *nome*.
 
 Atualize o método `Index` encontrado dentro de *Controllers/MoviesController.cs* com o seguinte código:
 
@@ -55,7 +55,7 @@ Navegue até `/Movies/Index`. Acrescente uma cadeia de consulta, como `?searchSt
 
 ![Exibição de índice](~/tutorials/first-mvc-app/search/_static/ghost.png)
 
-Se você alterar a assinatura do método `Index` para que ele tenha um parâmetro chamado `id`, o parâmetro `id` corresponderá o espaço reservado `{id}` opcional com as rotas padrão definidas em *Startup.cs* .
+Se você alterar a assinatura do método `Index` para que ele tenha um parâmetro chamado `id`, o parâmetro `id` corresponderá o espaço reservado `{id}` opcional com as rotas padrão definidas em *Startup.cs*.
 
 [!code-csharp[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Startup.cs?highlight=5&name=snippet_1)]
 
@@ -103,7 +103,7 @@ No entanto, mesmo se você adicionar esta versão `[HttpPost]` do método `Index
 
 Veja o parâmetro de pesquisa e o token [XSRF](xref:security/anti-request-forgery) no corpo da solicitação. Observe, conforme mencionado no tutorial anterior, que o [Auxiliar de Marcação de Formulário](xref:mvc/views/working-with-forms) gera um token antifalsificação [XSRF](xref:security/anti-request-forgery). Não modificaremos os dados e, portanto, não precisamos validar o token no método do controlador.
 
-Como o parâmetro de pesquisa está no corpo da solicitação e não na URL, não é possível capturar essas informações de pesquisa para adicionar como Favoritos ou compartilhar com outras pessoas. Corrija isso especificando que a solicitação deve ser `HTTP GET`, encontrada no arquivo *Views/Movies/Index.cshtml* .
+Como o parâmetro de pesquisa está no corpo da solicitação e não na URL, não é possível capturar essas informações de pesquisa para adicionar como Favoritos ou compartilhar com outras pessoas. Corrija isso especificando que a solicitação deve ser `HTTP GET`, encontrada no arquivo *Views/Movies/Index.cshtml*.
 
 [!code-cshtml[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie22/Views/Movies/IndexGet.cshtml?highlight=12&range=1-23)]
 
@@ -119,7 +119,7 @@ A seguinte marcação mostra a alteração para a marcação `form`:
 
 ## <a name="add-search-by-genre"></a>Adicionar pesquisa por gênero
 
-Adicione a seguinte classe `MovieGenreViewModel` à pasta *Models* :
+Adicione a seguinte classe `MovieGenreViewModel` à pasta *Models*:
 
 [!code-csharp[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Models/MovieGenreViewModel.cs)]
 
@@ -144,7 +144,7 @@ Quando o usuário pesquisa o item, o valor de pesquisa é mantido na caixa de pe
 
 ## <a name="add-search-by-genre-to-the-index-view"></a>Adicionar pesquisa por gênero à exibição Índice
 
-Atualize `Index.cshtml`, encontrado em *Views/Movies/* , da seguinte maneira:
+Atualize `Index.cshtml`, encontrado em *Views/Movies/*, da seguinte maneira:
 
 [!code-cshtml[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie22/Views/Movies/IndexFormGenreNoRating.cshtml?highlight=1,15,16,17,19,28,31,34,37,43)]
 

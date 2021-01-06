@@ -19,10 +19,10 @@ no-loc:
 - SignalR
 uid: grpc/aspnetcore
 ms.openlocfilehash: b120aa4ab6922445f2c53f3b1cb3bd5c159d8a84
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 01/04/2021
 ms.locfileid: "93057824"
 ---
 # <a name="grpc-services-with-aspnet-core"></a>Serviços do gRPC com o ASP.NET Core
@@ -67,7 +67,7 @@ gRPC requer o pacote [gRPC. AspNetCore](https://www.nuget.org/packages/Grpc.AspN
 
 ### <a name="configure-grpc"></a>Configurar o gRPC
 
-Em *Startup.cs* :
+Em *Startup.cs*:
 
 * gRPC é habilitado com o `AddGrpc` método.
 * Cada serviço gRPC é adicionado ao pipeline de roteamento por meio do `MapGrpcService` método.
@@ -98,7 +98,7 @@ Em produção, o TLS deve ser configurado explicitamente. No exemplo a seguir *a
 
 [!code-json[](~/grpc/aspnetcore/sample/appsettings.json?highlight=4)]
 
-Como alternativa, os pontos de extremidade Kestrel podem ser configurados no *Program.cs* :
+Como alternativa, os pontos de extremidade Kestrel podem ser configurados no *Program.cs*:
 
 [!code-csharp[](~/grpc/aspnetcore/sample/Program.cs?highlight=7&name=snippet)]
 

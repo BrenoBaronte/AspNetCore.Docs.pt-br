@@ -19,10 +19,10 @@ no-loc:
 - SignalR
 uid: data/ef-mvc/read-related-data
 ms.openlocfilehash: 610a9e9b0007fb468ea9cdae6fadd2e756de4290
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 01/04/2021
 ms.locfileid: "93054047"
 ---
 # <a name="tutorial-read-related-data---aspnet-mvc-with-ef-core"></a>Tutorial: ler dados relacionados-ASP.NET MVC com EF Core
@@ -123,7 +123,7 @@ Essa página lê e exibe dados relacionados das seguintes maneiras:
 
 A página Instrutores mostra dados de três tabelas diferentes. Portanto, você criará um modelo de exibição que inclui três propriedades, cada uma contendo os dados de uma das tabelas.
 
-Na pasta *SchoolViewModels* , crie *InstructorIndexData.cs* e substitua o código existente pelo seguinte código:
+Na pasta *SchoolViewModels*, crie *InstructorIndexData.cs* e substitua o código existente pelo seguinte código:
 
 [!code-csharp[](intro/samples/cu/Models/SchoolViewModels/InstructorIndexData.cs)]
 
@@ -181,7 +181,7 @@ Em seguida, se um curso foi selecionado, o curso selecionado é recuperado na li
 
 ### <a name="modify-the-instructor-index-view"></a>Modificar a exibição Índice de Instrutor
 
-Em *Views/Instructors/Index.cshtml* , substitua o código de modelo pelo código a seguir. As alterações são realçadas.
+Em *Views/Instructors/Index.cshtml*, substitua o código de modelo pelo código a seguir. As alterações são realçadas.
 
 [!code-cshtml[](intro/samples/cu/Views/Instructors/Index1.cshtml?range=1-64&highlight=1,3-7,15-19,24,26-31,41-54,56)]
 
@@ -189,7 +189,7 @@ Você fez as seguintes alterações no código existente:
 
 * Alterou a classe de modelo para `InstructorIndexData`.
 
-* Alterou o título de página de **Índice** para **Instrutores** .
+* Alterou o título de página de **Índice** para **Instrutores**.
 
 * Adicionou uma coluna **Office** que exibe `item.OfficeAssignment.Location` somente se `item.OfficeAssignment` não é nulo. (Como essa é uma relação um para zero ou um, pode não haver uma entidade OfficeAssignment relacionada.)
 
@@ -223,7 +223,7 @@ Execute o aplicativo e selecione a guia **instrutores** . A página exibe a prop
 
 ![Página Índice de Instrutores – nenhuma opção selecionada](read-related-data/_static/instructors-index-no-selection.png)
 
-No arquivo *Views/Instructors/Index.cshtml* , após o elemento de tabela de fechamento (ao final do arquivo), adicione o código a seguir. Esse código exibe uma lista de cursos relacionados a um instrutor quando um instrutor é selecionado.
+No arquivo *Views/Instructors/Index.cshtml*, após o elemento de tabela de fechamento (ao final do arquivo), adicione o código a seguir. Esse código exibe uma lista de cursos relacionados a um instrutor quando um instrutor é selecionado.
 
 [!code-cshtml[](intro/samples/cu/Views/Instructors/Index1.cshtml?range=66-101)]
 
@@ -245,7 +245,7 @@ Atualize a página novamente e selecione um instrutor. Em seguida, selecione um 
 
 ## <a name="about-explicit-loading"></a>Sobre o carregamento explícito
 
-Quando você recuperou a lista de instrutores em *InstructorsController.cs* , você especificou o carregamento adiantado para a propriedade de navegação `CourseAssignments`.
+Quando você recuperou a lista de instrutores em *InstructorsController.cs*, você especificou o carregamento adiantado para a propriedade de navegação `CourseAssignments`.
 
 Suponha que os usuários esperados raramente desejem ver registros em um curso e um instrutor selecionados. Nesse caso, talvez você deseje carregar os dados de registro somente se eles forem solicitados. Para ver um exemplo de como fazer carregamento explícito, substitua o método `Index` pelo código a seguir, que remove o carregamento adiantado para Enrollments e carrega essa propriedade de forma explícita. As alterações de código são realçadas.
 

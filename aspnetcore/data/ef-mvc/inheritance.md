@@ -20,10 +20,10 @@ no-loc:
 - SignalR
 uid: data/ef-mvc/inheritance
 ms.openlocfilehash: 581a31bad4069523699fbbac63862c9dff12034d
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 01/04/2021
 ms.locfileid: "93054210"
 ---
 # <a name="tutorial-implement-inheritance---aspnet-mvc-with-ef-core"></a>Tutorial: implementar a herança – ASP.NET MVC com o EF Core
@@ -88,17 +88,17 @@ Na pasta Models, crie Person.cs e substitua o código de modelo pelo seguinte c�
 
 ## <a name="update-instructor-and-student"></a>Atualizará Instructor e Student
 
-Em *Instructor.cs* , derive a classe Instructor da classe Person e remova os campos de nome e chave. O código será semelhante ao seguinte exemplo:
+Em *Instructor.cs*, derive a classe Instructor da classe Person e remova os campos de nome e chave. O código será semelhante ao seguinte exemplo:
 
 [!code-csharp[](intro/samples/cu/Models/Instructor.cs?name=snippet_AfterInheritance&highlight=8)]
 
-Faça as mesmas alterações em *Student.cs* .
+Faça as mesmas alterações em *Student.cs*.
 
 [!code-csharp[](intro/samples/cu/Models/Student.cs?name=snippet_AfterInheritance&highlight=8)]
 
 ## <a name="add-person-to-the-model"></a>Adicionará Person ao modelo
 
-Adicione o tipo de entidade Person a *SchoolContext.cs* . As novas linhas são realçadas.
+Adicione o tipo de entidade Person a *SchoolContext.cs*. As novas linhas são realçadas.
 
 [!code-csharp[](intro/samples/cu/Data/SchoolContext.cs?name=snippet_AfterInheritance&highlight=19,30)]
 
@@ -155,7 +155,7 @@ dotnet ef database update
 
 Execute o aplicativo e teste várias páginas. Tudo funciona da mesma maneira que antes.
 
-No **Pesquisador de Objetos do SQL Server** , expanda **Data Connections/SchoolContext** e, em seguida, **Tabelas** e você verá que as tabelas Aluno e Instrutor foram substituídas por uma tabela Pessoa. Abra o designer de tabela Pessoa e você verá que ela contém todas as colunas que costumavam estar nas tabelas Aluno e Instrutor.
+No **Pesquisador de Objetos do SQL Server**, expanda **Data Connections/SchoolContext** e, em seguida, **Tabelas** e você verá que as tabelas Aluno e Instrutor foram substituídas por uma tabela Pessoa. Abra o designer de tabela Pessoa e você verá que ela contém todas as colunas que costumavam estar nas tabelas Aluno e Instrutor.
 
 ![Tabela Person no SSOX](inheritance/_static/ssox-person-table.png)
 

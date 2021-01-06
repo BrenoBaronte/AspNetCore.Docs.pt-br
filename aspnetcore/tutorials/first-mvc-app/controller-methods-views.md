@@ -18,10 +18,10 @@ no-loc:
 - SignalR
 uid: tutorials/first-mvc-app/controller-methods-views
 ms.openlocfilehash: b4850821317b6907452793ef09194844c90c0137
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 01/04/2021
 ms.locfileid: "93050765"
 ---
 # <a name="part-6-controller-methods-and-views-in-aspnet-core"></a>Parte 6, métodos e exibições do controlador no ASP.NET Core
@@ -44,7 +44,7 @@ Procure o controlador `Movies` e mantenha o ponteiro do mouse pressionado sobre 
 
 ![São mostrados uma janela do navegador com o mouse sobre o link de edição e um link da URL https://localhost:5001/Movies/Edit/5](~/tutorials/first-mvc-app/controller-methods-views/_static/edit7.png)
 
-Os links **Editar** , **Detalhes** e **Excluir** são gerados pelo Auxiliar de Marcação de Âncora do MVC Core no arquivo *Views/Movies/Index.cshtml* .
+Os links **Editar**, **Detalhes** e **Excluir** são gerados pelo Auxiliar de Marcação de Âncora do MVC Core no arquivo *Views/Movies/Index.cshtml*.
 
 [!code-cshtml[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Views/Movies/IndexOriginal.cshtml?highlight=1-3&range=46-50)]
 
@@ -58,7 +58,7 @@ Os [auxiliares de marca](xref:mvc/views/tag-helpers/intro) permitem que o códig
 </td>
 ```
 
-Lembre-se do formato do [roteamento](xref:mvc/controllers/routing) definido no arquivo *Startup.cs* :
+Lembre-se do formato do [roteamento](xref:mvc/controllers/routing) definido no arquivo *Startup.cs*:
 
 [!code-csharp[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie3/Startup.cs?name=snippet_1&highlight=5)]
 
@@ -108,7 +108,7 @@ Observe se o segundo método de ação `Edit` é precedido pelo atributo `[HttpP
 
 O atributo `HttpPost` especifica que esse método `Edit` pode ser invocado *somente* para solicitações `POST`. Você pode aplicar o atributo `[HttpGet]` ao primeiro método de edição, mas isso não é necessário porque `[HttpGet]` é o padrão.
 
-O atributo `ValidateAntiForgeryToken` é usado para [prevenir a falsificação de uma solicitação](xref:security/anti-request-forgery) e é associado a um token antifalsificação gerado no arquivo de exibição de edição ( *Views/Movies/Edit.cshtml* ). O arquivo de exibição de edição gera o token antifalsificação com o [Auxiliar de Marcação de Formulário](xref:mvc/views/working-with-forms).
+O atributo `ValidateAntiForgeryToken` é usado para [prevenir a falsificação de uma solicitação](xref:security/anti-request-forgery) e é associado a um token antifalsificação gerado no arquivo de exibição de edição (*Views/Movies/Edit.cshtml*). O arquivo de exibição de edição gera o token antifalsificação com o [Auxiliar de Marcação de Formulário](xref:mvc/views/working-with-forms).
 
 [!code-cshtml[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Views/Movies/Edit.cshtml?range=9)]
 

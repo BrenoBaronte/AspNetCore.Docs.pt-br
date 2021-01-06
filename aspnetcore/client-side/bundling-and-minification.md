@@ -19,10 +19,10 @@ no-loc:
 - SignalR
 uid: client-side/bundling-and-minification
 ms.openlocfilehash: 7dd11ceb7a7c01ce1042f50595013b7fe7f1cd5c
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 01/04/2021
 ms.locfileid: "93054834"
 ---
 # <a name="bundle-and-minify-static-assets-in-aspnet-core"></a>Empacotar e reduzirr ativos estáticos no ASP.NET Core
@@ -90,25 +90,25 @@ No ASP.NET Core 2,0 ou anterior, os modelos de Razor projeto MVC e pages fornece
 
 ::: moniker range=">= aspnetcore-2.1"
 
-No ASP.NET Core 2,1 ou posterior, adicione um novo arquivo JSON, chamado *bundleconfig.jsno* , à raiz do projeto MVC ou de Razor páginas. Inclua o seguinte JSON nesse arquivo como um ponto de partida:
+No ASP.NET Core 2,1 ou posterior, adicione um novo arquivo JSON, chamado *bundleconfig.jsno*, à raiz do projeto MVC ou de Razor páginas. Inclua o seguinte JSON nesse arquivo como um ponto de partida:
 
 ::: moniker-end
 
 [!code-json[](../client-side/bundling-and-minification/samples/BuildBundlerMinifierApp/bundleconfig.json)]
 
-O *bundleconfig.jsno* arquivo define as opções para cada pacote. No exemplo anterior, uma única configuração de pacote é definida para os arquivos JavaScript ( *wwwroot/js/site.js* ) e folha de estilo ( *wwwroot/CSS/site. css* ) personalizados.
+O *bundleconfig.jsno* arquivo define as opções para cada pacote. No exemplo anterior, uma única configuração de pacote é definida para os arquivos JavaScript (*wwwroot/js/site.js*) e folha de estilo (*wwwroot/CSS/site. css*) personalizados.
 
 As opções de configuração incluem:
 
 * `outputFileName`: O nome do arquivo de pacote para saída. Pode conter um caminho relativo do *bundleconfig.jsno* arquivo. **Necessário**
-* `inputFiles`: Uma matriz de arquivos para agrupar. Esses são caminhos relativos ao arquivo de configuração. **opcional** , * um valor vazio resulta em um arquivo de saída vazio. Há suporte para padrões de [mascaramento](https://www.tldp.org/LDP/abs/html/globbingref.html) .
-* `minify`: As opções de minificação para o tipo de saída. **opcional** , *padrão- `minify: { enabled: true }`*
+* `inputFiles`: Uma matriz de arquivos para agrupar. Esses são caminhos relativos ao arquivo de configuração. **opcional**, * um valor vazio resulta em um arquivo de saída vazio. Há suporte para padrões de [mascaramento](https://www.tldp.org/LDP/abs/html/globbingref.html) .
+* `minify`: As opções de minificação para o tipo de saída. **opcional**, *padrão- `minify: { enabled: true }`*
   * As opções de configuração estão disponíveis por tipo de arquivo de saída.
     * [Minificador CSS](https://github.com/madskristensen/BundlerMinifier/wiki/cssminifier)
     * [Minificador JavaScript](https://github.com/madskristensen/BundlerMinifier/wiki/JavaScript-Minifier-settings)
     * [Minificador HTML](https://github.com/madskristensen/BundlerMinifier/wiki)
-* `includeInProject`: Sinalizador que indica se os arquivos gerados devem ser adicionados ao arquivo de projeto. **opcional** , *padrão-falso*
-* `sourceMap`: Sinalizador que indica se um mapa de origem deve ser gerado para o arquivo agrupado. **opcional** , *padrão-falso*
+* `includeInProject`: Sinalizador que indica se os arquivos gerados devem ser adicionados ao arquivo de projeto. **opcional**, *padrão-falso*
+* `sourceMap`: Sinalizador que indica se um mapa de origem deve ser gerado para o arquivo agrupado. **opcional**, *padrão-falso*
 * `sourceMapRootPath`: O caminho raiz para armazenar o arquivo de mapa de origem gerado.
 
 ## <a name="add-files-to-workflow"></a>Adicionar arquivos ao fluxo de trabalho
@@ -117,7 +117,7 @@ Considere um exemplo no qual um arquivo *. CSS personalizado* adicional é adici
 
 [!code-css[](../client-side/bundling-and-minification/samples/BuildBundlerMinifierApp/wwwroot/css/custom.css)]
 
-Para reduzir *Custom. css* e agrupá-lo com *site. css* em um arquivo *site. min. css* , adicione o caminho relativo para *bundleconfig.jsem* :
+Para reduzir *Custom. css* e agrupá-lo com *site. css* em um arquivo *site. min. css* , adicione o caminho relativo para *bundleconfig.jsem*:
 
 [!code-json[](../client-side/bundling-and-minification/samples/BuildBundlerMinifierApp/bundleconfig2.json?highlight=6)]
 
@@ -179,7 +179,7 @@ Adicione um *package.jsno* arquivo, com o seguinte `devDependencies` , à raiz d
 
 [!code-json[](../client-side/bundling-and-minification/samples/BuildBundlerMinifierApp/package.json?range=5-13)]
 
-Instale as dependências executando o seguinte comando no mesmo nível que *package.jsem* :
+Instale as dependências executando o seguinte comando no mesmo nível que *package.jsem*:
 
 ```bash
 npm i

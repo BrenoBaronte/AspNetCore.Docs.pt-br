@@ -1,1 +1,1 @@
-[Exibir ou baixar o código de amostra](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/tutorials/first-mvc-app/start-mvc/sample) [(como baixar).](xref:index#how-to-download-a-sample)
+[Exiba ou baixe o código de exemplo](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/tutorials/first-mvc-app/start-mvc/sample) ([como baixar](xref:index#how-to-download-a-sample)).
