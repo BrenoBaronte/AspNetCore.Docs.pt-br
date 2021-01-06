@@ -19,10 +19,10 @@ no-loc:
 - SignalR
 uid: grpc/migration
 ms.openlocfilehash: 1a230e470fa666b2aa6761b4d5dabd09264d2aae
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 01/04/2021
 ms.locfileid: "93059826"
 ---
 # <a name="migrating-grpc-services-from-c-core-to-aspnet-core"></a>Migrar serviços do gRPC do C Core para o ASP.NET Core
@@ -75,7 +75,7 @@ public void ConfigureServices(IServiceCollection services)
 
 Para obter mais informações sobre a configuração, consulte <xref:grpc/configuration> .
 
-## <a name="logging"></a>Registrando em log
+## <a name="logging"></a>Log
 
 Aplicativos baseados em núcleo baseado em C usam o `GrpcEnvironment` para [Configurar o agente](https://grpc.io/grpc/csharp/api/Grpc.Core.GrpcEnvironment.html?q=size#Grpc_Core_GrpcEnvironment_SetLogger_Grpc_Core_Logging_ILogger_) para fins de depuração. A pilha de ASP.NET Core fornece essa funcionalidade por meio da [API de log](xref:fundamentals/logging/index). Por exemplo, um agente de log pode ser adicionado ao serviço gRPC por meio de injeção de construtor:
 

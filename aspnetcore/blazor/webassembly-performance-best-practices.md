@@ -20,10 +20,10 @@ no-loc:
 - SignalR
 uid: blazor/webassembly-performance-best-practices
 ms.openlocfilehash: cc090b4e56745e6b010e4a7ee17332b0d3a95560
-ms.sourcegitcommit: aa85f2911792a1e4783bcabf0da3b3e7e218f63a
+ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 11/23/2020
+ms.lasthandoff: 01/04/2021
 ms.locfileid: "95417377"
 ---
 # <a name="aspnet-core-no-locblazor-webassembly-performance-best-practices"></a>Blazor WebAssemblyPráticas recomendadas de desempenho de ASP.NET Core
@@ -150,7 +150,7 @@ Para obter mais informações, consulte <xref:blazor/components/virtualization>.
 
 A maioria dos Blazor componentes não exige esforços agressivos de otimização. Isso ocorre porque a maioria dos componentes geralmente não se repete na interface do usuário e não reprocessa em alta frequência. Por exemplo, `@page` componentes e componentes que representam partes de interface de usuário de alto nível, como caixas de diálogo ou formulários, provavelmente aparecem apenas um de cada vez e apenas rerenderizam em resposta a um gesto de usuário. Esses componentes não criam uma carga de trabalho de renderização alta, portanto, você pode usar livremente qualquer combinação de recursos de estrutura que desejar sem se preocupar muito com o desempenho de renderização.
 
-No entanto, também há cenários comuns em que você cria componentes que precisam ser repetidos em escala. Por exemplo: 
+No entanto, também há cenários comuns em que você cria componentes que precisam ser repetidos em escala. Por exemplo:
 
  * Formulários aninhados grandes podem ter centenas de entradas, rótulos e outros elementos individuais.
  * As grades podem ter milhares de células.

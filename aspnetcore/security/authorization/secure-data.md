@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: security/authorization/secure-data
-ms.openlocfilehash: accfd46fa72c33976f8af2a39267c993447e036e
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: dc70cfe7cb0c0f044f5f1e7ee68a293b3ea7507f
+ms.sourcegitcommit: 04a404a9655c59ad1ea02aff5d399ae1b833ad6a
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93051935"
+ms.lasthandoff: 01/03/2021
+ms.locfileid: "97854646"
 ---
 # <a name="create-an-aspnet-core-web-app-with-user-data-protected-by-authorization"></a>Criar um aplicativo Web ASP.NET Core com dados de usuário protegidos por autorização
 
@@ -93,7 +93,7 @@ Este tutorial é avançado. Você deve estar familiarizado com:
 
 [Baixe](xref:index#how-to-download-a-sample) o aplicativo [inicial](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/security/authorization/secure-data/samples/) .
 
-Execute o aplicativo, toque no link do **ContactManager** e verifique se você pode criar, editar e excluir um contato.
+Execute o aplicativo, toque no link do **ContactManager** e verifique se você pode criar, editar e excluir um contato. Para criar o aplicativo inicial, consulte [criar o aplicativo inicial](#create-the-starter-app).
 
 ## <a name="secure-user-data"></a>Proteger dados do usuário
 
@@ -128,7 +128,7 @@ Defina a política de autenticação de fallback para exigir que os usuários se
 
 [!code-csharp[](secure-data/samples/final3/Startup.cs?name=snippet&highlight=13-99)]
 
-O código realçado anterior define a [política de autenticação de fallback](xref:Microsoft.AspNetCore.Authorization.AuthorizationOptions.FallbackPolicy). A política de autenticação de fallback exige que * *_todos_* os usuários sejam autenticados, exceto por Razor páginas, controladores ou métodos de ação com um atributo de autenticação. Por exemplo, Razor páginas, controladores ou métodos de ação com `[AllowAnonymous]` ou `[Authorize(PolicyName="MyPolicy")]` usam o atributo de autenticação aplicado em vez da política de autenticação de fallback.
+O código realçado anterior define a [política de autenticação de fallback](xref:Microsoft.AspNetCore.Authorization.AuthorizationOptions.FallbackPolicy). A política de autenticação de fallback exige que **_todos_* os usuários sejam autenticados, exceto por Razor páginas, controladores ou métodos de ação com um atributo de autenticação. Por exemplo, Razor páginas, controladores ou métodos de ação com `[AllowAnonymous]` ou `[Authorize(PolicyName="MyPolicy")]` usam o atributo de autenticação aplicado em vez da política de autenticação de fallback.
 
 A política de autenticação de fallback:
 
@@ -152,7 +152,7 @@ Adicione [AllowAnonymous](/dotnet/api/microsoft.aspnetcore.authorization.allowan
 
 ### <a name="configure-the-test-account"></a>Configurar a conta de teste
 
-A `SeedData` classe cria duas contas: administrador e Gerenciador. Use a [ferramenta Gerenciador de segredo](xref:security/app-secrets) para definir uma senha para essas contas. Defina a senha do diretório do projeto (o diretório que contém *Program.cs* ):
+A `SeedData` classe cria duas contas: administrador e Gerenciador. Use a [ferramenta Gerenciador de segredo](xref:security/app-secrets) para definir uma senha para essas contas. Defina a senha do diretório do projeto (o diretório que contém *Program.cs*):
 
 ```dotnetcli
 dotnet user-secrets set SeedUserPW <PW>
@@ -334,16 +334,16 @@ Uma maneira fácil de testar o aplicativo concluído é iniciar três navegadore
 
 | Usuário                | Propagado pelo aplicativo | Opções                                  |
 | ------------------- | :---------------: | ---------------------------------------- |
-| test@example.com    | No                | Edite/exclua os próprios dados.                |
-| manager@contoso.com | Yes               | Aprovar/rejeitar e editar/excluir os próprios dados. |
-| admin@contoso.com   | Yes               | Aprovar/rejeitar e editar/excluir todos os dados. |
+| test@example.com    | Não                | Edite/exclua os próprios dados.                |
+| manager@contoso.com | Sim               | Aprovar/rejeitar e editar/excluir os próprios dados. |
+| admin@contoso.com   | Sim               | Aprovar/rejeitar e editar/excluir todos os dados. |
 
 Crie um contato no navegador do administrador. Copie a URL para excluir e editar do contato do administrador. Cole esses links no navegador do usuário de teste para verificar se o usuário de teste não pode executar essas operações.
 
 ## <a name="create-the-starter-app"></a>Criar o aplicativo inicial
 
 * Criar um Razor aplicativo de páginas chamado "ContactManager"
-  * Crie o aplicativo com **contas de usuário individuais** .
+  * Crie o aplicativo com **contas de usuário individuais**.
   * Nomeie-o como "ContactManager" para que o namespace corresponda ao namespace usado no exemplo.
   * `-uld` Especifica o LocalDB em vez do SQLite
 
@@ -351,7 +351,7 @@ Crie um contato no navegador do administrador. Copie a URL para excluir e editar
   dotnet new webapp -o ContactManager -au Individual -uld
   ```
 
-* Adicionar *modelos/Contact. cs* :
+* Adicionar *modelos/Contact. cs*:
 
   [!code-csharp[](secure-data/samples/starter2.1/Models/Contact.cs?name=snippet1)]
 
@@ -488,7 +488,7 @@ Adicione [AllowAnonymous](/dotnet/api/microsoft.aspnetcore.authorization.allowan
 
 ### <a name="configure-the-test-account"></a>Configurar a conta de teste
 
-A `SeedData` classe cria duas contas: administrador e Gerenciador. Use a [ferramenta Gerenciador de segredo](xref:security/app-secrets) para definir uma senha para essas contas. Defina a senha do diretório do projeto (o diretório que contém *Program.cs* ):
+A `SeedData` classe cria duas contas: administrador e Gerenciador. Use a [ferramenta Gerenciador de segredo](xref:security/app-secrets) para definir uma senha para essas contas. Defina a senha do diretório do projeto (o diretório que contém *Program.cs*):
 
 ```dotnetcli
 dotnet user-secrets set SeedUserPW <PW>
@@ -661,16 +661,16 @@ Uma maneira fácil de testar o aplicativo concluído é iniciar três navegadore
 
 | Usuário                | Propagado pelo aplicativo | Opções                                  |
 | ------------------- | :---------------: | ---------------------------------------- |
-| test@example.com    | No                | Edite/exclua os próprios dados.                |
-| manager@contoso.com | Yes               | Aprovar/rejeitar e editar/excluir os próprios dados. |
-| admin@contoso.com   | Yes               | Aprovar/rejeitar e editar/excluir todos os dados. |
+| test@example.com    | Não                | Edite/exclua os próprios dados.                |
+| manager@contoso.com | Sim               | Aprovar/rejeitar e editar/excluir os próprios dados. |
+| admin@contoso.com   | Sim               | Aprovar/rejeitar e editar/excluir todos os dados. |
 
 Crie um contato no navegador do administrador. Copie a URL para excluir e editar do contato do administrador. Cole esses links no navegador do usuário de teste para verificar se o usuário de teste não pode executar essas operações.
 
 ## <a name="create-the-starter-app"></a>Criar o aplicativo inicial
 
 * Criar um Razor aplicativo de páginas chamado "ContactManager"
-  * Crie o aplicativo com **contas de usuário individuais** .
+  * Crie o aplicativo com **contas de usuário individuais**.
   * Nomeie-o como "ContactManager" para que o namespace corresponda ao namespace usado no exemplo.
   * `-uld` Especifica o LocalDB em vez do SQLite
 
@@ -678,7 +678,7 @@ Crie um contato no navegador do administrador. Copie a URL para excluir e editar
   dotnet new webapp -o ContactManager -au Individual -uld
   ```
 
-* Adicionar *modelos/Contact. cs* :
+* Adicionar *modelos/Contact. cs*:
 
   [!code-csharp[](secure-data/samples/starter2.1/Models/Contact.cs?name=snippet1)]
 

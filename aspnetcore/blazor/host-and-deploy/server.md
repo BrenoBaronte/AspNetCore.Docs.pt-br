@@ -20,10 +20,10 @@ no-loc:
 - SignalR
 uid: blazor/host-and-deploy/server
 ms.openlocfilehash: a209109210ef5e335734a974ceb0c2af7cb8e1a1
-ms.sourcegitcommit: 98f92d766d4f343d7e717b542c1b08da29e789c1
+ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 11/13/2020
+ms.lasthandoff: 01/04/2021
 ms.locfileid: "94595435"
 ---
 # <a name="host-and-deploy-no-locblazor-server"></a>Hospedar e implantar Blazor Server
@@ -80,7 +80,7 @@ Blazor funciona melhor ao usar o WebSocket como SignalR transporte devido à lat
 
 ### <a name="configuration"></a>Configuração
 
-Para configurar um aplicativo para o serviço do Azure SignalR , o aplicativo deve dar suporte a *sessões adesivas* , em que os clientes são [redirecionados de volta para o mesmo servidor durante o pré-processamento](xref:blazor/hosting-models#connection-to-the-server). A `ServerStickyMode` opção ou o valor de configuração é definido como `Required` . Normalmente, um aplicativo cria a configuração usando **_uma_** das seguintes abordagens:
+Para configurar um aplicativo para o serviço do Azure SignalR , o aplicativo deve dar suporte a *sessões adesivas*, em que os clientes são [redirecionados de volta para o mesmo servidor durante o pré-processamento](xref:blazor/hosting-models#connection-to-the-server). A `ServerStickyMode` opção ou o valor de configuração é definido como `Required` . Normalmente, um aplicativo cria a configuração usando **_uma_** das seguintes abordagens:
 
    * `Startup.ConfigureServices`:
   
@@ -100,7 +100,7 @@ Para configurar um aplicativo para o serviço do Azure SignalR , o aplicativo de
        "Azure:SignalR:StickyServerMode": "Required"
        ```
 
-     * As configurações do aplicativo de **configuração** do serviço de aplicativo  >  **Application settings** na portal do Azure ( **nome** : `Azure__SignalR__StickyServerMode` , **valor** : `Required` ). Essa abordagem será adotada para o aplicativo automaticamente se você [provisionar o SignalR serviço do Azure](#provision-the-azure-signalr-service).
+     * As configurações do aplicativo de **configuração** do serviço de aplicativo  >   na portal do Azure (**nome**: `Azure__SignalR__StickyServerMode` , **valor**: `Required` ). Essa abordagem será adotada para o aplicativo automaticamente se você [provisionar o SignalR serviço do Azure](#provision-the-azure-signalr-service).
 
 ### <a name="provision-the-azure-no-locsignalr-service"></a>Provisionar o serviço do Azure SignalR
 

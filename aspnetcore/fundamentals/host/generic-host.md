@@ -20,10 +20,10 @@ no-loc:
 - SignalR
 uid: fundamentals/host/generic-host
 ms.openlocfilehash: 263c7713166005dfdec8ede6bfa9b03b730dede7
-ms.sourcegitcommit: 3f0ad1e513296ede1bff39a05be6c278e879afed
+ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 01/04/2021
 ms.locfileid: "96035808"
 ---
 # <a name="net-generic-host-in-aspnet-core"></a>Host genérico .NET no ASP.NET Core
@@ -39,7 +39,7 @@ Este tópico fornece informações sobre como usar o host genérico .NET no ASP.
 Um *host* é um objeto que encapsula os recursos de um aplicativo, tais como:
 
 * DI (injeção de dependência)
-* Registro em log
+* Log
 * Configuração
 * Implementações de `IHostedService`
 
@@ -187,7 +187,7 @@ O exemplo a seguir cria a configuração de host:
 
 [!code-csharp[](generic-host/samples-snapshot/3.x/Program.cs?name=snippet_HostConfig)]
 
-## <a name="app-configuration"></a>Configuração do aplicativo
+## <a name="app-configuration"></a>Configuração de aplicativo
 
 A configuração de aplicativo é criada chamando <xref:Microsoft.Extensions.Hosting.HostBuilder.ConfigureAppConfiguration*> em `IHostBuilder`. `ConfigureAppConfiguration` pode ser chamado várias vezes com resultados aditivos. O aplicativo usa a opção que define um valor por último em uma chave determinada. 
 
@@ -540,7 +540,7 @@ Este tópico fornece informações sobre como usar o host genérico .NET no ASP.
 Um *host* é um objeto que encapsula os recursos de um aplicativo, tais como:
 
 * DI (injeção de dependência)
-* Registro em log
+* Log
 * Configuração
 * Implementações de `IHostedService`
 
@@ -690,7 +690,7 @@ O exemplo a seguir cria a configuração de host:
 
 [!code-csharp[](generic-host/samples-snapshot/3.x/Program.cs?name=snippet_HostConfig)]
 
-## <a name="app-configuration"></a>Configuração do aplicativo
+## <a name="app-configuration"></a>Configuração de aplicativo
 
 A configuração de aplicativo é criada chamando <xref:Microsoft.Extensions.Hosting.HostBuilder.ConfigureAppConfiguration*> em `IHostBuilder`. `ConfigureAppConfiguration` pode ser chamado várias vezes com resultados aditivos. O aplicativo usa a opção que define um valor por último em uma chave determinada. 
 

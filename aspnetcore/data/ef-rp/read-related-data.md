@@ -19,10 +19,10 @@ no-loc:
 - SignalR
 uid: data/ef-rp/read-related-data
 ms.openlocfilehash: e52e4aefc18b84f85bea28a9724894eed50ca54a
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 01/04/2021
 ms.locfileid: "93061061"
 ---
 # <a name="part-6-no-locrazor-pages-with-ef-core-in-aspnet-core---read-related-data"></a>Parte 6, Razor páginas com EF Core em dados relacionados à leitura de ASP.NET Core
@@ -85,13 +85,13 @@ Para exibir o nome do departamento atribuído para um curso:
 
 * Siga as instruções em [páginas do aluno do Scaffold](xref:data/ef-rp/intro#scaffold-student-pages) com as seguintes exceções:
 
-  * Crie uma pasta *Pages/Courses* .
+  * Crie uma pasta *Pages/Courses*.
   * Use `Course` para a classe de modelo.
   * Use a classe de contexto existente, em vez de criar uma nova.
 
 # <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
-* Crie uma pasta *Pages/Courses* .
+* Crie uma pasta *Pages/Courses*.
 
 * Execute o comando a seguir para aplicar scaffold das páginas do Curso.
 
@@ -111,7 +111,7 @@ Para exibir o nome do departamento atribuído para um curso:
 
 * Abra *Pages/Courses/Index.cshtml.cs* e examine o método `OnGetAsync`. O mecanismo de scaffolding especificou o carregamento adiantado para a propriedade de navegação `Department`. O método `Include` especifica o carregamento adiantado.
 
-* Execute o aplicativo e selecione o link **Cursos** . A coluna de departamento exibe a `DepartmentID`, que não é útil.
+* Execute o aplicativo e selecione o link **Cursos**. A coluna de departamento exibe a `DepartmentID`, que não é útil.
 
 ### <a name="display-the-department-name"></a>Exibir o nome do departamento
 
@@ -184,13 +184,13 @@ Crie *SchoolViewModels/InstructorIndexData.cs* com o seguinte código:
 
 * Siga as instruções em [Aplicar scaffold às páginas do aluno](xref:data/ef-rp/intro#scaffold-student-pages) com as seguintes exceções:
 
-  * Crie uma pasta *Pages/Instructors* .
+  * Crie uma pasta *Pages/Instructors*.
   * Use `Instructor` para a classe de modelo.
   * Use a classe de contexto existente, em vez de criar uma nova.
 
 # <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
-* Crie uma pasta *Pages/Instructors* .
+* Crie uma pasta *Pages/Instructors*.
 
 * Execute o comando a seguir para aplicar scaffold das páginas do instrutor.
 
@@ -216,7 +216,7 @@ Atualize *páginas/instrutores/index. cshtml. cs* com o seguinte código:
 
 O método `OnGetAsync` aceita dados de rota opcionais para a ID do instrutor selecionado.
 
-Examine a consulta no arquivo *Pages/Instructors/Index.cshtml* :
+Examine a consulta no arquivo *Pages/Instructors/Index.cshtml*:
 
 [!code-csharp[](intro/samples/cu30snapshots/6-related/Pages/Instructors/Index1.cshtml.cs?name=snippet_EagerLoading)]
 
@@ -285,7 +285,7 @@ O código anterior faz as seguintes alterações:
   <tr class="@selectedRow">
   ```
 
-* Adiciona um novo hiperlink rotulado **Selecionar** . Este link envia a ID do instrutor selecionado para o método `Index` e define uma cor da tela de fundo.
+* Adiciona um novo hiperlink rotulado **Selecionar**. Este link envia a ID do instrutor selecionado para o método `Index` e define uma cor da tela de fundo.
 
   ```html
   <a asp-action="Index" asp-route-id="@item.ID">Select</a> |
@@ -402,7 +402,7 @@ Siga as instruções em [Gere um modelo de aluno por scaffold](xref:data/ef-rp/i
 
 # <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
- Execute o seguinte comando:
+ Execute o comando a seguir:
 
   ```dotnetcli
   dotnet aspnet-codegenerator razorpage -m Course -dc SchoolContext -udl -outDir Pages\Courses --referenceScriptLibraries
@@ -414,7 +414,7 @@ O comando anterior gera o modelo `Course` por scaffolding. Abra o projeto no Vis
 
 Abra *Pages/Courses/Index.cshtml.cs* e examine o método `OnGetAsync`. O mecanismo de scaffolding especificou o carregamento adiantado para a propriedade de navegação `Department`. O método `Include` especifica o carregamento adiantado.
 
-Execute o aplicativo e selecione o link **Cursos** . A coluna de departamento exibe a `DepartmentID`, que não é útil.
+Execute o aplicativo e selecione o link **Cursos**. A coluna de departamento exibe a `DepartmentID`, que não é útil.
 
 Atualize o método `OnGetAsync` pelo seguinte código:
 
@@ -477,7 +477,7 @@ Essa página lê e exibe dados relacionados das seguintes maneiras:
 
 A página Instrutores mostra dados de três tabelas diferentes. É criado um modelo de exibição que inclui as três entidades que representam as três tabelas.
 
-Na pasta *SchoolViewModels* , crie *InstructorIndexData.cs* com o seguinte código:
+Na pasta *SchoolViewModels*, crie *InstructorIndexData.cs* com o seguinte código:
 
 [!code-csharp[](intro/samples/cu/Models/SchoolViewModels/InstructorIndexData.cs)]
 
@@ -489,7 +489,7 @@ Siga as instruções em [Gere um modelo de aluno por scaffold](xref:data/ef-rp/i
 
 # <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
- Execute o seguinte comando:
+ Execute o comando a seguir:
 
   ```dotnetcli
   dotnet aspnet-codegenerator razorpage -m Instructor -dc SchoolContext -udl -outDir Pages\Instructors --referenceScriptLibraries
@@ -506,7 +506,7 @@ Substitua *Pages/Instructors/Index.cshtml.cs* pelo seguinte código:
 
 O método `OnGetAsync` aceita dados de rota opcionais para a ID do instrutor selecionado.
 
-Examine a consulta no arquivo *Pages/Instructors/Index.cshtml* :
+Examine a consulta no arquivo *Pages/Instructors/Index.cshtml*:
 
 [!code-csharp[](intro/samples/cu/Pages/Instructors/Index1.cshtml.cs?name=snippet_ThenInclude)]
 
@@ -531,7 +531,7 @@ A marcação anterior faz as seguintes alterações:
 
   `http://localhost:1234/Instructors/2`
 
-* O título de página é **Instrutores** .
+* O título de página é **Instrutores**.
 * Adicionou uma coluna **Office** que exibe `item.OfficeAssignment.Location` somente se `item.OfficeAssignment` não é nulo. Como essa é uma relação um para zero ou um, pode não haver uma entidade OfficeAssignment relacionada.
 
   ```html
@@ -554,7 +554,7 @@ A marcação anterior faz as seguintes alterações:
   <tr class="@selectedRow">
   ```
 
-* Adicionou um novo hiperlink rotulado **Selecionar** . Este link envia a ID do instrutor selecionado para o método `Index` e define uma cor da tela de fundo.
+* Adicionou um novo hiperlink rotulado **Selecionar**. Este link envia a ID do instrutor selecionado para o método `Index` e define uma cor da tela de fundo.
 
   ```html
   <a asp-action="Index" asp-route-id="@item.ID">Select</a> |
@@ -562,7 +562,7 @@ A marcação anterior faz as seguintes alterações:
 
 Execute o aplicativo e selecione a guia **instrutores** . A página exibe o `Location` (Office) da entidade relacionada `OfficeAssignment` . Se OfficeAssignment é nulo, uma célula de tabela vazia é exibida.
 
-Clique no link **Selecionar** . O estilo de linha é alterado.
+Clique no link **Selecionar**. O estilo de linha é alterado.
 
 ### <a name="add-courses-taught-by-selected-instructor"></a>Adicionar cursos ministrados pelo instrutor selecionado
 
@@ -613,7 +613,7 @@ Atualize a consulta no método `OnGetAsync` em *Pages/Instructors/Index.cshtml.c
 
 [!code-csharp[](intro/samples/cu/Pages/Instructors/Index.cshtml.cs?name=snippet_ThenInclude&highlight=6-9)]
 
-Atualize *Pages/Instructors/Index.cshtml* . Adicione a seguinte marcação ao final do arquivo:
+Atualize *Pages/Instructors/Index.cshtml*. Adicione a seguinte marcação ao final do arquivo:
 
 [!code-cshtml[](intro/samples/cu/Pages/Instructors/IndexRRD.cshtml?range=103-)]
 

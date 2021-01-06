@@ -5,7 +5,7 @@ description: Saiba como os Blazor aplicativos podem injetar serviços em compone
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 12/11/2020
+ms.date: 12/19/2020
 no-loc:
 - appsettings.json
 - ASP.NET Core Identity
@@ -20,12 +20,12 @@ no-loc:
 - SignalR
 uid: blazor/fundamentals/dependency-injection
 zone_pivot_groups: blazor-hosting-models
-ms.openlocfilehash: af6b645fc3c398414c85c78e1cfeb213e538c2a6
-ms.sourcegitcommit: 6b87f2e064cea02e65dacd206394b44f5c604282
+ms.openlocfilehash: 3f2b4eff5422acbec80b2fd9b801101271cc3f75
+ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97506793"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97808719"
 ---
 # <a name="aspnet-core-no-locblazor-dependency-injection"></a>Injeção de dependência de ASP.NET Core Blazor
 
@@ -98,7 +98,7 @@ Os serviços podem ser configurados com os tempos de vida mostrados na tabela a 
 
 | Tempo de vida | Descrição |
 | -------- | ----------- |
-| <xref:Microsoft.Extensions.DependencyInjection.ServiceDescriptor.Scoped%2A> | <p>Blazor WebAssembly Atualmente, os aplicativos não têm um conceito de escopos de DI. `Scoped`-serviços registrados se comportam como `Singleton` serviços.</p><p>O Blazor Server modelo de hospedagem dá suporte ao `Scoped` tempo de vida entre solicitações HTTP, mas não em mensagens de conexão/circuito SingalR entre componentes que são carregados no cliente. A Razor parte páginas ou MVC do aplicativo trata os serviços com escopo normalmente e recria os serviços em *cada solicitação HTTP* ao navegar entre páginas ou exibições, ou de uma página ou exibição para um componente. Os serviços com escopo não são reconstruídos ao navegar entre componentes no cliente, em que a comunicação com o servidor ocorre pela SignalR conexão do circuito do usuário, não por meio de solicitações HTTP. Nos cenários de componente a seguir no cliente, os serviços com escopo são reconstruídos porque um novo circuito é criado para o usuário:</p><ul><li>O usuário fecha a janela do navegador. O usuário abre uma nova janela e navega de volta para o aplicativo.</li><li>O usuário fecha a última guia do aplicativo em uma janela do navegador. O usuário abre uma nova guia e navega de volta para o aplicativo.</li><li>O usuário seleciona o botão recarregar/atualizar do navegador.</li></ul><p>Para obter mais informações sobre como preservar o estado do usuário entre serviços com escopo em Blazor Server aplicativos, consulte <xref:blazor/hosting-models?pivots=server> .</p> |
+| <xref:Microsoft.Extensions.DependencyInjection.ServiceDescriptor.Scoped%2A> | <p>Blazor WebAssembly Atualmente, os aplicativos não têm um conceito de escopos de DI. `Scoped`-serviços registrados se comportam como `Singleton` serviços.</p><p>O Blazor Server modelo de hospedagem dá suporte ao `Scoped` tempo de vida entre solicitações HTTP, mas não entre SignalR mensagens de conexão/circuito entre componentes que são carregados no cliente. A Razor parte páginas ou MVC do aplicativo trata os serviços com escopo normalmente e recria os serviços em *cada solicitação HTTP* ao navegar entre páginas ou exibições, ou de uma página ou exibição para um componente. Os serviços com escopo não são reconstruídos ao navegar entre componentes no cliente, em que a comunicação com o servidor ocorre pela SignalR conexão do circuito do usuário, não por meio de solicitações HTTP. Nos cenários de componente a seguir no cliente, os serviços com escopo são reconstruídos porque um novo circuito é criado para o usuário:</p><ul><li>O usuário fecha a janela do navegador. O usuário abre uma nova janela e navega de volta para o aplicativo.</li><li>O usuário fecha a última guia do aplicativo em uma janela do navegador. O usuário abre uma nova guia e navega de volta para o aplicativo.</li><li>O usuário seleciona o botão recarregar/atualizar do navegador.</li></ul><p>Para obter mais informações sobre como preservar o estado do usuário entre serviços com escopo em Blazor Server aplicativos, consulte <xref:blazor/hosting-models?pivots=server> .</p> |
 | <xref:Microsoft.Extensions.DependencyInjection.ServiceDescriptor.Singleton%2A> | DI cria uma *única instância* do serviço. Todos os componentes que exigem um `Singleton` serviço recebem uma instância do mesmo serviço. |
 | <xref:Microsoft.Extensions.DependencyInjection.ServiceDescriptor.Transient%2A> | Sempre que um componente Obtém uma instância de um `Transient` serviço do contêiner de serviço, ele recebe uma *nova instância* do serviço. |
 
@@ -106,7 +106,7 @@ O sistema de DI é baseado no sistema de injeção de ASP.NET Core. Para obter m
 
 ## <a name="request-a-service-in-a-component"></a>Solicitar um serviço em um componente
 
-Depois que os serviços forem adicionados à coleção de serviços, insira os serviços nos componentes usando a diretiva de [ \@ inserção](xref:mvc/views/razor#inject) Razor . [`@inject`](xref:mvc/views/razor#inject) tem dois parâmetros:
+Depois que os serviços forem adicionados à coleção de serviços, insira os serviços nos componentes usando a [`@inject`](xref:mvc/views/razor#inject) Razor diretiva, que tem dois parâmetros:
 
 * Tipo: o tipo do serviço a injetar.
 * Propriedade: o nome da propriedade que recebe o serviço de aplicativo injetado. A propriedade não requer criação manual. O compilador cria a propriedade.
@@ -192,8 +192,6 @@ Duas versões do <xref:Microsoft.AspNetCore.Components.OwningComponentBase> tipo
 
 Para obter mais informações, consulte <xref:blazor/blazor-server-ef-core>.
 
-::: moniker range="< aspnetcore-5.0"
-
 ## <a name="detect-transient-disposables"></a>Detectar descartáveis transitórios
 
 Os exemplos a seguir mostram como detectar serviços descartáveis indetectáveis em um aplicativo que deve usar o <xref:Microsoft.AspNetCore.Components.OwningComponentBase> . Para obter mais informações, consulte a seção [classes de componente base do utilitário para gerenciar um escopo de di](#utility-base-component-classes-to-manage-a-di-scope) .
@@ -206,17 +204,17 @@ Os exemplos a seguir mostram como detectar serviços descartáveis indetectávei
 
 O `TransientDisposable` no exemplo a seguir é detectado ( `Program.cs` ):
 
-<!-- moniker range=">= aspnetcore-5.0"
+::: moniker range=">= aspnetcore-5.0"
 
 [!code-csharp[](dependency-injection/samples_snapshot/5.x/transient-disposables/DetectIncorrectUsagesOfTransientDisposables-wasm-program.cs?highlight=6,9,17,22-25)]
 
-moniker-end 
+::: moniker-end 
 
-moniker range="< aspnetcore-5.0" -->
+::: moniker range="< aspnetcore-5.0"
 
 [!code-csharp[](dependency-injection/samples_snapshot/3.x/transient-disposables/DetectIncorrectUsagesOfTransientDisposables-wasm-program.cs?highlight=6,9,17,22-25)]
 
-<!-- moniker-end -->
+::: moniker-end
 
 ::: zone-end
 
@@ -242,7 +240,20 @@ O `TransientDependency` no exemplo a seguir é detectado ( `Startup.cs` ):
 
 ::: zone-end
 
-::: moniker-end
+O aplicativo pode registrar descartáveis transitórias sem lançar uma exceção. No entanto, tentar resolver os resultados descartáveis transitórios em um <xref:System.InvalidOperationException> , como mostra o exemplo a seguir.
+
+`Pages/TransientDisposable.razor`:
+
+```razor
+@page "/transient-disposable"
+@inject TransientDisposable TransientDisposable
+
+<h1>Transient Disposable Detection</h1>
+```
+
+Navegue até o `TransientDisposable` componente em `/transient-disposable` e um <xref:System.InvalidOperationException> é gerado quando a estrutura tenta construir uma instância do `TransientDisposable` :
+
+> System. InvalidOperationException: tentando resolver o serviço descartável transitório TransientDisposable no escopo errado. Use uma \<T> classe base de componente ' OwningComponentBase ' para o serviço ' T' que você está tentando resolver.
 
 ## <a name="additional-resources"></a>Recursos adicionais
 

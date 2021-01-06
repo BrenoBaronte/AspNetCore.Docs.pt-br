@@ -20,10 +20,10 @@ no-loc:
 - SignalR
 uid: host-and-deploy/linux-nginx
 ms.openlocfilehash: c4e0d70b41221f272bb4b1fe82cfa531ec6fcf15
-ms.sourcegitcommit: fe5a287fa6b9477b130aa39728f82cdad57611ee
+ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 11/10/2020
+ms.lasthandoff: 01/04/2021
 ms.locfileid: "94431054"
 ---
 # <a name="host-aspnet-core-on-linux-with-nginx"></a>Host ASP.NET Core no Linux com Nginx
@@ -379,7 +379,7 @@ O comando [dotnet Run](/dotnet/core/tools/dotnet-run) usa o arquivo do aplicativ
 
 Configure o aplicativo para usar um certificado em desenvolvimento para o `dotnet run` comando ou o ambiente de desenvolvimento (<kbd>F5</kbd> ou <kbd>Ctrl</kbd> + <kbd>F5</kbd> no Visual Studio Code) usando uma das seguintes abordagens:
 
-* [Substituir o certificado padrão da configuração](xref:fundamentals/servers/kestrel#configuration) ( *Recomendado* )
+* [Substituir o certificado padrão da configuração](xref:fundamentals/servers/kestrel#configuration) (*Recomendado*)
 * [KestrelServerOptions.ConfigureHttpsDefaults](xref:fundamentals/servers/kestrel#configurehttpsdefaultsactionhttpsconnectionadapteroptions)
 
 **Configurar o proxy reverso para conexões de cliente seguras (HTTPS)**
@@ -413,7 +413,7 @@ Adicione o `/etc/nginx/proxy.conf` arquivo de configuração:
 
 #### <a name="secure-nginx-from-clickjacking"></a>Proteger o Nginx de clickjacking
 
-[Clickjacking](https://blog.qualys.com/securitylabs/2015/10/20/clickjacking-a-common-implementation-mistake-that-can-put-your-websites-in-danger), também conhecido como um *ataque por inferência na interface do usuário* , é um ataque mal-intencionado em que o visitante do site é levado a clicar em um link ou botão em uma página diferente daquela que está visitando atualmente. Use `X-FRAME-OPTIONS` para proteger o site.
+[Clickjacking](https://blog.qualys.com/securitylabs/2015/10/20/clickjacking-a-common-implementation-mistake-that-can-put-your-websites-in-danger), também conhecido como um *ataque por inferência na interface do usuário*, é um ataque mal-intencionado em que o visitante do site é levado a clicar em um link ou botão em uma página diferente daquela que está visitando atualmente. Use `X-FRAME-OPTIONS` para proteger o site.
 
 Para atenuar ataques de clickjacking:
 

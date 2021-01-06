@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: security/key-vault-configuration
-ms.openlocfilehash: 7f5cd3de38f1e45d9b188c513a0e62ca658b2992
-ms.sourcegitcommit: 3f0ad1e513296ede1bff39a05be6c278e879afed
+ms.openlocfilehash: 4b035fe59b8576eb387ddce67943386ccab55492
+ms.sourcegitcommit: 8dfcd2b4be936950c228b4d98430622a04254cd7
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96035899"
+ms.lasthandoff: 12/26/2020
+ms.locfileid: "97792086"
 ---
 # <a name="azure-key-vault-configuration-provider-in-aspnet-core"></a>Azure Key Vault provedor de configuração no ASP.NET Core
 
@@ -41,7 +41,10 @@ Este documento explica como usar o provedor de configuração [Azure Key Vault](
 
 ## <a name="packages"></a>Pacotes
 
-Adicione uma referência de pacote ao [Azure.Extensions.AspNetCore.Configuração. ](https://www.nuget.org/packages/Azure.Extensions.AspNetCore.Configuration.Secrets/) Pacote de segredos.
+Adicione referências de pacote para os seguintes pacotes:
+
+* [Azure.Extensions.AspNetCore.Configuração. Confidenciais](https://www.nuget.org/packages/Azure.Extensions.AspNetCore.Configuration.Secrets)
+* [Azure.Identity](https://www.nuget.org/packages/Azure.Identity)
 
 ## <a name="sample-app"></a>Aplicativo de exemplo
 
@@ -193,7 +196,7 @@ O aplicativo de exemplo:
 
 * Cria uma instância da `DefaultAzureCredential` classe, a credencial tenta obter um token de acesso do ambiente para recursos do Azure.
 * Um novo [`Azure.Security.KeyVault.Secrets.Secrets`](/dotnet/api/azure.security.keyvault.secrets) é criado com a `DefaultAzureCredential` instância do.
-* A `Azure.Security.KeyVault.Secrets.Secrets` instância é usada com uma implementação padrão do `Azure.Extensions.Aspnetcore.Configuration.Secrets` que carrega todos os valores secretos e substitui traços duplos ( `--` ) por dois-pontos ( `:` ) em nomes de chave.
+* A `Azure.Security.KeyVault.Secrets.Secrets` instância é usada com uma implementação padrão do `Azure.Extensions.AspNetCore.Configuration.Secrets` que carrega todos os valores secretos e substitui traços duplos ( `--` ) por dois-pontos ( `:` ) em nomes de chave.
 
 [!code-csharp[](key-vault-configuration/samples/3.x/SampleApp/Program.cs?name=snippet2&highlight=12-14)]
 
@@ -227,23 +230,23 @@ config.AddAzureKeyVault(new SecretClient(new URI("Your Key Vault Endpoint"), new
 
 | Propriedade         | Descrição |
 | ---------------- | ----------- |
-| `Manager`        | `Azure.Extensions.Aspnetcore.Configuration.Secrets` instância usada para controlar o carregamento de segredo. |
+| `Manager`        | `Azure.Extensions.AspNetCore.Configuration.Secrets` instância usada para controlar o carregamento de segredo. |
 | `ReloadInterval` | `Timespan` aguardar entre as tentativas de sondagem do cofre de chaves para alterações. O valor padrão é `null` (a configuração não é recarregada). |
 
 ## <a name="use-a-key-name-prefix"></a>Usar um prefixo de nome de chave
 
-O AddAzureKeyVault fornece uma sobrecarga que aceita uma implementação do `Azure.Extensions.Aspnetcore.Configuration.Secrets` , que permite controlar como os segredos do cofre de chaves são convertidos em chaves de configuração. Por exemplo, você pode implementar a interface para carregar valores secretos com base em um valor de prefixo que você fornece na inicialização do aplicativo. Isso permite, por exemplo, carregar segredos com base na versão do aplicativo.
+O AddAzureKeyVault fornece uma sobrecarga que aceita uma implementação do `Azure.Extensions.AspNetCore.Configuration.Secrets` , que permite controlar como os segredos do cofre de chaves são convertidos em chaves de configuração. Por exemplo, você pode implementar a interface para carregar valores secretos com base em um valor de prefixo que você fornece na inicialização do aplicativo. Isso permite, por exemplo, carregar segredos com base na versão do aplicativo.
 
 > [!WARNING]
 > Não use prefixos em segredos do cofre de chaves para colocar segredos para vários aplicativos no mesmo cofre de chaves ou colocar segredos ambientais (por exemplo, *desenvolvimento* versus segredos de *produção* ) no mesmo cofre. Recomendamos que aplicativos diferentes e ambientes de desenvolvimento/produção usem cofres de chaves separados para isolar os ambientes de aplicativo para o nível mais alto de segurança.
 
 No exemplo a seguir, um segredo é estabelecido no cofre de chaves (e usando a ferramenta Gerenciador de segredo para o ambiente de desenvolvimento) para `5000-AppSecret` (os períodos não são permitidos em nomes de segredo do cofre de chaves). Esse segredo representa um segredo do aplicativo para a versão 5.0.0.0 do aplicativo. Para outra versão do aplicativo, 5.1.0.0, um segredo é adicionado ao cofre de chaves (e usando a ferramenta Gerenciador de segredo) para o `5100-AppSecret` . Cada versão do aplicativo carrega seu valor secreto com versão em sua configuração como `AppSecret` , eliminando a versão à medida que ela carrega o segredo.
 
-AddAzureKeyVault é chamado com um personalizado `Azure.Extensions.Aspnetcore.Configuration.Secrets` :
+AddAzureKeyVault é chamado com um personalizado `Azure.Extensions.AspNetCore.Configuration.Secrets` :
 
 [!code-csharp[](key-vault-configuration/samples_snapshot/Program.cs)]
 
-A `Azure.Extensions.Aspnetcore.Configuration.Secrets` implementação reage aos prefixos de versão dos segredos para carregar o segredo apropriado na configuração:
+A `Azure.Extensions.AspNetCore.Configuration.Secrets` implementação reage aos prefixos de versão dos segredos para carregar o segredo apropriado na configuração:
 
 * `Load` carrega um segredo quando seu nome começa com o prefixo. Outros segredos não são carregados.
 * `GetKey`:

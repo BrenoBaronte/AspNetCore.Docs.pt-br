@@ -18,10 +18,10 @@ no-loc:
 - SignalR
 uid: tutorials/first-mvc-app/working-with-sql
 ms.openlocfilehash: c082457258346637499b8ea8000dd8792931112f
-ms.sourcegitcommit: 91e14f1e2a25c98a57c2217fe91b172e0ff2958c
+ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 11/10/2020
+ms.lasthandoff: 01/04/2021
 ms.locfileid: "94422646"
 ---
 # <a name="part-5-work-with-a-database-in-an-aspnet-core-mvc-app"></a>Parte 5, trabalhar com um banco de dados em um aplicativo MVC ASP.NET Core
@@ -30,7 +30,7 @@ ms.locfileid: "94422646"
 
 De [Rick Anderson](https://twitter.com/RickAndMSFT)
 
-O objeto `MvcMovieContext` cuida da tarefa de se conectar ao banco de dados e mapear objetos `Movie` para registros do banco de dados. O contexto de banco de dados é registrado com o contêiner [Injeção de Dependência](xref:fundamentals/dependency-injection) no método `ConfigureServices` no arquivo *Startup.cs* :
+O objeto `MvcMovieContext` cuida da tarefa de se conectar ao banco de dados e mapear objetos `Movie` para registros do banco de dados. O contexto de banco de dados é registrado com o contêiner [Injeção de Dependência](xref:fundamentals/dependency-injection) no método `ConfigureServices` no arquivo *Startup.cs*:
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
@@ -58,7 +58,7 @@ Quando o aplicativo é implantado em um servidor de teste ou de produção, uma 
 
 O LocalDB é uma versão leve do Mecanismo de Banco de Dados do SQL Server Express, que é direcionado para o desenvolvimento de programas. O LocalDB é iniciado sob demanda e executado no modo de usuário e, portanto, não há nenhuma configuração complexa. Por padrão, o banco de dados LocalDB cria arquivos *.mdf* no diretório *C:/Users/{user}*.
 
-* No menu **Exibir** , abra **SSOX** (Pesquisador de Objetos do SQL Server).
+* No menu **Exibir**, abra **SSOX** (Pesquisador de Objetos do SQL Server).
 
   ![Menu de exibição](working-with-sql/_static/ssox.png)
 
@@ -103,7 +103,7 @@ if (context.Movie.Any())
 
 ### <a name="add-the-seed-initializer"></a>Adicionar o inicializador de semeadura
 
-Substitua o conteúdo de *Program.cs* pelo código a seguir:
+Substitua o conteúdo do *Program.cs* pelo seguinte código:
 
 [!code-csharp[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie3/Program.cs)]
 
@@ -142,7 +142,7 @@ O aplicativo mostra os dados propagados.
 
 De [Rick Anderson](https://twitter.com/RickAndMSFT)
 
-O objeto `MvcMovieContext` cuida da tarefa de se conectar ao banco de dados e mapear objetos `Movie` para registros do banco de dados. O contexto de banco de dados é registrado com o contêiner [Injeção de Dependência](xref:fundamentals/dependency-injection) no método `ConfigureServices` no arquivo *Startup.cs* :
+O objeto `MvcMovieContext` cuida da tarefa de se conectar ao banco de dados e mapear objetos `Movie` para registros do banco de dados. O contexto de banco de dados é registrado com o contêiner [Injeção de Dependência](xref:fundamentals/dependency-injection) no método `ConfigureServices` no arquivo *Startup.cs*:
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
@@ -170,7 +170,7 @@ Quando você implanta o aplicativo em um servidor de teste ou de produção, voc
 
 O LocalDB é uma versão leve do Mecanismo de Banco de Dados do SQL Server Express, que é direcionado para o desenvolvimento de programas. O LocalDB é iniciado sob demanda e executado no modo de usuário e, portanto, não há nenhuma configuração complexa. Por padrão, o banco de dados LocalDB cria arquivos *.mdf* no diretório *C:/Users/{user}*.
 
-* No menu **Exibir** , abra **SSOX** (Pesquisador de Objetos do SQL Server).
+* No menu **Exibir**, abra **SSOX** (Pesquisador de Objetos do SQL Server).
 
   ![Menu de exibição](working-with-sql/_static/ssox.png)
 
@@ -215,7 +215,7 @@ if (context.Movie.Any())
 
 ### <a name="add-the-seed-initializer"></a>Adicionar o inicializador de semeadura
 
-Substitua o conteúdo de *Program.cs* pelo código a seguir:
+Substitua o conteúdo do *Program.cs* pelo seguinte código:
 
 [!code-csharp[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie22/Program.cs)]
 

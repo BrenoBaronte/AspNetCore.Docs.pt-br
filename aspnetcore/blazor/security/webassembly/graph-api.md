@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/security/webassembly/graph-api
-ms.openlocfilehash: 128ba34b1e2a9f8cc2986a8f1cb3fb8beba83b21
-ms.sourcegitcommit: a71bb61f7add06acb949c9258fe506914dfe0c08
+ms.openlocfilehash: 58c201d6d1172c1ff82521589f988e33d5c984ae
+ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96855385"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97854490"
 ---
 # <a name="use-graph-api-with-aspnet-core-no-locblazor-webassembly"></a>Usar API do Graph com ASP.NET Core Blazor WebAssembly
 
@@ -107,7 +107,7 @@ internal static class GraphClientExtensions
             var result = await TokenProvider.RequestAccessToken(
                 new AccessTokenRequestOptions()
                 {
-                    Scopes = {STRING ARRAY OF SCOPES}
+                    Scopes = new[] { "{SCOPE 1}", "{SCOPE 2}", ... "{SCOPE X}" }
                 });
 
             if (result.TryGetToken(out var token))
@@ -150,7 +150,7 @@ internal static class GraphClientExtensions
 }
 ```
 
-O espaço reservado `{STRING ARRAY OF SCOPES}` no código anterior é uma matriz de cadeia de caracteres dos escopos permitidos. Por exemplo, defina `Scopes` como o `User.Read` escopo dos exemplos nas seguintes seções deste artigo:
+Os espaços reservados do escopo `"{SCOPE 1}", "{SCOPE 2}", ... "{SCOPE X}"` no código anterior representam um ou mais escopos permitidos. Por exemplo, defina `Scopes` como uma matriz de cadeia de caracteres de um escopo para `User.Read` os exemplos nas seguintes seções deste artigo:
 
 ```csharp
 Scopes = new[] { "https://graph.microsoft.com/User.Read" }
@@ -159,10 +159,10 @@ Scopes = new[] { "https://graph.microsoft.com/User.Read" }
 Em `Program.Main` ( `Program.cs` ), adicione os serviços de cliente do Graph e a configuração com o `AddGraphClient` método de extensão:
 
 ```csharp
-builder.Services.AddGraphClient({STRING ARRAY OF SCOPES});
+builder.Services.AddGraphClient("{SCOPE 1}", "{SCOPE 2}", ... "{SCOPE X}");
 ```
 
-O espaço reservado `{STRING ARRAY OF SCOPES}` no código anterior é uma matriz de cadeia de caracteres dos escopos permitidos. Por exemplo, passe o `User.Read` escopo para `AddGraphClient` para os exemplos nas seguintes seções deste artigo:
+Os espaços reservados do escopo `"{SCOPE 1}", "{SCOPE 2}", ... "{SCOPE X}"` no código anterior representam um ou mais escopos permitidos. Por exemplo, passe o `User.Read` escopo para `AddGraphClient` para os exemplos nas seguintes seções deste artigo:
 
 ```csharp
 builder.Services.AddGraphClient("https://graph.microsoft.com/User.Read");

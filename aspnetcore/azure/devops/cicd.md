@@ -19,10 +19,10 @@ no-loc:
 - SignalR
 uid: azure/devops/cicd
 ms.openlocfilehash: 2ac7a130d223b21330d0a797c1d460fc0cf467d7
-ms.sourcegitcommit: 6af9016d1ffc2dffbb2454c7da29c880034cefcd
+ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 12/08/2020
+ms.lasthandoff: 01/04/2021
 ms.locfileid: "96901204"
 ---
 # <a name="continuous-integration-and-deployment"></a>Integração contínua e implantação
@@ -177,7 +177,7 @@ Há três etapas distintas a serem concluídas. A conclusão das etapas nas trê
     Com essa opção habilitada, uma implantação ocorre cada vez que uma nova compilação está disponível.
 1. Um painel de **gatilho de implantação contínua** aparece à direita. Clique no botão de alternância para habilitar o recurso. Não é necessário habilitar o **gatilho de solicitação pull**.
 1. Clique no menu suspenso **Adicionar** na seção **filtros de Branch de compilação** . Escolha a opção de **ramificação padrão da definição de compilação** . Esse filtro faz com que a liberação seja disparada apenas para uma compilação da ramificação padrão do repositório GitHub (*mestre*).
-1. Clique no botão **Salvar**. Clique no botão **OK** na caixa de diálogo **salvar** modal resultante.
+1. Clique no botão **Salvar** . Clique no botão **OK** na caixa de diálogo **salvar** modal resultante.
 1. Clique na caixa **ambiente 1** . Um painel de **ambiente** aparece à direita. Altere o texto do *ambiente 1* na caixa de texto **nome do ambiente** para *produção*.
 
    ![Pipeline de liberação – caixa de texto nome do ambiente](media/cicd/vsts-environment-name-textbox.png)
@@ -193,12 +193,12 @@ Há três etapas distintas a serem concluídas. A conclusão das etapas nas trê
 1. Selecione *myWebApp/<unique_number/>* na lista suspensa **nome do serviço de aplicativo** .
 1. Selecione *AzureTutorial* na lista suspensa **grupo de recursos** .
 1. Selecione *preparo* na lista suspensa **slot** .
-1. Clique no botão **Salvar**.
+1. Clique no botão **Salvar** .
 1. Passe o mouse sobre o nome do pipeline de liberação padrão. Clique no ícone de lápis para editá-lo. Use *MyFirstProject-ASP.NET Core-CD* como o nome.
 
     ![Nome do pipeline de liberação](media/cicd/vsts-release-definition-name.png)
 
-1. Clique no botão **Salvar**.
+1. Clique no botão **Salvar** .
 
 ## <a name="commit-changes-to-github-and-automatically-deploy-to-azure"></a>Confirmar alterações no GitHub e implantar automaticamente no Azure
 
@@ -225,7 +225,7 @@ Há três etapas distintas a serem concluídas. A conclusão das etapas nas trê
 
     ![habilitar integração contínua](media/cicd/enable-ci.png)
 
-1. Navegue até a guia **enfileirada** da **Azure Pipelines**  >  página de **Builds** Azure pipelines em Azure DevOps Services. A compilação em fila mostra a ramificação e a confirmação que disparou a compilação:
+1. Navegue até a guia **enfileirada** da   >  página de **Builds** Azure pipelines em Azure DevOps Services. A compilação em fila mostra a ramificação e a confirmação que disparou a compilação:
 
     ![compilação enfileirada](media/cicd/build-queued.png)
 

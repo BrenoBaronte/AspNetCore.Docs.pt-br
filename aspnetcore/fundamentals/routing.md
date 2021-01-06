@@ -20,10 +20,10 @@ no-loc:
 - SignalR
 uid: fundamentals/routing
 ms.openlocfilehash: e134832ad00b10bb01239afa06acc74d86707af1
-ms.sourcegitcommit: 91e14f1e2a25c98a57c2217fe91b172e0ff2958c
+ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 11/10/2020
+ms.lasthandoff: 01/04/2021
 ms.locfileid: "94422555"
 ---
 # <a name="routing-in-aspnet-core"></a>Roteamento no ASP.NET Core
@@ -215,7 +215,7 @@ O código de exemplo anterior destina-se a demonstrar os conceitos básicos dos 
 * Faça logon em um arquivo ou banco de dados.
 * Inclua detalhes como o usuário, o endereço IP, o nome do ponto de extremidade confidencial e muito mais.
 
-Os metadados da diretiva de auditoria `AuditPolicyAttribute` são definidos como um `Attribute` para uso mais fácil com estruturas baseadas em classe, como controladores e SignalR . Ao usar *rota para código* :
+Os metadados da diretiva de auditoria `AuditPolicyAttribute` são definidos como um `Attribute` para uso mais fácil com estruturas baseadas em classe, como controladores e SignalR . Ao usar *rota para código*:
 
 * Os metadados são anexados a uma API do Builder.
 * As estruturas baseadas em classe incluem todos os atributos no método e na classe correspondentes ao criar pontos de extremidade.
@@ -393,7 +393,7 @@ Os `GetPath*` métodos são mais semelhantes a `Url.Action` e `Url.Page` , no qu
 
 Os métodos fornecidos pelo <xref:Microsoft.AspNetCore.Routing.LinkGenerator> dão suporte a funcionalidades de geração de link padrão para qualquer tipo de endereço. A maneira mais conveniente de usar o link Generator é por meio de métodos de extensão que executam operações para um tipo de endereço específico:
 
-| Método de extensão | DESCRIÇÃO |
+| Método de extensão | Descrição |
 | ---------------- | ----------- |
 | <xref:Microsoft.AspNetCore.Routing.LinkGenerator.GetPathByAddress*> | Gera um URI com um caminho absoluto com base nos valores fornecidos. |
 | <xref:Microsoft.AspNetCore.Routing.LinkGenerator.GetUriByAddress*> | Gera um URI absoluto com base nos valores fornecidos.             |
@@ -437,7 +437,7 @@ Padrões de URL que tentam capturar um nome de arquivo com uma extensão de arqu
 * `/files/myFile.txt`
 * `/files/myFile`
 
-Os parâmetros de rota podem ter **valores padrão** , designados pela especificação do valor padrão após o nome do parâmetro separado por um sinal de igual (`=`). Por exemplo, `{controller=Home}` define `Home` como o valor padrão de `controller`. O valor padrão é usado se nenhum valor está presente na URL para o parâmetro. Os parâmetros de rota são tornados opcionais acrescentando um ponto de interrogação ( `?` ) ao final do nome do parâmetro. Por exemplo, `id?`. A diferença entre os valores opcionais e os parâmetros de rota padrão é:
+Os parâmetros de rota podem ter **valores padrão**, designados pela especificação do valor padrão após o nome do parâmetro separado por um sinal de igual (`=`). Por exemplo, `{controller=Home}` define `Home` como o valor padrão de `controller`. O valor padrão é usado se nenhum valor está presente na URL para o parâmetro. Os parâmetros de rota são tornados opcionais acrescentando um ponto de interrogação ( `?` ) ao final do nome do parâmetro. Por exemplo, `id?`. A diferença entre os valores opcionais e os parâmetros de rota padrão é:
 
 * Um parâmetro de rota com um valor padrão sempre produz um valor.
 * Um parâmetro opcional tem um valor somente quando um valor é fornecido pela URL de solicitação.
@@ -567,7 +567,7 @@ Para escapar os caracteres delimitadores de parâmetro de roteamento `{` ,,,, `}
 
 As expressões regulares usadas no roteamento geralmente começam com o `^` caractere e correspondem à posição inicial da cadeia de caracteres. As expressões geralmente terminam com o `$` caractere e correspondem ao final da cadeia de caracteres. Os `^` `$` caracteres e garantem que a expressão regular corresponda ao valor do parâmetro de rota inteiro. Sem os `^` `$` caracteres e, a expressão regular corresponde a qualquer subcadeia de caracteres dentro da cadeia de caracteres, o que geralmente é indesejável. A tabela a seguir fornece exemplos e explica por que eles correspondem ou falham na correspondência:
 
-| Expression   | String    | Corresponder a | Comentário               |
+| Expression   | String    | Correspondência | Comentário               |
 | ------------ | --------- | :---: |  -------------------- |
 | `[a-z]{2}`   | hello     | Sim   | A subcadeia de caracteres corresponde     |
 | `[a-z]{2}`   | 123abc456 | Sim   | A subcadeia de caracteres corresponde     |
@@ -973,7 +973,7 @@ Declarar um tipo de metadados como uma interface adiciona outra camada de flexib
 
 [!code-csharp[](routing/samples/3.x/RoutingSample/ICoolMetadata.cs?name=snippet)]
 
-A melhor maneira de seguir essas diretrizes é evitar a definição de **metadados de marcador** :
+A melhor maneira de seguir essas diretrizes é evitar a definição de **metadados de marcador**:
 
 * Não procure apenas a presença de um tipo de metadados.
 * Defina uma propriedade nos metadados e verifique a propriedade.
@@ -1112,7 +1112,7 @@ Os métodos `GetPath*` são mais semelhantes a `Url.Action` e `Url.Page`, pois g
 
 Os métodos fornecidos pelo <xref:Microsoft.AspNetCore.Routing.LinkGenerator> dão suporte a funcionalidades de geração de link padrão para qualquer tipo de endereço. A maneira mais conveniente usar o gerador de link é por meio de métodos de extensão que executam operações para um tipo de endereço específico.
 
-| Método de extensão   | DESCRIÇÃO                                                         |
+| Método de extensão   | Descrição                                                         |
 | ------------------ | ------------------------------------------------------------------- |
 | <xref:Microsoft.AspNetCore.Routing.LinkGenerator.GetPathByAddress*> | Gera um URI com um caminho absoluto com base nos valores fornecidos. |
 | <xref:Microsoft.AspNetCore.Routing.LinkGenerator.GetUriByAddress*> | Gera um URI absoluto com base nos valores fornecidos.             |
@@ -1178,14 +1178,14 @@ Existem algumas diferenças entre o roteamento de ponto de extremidade no ASP.NE
 
   Considere o exemplo a seguir no ASP.NET Core 2.1 ou anterior. Ao estabelecer o vínculo com outra ação (ou outra página), os valores de rota podem ser reutilizados de maneiras indesejadas.
 
-  Em */Pages/Store/Product.cshtml* :
+  Em */Pages/Store/Product.cshtml*:
 
   ```cshtml
   @page "{id}"
   @Url.Page("/Login")
   ```
 
-  Em */Pages/Login.cshtml* :
+  Em */Pages/Login.cshtml*:
 
   ```cshtml
   @page "{id?}"
@@ -1395,7 +1395,7 @@ Você pode usar um asterisco (`*`) ou um asterisco duplo (`**`) como um prefixo 
 
 O parâmetro catch-all faz o escape dos caracteres corretos quando a rota é usada para gerar uma URL, incluindo os caracteres separadores de caminho (`/`). Por exemplo, a rota `foo/{*path}` com valores de rota `{ path = "my/path" }` gera `foo/my%2Fpath`. Observe o escape da barra invertida. Para fazer a viagem de ida e volta dos caracteres separadores de caminho, use o prefixo do parâmetro da rota `**`. A rota `foo/{**path}` com `{ path = "my/path" }` gera `foo/my/path`.
 
-Os parâmetros de rota podem ter *valores padrão* , designados pela especificação do valor padrão após o nome do parâmetro separado por um sinal de igual (`=`). Por exemplo, `{controller=Home}` define `Home` como o valor padrão de `controller`. O valor padrão é usado se nenhum valor está presente na URL para o parâmetro. Os parâmetros de rota se tornam opcionais com o acréscimo de um ponto de interrogação (`?`) ao final do nome do parâmetro, como em `id?`. A diferença entre valores opcionais e parâmetros de rota padrão é que um parâmetro de rota com um valor padrão sempre produz um valor – um parâmetro opcional tem um valor somente quando um valor é fornecido pela URL de solicitação.
+Os parâmetros de rota podem ter *valores padrão*, designados pela especificação do valor padrão após o nome do parâmetro separado por um sinal de igual (`=`). Por exemplo, `{controller=Home}` define `Home` como o valor padrão de `controller`. O valor padrão é usado se nenhum valor está presente na URL para o parâmetro. Os parâmetros de rota se tornam opcionais com o acréscimo de um ponto de interrogação (`?`) ao final do nome do parâmetro, como em `id?`. A diferença entre valores opcionais e parâmetros de rota padrão é que um parâmetro de rota com um valor padrão sempre produz um valor – um parâmetro opcional tem um valor somente quando um valor é fornecido pela URL de solicitação.
 
 Os parâmetros de rota podem ter restrições que precisam corresponder ao valor de rota associado da URL. A adição de dois-pontos (`:`) e do nome da restrição após o nome do parâmetro de rota especifica uma *restrição embutida* em um parâmetro de rota. Se a restrição exigir argumentos, eles ficarão entre parênteses (`(...)`) após o nome da restrição. Várias restrições embutidas podem ser especificadas por meio do acréscimo de outros dois-pontos (`:`) e do nome da restrição.
 
@@ -1434,7 +1434,7 @@ As seguintes palavras-chave são nomes reservados e não podem ser usadas como n
 As restrições de rota são executadas quando ocorre uma correspondência com a URL de entrada e é criado um token do caminho da URL em valores de rota. Em geral, as restrições da rota inspecionam o valor de rota associado por meio do modelo de rota e tomam uma decisão do tipo "sim/não" sobre se o valor é aceitável ou não. Algumas restrições da rota usam dados fora do valor de rota para considerar se a solicitação pode ser encaminhada. Por exemplo, a <xref:Microsoft.AspNetCore.Routing.Constraints.HttpMethodRouteConstraint> pode aceitar ou rejeitar uma solicitação de acordo com o verbo HTTP. As restrições são usadas em solicitações de roteamento e na geração de link.
 
 > [!WARNING]
-> Não use restrições para a **validação de entrada**. Se as restrições forem usadas para a **validação de entrada** , uma entrada inválida resultará em uma resposta *404 – Não Encontrado* , em vez de *400 – Solicitação Inválida* com uma mensagem de erro apropriada. As restrições de rota são usadas para **desfazer a ambiguidade** entre rotas semelhantes, não para validar as entradas de uma rota específica.
+> Não use restrições para a **validação de entrada**. Se as restrições forem usadas para a **validação de entrada**, uma entrada inválida resultará em uma resposta *404 – Não Encontrado*, em vez de *400 – Solicitação Inválida* com uma mensagem de erro apropriada. As restrições de rota são usadas para **desfazer a ambiguidade** entre rotas semelhantes, não para validar as entradas de uma rota específica.
 
 A tabela a seguir demonstra restrições de rota de exemplo e seu comportamento esperado.
 
@@ -1488,7 +1488,7 @@ Para escapar os caracteres delimitadores de parâmetro de roteamento `{` ,,,, `}
 
 As expressões regulares usadas no roteamento geralmente começam com o `^` caractere de cursor e correspondem à posição inicial da cadeia de caracteres. As expressões geralmente terminam com o caractere de sinal de dólar `$` e correspondem ao final da cadeia de caracteres. Os caracteres `^` e `$` garantem que a expressão regular corresponde a todo o valor do parâmetro de rota. Sem os caracteres `^` e `$`, a expressão regular corresponde a qualquer subcadeia de caracteres na cadeia de caracteres, o que geralmente não é o desejado. A tabela a seguir fornece exemplos e explica por que eles encontram ou não uma correspondência.
 
-| Expression   | String    | Corresponder a | Comentário               |
+| Expression   | String    | Correspondência | Comentário               |
 | ------------ | --------- | :---: |  -------------------- |
 | `[a-z]{2}`   | hello     | Sim   | A subcadeia de caracteres corresponde     |
 | `[a-z]{2}`   | 123abc456 | Sim   | A subcadeia de caracteres corresponde     |
@@ -1857,7 +1857,7 @@ Você pode usar o asterisco (`*`) como um prefixo para um parâmetro de rota a s
 
 O parâmetro catch-all faz o escape dos caracteres corretos quando a rota é usada para gerar uma URL, incluindo os caracteres separadores de caminho (`/`). Por exemplo, a rota `foo/{*path}` com valores de rota `{ path = "my/path" }` gera `foo/my%2Fpath`. Observe o escape da barra invertida.
 
-Os parâmetros de rota podem ter *valores padrão* , designados pela especificação do valor padrão após o nome do parâmetro separado por um sinal de igual (`=`). Por exemplo, `{controller=Home}` define `Home` como o valor padrão de `controller`. O valor padrão é usado se nenhum valor está presente na URL para o parâmetro. Os parâmetros de rota se tornam opcionais com o acréscimo de um ponto de interrogação (`?`) ao final do nome do parâmetro, como em `id?`. A diferença entre valores opcionais e parâmetros de rota padrão é que um parâmetro de rota com um valor padrão sempre produz um valor – um parâmetro opcional tem um valor somente quando um valor é fornecido pela URL de solicitação.
+Os parâmetros de rota podem ter *valores padrão*, designados pela especificação do valor padrão após o nome do parâmetro separado por um sinal de igual (`=`). Por exemplo, `{controller=Home}` define `Home` como o valor padrão de `controller`. O valor padrão é usado se nenhum valor está presente na URL para o parâmetro. Os parâmetros de rota se tornam opcionais com o acréscimo de um ponto de interrogação (`?`) ao final do nome do parâmetro, como em `id?`. A diferença entre valores opcionais e parâmetros de rota padrão é que um parâmetro de rota com um valor padrão sempre produz um valor – um parâmetro opcional tem um valor somente quando um valor é fornecido pela URL de solicitação.
 
 Os parâmetros de rota podem ter restrições que precisam corresponder ao valor de rota associado da URL. A adição de dois-pontos (`:`) e do nome da restrição após o nome do parâmetro de rota especifica uma *restrição embutida* em um parâmetro de rota. Se a restrição exigir argumentos, eles ficarão entre parênteses (`(...)`) após o nome da restrição. Várias restrições embutidas podem ser especificadas por meio do acréscimo de outros dois-pontos (`:`) e do nome da restrição.
 
@@ -1884,7 +1884,7 @@ Em geral, o uso de um modelo é a abordagem mais simples para o roteamento. Rest
 As restrições de rota são executadas quando ocorre uma correspondência com a URL de entrada e é criado um token do caminho da URL em valores de rota. Em geral, as restrições da rota inspecionam o valor de rota associado por meio do modelo de rota e tomam uma decisão do tipo "sim/não" sobre se o valor é aceitável ou não. Algumas restrições da rota usam dados fora do valor de rota para considerar se a solicitação pode ser encaminhada. Por exemplo, a <xref:Microsoft.AspNetCore.Routing.Constraints.HttpMethodRouteConstraint> pode aceitar ou rejeitar uma solicitação de acordo com o verbo HTTP. As restrições são usadas em solicitações de roteamento e na geração de link.
 
 > [!WARNING]
-> Não use restrições para a **validação de entrada**. Se as restrições forem usadas para a **validação de entrada** , uma entrada inválida resultará em uma resposta *404 – Não Encontrado* , em vez de *400 – Solicitação Inválida* com uma mensagem de erro apropriada. As restrições de rota são usadas para **desfazer a ambiguidade** entre rotas semelhantes, não para validar as entradas de uma rota específica.
+> Não use restrições para a **validação de entrada**. Se as restrições forem usadas para a **validação de entrada**, uma entrada inválida resultará em uma resposta *404 – Não Encontrado*, em vez de *400 – Solicitação Inválida* com uma mensagem de erro apropriada. As restrições de rota são usadas para **desfazer a ambiguidade** entre rotas semelhantes, não para validar as entradas de uma rota específica.
 
 A tabela a seguir demonstra restrições de rota de exemplo e seu comportamento esperado.
 
@@ -1932,7 +1932,7 @@ As expressões regulares usam delimitadores e tokens semelhantes aos usados pelo
 
 As expressões regulares usadas no roteamento geralmente começam com o caractere de acento circunflexo (`^`) e correspondem à posição inicial da cadeia de caracteres. As expressões geralmente terminam com o caractere de cifrão (`$`) e correspondem ao final da cadeia de caracteres. Os caracteres `^` e `$` garantem que a expressão regular corresponde a todo o valor do parâmetro de rota. Sem os caracteres `^` e `$`, a expressão regular corresponde a qualquer subcadeia de caracteres na cadeia de caracteres, o que geralmente não é o desejado. A tabela a seguir fornece exemplos e explica por que eles encontram ou não uma correspondência.
 
-| Expression   | String    | Corresponder a | Comentário               |
+| Expression   | String    | Correspondência | Comentário               |
 | ------------ | --------- | :---: |  -------------------- |
 | `[a-z]{2}`   | hello     | Sim   | A subcadeia de caracteres corresponde     |
 | `[a-z]{2}`   | 123abc456 | Sim   | A subcadeia de caracteres corresponde     |

@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/security/webassembly/standalone-with-azure-active-directory-b2c
-ms.openlocfilehash: 14eda03419e22538e17b7b4d6fa697d61cb384c8
-ms.sourcegitcommit: 45aa1c24c3fdeb939121e856282b00bdcf00ea55
+ms.openlocfilehash: 679f14642f4a611a5e65a7f472c68663fc1fb16b
+ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93343696"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97764662"
 ---
 # <a name="secure-an-aspnet-core-no-locblazor-webassembly-standalone-app-with-azure-active-directory-b2c"></a>Proteger um Blazor WebAssembly aplicativo ASP.NET Core autônomo com Azure Active Directory B2C
 
@@ -32,30 +32,30 @@ Por [Javier Calvarro Nelson](https://github.com/javiercn) e [Luke Latham](https:
 
 Este artigo aborda como criar um [ Blazor WebAssembly aplicativo autônomo](xref:blazor/hosting-models#blazor-webassembly) que usa [Azure Active Directory (AAD) B2C](/azure/active-directory-b2c/overview) para autenticação.
 
-Crie um locatário ou identifique um locatário B2C existente para o aplicativo usar no portal do Azure seguindo as orientações no artigo [criar um locatário de AAD B2C (documentação do Azure)](/azure/active-directory-b2c/tutorial-create-tenant) .
+Crie um locatário ou identifique um locatário B2C existente para o aplicativo usar no portal do Azure seguindo as orientações no artigo [criar um locatário de AAD B2C (documentação do Azure)](/azure/active-directory-b2c/tutorial-create-tenant) . Retorne a este artigo imediatamente após criar ou identificar um locatário a ser usado.
 
 Registre as seguintes informações:
 
 * AAD B2C instância (por exemplo, `https://contoso.b2clogin.com/` , que inclui a barra à direita): a instância é o esquema e o host de um registro de aplicativo do Azure B2C, que pode ser encontrado abrindo a janela **pontos de extremidade** na página **registros de aplicativo** no portal do Azure.
 * AAD B2C domínio primário/Publicador/locatário (por exemplo, `contoso.onmicrosoft.com` ): o domínio está disponível como o **domínio do Publicador** na folha de **identidade visual** do portal do Azure para o aplicativo registrado.
 
-Registre um aplicativo AAD B2C (diretrizes relacionadas na documentação do Azure: [tutorial: registrar um aplicativo no Azure Active Directory B2C](/azure/active-directory-b2c/tutorial-register-applications)):
+Registrar um aplicativo AAD B2C:
 
 ::: moniker range=">= aspnetcore-5.0"
 
-1. Em **Azure Active Directory** > **registros de aplicativo** , selecione **novo registro**.
-1. Forneça um **nome** para o aplicativo (por exemplo, **Blazor AAD B2C autônomo** ).
-1. Para **tipos de conta com suporte** , selecione a opção multilocatário: **contas em qualquer diretório organizacional ou qualquer provedor de identidade. Para autenticar usuários com Azure AD B2C.**
+1. Em **Azure Active Directory** > **registros de aplicativo**, selecione **novo registro**.
+1. Forneça um **nome** para o aplicativo (por exemplo, **Blazor AAD B2C autônomo**).
+1. Para **tipos de conta com suporte**, selecione a opção multilocatário: **contas em qualquer diretório organizacional ou qualquer provedor de identidade. Para autenticar usuários com Azure AD B2C.**
 1. Defina a lista suspensa **URI de redirecionamento** para o **aplicativo de página única (Spa)** e forneça o seguinte URI de redirecionamento: `https://localhost:{PORT}/authentication/login-callback` . A porta padrão para um aplicativo em execução no Kestrel é 5001. Se o aplicativo for executado em uma porta Kestrel diferente, use a porta do aplicativo. Por IIS Express, a porta gerada aleatoriamente para o aplicativo pode ser encontrada nas propriedades do aplicativo no painel de **depuração** . Como o aplicativo não existe neste ponto e a porta de IIS Express não é conhecida, retorne a essa etapa depois que o aplicativo for criado e atualize o URI de redirecionamento. Um comentário aparece mais adiante neste tópico para lembrar IIS Express usuários para atualizar o URI de redirecionamento.
 1. Confirme se **as permissões** > **concedem consentimento de administrador ao OpenID e offline_access permissões** estão selecionadas.
 1. Selecione **Registrar**.
 
 Registre a ID do aplicativo (cliente) (por exemplo, `41451fa7-82d9-4673-8fa5-69eff5a761fd` ).
 
-Em configurações de plataforma de **autenticação** > **Platform configurations** > **, um aplicativo de página única (Spa)** :
+Em configurações de plataforma de **autenticação** >  > **, um aplicativo de página única (Spa)**:
 
 1. Confirme se o **URI de redirecionamento** do `https://localhost:{PORT}/authentication/login-callback` está presente.
-1. Para **concessão implícita** , verifique se as caixas de seleção para **tokens de acesso** e **tokens de ID** **não** estão selecionadas.
+1. Para **concessão implícita**, verifique se as caixas de seleção para **tokens de acesso** e **tokens de ID** **não** estão selecionadas.
 1. Os padrões restantes para o aplicativo são aceitáveis para essa experiência.
 1. Selecione o botão **Salvar**.
 
@@ -63,29 +63,29 @@ Em configurações de plataforma de **autenticação** > **Platform configuratio
 
 ::: moniker range="< aspnetcore-5.0"
 
-1. Em **Azure Active Directory** > **registros de aplicativo** , selecione **novo registro**.
-1. Forneça um **nome** para o aplicativo (por exemplo, **Blazor AAD B2C autônomo** ).
-1. Para **tipos de conta com suporte** , selecione a opção multilocatário: **contas em qualquer diretório organizacional ou qualquer provedor de identidade. Para autenticar usuários com Azure AD B2C.**
+1. Em **Azure Active Directory** > **registros de aplicativo**, selecione **novo registro**.
+1. Forneça um **nome** para o aplicativo (por exemplo, **Blazor AAD B2C autônomo**).
+1. Para **tipos de conta com suporte**, selecione a opção multilocatário: **contas em qualquer diretório organizacional ou qualquer provedor de identidade. Para autenticar usuários com Azure AD B2C.**
 1. Deixe a lista suspensa **URI de redirecionamento** definida como **Web** e forneça o seguinte URI de redirecionamento: `https://localhost:{PORT}/authentication/login-callback` . A porta padrão para um aplicativo em execução no Kestrel é 5001. Se o aplicativo for executado em uma porta Kestrel diferente, use a porta do aplicativo. Por IIS Express, a porta gerada aleatoriamente para o aplicativo pode ser encontrada nas propriedades do aplicativo no painel de **depuração** . Como o aplicativo não existe neste ponto e a porta de IIS Express não é conhecida, retorne a essa etapa depois que o aplicativo for criado e atualize o URI de redirecionamento. Um comentário aparece mais adiante neste tópico para lembrar IIS Express usuários para atualizar o URI de redirecionamento.
 1. Confirme se **as permissões** > **concedem consentimento de administrador ao OpenID e offline_access permissões** estão selecionadas.
 1. Selecione **Registrar**.
 
 Registre a ID do aplicativo (cliente) (por exemplo, `41451fa7-82d9-4673-8fa5-69eff5a761fd` ).
 
-Em **Authentication** > **configurações da plataforma** de autenticação > **Web** :
+Em  > **configurações da plataforma** de autenticação > **Web**:
 
 1. Confirme se o **URI de redirecionamento** do `https://localhost:{PORT}/authentication/login-callback` está presente.
-1. Para **concessão implícita** , marque as caixas de seleção para **tokens de acesso** e **tokens de ID**.
+1. Para **concessão implícita**, marque as caixas de seleção para **tokens de acesso** e **tokens de ID**.
 1. Os padrões restantes para o aplicativo são aceitáveis para essa experiência.
 1. Selecione o botão **Salvar**.
 
 ::: moniker-end
 
-Em **casa**  >  **Azure ad B2C**  >  **fluxos de usuário** :
+Em **casa**  >  **Azure ad B2C**  >  **fluxos de usuário**:
 
 [Criar um fluxo de usuário de inscrição e de entrada](/azure/active-directory-b2c/tutorial-create-user-flows)
 
-No mínimo, selecione o atributo de usuário nome de exibição de **declarações do aplicativo**  >  **Display Name** para popular o `context.User.Identity.Name` no `LoginDisplay` componente ( `Shared/LoginDisplay.razor` ).
+No mínimo, selecione o atributo de usuário nome de exibição de **declarações do aplicativo**  >   para popular o `context.User.Identity.Name` no `LoginDisplay` componente ( `Shared/LoginDisplay.razor` ).
 
 Registre o nome do fluxo de usuário de entrada e de entrada criado para o aplicativo (por exemplo, `B2C_1_signupsignin` ).
 
@@ -114,7 +114,7 @@ A localização de saída especificada com a opção `-o|--output` criará uma p
 
 ::: moniker range=">= aspnetcore-5.0"
 
-[!INCLUDE[](~/includes/blazor-security/additional-scopes-standalone-nonAAD.md)]
+[!INCLUDE[](~/blazor/includes/security/additional-scopes-standalone-nonAAD.md)]
 
 ::: moniker-end
 
@@ -206,37 +206,37 @@ Para obter mais informações, consulte as seguintes seções do artigo *cenári
 
 ## <a name="login-mode"></a>Modo de logon
 
-[!INCLUDE[](~/includes/blazor-security/msal-login-mode.md)]
+[!INCLUDE[](~/blazor/includes/security/msal-login-mode.md)]
 
 ::: moniker-end
 
 ## <a name="imports-file"></a>Arquivo de importações
 
-[!INCLUDE[](~/includes/blazor-security/imports-file-standalone.md)]
+[!INCLUDE[](~/blazor/includes/security/imports-file-standalone.md)]
 
 ## <a name="index-page"></a>Página de índice
 
-[!INCLUDE[](~/includes/blazor-security/index-page-msal.md)]
+[!INCLUDE[](~/blazor/includes/security/index-page-msal.md)]
 
 ## <a name="app-component"></a>Componente do aplicativo
 
-[!INCLUDE[](~/includes/blazor-security/app-component.md)]
+[!INCLUDE[](~/blazor/includes/security/app-component.md)]
 
 ## <a name="redirecttologin-component"></a>Componente RedirectToLogin
 
-[!INCLUDE[](~/includes/blazor-security/redirecttologin-component.md)]
+[!INCLUDE[](~/blazor/includes/security/redirecttologin-component.md)]
 
 ## <a name="logindisplay-component"></a>Componente LoginDisplay
 
-[!INCLUDE[](~/includes/blazor-security/logindisplay-component.md)]
+[!INCLUDE[](~/blazor/includes/security/logindisplay-component.md)]
 
 ## <a name="authentication-component"></a>Componente de autenticação
 
-[!INCLUDE[](~/includes/blazor-security/authentication-component.md)]
+[!INCLUDE[](~/blazor/includes/security/authentication-component.md)]
 
-[!INCLUDE[](~/includes/blazor-security/wasm-aad-b2c-userflows.md)]
+[!INCLUDE[](~/blazor/includes/security/wasm-aad-b2c-userflows.md)]
 
-[!INCLUDE[](~/includes/blazor-security/troubleshoot.md)]
+[!INCLUDE[](~/blazor/includes/security/troubleshoot.md)]
 
 ## <a name="additional-resources"></a>Recursos adicionais
 
@@ -244,4 +244,5 @@ Para obter mais informações, consulte as seguintes seções do artigo *cenári
 * [Solicitações de API Web não autenticadas ou não autorizadas em um aplicativo com um cliente padrão seguro](xref:blazor/security/webassembly/additional-scenarios#unauthenticated-or-unauthorized-web-api-requests-in-an-app-with-a-secure-default-client)
 * <xref:security/authentication/azure-ad-b2c>
 * [Tutorial: Criar um locatário do Azure Active Directory B2C](/azure/active-directory-b2c/tutorial-create-tenant)
+* [Tutorial: Registrar um aplicativo no Azure Active Directory B2C](/azure/active-directory-b2c/tutorial-register-applications)
 * [Documentação da plataforma de identidade da Microsoft](/azure/active-directory/develop/)

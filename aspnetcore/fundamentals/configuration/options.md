@@ -20,10 +20,10 @@ no-loc:
 - SignalR
 uid: fundamentals/configuration/options
 ms.openlocfilehash: dedc17d7d793a6fd2eac1c8017b704d98a86f1cb
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 01/04/2021
 ms.locfileid: "93061087"
 ---
 # <a name="options-pattern-in-aspnet-core"></a>Padrão de opções no ASP.NET Core
@@ -55,7 +55,7 @@ Este tópico fornece informações sobre o padrão de opções no ASP.NET Core. 
 
 <xref:Microsoft.Extensions.Options.IOptions%601>:
 
-* * **Não** oferece suporte a: _ leitura de dados de configuração após o aplicativo ser iniciado.
+* ***Não** oferece suporte a: _ leitura de dados de configuração após o aplicativo ser iniciado.
   * [Opções nomeadas](#named)
 * É registrado como um [singleton](xref:fundamentals/dependency-injection#singleton) e pode ser injetado em qualquer [tempo de vida do serviço](xref:fundamentals/dependency-injection#service-lifetimes).
 
@@ -320,7 +320,7 @@ O <xref:Microsoft.Extensions.Options.IOptions%601> pode ser usado para dar supor
 
 A configuração de opções gerais é demonstrada no Exemplo 1 no aplicativo de exemplo.
 
-Uma classe de opções deve ser não abstrata com um construtor público sem parâmetros. A classe a seguir, `MyOptions`, tem duas propriedades, `Option1` e `Option2`. A configuração de valores padrão é opcional, mas o construtor de classe no exemplo a seguir define o valor padrão de `Option1`. `Option2` tem um valor padrão definido com a inicialização da propriedade diretamente ( *Models/MyOptions.cs* ):
+Uma classe de opções deve ser não abstrata com um construtor público sem parâmetros. A classe a seguir, `MyOptions`, tem duas propriedades, `Option1` e `Option2`. A configuração de valores padrão é opcional, mas o construtor de classe no exemplo a seguir define o valor padrão de `Option1`. `Option2` tem um valor padrão definido com a inicialização da propriedade diretamente (*Models/MyOptions.cs*):
 
 [!code-csharp[](options/samples/2.x/OptionsSample/Models/MyOptions.cs?name=snippet1)]
 
@@ -328,7 +328,7 @@ A classe `MyOptions` é adicionada ao contêiner de serviço com <xref:Microsoft
 
 [!code-csharp[](options/samples/2.x/OptionsSample/Startup.cs?name=snippet_Example1)]
 
-O seguinte modelo de página usa a [injeção de dependência de construtor](xref:mvc/controllers/dependency-injection) com <xref:Microsoft.Extensions.Options.IOptionsMonitor%601> para acessar as configurações ( *Pages/Index.cshtml.cs* ):
+O seguinte modelo de página usa a [injeção de dependência de construtor](xref:mvc/controllers/dependency-injection) com <xref:Microsoft.Extensions.Options.IOptionsMonitor%601> para acessar as configurações (*Pages/Index.cshtml.cs*):
 
 [!code-csharp[](options/samples/2.x/OptionsSample/Pages/Index.cshtml.cs?range=9)]
 
@@ -364,7 +364,7 @@ option1 = value1_from_json, option2 = -1
 
 A configuração de opções simples com um delegado é demonstrada como o Exemplo 2 no aplicativo de exemplo.
 
-Use um delegado para definir valores de opções. O aplicativo de exemplo usa a classe `MyOptionsWithDelegateConfig` ( *Models/MyOptionsWithDelegateConfig.cs* ):
+Use um delegado para definir valores de opções. O aplicativo de exemplo usa a classe `MyOptionsWithDelegateConfig` (*Models/MyOptionsWithDelegateConfig.cs*):
 
 [!code-csharp[](options/samples/2.x/OptionsSample/Models/MyOptionsWithDelegateConfig.cs?name=snippet1)]
 
@@ -372,7 +372,7 @@ No código a seguir, um segundo serviço <xref:Microsoft.Extensions.Options.ICon
 
 [!code-csharp[](options/samples/2.x/OptionsSample/Startup.cs?name=snippet_Example2)]
 
-*Index.cshtml.cs* :
+*Index.cshtml.cs*:
 
 [!code-csharp[](options/samples/2.x/OptionsSample/Pages/Index.cshtml.cs?range=10)]
 
@@ -408,11 +408,11 @@ O arquivo do exemplo *appsettings.json* define um `subsection` membro com chaves
 
 [!code-json[](options/samples/2.x/OptionsSample/appsettings.json?highlight=4-7)]
 
-A classe `MySubOptions` define as propriedades `SubOption1` e `SubOption2`, para armazenar os valores de opções ( *Models/MySubOptions.cs* ):
+A classe `MySubOptions` define as propriedades `SubOption1` e `SubOption2`, para armazenar os valores de opções (*Models/MySubOptions.cs*):
 
 [!code-csharp[](options/samples/2.x/OptionsSample/Models/MySubOptions.cs?name=snippet1)]
 
-O método `OnGet` do modelo da página retorna uma cadeia de caracteres com os valores de opções ( *Pages/Index.cshtml.cs* ):
+O método `OnGet` do modelo da página retorna uma cadeia de caracteres com os valores de opções (*Pages/Index.cshtml.cs*):
 
 [!code-csharp[](options/samples/2.x/OptionsSample/Pages/Index.cshtml.cs?range=11)]
 
@@ -435,7 +435,7 @@ Injetar <xref:Microsoft.Extensions.Options.IOptionsMonitor%601> em:
 * Uma Razor exibição Page ou MVC com a [`@inject`](xref:mvc/views/razor#inject) Razor diretiva.
 * Um modelo de página ou de exibição.
 
-O exemplo a seguir do aplicativo de exemplo injeta <xref:Microsoft.Extensions.Options.IOptionsMonitor%601> em um modelo de página ( *pages/index. cshtml. cs* ):
+O exemplo a seguir do aplicativo de exemplo injeta <xref:Microsoft.Extensions.Options.IOptionsMonitor%601> em um modelo de página (*pages/index. cshtml. cs*):
 
 [!code-csharp[](options/samples/2.x/OptionsSample/Pages/Index.cshtml.cs?range=9)]
 
@@ -462,7 +462,7 @@ A diferença entre `IOptionsMonitor` e `IOptionsSnapshot` é que:
 * `IOptionsMonitor` é um [serviço singleton](xref:fundamentals/dependency-injection#singleton) que recupera os valores de opção atuais a qualquer momento, o que é especialmente útil em dependências singleton.
 * `IOptionsSnapshot` é um [serviço com escopo](xref:fundamentals/dependency-injection#scoped) e fornece um instantâneo das opções no momento em que o `IOptionsSnapshot<T>` objeto é construído. Os instantâneos de opções são projetados para uso com dependências transitórias e com escopo definido.
 
-O exemplo a seguir demonstra como um novo <xref:Microsoft.Extensions.Options.IOptionsSnapshot%601> é criado após *appsettings.json* as alterações ( *pages/index. cshtml. cs* ). Várias solicitações para o servidor retornam valores constantes fornecidos pelo *appsettings.json* arquivo até que o arquivo seja alterado e recarregamentos de configuração.
+O exemplo a seguir demonstra como um novo <xref:Microsoft.Extensions.Options.IOptionsSnapshot%601> é criado após *appsettings.json* as alterações (*pages/index. cshtml. cs*). Várias solicitações para o servidor retornam valores constantes fornecidos pelo *appsettings.json* arquivo até que o arquivo seja alterado e recarregamentos de configuração.
 
 [!code-csharp[](options/samples/2.x/OptionsSample/Pages/Index.cshtml.cs?range=12)]
 
@@ -476,7 +476,7 @@ A imagem a seguir mostra a inicial `option1` e os `option2` valores carregados d
 snapshot option1 = value1_from_json, snapshot option2 = -1
 ```
 
-Altere os valores no *appsettings.json* arquivo para `value1_from_json UPDATED` e `200` . Salve o arquivo *appsettings.json* . Atualize o navegador para ver se os valores de opções foram atualizados:
+Altere os valores no *appsettings.json* arquivo para `value1_from_json UPDATED` e `200` . Salve o arquivo *appsettings.json*. Atualize o navegador para ver se os valores de opções foram atualizados:
 
 ```html
 snapshot option1 = value1_from_json UPDATED, snapshot option2 = 200
@@ -490,7 +490,7 @@ O suporte de opções nomeadas permite que o aplicativo faça a distinção entr
 
 [!code-csharp[](options/samples/2.x/OptionsSample/Startup.cs?name=snippet_Example6)]
 
-O aplicativo de exemplo acessa as opções nomeadas com <xref:Microsoft.Extensions.Options.IOptionsSnapshot`1.Get*> ( *Pages/Index.cshtml.cs* ):
+O aplicativo de exemplo acessa as opções nomeadas com <xref:Microsoft.Extensions.Options.IOptionsSnapshot`1.Get*> (*Pages/Index.cshtml.cs*):
 
 [!code-csharp[](options/samples/2.x/OptionsSample/Pages/Index.cshtml.cs?range=13-14)]
 
@@ -593,7 +593,7 @@ O exemplo anterior define a instância de opções nomeadas como `optionalOption
 A validação é executada após a criação da instância de opções. É garantido que uma instância de opções passe a validação na primeira vez que é acessada.
 
 > [!IMPORTANT]
-> A validação de opções não protege contra modificações de opções depois que a instância de opções é criada. Por exemplo, `IOptionsSnapshot` as opções são criadas e validadas uma vez por solicitação quando as opções são acessadas pela primeira vez. As `IOptionsSnapshot` opções não são validadas novamente em tentativas de acesso subsequentes *para a mesma solicitação* .
+> A validação de opções não protege contra modificações de opções depois que a instância de opções é criada. Por exemplo, `IOptionsSnapshot` as opções são criadas e validadas uma vez por solicitação quando as opções são acessadas pela primeira vez. As `IOptionsSnapshot` opções não são validadas novamente em tentativas de acesso subsequentes *para a mesma solicitação*.
 
 O método `Validate` aceita um `Func<TOptions, bool>`. Para personalizar totalmente a validação, implemente `IValidateOptions<TOptions>`, que permite:
 
@@ -742,7 +742,7 @@ O <xref:Microsoft.Extensions.Options.IOptions%601> pode ser usado para dar supor
 
 A configuração de opções gerais é demonstrada no Exemplo 1 no aplicativo de exemplo.
 
-Uma classe de opções deve ser não abstrata com um construtor público sem parâmetros. A classe a seguir, `MyOptions`, tem duas propriedades, `Option1` e `Option2`. A configuração de valores padrão é opcional, mas o construtor de classe no exemplo a seguir define o valor padrão de `Option1`. `Option2` tem um valor padrão definido com a inicialização da propriedade diretamente ( *Models/MyOptions.cs* ):
+Uma classe de opções deve ser não abstrata com um construtor público sem parâmetros. A classe a seguir, `MyOptions`, tem duas propriedades, `Option1` e `Option2`. A configuração de valores padrão é opcional, mas o construtor de classe no exemplo a seguir define o valor padrão de `Option1`. `Option2` tem um valor padrão definido com a inicialização da propriedade diretamente (*Models/MyOptions.cs*):
 
 [!code-csharp[](options/samples/2.x/OptionsSample/Models/MyOptions.cs?name=snippet1)]
 
@@ -750,7 +750,7 @@ A classe `MyOptions` é adicionada ao contêiner de serviço com <xref:Microsoft
 
 [!code-csharp[](options/samples/2.x/OptionsSample/Startup.cs?name=snippet_Example1)]
 
-O seguinte modelo de página usa a [injeção de dependência de construtor](xref:mvc/controllers/dependency-injection) com <xref:Microsoft.Extensions.Options.IOptionsMonitor%601> para acessar as configurações ( *Pages/Index.cshtml.cs* ):
+O seguinte modelo de página usa a [injeção de dependência de construtor](xref:mvc/controllers/dependency-injection) com <xref:Microsoft.Extensions.Options.IOptionsMonitor%601> para acessar as configurações (*Pages/Index.cshtml.cs*):
 
 [!code-csharp[](options/samples/2.x/OptionsSample/Pages/Index.cshtml.cs?range=9)]
 
@@ -786,7 +786,7 @@ option1 = value1_from_json, option2 = -1
 
 A configuração de opções simples com um delegado é demonstrada como o Exemplo 2 no aplicativo de exemplo.
 
-Use um delegado para definir valores de opções. O aplicativo de exemplo usa a classe `MyOptionsWithDelegateConfig` ( *Models/MyOptionsWithDelegateConfig.cs* ):
+Use um delegado para definir valores de opções. O aplicativo de exemplo usa a classe `MyOptionsWithDelegateConfig` (*Models/MyOptionsWithDelegateConfig.cs*):
 
 [!code-csharp[](options/samples/2.x/OptionsSample/Models/MyOptionsWithDelegateConfig.cs?name=snippet1)]
 
@@ -794,7 +794,7 @@ No código a seguir, um segundo serviço <xref:Microsoft.Extensions.Options.ICon
 
 [!code-csharp[](options/samples/2.x/OptionsSample/Startup.cs?name=snippet_Example2)]
 
-*Index.cshtml.cs* :
+*Index.cshtml.cs*:
 
 [!code-csharp[](options/samples/2.x/OptionsSample/Pages/Index.cshtml.cs?range=10)]
 
@@ -830,11 +830,11 @@ O arquivo do exemplo *appsettings.json* define um `subsection` membro com chaves
 
 [!code-json[](options/samples/2.x/OptionsSample/appsettings.json?highlight=4-7)]
 
-A classe `MySubOptions` define as propriedades `SubOption1` e `SubOption2`, para armazenar os valores de opções ( *Models/MySubOptions.cs* ):
+A classe `MySubOptions` define as propriedades `SubOption1` e `SubOption2`, para armazenar os valores de opções (*Models/MySubOptions.cs*):
 
 [!code-csharp[](options/samples/2.x/OptionsSample/Models/MySubOptions.cs?name=snippet1)]
 
-O método `OnGet` do modelo da página retorna uma cadeia de caracteres com os valores de opções ( *Pages/Index.cshtml.cs* ):
+O método `OnGet` do modelo da página retorna uma cadeia de caracteres com os valores de opções (*Pages/Index.cshtml.cs*):
 
 [!code-csharp[](options/samples/2.x/OptionsSample/Pages/Index.cshtml.cs?range=11)]
 
@@ -852,7 +852,7 @@ subOption1 = subvalue1_from_json, subOption2 = 200
 
 As opções fornecidas por um modelo de exibição ou com a injeção de exibição direta são demonstradas como o Exemplo 4 no aplicativo de exemplo.
 
-As opções podem ser fornecidas em um modelo de exibição ou pela injeção de <xref:Microsoft.Extensions.Options.IOptionsMonitor%601> diretamente em uma exibição ( *Pages/Index.cshtml.cs* ):
+As opções podem ser fornecidas em um modelo de exibição ou pela injeção de <xref:Microsoft.Extensions.Options.IOptionsMonitor%601> diretamente em uma exibição (*Pages/Index.cshtml.cs*):
 
 [!code-csharp[](options/samples/2.x/OptionsSample/Pages/Index.cshtml.cs?range=9)]
 
@@ -876,7 +876,7 @@ O <xref:Microsoft.Extensions.Options.IOptionsSnapshot%601> dá suporte a opçõe
 
 As opções são calculadas uma vez por solicitação, quando acessadas e armazenadas em cache durante o tempo de vida da solicitação.
 
-O exemplo a seguir demonstra como um novo <xref:Microsoft.Extensions.Options.IOptionsSnapshot%601> é criado após *appsettings.json* as alterações ( *pages/index. cshtml. cs* ). Várias solicitações para o servidor retornam valores constantes fornecidos pelo *appsettings.json* arquivo até que o arquivo seja alterado e recarregamentos de configuração.
+O exemplo a seguir demonstra como um novo <xref:Microsoft.Extensions.Options.IOptionsSnapshot%601> é criado após *appsettings.json* as alterações (*pages/index. cshtml. cs*). Várias solicitações para o servidor retornam valores constantes fornecidos pelo *appsettings.json* arquivo até que o arquivo seja alterado e recarregamentos de configuração.
 
 [!code-csharp[](options/samples/2.x/OptionsSample/Pages/Index.cshtml.cs?range=12)]
 
@@ -890,7 +890,7 @@ A imagem a seguir mostra a inicial `option1` e os `option2` valores carregados d
 snapshot option1 = value1_from_json, snapshot option2 = -1
 ```
 
-Altere os valores no *appsettings.json* arquivo para `value1_from_json UPDATED` e `200` . Salve o arquivo *appsettings.json* . Atualize o navegador para ver se os valores de opções foram atualizados:
+Altere os valores no *appsettings.json* arquivo para `value1_from_json UPDATED` e `200` . Salve o arquivo *appsettings.json*. Atualize o navegador para ver se os valores de opções foram atualizados:
 
 ```html
 snapshot option1 = value1_from_json UPDATED, snapshot option2 = 200
@@ -904,7 +904,7 @@ O suporte de opções nomeadas permite que o aplicativo faça a distinção entr
 
 [!code-csharp[](options/samples/2.x/OptionsSample/Startup.cs?name=snippet_Example6)]
 
-O aplicativo de exemplo acessa as opções nomeadas com <xref:Microsoft.Extensions.Options.IOptionsSnapshot`1.Get*> ( *Pages/Index.cshtml.cs* ):
+O aplicativo de exemplo acessa as opções nomeadas com <xref:Microsoft.Extensions.Options.IOptionsSnapshot`1.Get*> (*Pages/Index.cshtml.cs*):
 
 [!code-csharp[](options/samples/2.x/OptionsSample/Pages/Index.cshtml.cs?range=13-14)]
 

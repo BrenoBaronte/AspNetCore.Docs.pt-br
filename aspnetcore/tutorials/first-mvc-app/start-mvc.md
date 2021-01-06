@@ -18,10 +18,10 @@ no-loc:
 - SignalR
 uid: tutorials/first-mvc-app/start-mvc
 ms.openlocfilehash: c96e7107c85bf36f55f6571c71c20d09bc94ddb3
-ms.sourcegitcommit: fb208f907249cc7aab029afff941a0266c187050
+ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 11/17/2020
+ms.lasthandoff: 01/04/2021
 ms.locfileid: "94688461"
 ---
 # <a name="get-started-with-aspnet-core-mvc"></a>Introdução ao ASP.NET Core MVC
@@ -87,7 +87,7 @@ O tutorial pressupõe familiaridade com VS Code. Consulte [Introdução ao VS Co
 
 * Abra o [terminal integrado](https://code.visualstudio.com/docs/editor/integrated-terminal).
 * Altere os diretórios (`cd`) para uma pasta que conterá o projeto.
-* Execute o seguinte comando:
+* Execute o comando a seguir:
 
    ```dotnetcli
    dotnet new mvc -o MvcMovie
@@ -105,7 +105,7 @@ O tutorial pressupõe familiaridade com VS Code. Consulte [Introdução ao VS Co
 
   ![Nova solução do macOS](start-mvc/_static/new_project_vsmac.png)
 
-* Em Visual Studio para Mac anteriores à versão 8,6, selecione aplicativo Web do aplicativo **.NET Core**  >  **App**  >  **(Model-View-Controller)**  >  **Avançar**. Na versão 8,6 ou posterior, selecione **Web e aplicativo de console**  >  **App**  >  **aplicativos Web (Model-View-Controller)**  >  **Avançar**.
+* Em Visual Studio para Mac anteriores à versão 8,6, selecione aplicativo Web do aplicativo **.NET Core**  >    >  **(Model-View-Controller)**  >  **Avançar**. Na versão 8,6 ou posterior, selecione **Web e aplicativo de console**  >    >  **aplicativos Web (Model-View-Controller)**  >  **Avançar**.
 
   ![seleção de modelo de aplicativo Web macOS](start-mvc/_static/web_app_template_vsmac.png)
 
@@ -240,7 +240,7 @@ O tutorial pressupõe que você já tenha familiaridade com o VS Code. Consulte 
 
 * Abra o [terminal integrado](https://code.visualstudio.com/docs/editor/integrated-terminal).
 * Altere os diretórios (`cd`) para uma pasta que conterá o projeto.
-* Execute o seguinte comando:
+* Execute o comando a seguir:
 
    ```dotnetcli
    dotnet new mvc -o MvcMovie
@@ -258,7 +258,7 @@ O tutorial pressupõe que você já tenha familiaridade com o VS Code. Consulte 
 
   ![Nova solução do macOS](start-mvc/_static/new_project_vsmac.png)
 
-* Em Visual Studio para Mac anteriores à versão 8,6, selecione aplicativo Web do aplicativo **.NET Core**  >  **App**  >  **(Model-View-Controller)**  >  **Avançar**. Na versão 8,6 ou posterior, selecione **Web e aplicativo de console**  >  **App**  >  **aplicativos Web (Model-View-Controller)**  >  **Avançar**.
+* Em Visual Studio para Mac anteriores à versão 8,6, selecione aplicativo Web do aplicativo **.NET Core**  >    >  **(Model-View-Controller)**  >  **Avançar**. Na versão 8,6 ou posterior, selecione **Web e aplicativo de console**  >    >  **aplicativos Web (Model-View-Controller)**  >  **Avançar**.
 
   ![seleção de modelo de aplicativo Web macOS](start-mvc/_static/web_app_template_vsmac.png)
 
@@ -393,7 +393,7 @@ O tutorial pressupõe que você já tenha familiaridade com o VS Code. Consulte 
 
 * Abra o [terminal integrado](https://code.visualstudio.com/docs/editor/integrated-terminal).
 * Altere os diretórios (`cd`) para uma pasta que conterá o projeto.
-* Execute o seguinte comando:
+* Execute o comando a seguir:
 
    ```dotnetcli
    dotnet new mvc -o MvcMovie
@@ -411,7 +411,7 @@ O tutorial pressupõe que você já tenha familiaridade com o VS Code. Consulte 
 
   ![Nova solução do macOS](./start-mvc/_static/new_project_vsmac.png)
 
-* Em Visual Studio para Mac anteriores à versão 8,6, selecione aplicativo Web do aplicativo **.NET Core**  >  **App**  >  **(Model-View-Controller)**  >  **Avançar**. Na versão 8,6 ou posterior, selecione **Web e aplicativo de console**  >  **App**  >  **aplicativos Web (Model-View-Controller)**  >  **Avançar**.
+* Em Visual Studio para Mac anteriores à versão 8,6, selecione aplicativo Web do aplicativo **.NET Core**  >    >  **(Model-View-Controller)**  >  **Avançar**. Na versão 8,6 ou posterior, selecione **Web e aplicativo de console**  >    >  **aplicativos Web (Model-View-Controller)**  >  **Avançar**.
 
 * Na caixa de diálogo **configurar seu novo aplicativo Web** :
 

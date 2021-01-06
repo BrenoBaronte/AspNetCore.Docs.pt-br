@@ -20,10 +20,10 @@ no-loc:
 - SignalR
 uid: fundamentals/logging/loggermessage
 ms.openlocfilehash: 0224e768bd0e016eac5165dc4d9745f4b0867094
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 01/04/2021
 ms.locfileid: "93060450"
 ---
 # <a name="high-performance-logging-with-loggermessage-in-aspnet-core"></a>Registro em log de alto desempenho com o LoggerMessage no ASP.NET Core
@@ -47,7 +47,7 @@ O aplicativo de exemplo demonstra recursos do <xref:Microsoft.Extensions.Logging
 
 A cadeia de caracteres fornecida para o método <xref:Microsoft.Extensions.Logging.LoggerMessage.Define*> é um modelo e não uma cadeia de caracteres interpolada. Os espaços reservados são preenchidos na ordem em que os tipos são especificados. Os nomes do espaço reservado no modelo devem ser descritivos e consistentes em todos os modelos. Eles servem como nomes de propriedade em dados de log estruturado. Recomendamos o uso da [formatação Pascal Case](/dotnet/standard/design-guidelines/capitalization-conventions) para nomes de espaço reservado. Por exemplo, `{Count}`, `{FirstName}`.
 
-Cada mensagem de log é uma <xref:System.Action> mantida em um campo estático criado por [LoggerMessage.Define](xref:Microsoft.Extensions.Logging.LoggerMessage.Define*). Por exemplo, o aplicativo de exemplo cria um campo para descrever uma mensagem de log para uma solicitação GET para a página de Índice ( *Internal/LoggerExtensions.cs* ):
+Cada mensagem de log é uma <xref:System.Action> mantida em um campo estático criado por [LoggerMessage.Define](xref:Microsoft.Extensions.Logging.LoggerMessage.Define*). Por exemplo, o aplicativo de exemplo cria um campo para descrever uma mensagem de log para uma solicitação GET para a página de Índice (*Internal/LoggerExtensions.cs*):
 
 [!code-csharp[](loggermessage/samples/3.x/LoggerMessageSample/Internal/LoggerExtensions.cs?name=snippet1)]
 
@@ -71,7 +71,7 @@ A <xref:System.Action> é invocada por meio de um método de extensão fortement
 
 [!code-csharp[](loggermessage/samples/3.x/LoggerMessageSample/Internal/LoggerExtensions.cs?name=snippet9)]
 
-`IndexPageRequested` é chamado no agente no método `OnGetAsync` em *Pages/Index.cshtml.cs* :
+`IndexPageRequested` é chamado no agente no método `OnGetAsync` em *Pages/Index.cshtml.cs*:
 
 [!code-csharp[](loggermessage/samples/3.x/LoggerMessageSample/Pages/Index.cshtml.cs?name=snippet2&highlight=3)]
 
@@ -95,7 +95,7 @@ O método de extensão estático para adicionar aspas, `QuoteAdded`, recebe o va
 
 [!code-csharp[](loggermessage/samples/3.x/LoggerMessageSample/Internal/LoggerExtensions.cs?name=snippet10)]
 
-No modelo de página da página de índice ( *pages/index. cshtml. cs* ), `QuoteAdded` é chamado para registrar a mensagem:
+No modelo de página da página de índice (*pages/index. cshtml. cs*), `QuoteAdded` é chamado para registrar a mensagem:
 
 [!code-csharp[](loggermessage/samples/3.x/LoggerMessageSample/Pages/Index.cshtml.cs?name=snippet3&highlight=6)]
 
@@ -108,7 +108,7 @@ info: LoggerMessageSample.Pages.IndexModel[2]
           consequences of avoiding reality. - Ayn Rand')
 ```
 
-O aplicativo de exemplo implementa um padrão [try-catch](/dotnet/csharp/language-reference/keywords/try-catch) para exclusão de cotação. Uma mensagem informativa é registrada em log para uma operação de exclusão bem-sucedida. Uma mensagem de erro é registrada em log para uma operação de exclusão quando uma exceção é gerada. A mensagem de log para a operação de exclusão sem êxito inclui o rastreamento de pilha da exceção ( *Internal/LoggerExtensions.cs* ):
+O aplicativo de exemplo implementa um padrão [try-catch](/dotnet/csharp/language-reference/keywords/try-catch) para exclusão de cotação. Uma mensagem informativa é registrada em log para uma operação de exclusão bem-sucedida. Uma mensagem de erro é registrada em log para uma operação de exclusão quando uma exceção é gerada. A mensagem de log para a operação de exclusão sem êxito inclui o rastreamento de pilha da exceção (*Internal/LoggerExtensions.cs*):
 
 [!code-csharp[](loggermessage/samples/3.x/LoggerMessageSample/Internal/LoggerExtensions.cs?name=snippet3)]
 
@@ -118,7 +118,7 @@ Observe como a exceção é passada para o delegado em `QuoteDeleteFailed`:
 
 [!code-csharp[](loggermessage/samples/3.x/LoggerMessageSample/Internal/LoggerExtensions.cs?name=snippet11)]
 
-No modelo da página de Índice, uma exclusão de aspas bem-sucedida chama o método `QuoteDeleted` no agente. Quando as aspas não são encontradas para exclusão, uma <xref:System.ArgumentNullException> é gerada. A exceção é interceptada pela instrução [try-catch](/dotnet/csharp/language-reference/keywords/try-catch) e registrada chamando o `QuoteDeleteFailed` método no agente de log no bloco [Catch](/dotnet/csharp/language-reference/keywords/try-catch) ( *pages/index. cshtml. cs* ):
+No modelo da página de Índice, uma exclusão de aspas bem-sucedida chama o método `QuoteDeleted` no agente. Quando as aspas não são encontradas para exclusão, uma <xref:System.ArgumentNullException> é gerada. A exceção é interceptada pela instrução [try-catch](/dotnet/csharp/language-reference/keywords/try-catch) e registrada chamando o `QuoteDeleteFailed` método no agente de log no bloco [Catch](/dotnet/csharp/language-reference/keywords/try-catch) (*pages/index. cshtml. cs*):
 
 [!code-csharp[](loggermessage/samples/3.x/LoggerMessageSample/Pages/Index.cshtml.cs?name=snippet5&highlight=9,13)]
 
@@ -159,7 +159,7 @@ Habilitar `IncludeScopes` na seção de agente do console do *appsettings.json* 
 
 [!code-json[](loggermessage/samples/3.x/LoggerMessageSample/appsettings.json?highlight=3-5)]
 
-Para criar um escopo de log, adicione um campo para conter um delegado <xref:System.Func%601> para o escopo. O aplicativo de exemplo cria um campo chamado `_allQuotesDeletedScope` ( *Internal/LoggerExtensions.cs* ):
+Para criar um escopo de log, adicione um campo para conter um delegado <xref:System.Func%601> para o escopo. O aplicativo de exemplo cria um campo chamado `_allQuotesDeletedScope` (*Internal/LoggerExtensions.cs*):
 
 [!code-csharp[](loggermessage/samples/3.x/LoggerMessageSample/Internal/LoggerExtensions.cs?name=snippet4)]
 
@@ -213,7 +213,7 @@ O aplicativo de exemplo demonstra recursos do <xref:Microsoft.Extensions.Logging
 
 A cadeia de caracteres fornecida para o método <xref:Microsoft.Extensions.Logging.LoggerMessage.Define*> é um modelo e não uma cadeia de caracteres interpolada. Os espaços reservados são preenchidos na ordem em que os tipos são especificados. Os nomes do espaço reservado no modelo devem ser descritivos e consistentes em todos os modelos. Eles servem como nomes de propriedade em dados de log estruturado. Recomendamos o uso da [formatação Pascal Case](/dotnet/standard/design-guidelines/capitalization-conventions) para nomes de espaço reservado. Por exemplo, `{Count}`, `{FirstName}`.
 
-Cada mensagem de log é uma <xref:System.Action> mantida em um campo estático criado por [LoggerMessage.Define](xref:Microsoft.Extensions.Logging.LoggerMessage.Define*). Por exemplo, o aplicativo de exemplo cria um campo para descrever uma mensagem de log para uma solicitação GET para a página de Índice ( *Internal/LoggerExtensions.cs* ):
+Cada mensagem de log é uma <xref:System.Action> mantida em um campo estático criado por [LoggerMessage.Define](xref:Microsoft.Extensions.Logging.LoggerMessage.Define*). Por exemplo, o aplicativo de exemplo cria um campo para descrever uma mensagem de log para uma solicitação GET para a página de Índice (*Internal/LoggerExtensions.cs*):
 
 [!code-csharp[](loggermessage/samples/2.x/LoggerMessageSample/Internal/LoggerExtensions.cs?name=snippet1)]
 
@@ -237,7 +237,7 @@ A <xref:System.Action> é invocada por meio de um método de extensão fortement
 
 [!code-csharp[](loggermessage/samples/2.x/LoggerMessageSample/Internal/LoggerExtensions.cs?name=snippet9)]
 
-`IndexPageRequested` é chamado no agente no método `OnGetAsync` em *Pages/Index.cshtml.cs* :
+`IndexPageRequested` é chamado no agente no método `OnGetAsync` em *Pages/Index.cshtml.cs*:
 
 [!code-csharp[](loggermessage/samples/2.x/LoggerMessageSample/Pages/Index.cshtml.cs?name=snippet2&highlight=3)]
 
@@ -261,7 +261,7 @@ O método de extensão estático para adicionar aspas, `QuoteAdded`, recebe o va
 
 [!code-csharp[](loggermessage/samples/2.x/LoggerMessageSample/Internal/LoggerExtensions.cs?name=snippet10)]
 
-No modelo de página da página de índice ( *pages/index. cshtml. cs* ), `QuoteAdded` é chamado para registrar a mensagem:
+No modelo de página da página de índice (*pages/index. cshtml. cs*), `QuoteAdded` é chamado para registrar a mensagem:
 
 [!code-csharp[](loggermessage/samples/2.x/LoggerMessageSample/Pages/Index.cshtml.cs?name=snippet3&highlight=6)]
 
@@ -274,7 +274,7 @@ info: LoggerMessageSample.Pages.IndexModel[2]
           consequences of avoiding reality. - Ayn Rand')
 ```
 
-O aplicativo de exemplo implementa um padrão [try-catch](/dotnet/csharp/language-reference/keywords/try-catch) para exclusão de cotação. Uma mensagem informativa é registrada em log para uma operação de exclusão bem-sucedida. Uma mensagem de erro é registrada em log para uma operação de exclusão quando uma exceção é gerada. A mensagem de log para a operação de exclusão sem êxito inclui o rastreamento de pilha da exceção ( *Internal/LoggerExtensions.cs* ):
+O aplicativo de exemplo implementa um padrão [try-catch](/dotnet/csharp/language-reference/keywords/try-catch) para exclusão de cotação. Uma mensagem informativa é registrada em log para uma operação de exclusão bem-sucedida. Uma mensagem de erro é registrada em log para uma operação de exclusão quando uma exceção é gerada. A mensagem de log para a operação de exclusão sem êxito inclui o rastreamento de pilha da exceção (*Internal/LoggerExtensions.cs*):
 
 [!code-csharp[](loggermessage/samples/2.x/LoggerMessageSample/Internal/LoggerExtensions.cs?name=snippet3)]
 
@@ -284,7 +284,7 @@ Observe como a exceção é passada para o delegado em `QuoteDeleteFailed`:
 
 [!code-csharp[](loggermessage/samples/2.x/LoggerMessageSample/Internal/LoggerExtensions.cs?name=snippet11)]
 
-No modelo da página de Índice, uma exclusão de aspas bem-sucedida chama o método `QuoteDeleted` no agente. Quando as aspas não são encontradas para exclusão, uma <xref:System.ArgumentNullException> é gerada. A exceção é interceptada pela instrução [try-catch](/dotnet/csharp/language-reference/keywords/try-catch) e registrada chamando o `QuoteDeleteFailed` método no agente de log no bloco [Catch](/dotnet/csharp/language-reference/keywords/try-catch) ( *pages/index. cshtml. cs* ):
+No modelo da página de Índice, uma exclusão de aspas bem-sucedida chama o método `QuoteDeleted` no agente. Quando as aspas não são encontradas para exclusão, uma <xref:System.ArgumentNullException> é gerada. A exceção é interceptada pela instrução [try-catch](/dotnet/csharp/language-reference/keywords/try-catch) e registrada chamando o `QuoteDeleteFailed` método no agente de log no bloco [Catch](/dotnet/csharp/language-reference/keywords/try-catch) (*pages/index. cshtml. cs*):
 
 [!code-csharp[](loggermessage/samples/2.x/LoggerMessageSample/Pages/Index.cshtml.cs?name=snippet5&highlight=14,18)]
 
@@ -327,7 +327,7 @@ Habilitar `IncludeScopes` na seção de agente do console do *appsettings.json* 
 
 [!code-json[](loggermessage/samples/2.x/LoggerMessageSample/appsettings.json?highlight=3-5)]
 
-Para criar um escopo de log, adicione um campo para conter um delegado <xref:System.Func%601> para o escopo. O aplicativo de exemplo cria um campo chamado `_allQuotesDeletedScope` ( *Internal/LoggerExtensions.cs* ):
+Para criar um escopo de log, adicione um campo para conter um delegado <xref:System.Func%601> para o escopo. O aplicativo de exemplo cria um campo chamado `_allQuotesDeletedScope` (*Internal/LoggerExtensions.cs*):
 
 [!code-csharp[](loggermessage/samples/2.x/LoggerMessageSample/Internal/LoggerExtensions.cs?name=snippet4)]
 
@@ -364,4 +364,4 @@ info: LoggerMessageSample.Pages.IndexModel[4]
 
 ## <a name="additional-resources"></a>Recursos adicionais
 
-* [Logging](xref:fundamentals/logging/index)
+* [Registro em log](xref:fundamentals/logging/index)

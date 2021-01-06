@@ -17,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: security/authorization/simple
-ms.openlocfilehash: ae8fb47e58924d559f1c2c4ed7c9545c37141209
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: 1678f1b4af2c65e3b10c66f7ccdbecf19156a834
+ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93061334"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97865558"
 ---
 # <a name="simple-authorization-in-aspnet-core"></a>Autorização simples no ASP.NET Core
 
@@ -92,11 +92,11 @@ Isso permitiria apenas usuários autenticados para o `AccountController` , excet
 
 ## <a name="authorize-attribute-and-no-locrazor-pages"></a>Autorizar atributo e Razor páginas
 
-O <xref:Microsoft.AspNetCore.Authorization.AuthorizeAttribute> pode * **não** ser aplicado a Razor manipuladores de página. Por exemplo, `[Authorize]` não pode ser aplicado a `OnGet` , `OnPost` ou a qualquer outro manipulador de página. Considere o uso de um controlador MVC ASP.NET Core para páginas com diferentes requisitos de autorização para diferentes manipuladores.
+O <xref:Microsoft.AspNetCore.Authorization.AuthorizeAttribute> pode ***não** ser aplicado a Razor manipuladores de página. Por exemplo, `[Authorize]` não pode ser aplicado a `OnGet` , `OnPost` ou a qualquer outro manipulador de página. Considere o uso de um controlador MVC ASP.NET Core para páginas com diferentes requisitos de autorização para diferentes manipuladores.
 
 As duas abordagens a seguir podem ser usadas para aplicar a autorização aos Razor métodos do manipulador de página:
 
-_ Use páginas separadas para manipuladores de página que exigem autorização diferente. Moveu o conteúdo compartilhado em uma ou mais [exibições parciais](xref:mvc/views/partial). Quando possível, essa é a abordagem recomendada.
+_ Use páginas separadas para manipuladores de página que exigem autorização diferente. Mova o conteúdo compartilhado para uma ou mais [exibições parciais](xref:mvc/views/partial). Quando possível, essa é a abordagem recomendada.
 * Para o conteúdo que deve compartilhar uma página comum, escreva um filtro que execute a autorização como parte do [IAsyncPageFilter. OnPageHandlerSelectionAsync](xref:Microsoft.AspNetCore.Mvc.Filters.IAsyncPageFilter.OnPageHandlerSelectionAsync%2A). O projeto GitHub [PageHandlerAuth](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/security/authorization/simple/samples/3.1/PageHandlerAuth) demonstra essa abordagem:
   * O [AuthorizeIndexPageHandlerFilter](https://github.com/dotnet/AspNetCore.Docs/blob/master/aspnetcore/security/authorization/simple/samples/3.1/PageHandlerAuth/AuthorizeIndexPageHandlerFilter.cs) implementa o filtro de autorização: [!code-csharp[](~/security/authorization/simple/samples/3.1/PageHandlerAuth/Pages/Index.cshtml.cs?name=snippet)]
 

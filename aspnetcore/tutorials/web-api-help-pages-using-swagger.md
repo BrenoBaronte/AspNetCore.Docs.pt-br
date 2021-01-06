@@ -19,10 +19,10 @@ no-loc:
 - SignalR
 uid: tutorials/web-api-help-pages-using-swagger
 ms.openlocfilehash: e5442c88048cf41e289fb476b4082cb6029b1b75
-ms.sourcegitcommit: 0d40fc4932531ce13fc4ee9432144584e03c2f1c
+ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 01/04/2021
 ms.locfileid: "93062448"
 ---
 # <a name="aspnet-core-web-api-documentation-with-swagger--openapi"></a>Documentação da API Web do ASP.NET Core com o Swagger/OpenAPI
@@ -50,7 +50,7 @@ Em suma:
 
 ## <a name="openapi-specification-openapijson"></a>Especificação OpenAPI (openapi.jsem)
 
-A especificação OpenAPI é um documento que descreve os recursos de sua API. O documento é baseado nas anotações XML e de atributo dentro dos controladores e modelos. É a parte principal do fluxo de OpenAPI e é usada para direcionar ferramentas como SwaggerUI. Por padrão, ele tem o nome *openapi.jsem* . Aqui está um exemplo de uma especificação OpenAPI, reduzida para fins de brevidade:
+A especificação OpenAPI é um documento que descreve os recursos de sua API. O documento é baseado nas anotações XML e de atributo dentro dos controladores e modelos. É a parte principal do fluxo de OpenAPI e é usada para direcionar ferramentas como SwaggerUI. Por padrão, ele tem o nome *openapi.jsem*. Aqui está um exemplo de uma especificação OpenAPI, reduzida para fins de brevidade:
 
 ```json
 {
@@ -144,7 +144,7 @@ A [interface do usuário do Swagger](https://swagger.io/swagger-ui/) oferece uma
 
 ![IU do Swagger](web-api-help-pages-using-swagger/_static/swagger-ui.png)
 
-Todo método de ação pública nos controladores pode ser testado da interface do usuário. Selecione um nome de método para expandir a seção. Adicione todos os parâmetros necessários e selecione **experimentar!** .
+Todo método de ação pública nos controladores pode ser testado da interface do usuário. Selecione um nome de método para expandir a seção. Adicione todos os parâmetros necessários e selecione **experimentar!**.
 
 ![Teste GET de Swagger de exemplo](web-api-help-pages-using-swagger/_static/get-try-it-out.png)
 

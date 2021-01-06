@@ -4,7 +4,7 @@ author: scottaddie
 description: Saiba como usar a ferramenta global do HttpRepl .NET Core para navegar e testar uma API da Web do ASP.NET Core.
 monikerRange: '>= aspnetcore-2.1'
 ms.author: scaddie
-ms.custom: mvc, devx-track-azurecli
+ms.custom: mvc
 ms.date: 11/12/2020
 no-loc:
 - appsettings.json
@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: web-api/http-repl
-ms.openlocfilehash: c661141c1bec93c0f7b6404964dc0bca2319b529
-ms.sourcegitcommit: 827e8be18cebbcc09b467c089e17fa6f5e430cb2
+ms.openlocfilehash: 1027887738740d50c30e24e800c0402b1ce4ad02
+ms.sourcegitcommit: 04a404a9655c59ad1ea02aff5d399ae1b833ad6a
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 11/15/2020
-ms.locfileid: "94634607"
+ms.lasthandoff: 01/03/2021
+ms.locfileid: "97854659"
 ---
 # <a name="test-web-apis-with-the-httprepl"></a>Testar APIs da Web com o HttpRepl
 
@@ -386,7 +386,7 @@ pref set editor.command.default "C:\Program Files\Microsoft VS Code\Code.exe"
 
 ---
 
-Para iniciar o editor de texto padrão com argumentos específicos da CLI, defina a chave `editor.command.default.arguments`. Por exemplo, suponha que Visual Studio Code seja o editor de texto padrão e que você sempre queira que o HttpRepl abra Visual Studio Code em uma nova sessão com as extensões desabilitadas. Execute o seguinte comando:
+Para iniciar o editor de texto padrão com argumentos específicos da CLI, defina a chave `editor.command.default.arguments`. Por exemplo, suponha que Visual Studio Code seja o editor de texto padrão e que você sempre queira que o HttpRepl abra Visual Studio Code em uma nova sessão com as extensões desabilitadas. Execute o comando a seguir:
 
 ```console
 pref set editor.command.default.arguments "--disable-extensions --new-window"
@@ -604,7 +604,7 @@ O parâmetro de rota, se houver, esperado pelo método de ação do controlador 
 
 Para emitir uma solicitação HTTP PUT:
 
-1. *Opcional* : execute o `get` comando para exibir os dados antes de modificá-los:
+1. *Opcional*: execute o `get` comando para exibir os dados antes de modificá-los:
 
     ```console
     https://localhost:5001/fruits> get
@@ -666,7 +666,7 @@ Para emitir uma solicitação HTTP PUT:
     Server: Kestrel
     ```
 
-1. *Opcional* : emita um `get` comando para ver as modificações. Por exemplo, se você digitar "Cherry" no editor de texto, um `get` retornará a seguinte saída:
+1. *Opcional*: emita um `get` comando para ver as modificações. Por exemplo, se você digitar "Cherry" no editor de texto, um `get` retornará a seguinte saída:
 
     ```console
     https://localhost:5001/fruits> get
@@ -717,7 +717,7 @@ O parâmetro de rota, se houver, esperado pelo método de ação do controlador 
 
 Para emitir uma solicitação HTTP DELETE:
 
-1. *Opcional* : execute o `get` comando para exibir os dados antes de modificá-los:
+1. *Opcional*: execute o `get` comando para exibir os dados antes de modificá-los:
 
     ```console
     https://localhost:5001/fruits> get
@@ -757,7 +757,7 @@ Para emitir uma solicitação HTTP DELETE:
     Server: Kestrel
     ```
 
-1. *Opcional* : emita um `get` comando para ver as modificações. Neste exemplo, um `get` retorna a seguinte saída:
+1. *Opcional*: emita um `get` comando para ver as modificações. Neste exemplo, um `get` retorna a seguinte saída:
 
     ```console
     https://localhost:5001/fruits> get

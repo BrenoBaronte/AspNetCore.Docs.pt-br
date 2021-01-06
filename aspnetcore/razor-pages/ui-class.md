@@ -19,10 +19,10 @@ no-loc:
 - SignalR
 uid: razor-pages/ui-class
 ms.openlocfilehash: 0bfdb1932d829ec00c9de1bd38b7920cb1f40c51
-ms.sourcegitcommit: 1ea3f23bec63e96ffc3a927992f30a5fc0de3ff9
+ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 11/12/2020
+ms.lasthandoff: 01/04/2021
 ms.locfileid: "94570166"
 ---
 # <a name="create-reusable-ui-using-the-no-locrazor-class-library-project-in-aspnet-core"></a>Criar interface do usuário reutilizável usando o Razor projeto de biblioteca de classes no ASP.NET Core
@@ -122,7 +122,7 @@ No exemplo a seguir, a folha de estilo *lib. css* na pasta *wwwroot* não é con
 
 Para incluir arquivos TypeScript em um RCL:
 
-1. Coloque os arquivos TypeScript ( *. TS* ) fora da pasta *wwwroot* . Por exemplo, coloque os arquivos em uma pasta de *cliente* .
+1. Coloque os arquivos TypeScript (*. TS*) fora da pasta *wwwroot* . Por exemplo, coloque os arquivos em uma pasta de *cliente* .
 
 1. Configure a saída de compilação do TypeScript para a pasta *wwwroot* . Defina a `TypescriptOutDir` propriedade dentro de um `PropertyGroup` no arquivo de projeto:
 
@@ -156,7 +156,7 @@ public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
 }
 ```
 
-Ao executar o aplicativo de consumo da saída da compilação ( `dotnet run` ), os ativos da Web estáticos são habilitados por padrão no ambiente de desenvolvimento. Para dar suporte a ativos em outros ambientes ao executar a partir da saída da compilação, chame `UseStaticWebAssets` no construtor de hosts em *Program.cs* :
+Ao executar o aplicativo de consumo da saída da compilação ( `dotnet run` ), os ativos da Web estáticos são habilitados por padrão no ambiente de desenvolvimento. Para dar suporte a ativos em outros ambientes ao executar a partir da saída da compilação, chame `UseStaticWebAssets` no construtor de hosts em *Program.cs*:
 
 ```csharp
 using Microsoft.AspNetCore.Hosting;
@@ -253,7 +253,7 @@ Abra o arquivo *.sln* no Visual Studio. Execute o aplicativo.
 
 # <a name="net-core-cli"></a>[CLI do .NET Core](#tab/netcore-cli)
 
-Em um prompt de comando no diretório *cli* , crie a RCL e o aplicativo Web.
+Em um prompt de comando no diretório *cli*, crie a RCL e o aplicativo Web.
 
 ```dotnetcli
 dotnet build
@@ -320,7 +320,7 @@ O arquivo *_ViewStart. cshtml* é necessário para usar o layout do Razor projet
   dotnet new viewimports -o RazorUIClassLib/Areas/MyFeature/Pages
   ```
 
-  Para obter mais informações sobre o *_ViewImports. cshtml* , consulte [importando diretivas compartilhadas](xref:mvc/views/layout#importing-shared-directives)
+  Para obter mais informações sobre o *_ViewImports. cshtml*, consulte [importando diretivas compartilhadas](xref:mvc/views/layout#importing-shared-directives)
 
 * Crie a biblioteca de classes para verificar se não há nenhum erro de compilador:
 
@@ -336,16 +336,16 @@ A saída da compilação contém *RazorUIClassLib.dll* e *RazorUIClassLib.Views.
 
 Criar o Razor aplicativo Web de páginas:
 
-* No **Gerenciador de Soluções** , clique com o botão direito do mouse na solução > **Adicionar** >  **Novo Projeto**.
+* No **Gerenciador de Soluções**, clique com o botão direito do mouse na solução > **Adicionar** >  **Novo Projeto**.
 * Selecione **Aplicativo Web ASP.NET Core**.
 * Nomeie o aplicativo como **WebApp1**.
 * Verifique se o **ASP.NET Core 2.1** ou posterior está selecionado.
 * Selecione **Aplicativo Web** > **OK**.
 
-* No **Gerenciador de Soluções** , clique com o botão direito do mouse em **WebApp1** e selecione **Definir como projeto de inicialização**.
-* No **Gerenciador de Soluções** , clique com o botão direito do mouse em **WebApp1** e selecione **Dependências de Build** > **Dependências do Projeto**.
+* No **Gerenciador de Soluções**, clique com o botão direito do mouse em **WebApp1** e selecione **Definir como projeto de inicialização**.
+* No **Gerenciador de Soluções**, clique com o botão direito do mouse em **WebApp1** e selecione **Dependências de Build** > **Dependências do Projeto**.
 * Verifique **Razor UIClassLib** como uma dependência de **WebApp1**.
-* No **Gerenciador de Soluções** , clique com o botão direito do mouse em **WebApp1** e selecione **Adicionar** > **Referência**.
+* No **Gerenciador de Soluções**, clique com o botão direito do mouse em **WebApp1** e selecione **Adicionar** > **Referência**.
 * Na caixa de diálogo **Gerenciador de referências** , marque **Razor UIClassLib** > **OK**.
 
 Execute o aplicativo.

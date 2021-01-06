@@ -1,5 +1,5 @@
 ---
-title: 'Tutorial: criar uma API Web com ASP.NET Core'
+title: 'Tutorial: criar uma API Web com o ASP.NET Core'
 author: rick-anderson
 description: Saiba como criar uma API Web com o ASP.NET Core.
 ms.author: riande
@@ -20,13 +20,13 @@ no-loc:
 - Models
 uid: tutorials/first-web-api
 ms.openlocfilehash: ccbfc27eb89e23938a69f0ab4cb306d6a4136889
-ms.sourcegitcommit: fe2e3174c34bee1e425c6e52dd8f663fe52b8756
+ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 11/26/2020
+ms.lasthandoff: 01/04/2021
 ms.locfileid: "96175046"
 ---
-# <a name="tutorial-create-a-web-api-with-aspnet-core"></a>Tutorial: criar uma API Web com ASP.NET Core
+# <a name="tutorial-create-a-web-api-with-aspnet-core"></a>Tutorial: criar uma API Web com o ASP.NET Core
 
 Por [Rick Anderson](https://twitter.com/RickAndMSFT), [Kirk Larkin](https://twitter.com/serpent5)e [Mike Wasson](https://github.com/mikewasson)
 
@@ -115,7 +115,7 @@ O diagrama a seguir mostra o design do aplicativo.
 
   ![Nova solução do macOS](first-web-api-mac/_static/sln.png)
 
-* Em Visual Studio para Mac anteriores à versão 8,6, selecione API de aplicativo do **.NET Core**  >  **App**  >  **API**  >  **Avançar**. Na versão 8,6 ou posterior, selecione **Web e API de aplicativo de console**  >  **App**  >  **API**  >  **Avançar**.
+* Em Visual Studio para Mac anteriores à versão 8,6, selecione API de aplicativo do **.NET Core**  >    >    >  **Avançar**. Na versão 8,6 ou posterior, selecione **Web e API de aplicativo de console**  >    >    >  **Avançar**.
 
   ![seleção de modelo de API do macOS](first-web-api-mac/_static/api_template.png)
 
@@ -247,7 +247,7 @@ Um *modelo* é um conjunto de classes que representam os dados gerenciados pelo 
 
   ![nova pasta](first-web-api-mac/_static/folder.png)
 
-* Clique com o botão direito do mouse na *Models* pasta e selecione **Adicionar** > **novo arquivo** > **General** > **classe vazia** geral.
+* Clique com o botão direito do mouse na *Models* pasta e selecione **Adicionar** > **novo arquivo** >  > **classe vazia** geral.
 
 * Nomeie a classe como *TodoItem* e, em seguida, clique em **Novo**.
 
@@ -639,7 +639,7 @@ O diagrama a seguir mostra o design do aplicativo.
 
   ![Nova solução do macOS](first-web-api-mac/_static/sln.png)
 
-* Em Visual Studio para Mac anteriores à versão 8,6, selecione API de aplicativo do **.NET Core**  >  **App**  >  **API**  >  **Avançar**. Na versão 8,6 ou posterior, selecione **Web e API de aplicativo de console**  >  **App**  >  **API**  >  **Avançar**.
+* Em Visual Studio para Mac anteriores à versão 8,6, selecione API de aplicativo do **.NET Core**  >    >    >  **Avançar**. Na versão 8,6 ou posterior, selecione **Web e API de aplicativo de console**  >    >    >  **Avançar**.
 
   ![seleção de modelo de API do macOS](first-web-api-mac/_static/api_template.png)
 
@@ -741,7 +741,7 @@ Um *modelo* é um conjunto de classes que representam os dados gerenciados pelo 
 
   ![nova pasta](first-web-api-mac/_static/folder.png)
 
-* Clique com o botão direito do mouse na *Models* pasta e selecione **Adicionar** > **novo arquivo** > **General** > **classe vazia** geral.
+* Clique com o botão direito do mouse na *Models* pasta e selecione **Adicionar** > **novo arquivo** >  > **classe vazia** geral.
 
 * Nomeie a classe como *TodoItem* e, em seguida, clique em **Novo**.
 
@@ -1124,7 +1124,7 @@ O diagrama a seguir mostra o design do aplicativo.
 
   ![Nova solução do macOS](first-web-api-mac/_static/sln.png)
 
-* Em Visual Studio para Mac anteriores à versão 8,6, selecione API de aplicativo do **.NET Core**  >  **App**  >  **API**  >  **Avançar**. Na versão 8,6 ou posterior, selecione **Web e API de aplicativo de console**  >  **App**  >  **API**  >  **Avançar**.
+* Em Visual Studio para Mac anteriores à versão 8,6, selecione API de aplicativo do **.NET Core**  >    >    >  **Avançar**. Na versão 8,6 ou posterior, selecione **Web e API de aplicativo de console**  >    >    >  **Avançar**.
   
 * Na caixa de diálogo **Configurar a nova API Web do ASP.NET Core** , selecione a **estrutura de destino**.NET Core 2. x mais recente. Selecione **Avançar**.
 
@@ -1184,7 +1184,7 @@ Um *modelo* é um conjunto de classes que representam os dados gerenciados pelo 
 
   ![nova pasta](first-web-api-mac/_static/folder.png)
 
-* Clique com o botão direito do mouse na *Models* pasta e selecione **Adicionar** > **novo arquivo** > **General** > **classe vazia** geral.
+* Clique com o botão direito do mouse na *Models* pasta e selecione **Adicionar** > **novo arquivo** >  > **classe vazia** geral.
 
 * Nomeie a classe como *TodoItem* e, em seguida, clique em **Novo**.
 
@@ -1327,7 +1327,7 @@ Este tutorial usa o Postman para testar a API Web.
 
 # <a name="visual-studio-code--visual-studio-for-mac"></a>[Visual Studio Code/Visual Studio para Mac](#tab/visual-studio-code+visual-studio-mac)
 
-* De **Postman**  >  **preferências** do postmaster (guia **geral** ), desabilite a **verificação do certificado SSL**. Como alternativa, selecione a chave inglesa, selecione **Configurações** e desabilite a verificação do certificado SSL.
+* De   >  **preferências** do postmaster (guia **geral** ), desabilite a **verificação do certificado SSL**. Como alternativa, selecione a chave inglesa, selecione **Configurações** e desabilite a verificação do certificado SSL.
 
 ---
   
@@ -1452,7 +1452,7 @@ Adicione um arquivo HTML chamado *index.html* ao diretório *wwwroot*. Substitua
 
 [!code-html[](first-web-api/samples/2.2/TodoApi/wwwroot/index.html)]
 
-Adicione um arquivo JavaScript chamado *site.js* ao diretório *wwwroot*. Substitua o conteúdo pelo código a seguir:
+Adicione um arquivo JavaScript chamado *site.js* ao diretório *wwwroot*. Substitua o conteúdo pelo seguinte código:
 
 [!code-javascript[](first-web-api/samples/2.2/TodoApi/wwwroot/site.js?name=snippet_SiteJs)]
 

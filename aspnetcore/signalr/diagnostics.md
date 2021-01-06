@@ -1,9 +1,9 @@
 ---
 title: Registro em log e diagnóstico no ASP.NET Core SignalR
-author: anurse
+author: bradygaster
 description: Saiba como coletar diagnósticos do seu SignalR aplicativo ASP.NET Core.
 monikerRange: '>= aspnetcore-2.1'
-ms.author: anurse
+ms.author: bradyg
 ms.custom: devx-track-csharp, signalr, devx-track-js
 ms.date: 06/12/2020
 no-loc:
@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: signalr/diagnostics
-ms.openlocfilehash: 49029bbd53b98425a05bdb82517238e3aa2e3b1f
-ms.sourcegitcommit: 6b87f2e064cea02e65dacd206394b44f5c604282
+ms.openlocfilehash: 23ebd61d9931f9cd83afbdcc5a718e42cc565317
+ms.sourcegitcommit: b23fed8c1a1d2aec2f9b5e09041442ecfafedd56
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97506624"
+ms.lasthandoff: 12/28/2020
+ms.locfileid: "97797334"
 ---
 # <a name="logging-and-diagnostics-in-aspnet-core-no-locsignalr"></a>Registro em log e diagnóstico no ASP.NET Core SignalR
 
@@ -73,7 +73,7 @@ Se você estiver executando o em um aplicativo de console, o [agente de log do c
 
 O Visual Studio exibe a saída de log na janela **saída** . Selecione a opção de menu suspenso do **ASP.NET Core Web Server** .
 
-### <a name="azure-app-service"></a>Serviço de Aplicativo do Azure
+### <a name="azure-app-service"></a>Serviço de aplicativo do Azure
 
 Habilite a opção de **log do aplicativo (Filesystem)** na seção **logs de diagnóstico** do portal do serviço Azure app e configure o **nível** como `Verbose` . Os logs devem estar disponíveis no serviço de **streaming de log** e nos logs no sistema de arquivos do serviço de aplicativo. Para obter mais informações, consulte [Azure log streaming](xref:fundamentals/logging/index#azure-log-streaming).
 
@@ -108,7 +108,17 @@ Depois de configurar o detalhamento, os logs serão gravados no console do naveg
 
 Se você quiser enviar logs para um sistema de registro em log personalizado, poderá fornecer um objeto JavaScript que implementa a `ILogger` interface. O único método que precisa ser implementado é `log` , que usa o nível do evento e a mensagem associada ao evento. Por exemplo:
 
-[!code-typescript[](diagnostics/custom-logger.ts?highlight=3-7,13)]
+::: moniker range=">= aspnetcore-3.0"
+
+[!code-typescript[](diagnostics/3.x/custom-logger.ts?highlight=3-7,13)]
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-3.0"
+
+[!code-typescript[](diagnostics/2.x/custom-logger.ts?highlight=3-7,13)]
+
+::: moniker-end
 
 ## <a name="net-client-logging"></a>Log de cliente .NET
 

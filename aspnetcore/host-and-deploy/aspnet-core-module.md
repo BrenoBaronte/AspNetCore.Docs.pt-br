@@ -20,10 +20,10 @@ no-loc:
 - SignalR
 uid: host-and-deploy/aspnet-core-module
 ms.openlocfilehash: d0e6c0c31890c58aaca936fc6f1e92cb9a1ab456
-ms.sourcegitcommit: 6af9016d1ffc2dffbb2454c7da29c880034cefcd
+ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 12/08/2020
+ms.lasthandoff: 01/04/2021
 ms.locfileid: "96901230"
 ---
 # <a name="aspnet-core-module"></a>Módulo do ASP.NET Core
@@ -326,7 +326,7 @@ Os valores do nível de depuração (`debugLevel`) podem incluir o nível e a lo
 
 Níveis (na ordem do menos para o mais detalhado):
 
-* ERRO
+* ERROR
 * WARNING
 * INFO
 * RASTREAMENTO
@@ -739,7 +739,7 @@ Os valores do nível de depuração (`debugLevel`) podem incluir o nível e a lo
 
 Níveis (na ordem do menos para o mais detalhado):
 
-* ERRO
+* ERROR
 * WARNING
 * INFO
 * RASTREAMENTO

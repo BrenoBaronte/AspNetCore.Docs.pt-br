@@ -20,10 +20,10 @@ no-loc:
 - SignalR
 uid: blazor/fundamentals/additional-scenarios
 ms.openlocfilehash: b7fc3710fe5ad1efba907edf98f590a42e2a83ae
-ms.sourcegitcommit: 6299f08aed5b7f0496001d093aae617559d73240
+ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 12/14/2020
+ms.lasthandoff: 01/04/2021
 ms.locfileid: "97485869"
 ---
 # <a name="aspnet-core-no-locblazor-hosting-model-configuration"></a>ASP.NET Core Blazor configuração do modelo de hospedagem
@@ -167,7 +167,7 @@ Para executar tarefas adicionais, como a inicialização de interoperabilidade d
 
 ### <a name="configure-the-no-locsignalr-client"></a>Configurar o SignalR cliente
 
-#### <a name="logging"></a>Registro em log
+#### <a name="logging"></a>Log
 
 Para configurar SignalR o log do cliente, passe um objeto de configuração ( `configureSignalR` ) que chame `configureLogging` com o nível de log no construtor do cliente:
 

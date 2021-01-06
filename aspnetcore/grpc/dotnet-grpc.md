@@ -19,17 +19,17 @@ no-loc:
 - SignalR
 uid: grpc/dotnet-grpc
 ms.openlocfilehash: f34e1543d9695e138a85db3b79e013cf5fb6d138
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 01/04/2021
 ms.locfileid: "93059904"
 ---
 # <a name="manage-protobuf-references-with-dotnet-grpc"></a>Gerenciar referências de Protobuf com dotnet-grpc
 
 Por [John Luo](https://github.com/juntaoluo)
 
-`dotnet-grpc` é uma ferramenta global do .NET Core para gerenciar referências de [Protobuf ( *. proto* )](xref:grpc/basics#proto-file) em um projeto gRPC do .net. A ferramenta pode ser usada para adicionar, atualizar, remover e listar referências de Protobuf.
+`dotnet-grpc` é uma ferramenta global do .NET Core para gerenciar referências de [Protobuf (*. proto*)](xref:grpc/basics#proto-file) em um projeto gRPC do .net. A ferramenta pode ser usada para adicionar, atualizar, remover e listar referências de Protobuf.
 
 ## <a name="installation"></a>Instalação
 

@@ -20,10 +20,10 @@ no-loc:
 - SignalR
 uid: fundamentals/metapackage
 ms.openlocfilehash: b739398c2a440f21c8bdfdc1f4d8e25412358a6a
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 01/04/2021
 ms.locfileid: "93060684"
 ---
 # <a name="microsoftaspnetcoreall-metapackage-for-aspnet-core-20"></a>Metapacote Microsoft.AspNetCore.All para ASP.NET Core 2.0
@@ -39,7 +39,7 @@ O `Microsoft.AspNetCore.All` metapacote não está incluído no ASP.NET Core 3,0
 
 Este recurso exige o ASP.NET Core 2.x direcionado ao .NET Core 2.x.
 
-[Microsoft.AspNetCore.All](https://www.nuget.org/packages/Microsoft.AspNetCore.All) é um metapacote que faz referência a uma estrutura compartilhada. Uma *estrutura compartilhada* é um conjunto de assemblies (arquivos *.dll* ) que não estão em pastas do aplicativo. A estrutura compartilhada deve ser instalada no computador para executar o aplicativo. Saiba mais em [A estrutura compartilhada](https://natemcmaster.com/blog/2018/08/29/netcore-primitives-2/).
+[Microsoft.AspNetCore.All](https://www.nuget.org/packages/Microsoft.AspNetCore.All) é um metapacote que faz referência a uma estrutura compartilhada. Uma *estrutura compartilhada* é um conjunto de assemblies (arquivos *.dll*) que não estão em pastas do aplicativo. A estrutura compartilhada deve ser instalada no computador para executar o aplicativo. Saiba mais em [A estrutura compartilhada](https://natemcmaster.com/blog/2018/08/29/netcore-primitives-2/).
 
 A estrutura compartilhada a que `Microsoft.AspNetCore.All` se refere inclui:
 

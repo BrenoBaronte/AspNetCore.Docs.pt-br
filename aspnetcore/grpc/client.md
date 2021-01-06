@@ -4,7 +4,7 @@ author: jamesnk
 description: Saiba como chamar serviços gRPCs com o cliente .NET gRPC.
 monikerRange: '>= aspnetcore-3.0'
 ms.author: jamesnk
-ms.date: 07/27/2020
+ms.date: 12/18/2020
 no-loc:
 - appsettings.json
 - ASP.NET Core Identity
@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: grpc/client
-ms.openlocfilehash: 9322020083ce25b00b2979633ae8a692cfd4da4a
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: 39f9b3fde19e31ca970668552e5829308705f513
+ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93060957"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97699137"
 ---
 # <a name="call-grpc-services-with-the-net-client"></a>Chamar os serviços gRPC com o cliente .NET
 
@@ -201,11 +201,33 @@ Para obter o melhor desempenho e para evitar erros desnecessários no cliente e 
 
 Durante uma chamada de streaming bidirecional, o cliente e o serviço podem enviar mensagens entre si a qualquer momento. A melhor lógica de cliente para interagir com uma chamada bidirecional varia dependendo da lógica do serviço.
 
+## <a name="access-grpc-headers"></a>Acessar cabeçalhos do gRPC
+
+gRPC chama cabeçalhos de resposta de retorno. Os cabeçalhos de resposta HTTP passam os metadados de nome/valor sobre uma chamada que não está relacionada à mensagem retornada.
+
+Os cabeçalhos são acessíveis usando `ResponseHeadersAsync` , que retorna uma coleção de metadados. Os cabeçalhos são normalmente retornados com a mensagem de resposta; Portanto, você deve aguardar.
+
+```csharp
+var client = new Greet.GreeterClient(channel);
+using var call = client.SayHelloAsync(new HelloRequest { Name = "World" });
+
+var headers = await call.ResponseHeadersAsync;
+var myValue = headers.GetValue("my-trailer-name");
+
+var response = await call.ResponseAsync;
+```
+
+`ResponseHeadersAsync` usos
+
+* É necessário aguardar o resultado de `ResponseHeadersAsync` para obter a coleção de cabeçalhos.
+* Não precisa ser acessado antes `ResponseAsync` (ou o fluxo de resposta durante o streaming). Se uma resposta tiver sido retornada, o `ResponseHeadersAsync` retornará os cabeçalhos instantaneamente.
+* Gerará uma exceção se houver um erro de conexão ou de servidor e os cabeçalhos não foram retornados para a chamada gRPC.
+
 ## <a name="access-grpc-trailers"></a>Acesse os trailers gRPC
 
-chamadas gRPC podem retornar gRPCs. os trailers de gRPC são usados para fornecer metadados de nome/valor sobre uma chamada. Os trailers fornecem funcionalidade semelhante aos cabeçalhos HTTP, mas são recebidos no final da chamada.
+chamadas gRPC podem retornar marcadores de resposta. Os trailers são usados para fornecer metadados de nome/valor sobre uma chamada. Os trailers fornecem funcionalidade semelhante aos cabeçalhos HTTP, mas são recebidos no final da chamada.
 
-os trailers de gRPC são acessíveis usando `GetTrailers()` , que retorna uma coleção de metadados. Os trailers são retornados após a conclusão da resposta, portanto, você deve aguardar todas as mensagens de resposta antes de acessar os trailers.
+Os trailers são acessíveis usando `GetTrailers()` , que retorna uma coleção de metadados. Os trailers são retornados após a conclusão da resposta. Portanto, você deve aguardar todas as mensagens de resposta antes de acessar os trailers.
 
 Chamadas unários e de streaming de cliente devem aguardar `ResponseAsync` antes de chamar `GetTrailers()` :
 
@@ -237,7 +259,7 @@ var trailers = call.GetTrailers();
 var myValue = trailers.GetValue("my-trailer-name");
 ```
 
-os trailers de gRPC também podem ser acessados do `RpcException` . Um serviço pode retornar os trailers com um status de gRPC não OK. Nessa situação, os trailers são recuperados da exceção gerada pelo cliente gRPC:
+Os trailers também podem ser acessados do `RpcException` . Um serviço pode retornar os trailers com um status de gRPC não OK. Nessa situação, os trailers são recuperados da exceção gerada pelo cliente gRPC:
 
 ```csharp
 var client = new Greet.GreeterClient(channel);

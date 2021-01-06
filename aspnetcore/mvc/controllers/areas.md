@@ -17,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: mvc/controllers/areas
-ms.openlocfilehash: 42eec406813adce4d7edbc1ab66a1f689c4aca0e
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: f3d76f612e67aeabf1f7fef694199332c732c593
+ms.sourcegitcommit: 53e01d6e9b70a18a05618f0011cf115a16633c21
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93053521"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97878406"
 ---
 # <a name="areas-in-aspnet-core"></a>Áreas no ASP.NET Core
 
@@ -63,7 +63,7 @@ Um aplicativo Web do ASP.NET Core típico usando áreas, controladores e exibiç
 
 ### <a name="area-folder-structure"></a>Estrutura de pastas da área
 
-Considere um aplicativo que tem dois grupos lógicos, *Produtos* e *Serviços* . Usando áreas, a estrutura de pastas seria semelhante ao seguinte:
+Considere um aplicativo que tem dois grupos lógicos, *Produtos* e *Serviços*. Usando áreas, a estrutura de pastas seria semelhante ao seguinte:
 
 * Nome do projeto
   * Áreas
@@ -149,7 +149,7 @@ A pasta raiz do aplicativo é a pasta que contém *Startup.cs* no aplicativo Web
 
 ### <a name="_viewimportscshtml"></a>_ViewImports.cshtml
 
- */Views/_ViewImports. cshtml* , para MVC e */pages/_ViewImports. cshtml* para Razor páginas, não é importado para modos de exibição em áreas. Use uma das abordagens a seguir para fornecer importações de exibição a todas as exibições:
+ */Views/_ViewImports. cshtml*, para MVC e */pages/_ViewImports. cshtml* para Razor páginas, não é importado para modos de exibição em áreas. Use uma das abordagens a seguir para fornecer importações de exibição a todas as exibições:
 
 * Adicione *_ViewImports. cshtml* à [pasta raiz do aplicativo](#arf). Um *_ViewImports. cshtml* na pasta raiz do aplicativo será aplicado a todas as exibições no aplicativo.
 * Copie o arquivo *_ViewImports. cshtml* para a pasta de exibição apropriada em áreas.
@@ -173,12 +173,12 @@ O código a seguir altera a pasta da área padrão de `"Areas"` para `"MyAreas"`
 * Nome do projeto
   * Áreas
     * Produtos
-      * Pages (Páginas)
+      * Páginas
         * _ViewImports
         * Sobre
         * Índice
     * Serviços
-      * Pages (Páginas)
+      * Páginas
         * Gerenciar
           * Sobre
           * Índice
@@ -191,7 +191,7 @@ O código a seguir do [download do exemplo](https://github.com/dotnet/AspNetCore
 
 O download de exemplo inclui uma [exibição parcial](xref:mvc/views/partial) que contém os links anteriores e os mesmos links sem especificar a área. A exibição parcial é referenciada no [arquivo de layout](xref:mvc/views/layout), portanto, todas as páginas no aplicativo exibem os links gerados. Os links gerados sem especificar a área só são válidos quando referenciados de uma página na mesma área.
 
-Quando a área não for especificada, o roteamento dependerá dos valores do *ambiente* . Os valores de rota atuais da solicitação atual são considerados valores de ambiente para a geração de link. Em muitos casos, para o aplicativo de exemplo, usar os valores de ambiente gera links incorretos. Por exemplo, considere os links gerados a partir do código a seguir:
+Quando a área não for especificada, o roteamento dependerá dos valores do *ambiente*. Os valores de rota atuais da solicitação atual são considerados valores de ambiente para a geração de link. Em muitos casos, para o aplicativo de exemplo, usar os valores de ambiente gera links incorretos. Por exemplo, considere os links gerados a partir do código a seguir:
 
 [!code-cshtml[](areas/31samples/RPareas/Pages/Shared/_testLinksPartial.cshtml?name=snippet2)]
 
@@ -205,16 +205,16 @@ Para o código anterior:
 
 Um arquivo *_ViewImports. cshtml* pode ser adicionado a cada pasta de *páginas* de área para importar o namespace e os auxiliares de marca para cada Razor página na pasta.
 
-Considere a área *Serviços* do código de exemplo, que não contém um arquivo *_ViewImports.cshtml* . A marcação a seguir mostra a página */Services/Manage/about* Razor :
+Considere a área *Serviços* do código de exemplo, que não contém um arquivo *_ViewImports.cshtml*. A marcação a seguir mostra a página */Services/Manage/about* Razor :
 
 [!code-cshtml[](areas/31samples/RPareas/Areas/Services/Pages/Manage/About.cshtml)]
 
 Na marcação anterior:
 
-* O nome de domínio totalmente qualificado deve ser usado para especificar o modelo (`@model RPareas.Areas.Services.Pages.Manage.AboutModel`).
+* O nome da classe totalmente qualificado deve ser usado para especificar o modelo ( `@model RPareas.Areas.Services.Pages.Manage.AboutModel` ).
 * Os [Auxiliares de Marcação](xref:mvc/views/tag-helpers/intro) são habilitados por `@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers`
 
-No download de exemplo, a área Produtos contém o seguinte arquivo *_ViewImports.cshtml* :
+No download de exemplo, a área Produtos contém o seguinte arquivo *_ViewImports.cshtml*:
 
 [!code-cshtml[](areas/31samples/RPareas/Areas/Products/Pages/_ViewImports.cshtml)]
 
@@ -222,7 +222,7 @@ A marcação a seguir mostra a página */Products/about* Razor :
 
 [!code-cshtml[](areas/31samples/RPareas/Areas/Products/Pages/About.cshtml)]
 
-No arquivo anterior, o namespace e a diretiva `@addTagHelper` são importados para o arquivo por meio do arquivo *Areas/Products/Pages/_ViewImports.cshtml* .
+No arquivo anterior, o namespace e a diretiva `@addTagHelper` são importados para o arquivo por meio do arquivo *Areas/Products/Pages/_ViewImports.cshtml*.
 
 Para saber mais, confira [Gerenciar o escopo do Auxiliar de Marcação](xref:mvc/views/tag-helpers/intro?view=aspnetcore-2.2#managing-tag-helper-scope) e [Importar diretivas compartilhadas](xref:mvc/views/layout#importing-shared-directives).
 
@@ -265,7 +265,7 @@ Um aplicativo Web do ASP.NET Core típico usando áreas, controladores e exibiç
 
 ### <a name="area-folder-structure"></a>Estrutura de pastas da área
 
-Considere um aplicativo que tem dois grupos lógicos, *Produtos* e *Serviços* . Usando áreas, a estrutura de pastas seria semelhante ao seguinte:
+Considere um aplicativo que tem dois grupos lógicos, *Produtos* e *Serviços*. Usando áreas, a estrutura de pastas seria semelhante ao seguinte:
 
 * Nome do projeto
   * Áreas
@@ -331,7 +331,7 @@ Os links gerados com o código anterior são válidos em qualquer lugar no aplic
 
 O download de exemplo inclui uma [exibição parcial](xref:mvc/views/partial) que contém os links anteriores e os mesmos links sem especificar a área. A exibição parcial é referenciada no [arquivo de layout](xref:mvc/views/layout), portanto, todas as páginas no aplicativo exibem os links gerados. Os links gerados sem especificar a área só são válidos quando referenciados de uma página na mesma área e no mesmo controlador.
 
-Quando a área ou o controlador não for especificado, o roteamento dependerá dos valores do *ambiente* . Os valores de rota atuais da solicitação atual são considerados valores de ambiente para a geração de link. Em muitos casos, para o aplicativo de exemplo, usar os valores de ambiente gera links incorretos.
+Quando a área ou o controlador não for especificado, o roteamento dependerá dos valores do *ambiente*. Os valores de rota atuais da solicitação atual são considerados valores de ambiente para a geração de link. Em muitos casos, para o aplicativo de exemplo, usar os valores de ambiente gera links incorretos.
 
 Para obter mais informações, veja [Roteamento para ações do controlador](xref:mvc/controllers/routing).
 
@@ -360,12 +360,12 @@ O código a seguir altera a pasta da área padrão de `"Areas"` para `"MyAreas"`
 * Nome do projeto
   * Áreas
     * Produtos
-      * Pages (Páginas)
+      * Páginas
         * _ViewImports
         * Sobre
         * Índice
     * Serviços
-      * Pages (Páginas)
+      * Páginas
         * Gerenciar
           * Sobre
           * Índice
@@ -380,7 +380,7 @@ Os links gerados com o código anterior são válidos em qualquer lugar no aplic
 
 O download de exemplo inclui uma [exibição parcial](xref:mvc/views/partial) que contém os links anteriores e os mesmos links sem especificar a área. A exibição parcial é referenciada no [arquivo de layout](xref:mvc/views/layout), portanto, todas as páginas no aplicativo exibem os links gerados. Os links gerados sem especificar a área só são válidos quando referenciados de uma página na mesma área.
 
-Quando a área não for especificada, o roteamento dependerá dos valores do *ambiente* . Os valores de rota atuais da solicitação atual são considerados valores de ambiente para a geração de link. Em muitos casos, para o aplicativo de exemplo, usar os valores de ambiente gera links incorretos. Por exemplo, considere os links gerados a partir do código a seguir:
+Quando a área não for especificada, o roteamento dependerá dos valores do *ambiente*. Os valores de rota atuais da solicitação atual são considerados valores de ambiente para a geração de link. Em muitos casos, para o aplicativo de exemplo, usar os valores de ambiente gera links incorretos. Por exemplo, considere os links gerados a partir do código a seguir:
 
 [!code-cshtml[](areas/samples/RPareas/Pages/Shared/_testLinksPartial.cshtml?name=snippet2)]
 
@@ -394,7 +394,7 @@ Para o código anterior:
 
 Um arquivo *_ViewImports. cshtml* pode ser adicionado a cada pasta de *páginas* de área para importar o namespace e os auxiliares de marca para cada Razor página na pasta.
 
-Considere a área *Serviços* do código de exemplo, que não contém um arquivo *_ViewImports.cshtml* . A marcação a seguir mostra a página */Services/Manage/about* Razor :
+Considere a área *Serviços* do código de exemplo, que não contém um arquivo *_ViewImports.cshtml*. A marcação a seguir mostra a página */Services/Manage/about* Razor :
 
 [!code-cshtml[](areas/samples/RPareas/Areas/Services/Pages/Manage/About.cshtml)]
 
@@ -403,7 +403,7 @@ Na marcação anterior:
 * O nome de domínio totalmente qualificado deve ser usado para especificar o modelo (`@model RPareas.Areas.Services.Pages.Manage.AboutModel`).
 * Os [Auxiliares de Marcação](xref:mvc/views/tag-helpers/intro) são habilitados por `@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers`
 
-No download de exemplo, a área Produtos contém o seguinte arquivo *_ViewImports.cshtml* :
+No download de exemplo, a área Produtos contém o seguinte arquivo *_ViewImports.cshtml*:
 
 [!code-cshtml[](areas/samples/RPareas/Areas/Products/Pages/_ViewImports.cshtml)]
 
@@ -411,7 +411,7 @@ A marcação a seguir mostra a página */Products/about* Razor :
 
 [!code-cshtml[](areas/samples/RPareas/Areas/Products/Pages/About.cshtml)]
 
-No arquivo anterior, o namespace e a diretiva `@addTagHelper` são importados para o arquivo por meio do arquivo *Areas/Products/Pages/_ViewImports.cshtml* .
+No arquivo anterior, o namespace e a diretiva `@addTagHelper` são importados para o arquivo por meio do arquivo *Areas/Products/Pages/_ViewImports.cshtml*.
 
 Para saber mais, confira [Gerenciar o escopo do Auxiliar de Marcação](xref:mvc/views/tag-helpers/intro?view=aspnetcore-2.2#managing-tag-helper-scope) e [Importar diretivas compartilhadas](xref:mvc/views/layout#importing-shared-directives).
 

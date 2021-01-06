@@ -17,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: mvc/controllers/routing
-ms.openlocfilehash: 59ad373cefaa12370aa7c02a367125c7a94f59a6
-ms.sourcegitcommit: 91e14f1e2a25c98a57c2217fe91b172e0ff2958c
+ms.openlocfilehash: a163c87fdb9a02c1b074ab32c19c11932c66cfd4
+ms.sourcegitcommit: 04a404a9655c59ad1ea02aff5d399ae1b833ad6a
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94422594"
+ms.lasthandoff: 01/03/2021
+ms.locfileid: "97854529"
 ---
 # <a name="routing-to-controller-actions-in-aspnet-core"></a>Roteamento para ações do controlador no ASP.NET Core
 
@@ -207,7 +207,7 @@ O exemplo anterior:
 ### <a name="conventional-routing-order"></a>Ordem de roteamento convencional
 
 O roteamento convencional só corresponde a uma combinação de ação e controlador que são definidos pelo aplicativo. Isso se destina a simplificar os casos em que as rotas convencionais se sobrepõem.
-Adicionar rotas usando <xref:Microsoft.AspNetCore.Builder.ControllerEndpointRouteBuilderExtensions.MapControllerRoute%2A> , <xref:Microsoft.AspNetCore.Builder.ControllerEndpointRouteBuilderExtensions.MapDefaultControllerRoute%2A> e <xref:Microsoft.AspNetCore.Builder.ControllerEndpointRouteBuilderExtensions.MapAreaControllerRoute%2A> atribuir automaticamente um valor de pedido a seus pontos de extremidade com base na ordem em que são invocados. As correspondências de uma rota que aparece anteriormente têm uma prioridade mais alta. O roteamento convencional é dependente da ordem. Em geral, as rotas com áreas devem ser posicionadas antes, pois são mais específicas do que as rotas sem uma área. [Rotas convencionais dedicadas](#dcr) com parâmetros de rota catch-all como `{*article}` podem tornar [greedy](xref:fundamentals/routing#greedy)uma rota muito grande, o que significa que ela corresponde às URLs que você pretende corresponder a outras rotas. Coloque as rotas de ávido mais tarde na tabela de rotas para evitar correspondências de caminhada.
+Adicionar rotas usando <xref:Microsoft.AspNetCore.Builder.ControllerEndpointRouteBuilderExtensions.MapControllerRoute%2A> , <xref:Microsoft.AspNetCore.Builder.ControllerEndpointRouteBuilderExtensions.MapDefaultControllerRoute%2A> e <xref:Microsoft.AspNetCore.Builder.ControllerEndpointRouteBuilderExtensions.MapAreaControllerRoute%2A> atribuir automaticamente um valor de pedido a seus pontos de extremidade com base na ordem em que são invocados. As correspondências de uma rota que aparece anteriormente têm uma prioridade mais alta. O roteamento convencional é dependente da ordem. Em geral, as rotas com áreas devem ser posicionadas antes, pois são mais específicas do que as rotas sem uma área. [Rotas convencionais dedicadas](#dcr) com parâmetros de rota catch-all como `{*article}` podem tornar [](xref:fundamentals/routing#greedy)uma rota muito grande, o que significa que ela corresponde às URLs que você pretende corresponder a outras rotas. Coloque as rotas de ávido mais tarde na tabela de rotas para evitar correspondências de caminhada.
 
 [!INCLUDE[](~/includes/catchall.md)]
 
@@ -260,7 +260,7 @@ Nomes de rota:
 * Não têm impacto sobre a correspondência de URL ou o tratamento de solicitações.
 * São usados somente para a geração de URL.
 
-O conceito de nome de rota é representado no roteamento como [IEndpointNameMetadata](xref:Microsoft.AspNetCore.Routing.IEndpointNameMetadata). Os termos **nome da rota** e **nome do ponto de extremidade** :
+O conceito de nome de rota é representado no roteamento como [IEndpointNameMetadata](xref:Microsoft.AspNetCore.Routing.IEndpointNameMetadata). Os termos **nome da rota** e **nome do ponto de extremidade**:
 
 * São intercambiáveis.
 * Qual delas é usada na documentação e no código depende da API que está sendo descrita.
@@ -472,7 +472,7 @@ Adicionar `Order` a um dos atributos de rota resolve a ambiguidade:
 
 [!code-csharp[](routing/samples/3.x/main/Controllers/MyDemo3Controller.cs?name=snippet3& highlight=2)]
 
-Com o código anterior, `/home` executa o `HomeController.Index` ponto de extremidade. Para obter a `MyDemoController.MyIndex` solicitação, `/home/MyIndex` . **Observação** :
+Com o código anterior, `/home` executa o `HomeController.Index` ponto de extremidade. Para obter a `MyDemoController.MyIndex` solicitação, `/home/MyIndex` . **Observação**:
 
 * O código anterior é um exemplo de design de roteamento insatisfatório. Ele foi usado para ilustrar a `Order` propriedade.
 * A `Order` Propriedade resolve apenas a ambiguidade, esse modelo não pode ser correspondido. Seria melhor remover o `[Route("Home")]` modelo.
@@ -485,12 +485,7 @@ Em alguns casos, um erro HTTP 500 é retornado com rotas ambíguas. Use o [regis
 
 ## <a name="token-replacement-in-route-templates-controller-action-area"></a>Substituição de token em modelos de rota [controlador], [ação], [área]
 
-Para sua conveniência, as rotas de atributo dão suporte à substituição de token para parâmetros de rota reservados ao colocar um token em um dos seguintes:
-
-* Colchetes: `[]`
-* Chaves: `{}`
-
-Os tokens `[action]` , `[area]` , e `[controller]` são substituídos pelos valores do nome da ação, do nome da área e do nome do controlador da ação em que a rota é definida:
+Para sua conveniência, as rotas de atributo dão suporte à *substituição de token* ao colocar um token entre colchetes ( `[` , `]` ). Os tokens `[action]` , `[area]` , e `[controller]` são substituídos pelos valores do nome da ação, do nome da área e do nome do controlador da ação em que a rota é definida:
 
 [!code-csharp[](routing/samples/3.x/main/Controllers/ProductsController.cs?name=snippet)]
 
@@ -717,7 +712,7 @@ Se o valor `{ d = Donovan }` for adicionado:
 * O valor `{ d = David }` é ignorado.
 * O caminho de URL gerado é `Alice/Bob/Carol/Donovan` .
 
-**Aviso** : os caminhos de URL são hierárquicos. No exemplo anterior, se o valor `{ c = Cheryl }` for adicionado:
+**Aviso**: os caminhos de URL são hierárquicos. No exemplo anterior, se o valor `{ c = Cheryl }` for adicionado:
 
 * Ambos os valores `{ c = Carol, d = David }` são ignorados.
 * Não há mais um valor para `d` e a geração de URL falha.
@@ -837,7 +832,7 @@ Os primeiros dois controladores são membros de áreas e correspondem somente qu
 
 <a name="aa"></a>
 
-Em termos de não corresponder a *nenhum valor* , a ausência do valor de `area` é equivalente ao valor de `area` ser nulo ou uma cadeia de caracteres vazia.
+Em termos de não corresponder a *nenhum valor*, a ausência do valor de `area` é equivalente ao valor de `area` ser nulo ou uma cadeia de caracteres vazia.
 
 Ao executar uma ação dentro de uma área, o valor de rota para `area` está disponível como um [valor de ambiente](#ambient) para roteamento a ser usado para a geração de URL. Isso significa que, por padrão, as áreas atuam como se fossem *autoadesivas* para a geração de URL, como demonstrado no exemplo a seguir.
 
@@ -874,7 +869,7 @@ Este documento explicará as interações entre o MVC e o roteamento e como apli
 
 ## <a name="setting-up-routing-middleware"></a>Configurando o middleware de Roteamento
 
-No método *Configurar* , você poderá ver código semelhante a:
+No método *Configurar*, você poderá ver código semelhante a:
 
 ```csharp
 app.UseMvc(routes =>
@@ -1000,7 +995,7 @@ app.UseMvc(routes =>
 });
 ```
 
-A rota `blog` aqui é uma *rota convencional dedicada* , o que significa que ela usa o sistema de roteamento convencional, mas é dedicada a uma ação específica. Como `controller` e `action` não aparecem no modelo de rota como parâmetros, eles só podem ter os valores padrão e, portanto, essa rota sempre será mapeada para a ação `BlogController.Article`.
+A rota `blog` aqui é uma *rota convencional dedicada*, o que significa que ela usa o sistema de roteamento convencional, mas é dedicada a uma ação específica. Como `controller` e `action` não aparecem no modelo de rota como parâmetros, eles só podem ter os valores padrão e, portanto, essa rota sempre será mapeada para a ação `BlogController.Article`.
 
 As rotas na coleção de rotas são ordenadas e serão processadas na ordem em que forem adicionadas. Portanto, neste exemplo, a rota `blog` será tentada antes da rota `default`.
 
@@ -1313,7 +1308,7 @@ public class SlugifyParameterTransformer : IOutboundParameterTransformer
 
 ### <a name="multiple-routes"></a>Várias rotas
 
-O roteamento de atributo dá suporte à definição de várias rotas que atingem a mesma ação. O uso mais comum desse recurso é para simular o comportamento da *rota convencional padrão* , conforme mostrado no exemplo a seguir:
+O roteamento de atributo dá suporte à definição de várias rotas que atingem a mesma ação. O uso mais comum desse recurso é para simular o comportamento da *rota convencional padrão*, conforme mostrado no exemplo a seguir:
 
 ```csharp
 [Route("[controller]")]
@@ -1562,7 +1557,7 @@ O `AreaAttribute` é o que indica que um controlador faz parte de uma área; diz
 Os primeiros dois controladores são membros de áreas e correspondem somente quando seus respectivos nomes de área são fornecidos pelo valor de rota `area`. O terceiro controlador não é um membro de nenhuma área e só pode corresponder quando nenhum valor para `area` for fornecido pelo roteamento.
 
 > [!NOTE]
-> Em termos de não corresponder a *nenhum valor* , a ausência do valor de `area` é equivalente ao valor de `area` ser nulo ou uma cadeia de caracteres vazia.
+> Em termos de não corresponder a *nenhum valor*, a ausência do valor de `area` é equivalente ao valor de `area` ser nulo ou uma cadeia de caracteres vazia.
 
 Ao executar uma ação dentro de uma área, o valor de rota para `area` estará disponível como um *valor de ambiente* para o roteamento usar para geração de URL. Isso significa que, por padrão, as áreas atuam como se fossem *autoadesivas* para a geração de URL, como demonstrado no exemplo a seguir.
 [!code-csharp[](routing/samples/3.x/AreasRouting/Startup.cs?name=snippet3)]
@@ -1592,7 +1587,7 @@ Presumindo a rota convencional padrão, o caminho de URL `/Products/Edit` produz
 
 Quando for executado, `HttpGetAttribute` indicará que *Edit()* corresponde a *GET* e não corresponde a nenhum outro verbo HTTP. A ação `Edit(...)` não tem restrições definidas e, portanto, corresponderá a qualquer verbo HTTP. Sendo assim, supondo um `POST`, `Edit(...)` será correspondente. Mas, para um `GET`, ambas as ações ainda podem corresponder – no entanto, uma ação com um `IActionConstraint` sempre é considerada *melhor* que uma ação sem. Assim, como `Edit()` tem `[HttpGet]`, ela é considerada mais específica e será selecionada se as duas ações puderem corresponder.
 
-Conceitualmente, `IActionConstraint` é uma forma de *sobrecarga* , mas em vez de uma sobrecarga de métodos com o mesmo nome, trata-se da sobrecarga entre ações que correspondem à mesma URL. O roteamento de atributo também usa `IActionConstraint` e pode fazer com que ações de controladores diferentes sejam consideradas candidatas.
+Conceitualmente, `IActionConstraint` é uma forma de *sobrecarga*, mas em vez de uma sobrecarga de métodos com o mesmo nome, trata-se da sobrecarga entre ações que correspondem à mesma URL. O roteamento de atributo também usa `IActionConstraint` e pode fazer com que ações de controladores diferentes sejam consideradas candidatas.
 
 <a name="iactionconstraint-impl-ref-label"></a>
 

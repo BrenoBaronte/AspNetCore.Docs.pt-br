@@ -19,10 +19,10 @@ no-loc:
 - SignalR
 uid: grpc/diagnostics
 ms.openlocfilehash: 1f25ae76e5a480e5e6f247e4ac78d06dd4e778e9
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 01/04/2021
 ms.locfileid: "93060437"
 ---
 # <a name="logging-and-diagnostics-in-grpc-on-net"></a>Registro em log e diagnóstico no gRPC no .NET
@@ -35,7 +35,7 @@ Este artigo fornece diretrizes para coletar diagnósticos de um aplicativo gRPC 
 * **Rastreamento** -eventos relacionados a uma operação escrita usando `DiaganosticSource` e `Activity` . Os rastreamentos da fonte de diagnóstico são comumente usados para coletar telemetria de aplicativo por bibliotecas como [Application insights](/azure/azure-monitor/app/asp-net-core) e [OpenTelemetry](https://github.com/open-telemetry/opentelemetry-dotnet).
 * **Métricas** – representação de medidas de dados em intervalos de tempo, por exemplo, solicitações por segundo. As métricas são emitidas usando `EventCounter` e podem ser observadas usando [a ferramenta de linha de comando dotnet-Counters](/dotnet/core/diagnostics/dotnet-counters) ou com [Application insights](/azure/azure-monitor/app/eventcounters).
 
-## <a name="logging"></a>Registrando em log
+## <a name="logging"></a>Log
 
 os serviços gRPC e o cliente gRPC gravam logs usando o [log do .NET Core](xref:fundamentals/logging/index). Os logs são um bom lugar para começar quando você precisa depurar um comportamento inesperado em seus aplicativos.
 
@@ -223,7 +223,7 @@ Press p to pause, r to resume, q to quit.
 
 Outra maneira de observar as métricas do gRPC é capturar dados do contador usando [o pacote Microsoft. ApplicationInsights. EventCounterCollector](/azure/azure-monitor/app/eventcounters)da Application insights. Depois da instalação, o Application Insights coleta contadores comuns do .NET em tempo de execução. os contadores de gRPC não são coletados por padrão, mas o app insights pode ser [personalizado para incluir contadores adicionais](/azure/azure-monitor/app/eventcounters#customizing-counters-to-be-collected).
 
-Especifique os contadores de gRPC para o Application insights coletar em *Startup.cs* :
+Especifique os contadores de gRPC para o Application insights coletar em *Startup.cs*:
 
 ```csharp
     using Microsoft.ApplicationInsights.Extensibility.EventCounterCollector;

@@ -20,10 +20,10 @@ no-loc:
 - SignalR
 uid: fundamentals/host/hosted-services
 ms.openlocfilehash: b8d6ec079ed39fb3a2c314816ebae6cea0847a36
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 01/04/2021
 ms.locfileid: "93061074"
 ---
 # <a name="background-tasks-with-hosted-services-in-aspnet-core"></a>Tarefas em segundo plano com serviços hospedados no ASP.NET Core
@@ -32,7 +32,7 @@ Por [Jeow li Huan](https://github.com/huan086)
 
 ::: moniker range=">= aspnetcore-3.0"
 
-No ASP.NET Core, as tarefas em segundo plano podem ser implementadas como *serviços hospedados* . Um serviço hospedado é uma classe com lógica de tarefa em segundo plano que implementa a interface <xref:Microsoft.Extensions.Hosting.IHostedService>. Este tópico fornece três exemplos de serviço hospedado:
+No ASP.NET Core, as tarefas em segundo plano podem ser implementadas como *serviços hospedados*. Um serviço hospedado é uma classe com lógica de tarefa em segundo plano que implementa a interface <xref:Microsoft.Extensions.Hosting.IHostedService>. Este tópico fornece três exemplos de serviço hospedado:
 
 * Tarefa em segundo plano que é executada com um temporizador.
 * Serviço hospedado que ativa um [serviço com escopo](xref:fundamentals/dependency-injection#service-lifetimes). O serviço com escopo pode usar [injeção de dependência (di)](xref:fundamentals/dependency-injection).
@@ -54,7 +54,7 @@ Para usar o modelo como base para um aplicativo de serviços hospedados:
 
 ## <a name="package"></a>Pacote
 
-Um aplicativo baseado no modelo de serviço de trabalho usa o `Microsoft.NET.Sdk.Worker` SDK e tem uma referência de pacote explícita para o pacote [Microsoft. Extensions. Hosting](https://www.nuget.org/packages/Microsoft.Extensions.Hosting) . Por exemplo, consulte o arquivo de projeto do aplicativo de exemplo ( *BackgroundTasksSample. csproj* ).
+Um aplicativo baseado no modelo de serviço de trabalho usa o `Microsoft.NET.Sdk.Worker` SDK e tem uma referência de pacote explícita para o pacote [Microsoft. Extensions. Hosting](https://www.nuget.org/packages/Microsoft.Extensions.Hosting) . Por exemplo, consulte o arquivo de projeto do aplicativo de exemplo (*BackgroundTasksSample. csproj*).
 
 Para aplicativos Web que usam o `Microsoft.NET.Sdk.Web` SDK, o pacote [Microsoft. Extensions. Hosting](https://www.nuget.org/packages/Microsoft.Extensions.Hosting) é referenciado implicitamente da estrutura compartilhada. Uma referência de pacote explícita no arquivo de projeto do aplicativo não é necessária.
 
@@ -128,7 +128,7 @@ Uma tarefa em segundo plano temporizada usa a classe [System.Threading.Timer](xr
 
 O <xref:System.Threading.Timer> não aguarda as execuções anteriores do `DoWork` serem concluídas, portanto, a abordagem mostrada pode não ser adequada para cada cenário. [Interlocked. Increment](xref:System.Threading.Interlocked.Increment*) é usado para incrementar o contador de execução como uma operação atômica, o que garante que vários threads não sejam atualizados `executionCount` simultaneamente.
 
-O serviço está registrado em `IHostBuilder.ConfigureServices` ( *Program.cs* ) com o `AddHostedService` método de extensão:
+O serviço está registrado em `IHostBuilder.ConfigureServices` (*Program.cs*) com o `AddHostedService` método de extensão:
 
 [!code-csharp[](hosted-services/samples/3.x/BackgroundTasksSample/Program.cs?name=snippet1)]
 
@@ -147,7 +147,7 @@ O serviço hospedado cria um escopo para resolver o serviço de tarefa em segund
 
 [!code-csharp[](hosted-services/samples/3.x/BackgroundTasksSample/Services/ConsumeScopedServiceHostedService.cs?name=snippet1&highlight=19,22-35)]
 
-Os serviços são registrados em `IHostBuilder.ConfigureServices` ( *Program.cs* ). O serviço hospedado está registrado com o `AddHostedService` método de extensão:
+Os serviços são registrados em `IHostBuilder.ConfigureServices` (*Program.cs*). O serviço hospedado está registrado com o `AddHostedService` método de extensão:
 
 [!code-csharp[](hosted-services/samples/3.x/BackgroundTasksSample/Program.cs?name=snippet2)]
 
@@ -175,7 +175,7 @@ Um `MonitorLoop` serviço lida com tarefas de enfileiramento para o serviço hos
 
 [!code-csharp[](hosted-services/samples/3.x/BackgroundTasksSample/Services/MonitorLoop.cs?name=snippet_Monitor&highlight=7,33)]
 
-Os serviços são registrados em `IHostBuilder.ConfigureServices` ( *Program.cs* ). O serviço hospedado está registrado com o `AddHostedService` método de extensão:
+Os serviços são registrados em `IHostBuilder.ConfigureServices` (*Program.cs*). O serviço hospedado está registrado com o `AddHostedService` método de extensão:
 
 [!code-csharp[](hosted-services/samples/3.x/BackgroundTasksSample/Program.cs?name=snippet3)]
 
@@ -187,7 +187,7 @@ Os serviços são registrados em `IHostBuilder.ConfigureServices` ( *Program.cs*
 
 ::: moniker range="< aspnetcore-3.0"
 
-No ASP.NET Core, as tarefas em segundo plano podem ser implementadas como *serviços hospedados* . Um serviço hospedado é uma classe com lógica de tarefa em segundo plano que implementa a interface <xref:Microsoft.Extensions.Hosting.IHostedService>. Este tópico fornece três exemplos de serviço hospedado:
+No ASP.NET Core, as tarefas em segundo plano podem ser implementadas como *serviços hospedados*. Um serviço hospedado é uma classe com lógica de tarefa em segundo plano que implementa a interface <xref:Microsoft.Extensions.Hosting.IHostedService>. Este tópico fornece três exemplos de serviço hospedado:
 
 * Tarefa em segundo plano que é executada com um temporizador.
 * Serviço hospedado que ativa um [serviço com escopo](xref:fundamentals/dependency-injection#service-lifetimes). O serviço com escopo pode usar [injeção de dependência (di)](xref:fundamentals/dependency-injection)

@@ -20,10 +20,10 @@ no-loc:
 - SignalR
 uid: blazor/debug
 ms.openlocfilehash: 990882c03ddc14c664aa8da0518fb36087199aca
-ms.sourcegitcommit: 202144092067ea81be1dbb229329518d781dbdfb
+ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 11/12/2020
+ms.lasthandoff: 01/04/2021
 ms.locfileid: "94550511"
 ---
 # <a name="debug-aspnet-core-no-locblazor-webassembly"></a>ASP.NET Core de depuração Blazor WebAssembly
@@ -45,7 +45,7 @@ Os cenários disponíveis incluem:
 * Na janela *locais* , observe os valores de variáveis locais.
 * Consulte a pilha de chamadas, incluindo cadeias de chamada entre JavaScript e .NET.
 
-Por enquanto, você *não pode* :
+Por enquanto, você *não pode*:
 
 * Interromper em exceções sem tratamento.
 * Acerte os pontos de interrupção durante a inicialização do aplicativo antes da execução do proxy de depuração. Isso inclui pontos de interrupção em `Program.Main` ( `Program.cs` ) e pontos de interrupção nos [ `OnInitialized{Async}` métodos](xref:blazor/components/lifecycle#component-initialization-methods) de componentes que são carregados pela primeira página solicitada do aplicativo.
@@ -95,7 +95,7 @@ Para depurar um Blazor WebAssembly aplicativo no Visual Studio:
 1. Pressione <kbd>F5</kbd> para executar o aplicativo no depurador.
 
    > [!NOTE]
-   > Não há suporte para **Iniciar sem depuração** ( <kbd>Ctrl</kbd> + <kbd>F5</kbd>). Quando o aplicativo é executado na configuração de depuração, a sobrecarga de depuração sempre resulta em uma pequena redução de desempenho.
+   > Não há suporte para **Iniciar sem depuração** (<kbd>Ctrl</kbd> + <kbd>F5</kbd>). Quando o aplicativo é executado na configuração de depuração, a sobrecarga de depuração sempre resulta em uma pequena redução de desempenho.
 
 1. No `*Client*` aplicativo, defina um ponto de interrupção na `currentCount++;` linha em `Pages/Counter.razor` .
 1. No navegador, navegue até a `Counter` página e selecione o botão **clique em mim** para atingir o ponto de interrupção.
@@ -172,13 +172,13 @@ Para obter informações sobre como usar um caminho básico do aplicativo person
    Se você receber a notificação:
 
    * Confirme se a extensão mais recente [do C# para Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp) está instalada. Para inspecionar as extensões instaladas, abra **Exibir**  >  **extensões** na barra de menus ou selecione o ícone **extensões** na barra lateral **atividade** .
-   * Confirme se a depuração de visualização do JavaScript está habilitada. Abra as configurações na barra de menus (configurações de preferências de **arquivo**  >  **Preferences**  >  **Settings** ). Pesquise usando as palavras-chave `debug preview` . Nos resultados da pesquisa, confirme se a caixa de seleção para **depurar > JavaScript: usar visualização** está marcada. Se a opção para habilitar a depuração de visualização não estiver presente, atualize para a versão mais recente do VS Code ou instale a [extensão do depurador do JavaScript](https://marketplace.visualstudio.com/items?itemName=ms-vscode.js-debug-nightly) (VS Code versões 1,46 ou anteriores).
+   * Confirme se a depuração de visualização do JavaScript está habilitada. Abra as configurações na barra de menus (configurações de preferências de **arquivo**  >    >  ). Pesquise usando as palavras-chave `debug preview` . Nos resultados da pesquisa, confirme se a caixa de seleção para **depurar > JavaScript: usar visualização** está marcada. Se a opção para habilitar a depuração de visualização não estiver presente, atualize para a versão mais recente do VS Code ou instale a [extensão do depurador do JavaScript](https://marketplace.visualstudio.com/items?itemName=ms-vscode.js-debug-nightly) (VS Code versões 1,46 ou anteriores).
    * Recarregue a janela.
 
 1. Inicie a depuração usando o atalho de teclado <kbd>F5</kbd> ou o item de menu.
 
    > [!NOTE]
-   > Não há suporte para **Iniciar sem depuração** ( <kbd>Ctrl</kbd> + <kbd>F5</kbd>). Quando o aplicativo é executado na configuração de depuração, a sobrecarga de depuração sempre resulta em uma pequena redução de desempenho.
+   > Não há suporte para **Iniciar sem depuração** (<kbd>Ctrl</kbd> + <kbd>F5</kbd>). Quando o aplicativo é executado na configuração de depuração, a sobrecarga de depuração sempre resulta em uma pequena redução de desempenho.
 
 1. Quando solicitado, selecione a opção de **Blazor WebAssembly depuração** para iniciar a depuração.
 
@@ -195,7 +195,7 @@ Para obter informações sobre como usar um caminho básico do aplicativo person
 
 1. Abra a Blazor WebAssembly pasta de solução do aplicativo hospedado no vs Code.
 
-1. Se não houver uma configuração de inicialização definida para o projeto, a notificação a seguir será exibida. Selecione **Sim**.
+1. Se não houver uma configuração de inicialização definida para o projeto, a notificação a seguir será exibida. Selecione **Sim** na barra superior.
 
    > Os ativos necessários para compilar e depurar estão ausentes em ' {nome do aplicativo} '. Deseja adicioná-los?
 
@@ -225,8 +225,8 @@ As opções de configuração de inicialização a seguir têm suporte para o `b
 | Opção    | Descrição |
 | --------- | ----------- |
 | `request` | Use `launch` para iniciar e anexar uma sessão de depuração a um Blazor WebAssembly aplicativo ou `attach` para anexar uma sessão de depuração a um aplicativo já em execução. |
-| `url`     | A URL a ser aberta no navegador durante a depuração. Assume o padrão de `https://localhost:5001`. |
-| `browser` | O navegador a ser iniciado para a sessão de depuração. Definir como `edge` ou `chrome`. Assume o padrão de `chrome`. |
+| `url`     | A URL a ser aberta no navegador durante a depuração. O padrão é `https://localhost:5001`. |
+| `browser` | O navegador a ser iniciado para a sessão de depuração. Definir como `edge` ou `chrome`. O padrão é `chrome`. |
 | `trace`   | Usado para gerar logs do depurador JS. Defina como `true` para gerar logs. |
 | `hosted`  | Deve ser definido como `true` se estiver iniciando e depurando um Blazor WebAssembly aplicativo hospedado. |
 | `webRoot` | Especifica o caminho absoluto do servidor Web. Deve ser definido se um aplicativo for servido de uma sub-roteiro. |
@@ -284,7 +284,7 @@ Para depurar um Blazor WebAssembly aplicativo no Visual Studio para Mac:
 1. Pressione <kbd>&#8984;</kbd> + <kbd>&#8617;</kbd> para executar o aplicativo no depurador.
 
    > [!NOTE]
-   > Não há suporte para **Iniciar sem depuração** ( <kbd>&#8997;</kbd> + <kbd>&#8984;</kbd> + <kbd>&#8617;</kbd>). Quando o aplicativo é executado na configuração de depuração, a sobrecarga de depuração sempre resulta em uma pequena redução de desempenho.
+   > Não há suporte para **Iniciar sem depuração** (<kbd>&#8997;</kbd> + <kbd>&#8984;</kbd> + <kbd>&#8617;</kbd>). Quando o aplicativo é executado na configuração de depuração, a sobrecarga de depuração sempre resulta em uma pequena redução de desempenho.
 
    > [!IMPORTANT]
    > O Google Chrome ou o Microsoft Edge deve ser o navegador selecionado para a sessão de depuração.

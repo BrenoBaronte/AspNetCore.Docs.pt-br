@@ -20,10 +20,10 @@ no-loc:
 - SignalR
 uid: blazor/security/webassembly/aad-groups-roles
 ms.openlocfilehash: ded70f028b3021574ba260838837d9b23abd72f1
-ms.sourcegitcommit: 8363e44f630fcc6433ccd2a85f7aa9567cd274ed
+ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 11/20/2020
+ms.lasthandoff: 01/04/2021
 ms.locfileid: "94981876"
 ---
 # <a name="azure-active-directory-aad-groups-administrator-roles-and-user-defined-roles"></a>Azure Active Directory (AAD) grupos, funções de administrador e funções definidas pelo usuário
@@ -550,7 +550,7 @@ Por exemplo:
 ::: moniker range=">= aspnetcore-5.0"
 
 > [!NOTE]
-> Se o domínio do Publicador do locatário não for verificado, o escopo da API do servidor para acesso de usuário/cliente usará um `https://` URI baseado em. Nesse cenário, o aplicativo de API do servidor requer `Audience` configuração no `appsettings.json` arquivo. Na configuração a seguir, o final do `Audience` valor não inclui **not** o escopo padrão `/{DEFAULT SCOPE}` , em que o espaço reservado `{DEFAULT SCOPE}` é o escopo padrão:
+> Se o domínio do Publicador do locatário não for verificado, o escopo da API do servidor para acesso de usuário/cliente usará um `https://` URI baseado em. Nesse cenário, o aplicativo de API do servidor requer `Audience` configuração no `appsettings.json` arquivo. Na configuração a seguir, o final do `Audience` valor não inclui  o escopo padrão `/{DEFAULT SCOPE}` , em que o espaço reservado `{DEFAULT SCOPE}` é o escopo padrão:
 >
 > ```json
 > {

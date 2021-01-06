@@ -20,10 +20,10 @@ no-loc:
 - SignalR
 uid: host-and-deploy/azure-iis-errors-reference
 ms.openlocfilehash: b009cc61a94e618a48d96ecbd770ef6371308f6a
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 01/04/2021
 ms.locfileid: "93059839"
 ---
 # <a name="common-errors-reference-for-azure-app-service-and-iis-with-aspnet-core"></a>Referência de erros comuns para o Serviço de Aplicativo do Azure e o IIS com o ASP.NET Core
@@ -40,7 +40,7 @@ Colete as seguintes informações:
 * Entradas do Log de Eventos do Aplicativo
   * Serviço de Azure App: consulte <xref:test/troubleshoot-azure-iis> .
   * IIS
-    1. Selecione **Iniciar** no menu **Windows** , digite *Visualizador de Eventos* e pressione **Enter** .
+    1. Selecione **Iniciar** no menu **Windows**, digite *Visualizador de Eventos* e pressione **Enter**.
     1. Após o **Visualizador de Eventos** ser aberto, expanda **Logs do Windows** > **Aplicativo** na barra lateral.
 * Entradas do log de depuração e stdout do Módulo do ASP.NET Core
   * Serviço de Azure App: consulte <xref:test/troubleshoot-azure-iis> .
@@ -103,7 +103,7 @@ Esse cenário é interceptado pelo SDK ao publicar um aplicativo autocontido. O 
 
 Solucionar problemas:
 
-Para uma implantação dependente da estrutura x86 (`<PlatformTarget>x86</PlatformTarget>`), habilite o pool de aplicativos de IIS para aplicativos de 32 bits. No Gerenciador do IIS, abra as **Configurações Avançadas** do pool de aplicativos e defina **Habilitar Aplicativos de 32 Bits** como **Verdadeiro** .
+Para uma implantação dependente da estrutura x86 (`<PlatformTarget>x86</PlatformTarget>`), habilite o pool de aplicativos de IIS para aplicativos de 32 bits. No Gerenciador do IIS, abra as **Configurações Avançadas** do pool de aplicativos e defina **Habilitar Aplicativos de 32 Bits** como **Verdadeiro**.
 
 ## <a name="platform-conflicts-with-rid"></a>Conflitos de plataforma com o RID
 
@@ -133,7 +133,7 @@ Solucionar problemas:
 
 * Confirme se o ponto de extremidade do URI correto para o aplicativo está sendo usado. Verifique as associações.
 
-* Confirme que o site do IIS não está no estado *Parado* .
+* Confirme que o site do IIS não está no estado *Parado*.
 
 ## <a name="corewebengine-or-w3svc-server-features-disabled"></a>Recursos do servidor CoreWebEngine ou W3SVC desabilitados
 
@@ -177,7 +177,7 @@ Solucionar problemas:
 
   Para obter mais informações, confira [Instalar o pacote de hospedagem do .NET Core](xref:host-and-deploy/iis/index#install-the-net-core-hosting-bundle).
 
-* Verifique se o modelo de processo do **pool de aplicativos** > **Process Model** > **Identity** está definido como **ApplicationPool Identity** ou se a identidade personalizada tem as permissões corretas para acessar a pasta de implantação do aplicativo.
+* Verifique se o modelo de processo do **pool de aplicativos** >  > **Identity** está definido como **ApplicationPool Identity** ou se a identidade personalizada tem as permissões corretas para acessar a pasta de implantação do aplicativo.
 
 * Se você desinstalou o Pacote de Hospedagem do ASP.NET Core e instalou uma versão anterior do pacote de hospedagem, o arquivo *applicationHost.config* não inclui uma seção para o Módulo do ASP.NET Core. Abra *applicationHost.config* em *%windir%/System32/inetsrv/config* e encontre o grupo de seção `<configuration><configSections><sectionGroup name="system.webServer">`. Se estiver faltando a seção do Módulo do ASP.NET Core no grupo de seções, adicione o elemento da seção:
 
@@ -205,7 +205,7 @@ Solucionar problemas:
 
 * Para uma FDD, o *dotnet.exe* pode não estar acessível por meio das configurações de PATH. Confirme se *C:\Arquivos de Programas\dotnet\\* existe nas configurações de PATH do Sistema.
 
-* Para uma FDD, o *dotnet.exe* pode não estar acessível para a identidade do usuário do pool de aplicativos. Confirme se a identidade do usuário do pool de aplicativos tem acesso ao diretório *C:\Arquivos de Programas\dotnet* . Confirme se não há nenhuma regra de negação configurada para a identidade do usuário do pool de aplicativos no *C:\Arquivos de Programas\dotnet* e nos diretórios do aplicativo.
+* Para uma FDD, o *dotnet.exe* pode não estar acessível para a identidade do usuário do pool de aplicativos. Confirme se a identidade do usuário do pool de aplicativos tem acesso ao diretório *C:\Arquivos de Programas\dotnet*. Confirme se não há nenhuma regra de negação configurada para a identidade do usuário do pool de aplicativos no *C:\Arquivos de Programas\dotnet* e nos diretórios do aplicativo.
 
 * Talvez você tenha implantado uma FDD e instalado o .NET Core sem reiniciar o IIS. Reinicie o servidor ou o IIS executando **net stop was /y** seguido por **net start w3svc** em um prompt de comando.
 
@@ -261,7 +261,7 @@ Para uma FDD (implantação dependente de estrutura), confirme se você tem o ru
 
 Solucionar problemas:
 
-Confirme que o Pool de Aplicativos não está no estado *Parado* .
+Confirme que o Pool de Aplicativos não está no estado *Parado*.
 
 ## <a name="sub-application-includes-a-handlers-section"></a>O subaplicativo inclui uma \<handlers> seção
 
@@ -328,7 +328,7 @@ Colete as seguintes informações:
 * Entradas do Log de Eventos do Aplicativo
   * Serviço de Azure App: consulte <xref:test/troubleshoot-azure-iis> .
   * IIS
-    1. Selecione **Iniciar** no menu **Windows** , digite *Visualizador de Eventos* e pressione **Enter** .
+    1. Selecione **Iniciar** no menu **Windows**, digite *Visualizador de Eventos* e pressione **Enter**.
     1. Após o **Visualizador de Eventos** ser aberto, expanda **Logs do Windows** > **Aplicativo** na barra lateral.
 * Entradas do log de depuração e stdout do Módulo do ASP.NET Core
   * Serviço de Azure App: consulte <xref:test/troubleshoot-azure-iis> .
@@ -387,7 +387,7 @@ Esse cenário é interceptado pelo SDK ao publicar um aplicativo autocontido. O 
 
 Solucionar problemas:
 
-Para uma implantação dependente da estrutura x86 (`<PlatformTarget>x86</PlatformTarget>`), habilite o pool de aplicativos de IIS para aplicativos de 32 bits. No Gerenciador do IIS, abra as **Configurações Avançadas** do pool de aplicativos e defina **Habilitar Aplicativos de 32 Bits** como **Verdadeiro** .
+Para uma implantação dependente da estrutura x86 (`<PlatformTarget>x86</PlatformTarget>`), habilite o pool de aplicativos de IIS para aplicativos de 32 bits. No Gerenciador do IIS, abra as **Configurações Avançadas** do pool de aplicativos e defina **Habilitar Aplicativos de 32 Bits** como **Verdadeiro**.
 
 ## <a name="platform-conflicts-with-rid"></a>Conflitos de plataforma com o RID
 
@@ -415,7 +415,7 @@ Solucionar problemas:
 
 * Confirme se o ponto de extremidade do URI correto para o aplicativo está sendo usado. Verifique as associações.
 
-* Confirme que o site do IIS não está no estado *Parado* .
+* Confirme que o site do IIS não está no estado *Parado*.
 
 ## <a name="corewebengine-or-w3svc-server-features-disabled"></a>Recursos do servidor CoreWebEngine ou W3SVC desabilitados
 
@@ -455,7 +455,7 @@ Solucionar problemas:
 
   Para obter mais informações, confira [Instalar o pacote de hospedagem do .NET Core](xref:host-and-deploy/iis/index#install-the-net-core-hosting-bundle).
 
-* Verifique se o modelo de processo do **pool de aplicativos** > **Process Model** > **Identity** está definido como **ApplicationPool Identity** ou se a identidade personalizada tem as permissões corretas para acessar a pasta de implantação do aplicativo.
+* Verifique se o modelo de processo do **pool de aplicativos** >  > **Identity** está definido como **ApplicationPool Identity** ou se a identidade personalizada tem as permissões corretas para acessar a pasta de implantação do aplicativo.
 
 * Se você desinstalou o Pacote de Hospedagem do ASP.NET Core e instalou uma versão anterior do pacote de hospedagem, o arquivo *applicationHost.config* não inclui uma seção para o Módulo do ASP.NET Core. Abra *applicationHost.config* em *%windir%/System32/inetsrv/config* e encontre o grupo de seção `<configuration><configSections><sectionGroup name="system.webServer">`. Se estiver faltando a seção do Módulo do ASP.NET Core no grupo de seções, adicione o elemento da seção:
 
@@ -481,7 +481,7 @@ Solucionar problemas:
 
 * Para uma FDD, o *dotnet.exe* pode não estar acessível por meio das configurações de PATH. Confirme se *C:\Arquivos de Programas\dotnet\\* existe nas configurações de PATH do Sistema.
 
-* Para uma FDD, o *dotnet.exe* pode não estar acessível para a identidade do usuário do pool de aplicativos. Confirme se a identidade do usuário do pool de aplicativos tem acesso ao diretório *C:\Arquivos de Programas\dotnet* . Confirme se não há nenhuma regra de negação configurada para a identidade do usuário do pool de aplicativos no *C:\Arquivos de Programas\dotnet* e nos diretórios do aplicativo.
+* Para uma FDD, o *dotnet.exe* pode não estar acessível para a identidade do usuário do pool de aplicativos. Confirme se a identidade do usuário do pool de aplicativos tem acesso ao diretório *C:\Arquivos de Programas\dotnet*. Confirme se não há nenhuma regra de negação configurada para a identidade do usuário do pool de aplicativos no *C:\Arquivos de Programas\dotnet* e nos diretórios do aplicativo.
 
 * Talvez você tenha implantado uma FDD e instalado o .NET Core sem reiniciar o IIS. Reinicie o servidor ou o IIS executando **net stop was /y** seguido por **net start w3svc** em um prompt de comando.
 
@@ -521,7 +521,7 @@ Para uma FDD (implantação dependente de estrutura), confirme se você tem o ru
 
 Solucionar problemas:
 
-Confirme que o Pool de Aplicativos não está no estado *Parado* .
+Confirme que o Pool de Aplicativos não está no estado *Parado*.
 
 ## <a name="sub-application-includes-a-handlers-section"></a>O subaplicativo inclui uma \<handlers> seção
 
