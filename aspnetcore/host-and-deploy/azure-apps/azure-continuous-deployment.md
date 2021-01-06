@@ -6,177 +6,177 @@ ms.author: riande
 ms.custom: devx-track-csharp, mvc
 ms.date: 12/06/2018
 no-loc:
-- 'appsettings.json'
-- 'ASP.NET Core Identity'
-- 'cookie'
-- 'Cookie'
-- 'Blazor'
-- 'Blazor Server'
-- 'Blazor WebAssembly'
-- 'Identity'
-- "Let's Encrypt"
-- 'Razor'
-- 'SignalR'
+- appsettings.json
+- ASP.NET Core Identity
+- cookie
+- Cookie
+- Blazor
+- Blazor Server
+- Blazor WebAssembly
+- Identity
+- Let's Encrypt
+- Razor
+- SignalR
 uid: host-and-deploy/azure-apps/azure-continuous-deployment
 ms.openlocfilehash: 1485e1a97e51bb4d12d0d74ca1550e5cf18258d8
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 01/04/2021
 ms.locfileid: "93053781"
 ---
-# <a name="continuous-deployment-to-azure-with-visual-studio-and-git-with-aspnet-core"></a><span data-ttu-id="cac64-103">Implantação contínua no Azure com o Visual Studio e o GIT com o ASP.NET Core</span><span class="sxs-lookup"><span data-stu-id="cac64-103">Continuous deployment to Azure with Visual Studio and Git with ASP.NET Core</span></span>
+# <a name="continuous-deployment-to-azure-with-visual-studio-and-git-with-aspnet-core"></a><span data-ttu-id="b65c6-103">Implantação contínua no Azure com o Visual Studio e o GIT com o ASP.NET Core</span><span class="sxs-lookup"><span data-stu-id="b65c6-103">Continuous deployment to Azure with Visual Studio and Git with ASP.NET Core</span></span>
 
-<span data-ttu-id="cac64-104">Por [Erik Reitan](https://github.com/Erikre)</span><span class="sxs-lookup"><span data-stu-id="cac64-104">By [Erik Reitan](https://github.com/Erikre)</span></span>
+<span data-ttu-id="b65c6-104">Por [Erik Reitan](https://github.com/Erikre)</span><span class="sxs-lookup"><span data-stu-id="b65c6-104">By [Erik Reitan](https://github.com/Erikre)</span></span>
 
 [!INCLUDE [Azure App Service Preview Notice](../../includes/azure-apps-preview-notice.md)]
 
-<span data-ttu-id="cac64-105">Este tutorial mostra como criar um aplicativo Web ASP.NET Core usando o Visual Studio e implantá-lo por meio do Visual Studio no Serviço de Aplicativo do Azure usando a implantação contínua.</span><span class="sxs-lookup"><span data-stu-id="cac64-105">This tutorial shows how to create an ASP.NET Core web app using Visual Studio and deploy it from Visual Studio to Azure App Service using continuous deployment.</span></span>
+<span data-ttu-id="b65c6-105">Este tutorial mostra como criar um aplicativo Web ASP.NET Core usando o Visual Studio e implantá-lo por meio do Visual Studio no Serviço de Aplicativo do Azure usando a implantação contínua.</span><span class="sxs-lookup"><span data-stu-id="b65c6-105">This tutorial shows how to create an ASP.NET Core web app using Visual Studio and deploy it from Visual Studio to Azure App Service using continuous deployment.</span></span>
 
-<span data-ttu-id="cac64-106">Consulte também [Criar seu primeiro pipeline com o Azure Pipelines](/azure/devops/pipelines/get-started-yaml), que mostra como configurar um fluxo de trabalho de CD (entrega contínua) para o [Serviço de Aplicativo do Azure](/azure/app-service/app-service-web-overview) usando o Azure DevOps Services.</span><span class="sxs-lookup"><span data-stu-id="cac64-106">See also [Create your first pipeline with Azure Pipelines](/azure/devops/pipelines/get-started-yaml), which shows how to configure a continuous delivery (CD) workflow for [Azure App Service](/azure/app-service/app-service-web-overview) using Azure DevOps Services.</span></span> <span data-ttu-id="cac64-107">O Azure Pipelines (um serviço do Azure DevOps Services) simplifica a configuração de um pipeline de implantação robusta para publicar atualizações para aplicativos hospedados no Serviço de Aplicativo do Azure.</span><span class="sxs-lookup"><span data-stu-id="cac64-107">Azure Pipelines (an Azure DevOps Services service) simplifies setting up a robust deployment pipeline to publish updates for apps hosted in Azure App Service.</span></span> <span data-ttu-id="cac64-108">O pipeline pode ser configurado no portal do Azure para criar, executar testes, implantar em um slot de preparo e, em seguida, implantar na produção.</span><span class="sxs-lookup"><span data-stu-id="cac64-108">The pipeline can be configured from the Azure portal to build, run tests, deploy to a staging slot, and then deploy to production.</span></span>
+<span data-ttu-id="b65c6-106">Consulte também [Criar seu primeiro pipeline com o Azure Pipelines](/azure/devops/pipelines/get-started-yaml), que mostra como configurar um fluxo de trabalho de CD (entrega contínua) para o [Serviço de Aplicativo do Azure](/azure/app-service/app-service-web-overview) usando o Azure DevOps Services.</span><span class="sxs-lookup"><span data-stu-id="b65c6-106">See also [Create your first pipeline with Azure Pipelines](/azure/devops/pipelines/get-started-yaml), which shows how to configure a continuous delivery (CD) workflow for [Azure App Service](/azure/app-service/app-service-web-overview) using Azure DevOps Services.</span></span> <span data-ttu-id="b65c6-107">O Azure Pipelines (um serviço do Azure DevOps Services) simplifica a configuração de um pipeline de implantação robusta para publicar atualizações para aplicativos hospedados no Serviço de Aplicativo do Azure.</span><span class="sxs-lookup"><span data-stu-id="b65c6-107">Azure Pipelines (an Azure DevOps Services service) simplifies setting up a robust deployment pipeline to publish updates for apps hosted in Azure App Service.</span></span> <span data-ttu-id="b65c6-108">O pipeline pode ser configurado no portal do Azure para criar, executar testes, implantar em um slot de preparo e, em seguida, implantar na produção.</span><span class="sxs-lookup"><span data-stu-id="b65c6-108">The pipeline can be configured from the Azure portal to build, run tests, deploy to a staging slot, and then deploy to production.</span></span>
 
 > [!NOTE]
-> <span data-ttu-id="cac64-109">Para concluir este tutorial, você precisa de uma conta do Microsoft Azure.</span><span class="sxs-lookup"><span data-stu-id="cac64-109">To complete this tutorial, a Microsoft Azure account is required.</span></span> <span data-ttu-id="cac64-110">Para obter uma conta, [ative os benefícios do assinante do MSDN](https://azure.microsoft.com/pricing/member-offers/credit-for-visual-studio-subscribers/?WT.mc_id=A261C142F) ou [inscreva-se em uma avaliação gratuita](https://azure.microsoft.com/free/dotnet/?WT.mc_id=A261C142F).</span><span class="sxs-lookup"><span data-stu-id="cac64-110">To obtain an account, [activate MSDN subscriber benefits](https://azure.microsoft.com/pricing/member-offers/credit-for-visual-studio-subscribers/?WT.mc_id=A261C142F) or [sign up for a free trial](https://azure.microsoft.com/free/dotnet/?WT.mc_id=A261C142F).</span></span>
+> <span data-ttu-id="b65c6-109">Para concluir este tutorial, você precisa de uma conta do Microsoft Azure.</span><span class="sxs-lookup"><span data-stu-id="b65c6-109">To complete this tutorial, a Microsoft Azure account is required.</span></span> <span data-ttu-id="b65c6-110">Para obter uma conta, [ative os benefícios do assinante do MSDN](https://azure.microsoft.com/pricing/member-offers/credit-for-visual-studio-subscribers/?WT.mc_id=A261C142F) ou [inscreva-se em uma avaliação gratuita](https://azure.microsoft.com/free/dotnet/?WT.mc_id=A261C142F).</span><span class="sxs-lookup"><span data-stu-id="b65c6-110">To obtain an account, [activate MSDN subscriber benefits](https://azure.microsoft.com/pricing/member-offers/credit-for-visual-studio-subscribers/?WT.mc_id=A261C142F) or [sign up for a free trial](https://azure.microsoft.com/free/dotnet/?WT.mc_id=A261C142F).</span></span>
 
-## <a name="prerequisites"></a><span data-ttu-id="cac64-111">Pré-requisitos</span><span class="sxs-lookup"><span data-stu-id="cac64-111">Prerequisites</span></span>
+## <a name="prerequisites"></a><span data-ttu-id="b65c6-111">Pré-requisitos</span><span class="sxs-lookup"><span data-stu-id="b65c6-111">Prerequisites</span></span>
 
-<span data-ttu-id="cac64-112">Este tutorial pressupõe que o seguinte software está instalado:</span><span class="sxs-lookup"><span data-stu-id="cac64-112">This tutorial assumes the following software is installed:</span></span>
+<span data-ttu-id="b65c6-112">Este tutorial pressupõe que o seguinte software está instalado:</span><span class="sxs-lookup"><span data-stu-id="b65c6-112">This tutorial assumes the following software is installed:</span></span>
 
-* [<span data-ttu-id="cac64-113">Visual Studio</span><span class="sxs-lookup"><span data-stu-id="cac64-113">Visual Studio</span></span>](https://visualstudio.microsoft.com)
+* [<span data-ttu-id="b65c6-113">Visual Studio</span><span class="sxs-lookup"><span data-stu-id="b65c6-113">Visual Studio</span></span>](https://visualstudio.microsoft.com)
 * [!INCLUDE [](~/includes/net-core-sdk-download-link.md)]
-* <span data-ttu-id="cac64-114">[Git](https://git-scm.com/downloads) para Windows</span><span class="sxs-lookup"><span data-stu-id="cac64-114">[Git](https://git-scm.com/downloads) for Windows</span></span>
+* <span data-ttu-id="b65c6-114">[Git](https://git-scm.com/downloads) para Windows</span><span class="sxs-lookup"><span data-stu-id="b65c6-114">[Git](https://git-scm.com/downloads) for Windows</span></span>
 
-## <a name="create-an-aspnet-core-web-app"></a><span data-ttu-id="cac64-115">Criar um aplicativo Web ASP.NET Core</span><span class="sxs-lookup"><span data-stu-id="cac64-115">Create an ASP.NET Core web app</span></span>
+## <a name="create-an-aspnet-core-web-app"></a><span data-ttu-id="b65c6-115">Criar um aplicativo Web ASP.NET Core</span><span class="sxs-lookup"><span data-stu-id="b65c6-115">Create an ASP.NET Core web app</span></span>
 
-1. <span data-ttu-id="cac64-116">Inicie o Visual Studio.</span><span class="sxs-lookup"><span data-stu-id="cac64-116">Start Visual Studio.</span></span>
+1. <span data-ttu-id="b65c6-116">Inicie o Visual Studio.</span><span class="sxs-lookup"><span data-stu-id="b65c6-116">Start Visual Studio.</span></span>
 
-1. <span data-ttu-id="cac64-117">No menu **Arquivo** , selecione **Novo** > **Projeto** .</span><span class="sxs-lookup"><span data-stu-id="cac64-117">From the **File** menu, select **New** > **Project** .</span></span>
+1. <span data-ttu-id="b65c6-117">No menu **Arquivo**, selecione **Novo** > **Projeto**.</span><span class="sxs-lookup"><span data-stu-id="b65c6-117">From the **File** menu, select **New** > **Project**.</span></span>
 
-1. <span data-ttu-id="cac64-118">Selecione o modelo de projeto **Aplicativo Web ASP.NET Core** .</span><span class="sxs-lookup"><span data-stu-id="cac64-118">Select the **ASP.NET Core Web Application** project template.</span></span> <span data-ttu-id="cac64-119">Ele aparece em **Installed**  >  **modelos** instalados  >  **Visual C#**  >  **.NET Core** .</span><span class="sxs-lookup"><span data-stu-id="cac64-119">It appears under **Installed** > **Templates** > **Visual C#** > **.NET Core** .</span></span> <span data-ttu-id="cac64-120">Dê ao projeto o nome de `SampleWebAppDemo`.</span><span class="sxs-lookup"><span data-stu-id="cac64-120">Name the project `SampleWebAppDemo`.</span></span> <span data-ttu-id="cac64-121">Selecione a opção **Criar novo repositório GIT** e clique em **OK** .</span><span class="sxs-lookup"><span data-stu-id="cac64-121">Select the **Create new Git repository** option and click **OK** .</span></span>
+1. <span data-ttu-id="b65c6-118">Selecione o modelo de projeto **Aplicativo Web ASP.NET Core**.</span><span class="sxs-lookup"><span data-stu-id="b65c6-118">Select the **ASP.NET Core Web Application** project template.</span></span> <span data-ttu-id="b65c6-119">Ele aparece em   >  **modelos** instalados  >  **Visual C#**  >  **.NET Core**.</span><span class="sxs-lookup"><span data-stu-id="b65c6-119">It appears under **Installed** > **Templates** > **Visual C#** > **.NET Core**.</span></span> <span data-ttu-id="b65c6-120">Dê ao projeto o nome de `SampleWebAppDemo`.</span><span class="sxs-lookup"><span data-stu-id="b65c6-120">Name the project `SampleWebAppDemo`.</span></span> <span data-ttu-id="b65c6-121">Selecione a opção **Criar novo repositório GIT** e clique em **OK**.</span><span class="sxs-lookup"><span data-stu-id="b65c6-121">Select the **Create new Git repository** option and click **OK**.</span></span>
 
    ![Caixa de diálogo Novo Projeto](azure-continuous-deployment/_static/01-new-project.png)
 
-1. <span data-ttu-id="cac64-123">Na caixa de diálogo **Novo Projeto ASP.NET Core** , selecione o modelo **Vazio** do ASP.NET Core e clique em **OK** .</span><span class="sxs-lookup"><span data-stu-id="cac64-123">In the **New ASP.NET Core Project** dialog, select the ASP.NET Core **Empty** template, then click **OK** .</span></span>
+1. <span data-ttu-id="b65c6-123">Na caixa de diálogo **Novo Projeto ASP.NET Core**, selecione o modelo **Vazio** do ASP.NET Core e clique em **OK**.</span><span class="sxs-lookup"><span data-stu-id="b65c6-123">In the **New ASP.NET Core Project** dialog, select the ASP.NET Core **Empty** template, then click **OK**.</span></span>
 
    ![Caixa de diálogo Novo projeto ASP.NET Core](azure-continuous-deployment/_static/02-web-site-template.png)
 
 > [!NOTE]
-> <span data-ttu-id="cac64-125">A versão mais recente do .NET Core é a 2.0.</span><span class="sxs-lookup"><span data-stu-id="cac64-125">The most recent release of .NET Core is 2.0.</span></span>
+> <span data-ttu-id="b65c6-125">A versão mais recente do .NET Core é a 2.0.</span><span class="sxs-lookup"><span data-stu-id="b65c6-125">The most recent release of .NET Core is 2.0.</span></span>
 
-### <a name="running-the-web-app-locally"></a><span data-ttu-id="cac64-126">Executando o aplicativo Web localmente</span><span class="sxs-lookup"><span data-stu-id="cac64-126">Running the web app locally</span></span>
+### <a name="running-the-web-app-locally"></a><span data-ttu-id="b65c6-126">Executando o aplicativo Web localmente</span><span class="sxs-lookup"><span data-stu-id="b65c6-126">Running the web app locally</span></span>
 
-1. <span data-ttu-id="cac64-127">Depois que o Visual Studio terminar de criar o aplicativo, execute o aplicativo selecionando **depurar**  >  **Iniciar Depuração** .</span><span class="sxs-lookup"><span data-stu-id="cac64-127">Once Visual Studio finishes creating the app, run the app by selecting **Debug** > **Start Debugging** .</span></span> <span data-ttu-id="cac64-128">Como alternativa, pressione **F5** .</span><span class="sxs-lookup"><span data-stu-id="cac64-128">As an alternative, press **F5** .</span></span>
+1. <span data-ttu-id="b65c6-127">Depois que o Visual Studio terminar de criar o aplicativo, execute o aplicativo selecionando **depurar**  >  **Iniciar Depuração**.</span><span class="sxs-lookup"><span data-stu-id="b65c6-127">Once Visual Studio finishes creating the app, run the app by selecting **Debug** > **Start Debugging**.</span></span> <span data-ttu-id="b65c6-128">Como alternativa, pressione **F5**.</span><span class="sxs-lookup"><span data-stu-id="b65c6-128">As an alternative, press **F5**.</span></span>
 
-   <span data-ttu-id="cac64-129">Talvez seja necessário alguns instantes para inicializar o Visual Studio e o novo aplicativo.</span><span class="sxs-lookup"><span data-stu-id="cac64-129">It may take time to initialize Visual Studio and the new app.</span></span> <span data-ttu-id="cac64-130">Quando isso for concluído, o navegador mostrará o aplicativo em execução.</span><span class="sxs-lookup"><span data-stu-id="cac64-130">Once it's complete, the browser shows the running app.</span></span>
+   <span data-ttu-id="b65c6-129">Talvez seja necessário alguns instantes para inicializar o Visual Studio e o novo aplicativo.</span><span class="sxs-lookup"><span data-stu-id="b65c6-129">It may take time to initialize Visual Studio and the new app.</span></span> <span data-ttu-id="b65c6-130">Quando isso for concluído, o navegador mostrará o aplicativo em execução.</span><span class="sxs-lookup"><span data-stu-id="b65c6-130">Once it's complete, the browser shows the running app.</span></span>
 
    ![Janela do navegador mostrando o aplicativo em execução que exibe “Olá, Mundo!”](azure-continuous-deployment/_static/04-browser-runapp.png)
 
-1. <span data-ttu-id="cac64-132">Depois de examinar o aplicativo Web em execução, feche o navegador e selecione o ícone “Parar Depuração” na barra de ferramentas do Visual Studio para interromper o aplicativo.</span><span class="sxs-lookup"><span data-stu-id="cac64-132">After reviewing the running Web app, close the browser and select the "Stop Debugging" icon in the toolbar of Visual Studio to stop the app.</span></span>
+1. <span data-ttu-id="b65c6-132">Depois de examinar o aplicativo Web em execução, feche o navegador e selecione o ícone “Parar Depuração” na barra de ferramentas do Visual Studio para interromper o aplicativo.</span><span class="sxs-lookup"><span data-stu-id="b65c6-132">After reviewing the running Web app, close the browser and select the "Stop Debugging" icon in the toolbar of Visual Studio to stop the app.</span></span>
 
-## <a name="create-a-web-app-in-the-azure-portal"></a><span data-ttu-id="cac64-133">Criar um aplicativo Web no Portal do Azure</span><span class="sxs-lookup"><span data-stu-id="cac64-133">Create a web app in the Azure Portal</span></span>
+## <a name="create-a-web-app-in-the-azure-portal"></a><span data-ttu-id="b65c6-133">Criar um aplicativo Web no Portal do Azure</span><span class="sxs-lookup"><span data-stu-id="b65c6-133">Create a web app in the Azure Portal</span></span>
 
-<span data-ttu-id="cac64-134">As etapas a seguir criam um aplicativo Web no portal do Azure:</span><span class="sxs-lookup"><span data-stu-id="cac64-134">The following steps create a web app in the Azure Portal:</span></span>
+<span data-ttu-id="b65c6-134">As etapas a seguir criam um aplicativo Web no portal do Azure:</span><span class="sxs-lookup"><span data-stu-id="b65c6-134">The following steps create a web app in the Azure Portal:</span></span>
 
-1. <span data-ttu-id="cac64-135">Faça logon no [portal do Azure](https://portal.azure.com).</span><span class="sxs-lookup"><span data-stu-id="cac64-135">Log in to the [Azure Portal](https://portal.azure.com).</span></span>
+1. <span data-ttu-id="b65c6-135">Faça logon no [portal do Azure](https://portal.azure.com).</span><span class="sxs-lookup"><span data-stu-id="b65c6-135">Log in to the [Azure Portal](https://portal.azure.com).</span></span>
 
-1. <span data-ttu-id="cac64-136">Selecione **NOVO** na parte superior esquerda da interface do portal.</span><span class="sxs-lookup"><span data-stu-id="cac64-136">Select **NEW** at the top left of the portal interface.</span></span>
+1. <span data-ttu-id="b65c6-136">Selecione **NOVO** na parte superior esquerda da interface do portal.</span><span class="sxs-lookup"><span data-stu-id="b65c6-136">Select **NEW** at the top left of the portal interface.</span></span>
 
-1. <span data-ttu-id="cac64-137">Selecione **Web + celular**  >  **aplicativo Web** .</span><span class="sxs-lookup"><span data-stu-id="cac64-137">Select **Web + Mobile** > **Web App** .</span></span>
+1. <span data-ttu-id="b65c6-137">Selecione **Web + celular**  >  **aplicativo Web**.</span><span class="sxs-lookup"><span data-stu-id="b65c6-137">Select **Web + Mobile** > **Web App**.</span></span>
 
    ![Portal do Microsoft Azure: botão Novo: Web + Móvel em Marketplace: botão Aplicativo Web em Aplicativos em Destaque](azure-continuous-deployment/_static/05-azure-newwebapp.png)
 
-1. <span data-ttu-id="cac64-139">Na folha **Aplicativo Web** , insira um valor exclusivo para o **Nome do Serviço de Aplicativo** .</span><span class="sxs-lookup"><span data-stu-id="cac64-139">In the **Web App** blade, enter a unique value for the **App Service Name** .</span></span>
+1. <span data-ttu-id="b65c6-139">Na folha **Aplicativo Web**, insira um valor exclusivo para o **Nome do Serviço de Aplicativo**.</span><span class="sxs-lookup"><span data-stu-id="b65c6-139">In the **Web App** blade, enter a unique value for the **App Service Name**.</span></span>
 
    ![Folha Aplicativo Web](azure-continuous-deployment/_static/06-azure-newappblade.png)
 
    > [!NOTE]
-   > <span data-ttu-id="cac64-141">O **Nome do Serviço de Aplicativo** precisa ser exclusivo.</span><span class="sxs-lookup"><span data-stu-id="cac64-141">The **App Service Name** name must be unique.</span></span> <span data-ttu-id="cac64-142">O portal impõe essa regra quando o nome é fornecido.</span><span class="sxs-lookup"><span data-stu-id="cac64-142">The portal enforces this rule when the name is provided.</span></span> <span data-ttu-id="cac64-143">Se você fornecer outro valor, você precisará substituí-lo para cada ocorrência do **SampleWebAppDemo** neste tutorial.</span><span class="sxs-lookup"><span data-stu-id="cac64-143">If providing a different value, substitute that value for each occurrence of **SampleWebAppDemo** in this tutorial.</span></span>
+   > <span data-ttu-id="b65c6-141">O **Nome do Serviço de Aplicativo** precisa ser exclusivo.</span><span class="sxs-lookup"><span data-stu-id="b65c6-141">The **App Service Name** name must be unique.</span></span> <span data-ttu-id="b65c6-142">O portal impõe essa regra quando o nome é fornecido.</span><span class="sxs-lookup"><span data-stu-id="b65c6-142">The portal enforces this rule when the name is provided.</span></span> <span data-ttu-id="b65c6-143">Se você fornecer outro valor, você precisará substituí-lo para cada ocorrência do **SampleWebAppDemo** neste tutorial.</span><span class="sxs-lookup"><span data-stu-id="b65c6-143">If providing a different value, substitute that value for each occurrence of **SampleWebAppDemo** in this tutorial.</span></span>
 
-   <span data-ttu-id="cac64-144">Também na folha **Aplicativo Web** , selecione um **Plano do Serviço de Aplicativo/Localização** existente ou crie um novo.</span><span class="sxs-lookup"><span data-stu-id="cac64-144">Also in the **Web App** blade, select an existing **App Service Plan/Location** or create a new one.</span></span> <span data-ttu-id="cac64-145">Se você criar um novo plano, selecione o tipo de preço, o local e outras opções.</span><span class="sxs-lookup"><span data-stu-id="cac64-145">If creating a new plan, select the pricing tier, location, and other options.</span></span> <span data-ttu-id="cac64-146">Para obter mais informações sobre os planos do Serviço de Aplicativo, veja [Visão geral detalhada dos planos do Serviço de Aplicativo do Azure](/azure/app-service/azure-web-sites-web-hosting-plans-in-depth-overview).</span><span class="sxs-lookup"><span data-stu-id="cac64-146">For more information on App Service plans, see [Azure App Service plans in-depth overview](/azure/app-service/azure-web-sites-web-hosting-plans-in-depth-overview).</span></span>
+   <span data-ttu-id="b65c6-144">Também na folha **Aplicativo Web**, selecione um **Plano do Serviço de Aplicativo/Localização** existente ou crie um novo.</span><span class="sxs-lookup"><span data-stu-id="b65c6-144">Also in the **Web App** blade, select an existing **App Service Plan/Location** or create a new one.</span></span> <span data-ttu-id="b65c6-145">Se você criar um novo plano, selecione o tipo de preço, o local e outras opções.</span><span class="sxs-lookup"><span data-stu-id="b65c6-145">If creating a new plan, select the pricing tier, location, and other options.</span></span> <span data-ttu-id="b65c6-146">Para obter mais informações sobre os planos do Serviço de Aplicativo, veja [Visão geral detalhada dos planos do Serviço de Aplicativo do Azure](/azure/app-service/azure-web-sites-web-hosting-plans-in-depth-overview).</span><span class="sxs-lookup"><span data-stu-id="b65c6-146">For more information on App Service plans, see [Azure App Service plans in-depth overview](/azure/app-service/azure-web-sites-web-hosting-plans-in-depth-overview).</span></span>
 
-1. <span data-ttu-id="cac64-147">Selecione **Criar** .</span><span class="sxs-lookup"><span data-stu-id="cac64-147">Select **Create** .</span></span> <span data-ttu-id="cac64-148">O Azure provisionará e iniciará o aplicativo Web.</span><span class="sxs-lookup"><span data-stu-id="cac64-148">Azure will provision and start the web app.</span></span>
+1. <span data-ttu-id="b65c6-147">Selecione **Criar**.</span><span class="sxs-lookup"><span data-stu-id="b65c6-147">Select **Create**.</span></span> <span data-ttu-id="b65c6-148">O Azure provisionará e iniciará o aplicativo Web.</span><span class="sxs-lookup"><span data-stu-id="b65c6-148">Azure will provision and start the web app.</span></span>
 
    ![Portal do Azure: folha Conceitos Básicos da Demonstração de Aplicativo Web de Exemplo 01](azure-continuous-deployment/_static/07-azure-webappblade.png)
 
-## <a name="enable-git-publishing-for-the-new-web-app"></a><span data-ttu-id="cac64-150">Habilitar a publicação de Git para o novo aplicativo Web</span><span class="sxs-lookup"><span data-stu-id="cac64-150">Enable Git publishing for the new web app</span></span>
+## <a name="enable-git-publishing-for-the-new-web-app"></a><span data-ttu-id="b65c6-150">Habilitar a publicação de Git para o novo aplicativo Web</span><span class="sxs-lookup"><span data-stu-id="b65c6-150">Enable Git publishing for the new web app</span></span>
 
-<span data-ttu-id="cac64-151">O GIT é um sistema de controle de versão distribuída que pode ser usado para implantar um aplicativo Web do Serviço de Aplicativo do Azure.</span><span class="sxs-lookup"><span data-stu-id="cac64-151">Git is a distributed version control system that can be used to deploy an Azure App Service web app.</span></span> <span data-ttu-id="cac64-152">O código do aplicativo Web é armazenado em um repositório GIT local e implantado no Azure por push para um repositório remoto.</span><span class="sxs-lookup"><span data-stu-id="cac64-152">Web app code is stored in a local Git repository, and the code is deployed to Azure by pushing to a remote repository.</span></span>
+<span data-ttu-id="b65c6-151">O GIT é um sistema de controle de versão distribuída que pode ser usado para implantar um aplicativo Web do Serviço de Aplicativo do Azure.</span><span class="sxs-lookup"><span data-stu-id="b65c6-151">Git is a distributed version control system that can be used to deploy an Azure App Service web app.</span></span> <span data-ttu-id="b65c6-152">O código do aplicativo Web é armazenado em um repositório GIT local e implantado no Azure por push para um repositório remoto.</span><span class="sxs-lookup"><span data-stu-id="b65c6-152">Web app code is stored in a local Git repository, and the code is deployed to Azure by pushing to a remote repository.</span></span>
 
-1. <span data-ttu-id="cac64-153">Faça logon no [portal do Azure](https://portal.azure.com).</span><span class="sxs-lookup"><span data-stu-id="cac64-153">Log into the [Azure Portal](https://portal.azure.com).</span></span>
+1. <span data-ttu-id="b65c6-153">Faça logon no [portal do Azure](https://portal.azure.com).</span><span class="sxs-lookup"><span data-stu-id="b65c6-153">Log into the [Azure Portal](https://portal.azure.com).</span></span>
 
-1. <span data-ttu-id="cac64-154">Selecione **Serviços de Aplicativos** para exibir uma lista de serviços de aplicativos associados à assinatura do Azure.</span><span class="sxs-lookup"><span data-stu-id="cac64-154">Select **App Services** to view a list of the app services associated with the Azure subscription.</span></span>
+1. <span data-ttu-id="b65c6-154">Selecione **Serviços de Aplicativos** para exibir uma lista de serviços de aplicativos associados à assinatura do Azure.</span><span class="sxs-lookup"><span data-stu-id="b65c6-154">Select **App Services** to view a list of the app services associated with the Azure subscription.</span></span>
 
-1. <span data-ttu-id="cac64-155">Selecione o aplicativo Web criado na seção anterior deste tutorial.</span><span class="sxs-lookup"><span data-stu-id="cac64-155">Select the web app created in the previous section of this tutorial.</span></span>
+1. <span data-ttu-id="b65c6-155">Selecione o aplicativo Web criado na seção anterior deste tutorial.</span><span class="sxs-lookup"><span data-stu-id="b65c6-155">Select the web app created in the previous section of this tutorial.</span></span>
 
-1. <span data-ttu-id="cac64-156">Na folha **Implantação** , selecione **Opções de implantação** > **Escolher Origem** > **Repositório Git Local** .</span><span class="sxs-lookup"><span data-stu-id="cac64-156">In the **Deployment** blade, select **Deployment options** > **Choose Source** > **Local Git Repository** .</span></span>
+1. <span data-ttu-id="b65c6-156">Na folha **Implantação**, selecione **Opções de implantação** > **Escolher Origem** > **Repositório Git Local**.</span><span class="sxs-lookup"><span data-stu-id="b65c6-156">In the **Deployment** blade, select **Deployment options** > **Choose Source** > **Local Git Repository**.</span></span>
 
    ![Folha Configurações: folha Origem de implantação: folha Escolher origem](azure-continuous-deployment/_static/deployment-options.png)
 
-1. <span data-ttu-id="cac64-158">Selecione **OK** .</span><span class="sxs-lookup"><span data-stu-id="cac64-158">Select **OK** .</span></span>
+1. <span data-ttu-id="b65c6-158">Selecione **OK**.</span><span class="sxs-lookup"><span data-stu-id="b65c6-158">Select **OK**.</span></span>
 
-1. <span data-ttu-id="cac64-159">Caso você não tenha configurado anteriormente as credenciais de implantação para publicar um aplicativo Web ou outro aplicativo do Serviço de Aplicativo, configure-as agora:</span><span class="sxs-lookup"><span data-stu-id="cac64-159">If deployment credentials for publishing a web app or other App Service app haven't previously been set up, set them up now:</span></span>
+1. <span data-ttu-id="b65c6-159">Caso você não tenha configurado anteriormente as credenciais de implantação para publicar um aplicativo Web ou outro aplicativo do Serviço de Aplicativo, configure-as agora:</span><span class="sxs-lookup"><span data-stu-id="b65c6-159">If deployment credentials for publishing a web app or other App Service app haven't previously been set up, set them up now:</span></span>
 
-   * <span data-ttu-id="cac64-160">Selecione **configurações**  >  **credenciais de implantação** .</span><span class="sxs-lookup"><span data-stu-id="cac64-160">Select **Settings** > **Deployment credentials** .</span></span> <span data-ttu-id="cac64-161">A folha **Definir credenciais de implantação** é exibida.</span><span class="sxs-lookup"><span data-stu-id="cac64-161">The **Set deployment credentials** blade is displayed.</span></span>
-   * <span data-ttu-id="cac64-162">Digite um nome de usuário e senha.</span><span class="sxs-lookup"><span data-stu-id="cac64-162">Create a user name and password.</span></span> <span data-ttu-id="cac64-163">Salve a senha para uso posterior ao configurar o GIT.</span><span class="sxs-lookup"><span data-stu-id="cac64-163">Save the password for later use when setting up Git.</span></span>
-   * <span data-ttu-id="cac64-164">Selecione **Salvar** .</span><span class="sxs-lookup"><span data-stu-id="cac64-164">Select **Save** .</span></span>
+   * <span data-ttu-id="b65c6-160">Selecione **configurações**  >  **credenciais de implantação**.</span><span class="sxs-lookup"><span data-stu-id="b65c6-160">Select **Settings** > **Deployment credentials**.</span></span> <span data-ttu-id="b65c6-161">A folha **Definir credenciais de implantação** é exibida.</span><span class="sxs-lookup"><span data-stu-id="b65c6-161">The **Set deployment credentials** blade is displayed.</span></span>
+   * <span data-ttu-id="b65c6-162">Digite um nome de usuário e senha.</span><span class="sxs-lookup"><span data-stu-id="b65c6-162">Create a user name and password.</span></span> <span data-ttu-id="b65c6-163">Salve a senha para uso posterior ao configurar o GIT.</span><span class="sxs-lookup"><span data-stu-id="b65c6-163">Save the password for later use when setting up Git.</span></span>
+   * <span data-ttu-id="b65c6-164">Clique em **Salvar**.</span><span class="sxs-lookup"><span data-stu-id="b65c6-164">Select **Save**.</span></span>
 
-1. <span data-ttu-id="cac64-165">Na folha **Aplicativo Web** , selecione **Configurações** > **Propriedades** .</span><span class="sxs-lookup"><span data-stu-id="cac64-165">In the **Web App** blade, select **Settings** > **Properties** .</span></span> <span data-ttu-id="cac64-166">A URL do repositório GIT remoto no qual você implantará será mostrada em **URL do GIT** .</span><span class="sxs-lookup"><span data-stu-id="cac64-166">The URL of the remote Git repository to deploy to is shown under **GIT URL** .</span></span>
+1. <span data-ttu-id="b65c6-165">Na folha **Aplicativo Web**, selecione **Configurações** > **Propriedades**.</span><span class="sxs-lookup"><span data-stu-id="b65c6-165">In the **Web App** blade, select **Settings** > **Properties**.</span></span> <span data-ttu-id="b65c6-166">A URL do repositório GIT remoto no qual você implantará será mostrada em **URL do GIT**.</span><span class="sxs-lookup"><span data-stu-id="b65c6-166">The URL of the remote Git repository to deploy to is shown under **GIT URL**.</span></span>
 
-1. <span data-ttu-id="cac64-167">Copie o valor de **URL do GIT** para uso posterior no tutorial.</span><span class="sxs-lookup"><span data-stu-id="cac64-167">Copy the **GIT URL** value for later use in the tutorial.</span></span>
+1. <span data-ttu-id="b65c6-167">Copie o valor de **URL do GIT** para uso posterior no tutorial.</span><span class="sxs-lookup"><span data-stu-id="b65c6-167">Copy the **GIT URL** value for later use in the tutorial.</span></span>
 
    ![Portal do Azure: folha Propriedades do aplicativo](azure-continuous-deployment/_static/09-azure-giturl.png)
 
-## <a name="publish-the-web-app-to-azure-app-service"></a><span data-ttu-id="cac64-169">Publicar aplicativo Web para Serviço de Aplicativo do Azure</span><span class="sxs-lookup"><span data-stu-id="cac64-169">Publish the web app to Azure App Service</span></span>
+## <a name="publish-the-web-app-to-azure-app-service"></a><span data-ttu-id="b65c6-169">Publicar aplicativo Web para Serviço de Aplicativo do Azure</span><span class="sxs-lookup"><span data-stu-id="b65c6-169">Publish the web app to Azure App Service</span></span>
 
-<span data-ttu-id="cac64-170">Nesta seção, você criará um repositório GIT local usando o Visual Studio e efetuará push desse repositório para o Azure para implantar o aplicativo Web.</span><span class="sxs-lookup"><span data-stu-id="cac64-170">In this section, create a local Git repository using Visual Studio and push from that repository to Azure to deploy the web app.</span></span> <span data-ttu-id="cac64-171">As etapas envolvidas incluem as seguintes:</span><span class="sxs-lookup"><span data-stu-id="cac64-171">The steps involved include the following:</span></span>
+<span data-ttu-id="b65c6-170">Nesta seção, você criará um repositório GIT local usando o Visual Studio e efetuará push desse repositório para o Azure para implantar o aplicativo Web.</span><span class="sxs-lookup"><span data-stu-id="b65c6-170">In this section, create a local Git repository using Visual Studio and push from that repository to Azure to deploy the web app.</span></span> <span data-ttu-id="b65c6-171">As etapas envolvidas incluem as seguintes:</span><span class="sxs-lookup"><span data-stu-id="b65c6-171">The steps involved include the following:</span></span>
 
-* <span data-ttu-id="cac64-172">Adicione a configuração do repositório remoto usando o valor de URL do GIT, de modo que você possa implantar seu repositório local no Azure.</span><span class="sxs-lookup"><span data-stu-id="cac64-172">Add the remote repository setting using the GIT URL value, so the local repository can be deployed to Azure.</span></span>
-* <span data-ttu-id="cac64-173">Confirme as alterações do projeto.</span><span class="sxs-lookup"><span data-stu-id="cac64-173">Commit project changes.</span></span>
-* <span data-ttu-id="cac64-174">Envie as alterações do projeto por push do repositório local para o repositório remoto no Azure.</span><span class="sxs-lookup"><span data-stu-id="cac64-174">Push project changes from the local repository to the remote repository on Azure.</span></span>
+* <span data-ttu-id="b65c6-172">Adicione a configuração do repositório remoto usando o valor de URL do GIT, de modo que você possa implantar seu repositório local no Azure.</span><span class="sxs-lookup"><span data-stu-id="b65c6-172">Add the remote repository setting using the GIT URL value, so the local repository can be deployed to Azure.</span></span>
+* <span data-ttu-id="b65c6-173">Confirme as alterações do projeto.</span><span class="sxs-lookup"><span data-stu-id="b65c6-173">Commit project changes.</span></span>
+* <span data-ttu-id="b65c6-174">Envie as alterações do projeto por push do repositório local para o repositório remoto no Azure.</span><span class="sxs-lookup"><span data-stu-id="b65c6-174">Push project changes from the local repository to the remote repository on Azure.</span></span>
 
-1. <span data-ttu-id="cac64-175">No **Gerenciador de Soluções** , clique com o botão direito do mouse em **“SampleWebAppDemo” da Solução** e selecione **Confirmar** .</span><span class="sxs-lookup"><span data-stu-id="cac64-175">In **Solution Explorer** right-click **Solution 'SampleWebAppDemo'** and select **Commit** .</span></span> <span data-ttu-id="cac64-176">O **Team Explorer** é exibido.</span><span class="sxs-lookup"><span data-stu-id="cac64-176">The **Team Explorer** is displayed.</span></span>
+1. <span data-ttu-id="b65c6-175">No **Gerenciador de Soluções**, clique com o botão direito do mouse em **“SampleWebAppDemo” da Solução** e selecione **Confirmar**.</span><span class="sxs-lookup"><span data-stu-id="b65c6-175">In **Solution Explorer** right-click **Solution 'SampleWebAppDemo'** and select **Commit**.</span></span> <span data-ttu-id="b65c6-176">O **Team Explorer** é exibido.</span><span class="sxs-lookup"><span data-stu-id="b65c6-176">The **Team Explorer** is displayed.</span></span>
 
    ![Guia Conectar do Team Explorer](azure-continuous-deployment/_static/10-team-explorer.png)
 
-1. <span data-ttu-id="cac64-178">No **Team Explorer** , selecione a **Página Inicial** (ícone da página inicial) > **Configurações** > **Configurações do Repositório** .</span><span class="sxs-lookup"><span data-stu-id="cac64-178">In **Team Explorer** , select the **Home** (home icon) > **Settings** > **Repository Settings** .</span></span>
+1. <span data-ttu-id="b65c6-178">No **Team Explorer**, selecione a **Página Inicial** (ícone da página inicial) > **Configurações** > **Configurações do Repositório**.</span><span class="sxs-lookup"><span data-stu-id="b65c6-178">In **Team Explorer**, select the **Home** (home icon) > **Settings** > **Repository Settings**.</span></span>
 
-1. <span data-ttu-id="cac64-179">Na seção **Remotos** das **Configurações do Repositório** , selecione **Adicionar** .</span><span class="sxs-lookup"><span data-stu-id="cac64-179">In the **Remotes** section of the **Repository Settings** , select **Add** .</span></span> <span data-ttu-id="cac64-180">A caixa de diálogo **Adicionar Remoto** é exibida.</span><span class="sxs-lookup"><span data-stu-id="cac64-180">The **Add Remote** dialog box is displayed.</span></span>
+1. <span data-ttu-id="b65c6-179">Na seção **Remotos** das **Configurações do Repositório**, selecione **Adicionar**.</span><span class="sxs-lookup"><span data-stu-id="b65c6-179">In the **Remotes** section of the **Repository Settings**, select **Add**.</span></span> <span data-ttu-id="b65c6-180">A caixa de diálogo **Adicionar Remoto** é exibida.</span><span class="sxs-lookup"><span data-stu-id="b65c6-180">The **Add Remote** dialog box is displayed.</span></span>
 
-1. <span data-ttu-id="cac64-181">Defina o **Nome** do remoto como **Azure-SampleApp** .</span><span class="sxs-lookup"><span data-stu-id="cac64-181">Set the **Name** of the remote to **Azure-SampleApp** .</span></span>
+1. <span data-ttu-id="b65c6-181">Defina o **Nome** do remoto como **Azure-SampleApp**.</span><span class="sxs-lookup"><span data-stu-id="b65c6-181">Set the **Name** of the remote to **Azure-SampleApp**.</span></span>
 
-1. <span data-ttu-id="cac64-182">Defina o valor de **Buscar** como a **URL do GIT** copiada do Azure anteriormente neste tutorial.</span><span class="sxs-lookup"><span data-stu-id="cac64-182">Set the value for **Fetch** to the **Git URL** that copied from Azure earlier in this tutorial.</span></span> <span data-ttu-id="cac64-183">Observe que essa é a URL que termina com **.git** .</span><span class="sxs-lookup"><span data-stu-id="cac64-183">Note that this is the URL that ends with **.git** .</span></span>
+1. <span data-ttu-id="b65c6-182">Defina o valor de **Buscar** como a **URL do GIT** copiada do Azure anteriormente neste tutorial.</span><span class="sxs-lookup"><span data-stu-id="b65c6-182">Set the value for **Fetch** to the **Git URL** that copied from Azure earlier in this tutorial.</span></span> <span data-ttu-id="b65c6-183">Observe que essa é a URL que termina com **.git**.</span><span class="sxs-lookup"><span data-stu-id="b65c6-183">Note that this is the URL that ends with **.git**.</span></span>
 
    ![Caixa de diálogo Editar Remoto](azure-continuous-deployment/_static/11-add-remote.png)
 
    > [!NOTE]
-   > <span data-ttu-id="cac64-185">Como alternativa, especifique o repositório remoto na **Janela Comando** abrindo a **Janela Comando** , alterando para o diretório do projeto e inserindo o comando.</span><span class="sxs-lookup"><span data-stu-id="cac64-185">As an alternative, specify the remote repository from the **Command Window** by opening the **Command Window** , changing to the project directory, and entering the command.</span></span> <span data-ttu-id="cac64-186">Exemplo:</span><span class="sxs-lookup"><span data-stu-id="cac64-186">Example:</span></span>
+   > <span data-ttu-id="b65c6-185">Como alternativa, especifique o repositório remoto na **Janela Comando** abrindo a **Janela Comando**, alterando para o diretório do projeto e inserindo o comando.</span><span class="sxs-lookup"><span data-stu-id="b65c6-185">As an alternative, specify the remote repository from the **Command Window** by opening the **Command Window**, changing to the project directory, and entering the command.</span></span> <span data-ttu-id="b65c6-186">Exemplo:</span><span class="sxs-lookup"><span data-stu-id="b65c6-186">Example:</span></span>
    >
    > `git remote add Azure-SampleApp https://me@sampleapp.scm.azurewebsites.net:443/SampleApp.git`
 
-1. <span data-ttu-id="cac64-187">Selecione a **Página Inicial** (ícone da página inicial) > **Configurações** > **Configurações Globais** .</span><span class="sxs-lookup"><span data-stu-id="cac64-187">Select the **Home** (home icon) > **Settings** > **Global Settings** .</span></span> <span data-ttu-id="cac64-188">Confirme se o nome e o endereço de email estão definidos.</span><span class="sxs-lookup"><span data-stu-id="cac64-188">Confirm that the name and email address are set.</span></span> <span data-ttu-id="cac64-189">Se necessário, selecione **Atualizar** .</span><span class="sxs-lookup"><span data-stu-id="cac64-189">Select **Update** if required.</span></span>
+1. <span data-ttu-id="b65c6-187">Selecione a **Página Inicial** (ícone da página inicial) > **Configurações** > **Configurações Globais**.</span><span class="sxs-lookup"><span data-stu-id="b65c6-187">Select the **Home** (home icon) > **Settings** > **Global Settings**.</span></span> <span data-ttu-id="b65c6-188">Confirme se o nome e o endereço de email estão definidos.</span><span class="sxs-lookup"><span data-stu-id="b65c6-188">Confirm that the name and email address are set.</span></span> <span data-ttu-id="b65c6-189">Se necessário, selecione **Atualizar**.</span><span class="sxs-lookup"><span data-stu-id="b65c6-189">Select **Update** if required.</span></span>
 
-1. <span data-ttu-id="cac64-190">Selecione **Home**  >  **Changes** para retornar à exibição de **alterações** .</span><span class="sxs-lookup"><span data-stu-id="cac64-190">Select **Home** > **Changes** to return to the **Changes** view.</span></span>
+1. <span data-ttu-id="b65c6-190">Selecione **Home**  >  **Changes** para retornar à exibição de **alterações** .</span><span class="sxs-lookup"><span data-stu-id="b65c6-190">Select **Home** > **Changes** to return to the **Changes** view.</span></span>
 
-1. <span data-ttu-id="cac64-191">Escreva uma mensagem de confirmação, como **Push Inicial nº 1** e selecione **Confirmar** .</span><span class="sxs-lookup"><span data-stu-id="cac64-191">Enter a commit message, such as **Initial Push #1** and select **Commit** .</span></span> <span data-ttu-id="cac64-192">Essa ação cria uma *confirmação* localmente.</span><span class="sxs-lookup"><span data-stu-id="cac64-192">This action creates a *commit* locally.</span></span>
+1. <span data-ttu-id="b65c6-191">Escreva uma mensagem de confirmação, como **Push Inicial nº 1** e selecione **Confirmar**.</span><span class="sxs-lookup"><span data-stu-id="b65c6-191">Enter a commit message, such as **Initial Push #1** and select **Commit**.</span></span> <span data-ttu-id="b65c6-192">Essa ação cria uma *confirmação* localmente.</span><span class="sxs-lookup"><span data-stu-id="b65c6-192">This action creates a *commit* locally.</span></span>
 
    ![Guia Conectar do Team Explorer](azure-continuous-deployment/_static/12-initial-commit.png)
 
    > [!NOTE]
-   > <span data-ttu-id="cac64-194">Como alternativa, confirme as alterações na **Janela Comando** abrindo a **Janela Comando** , alterando para o diretório do projeto e inserindo os comandos do GIT.</span><span class="sxs-lookup"><span data-stu-id="cac64-194">As an alternative, commit changes from the **Command Window** by opening the **Command Window** , changing to the project directory, and entering the git commands.</span></span> <span data-ttu-id="cac64-195">Exemplo:</span><span class="sxs-lookup"><span data-stu-id="cac64-195">Example:</span></span>
+   > <span data-ttu-id="b65c6-194">Como alternativa, confirme as alterações na **Janela Comando** abrindo a **Janela Comando**, alterando para o diretório do projeto e inserindo os comandos do GIT.</span><span class="sxs-lookup"><span data-stu-id="b65c6-194">As an alternative, commit changes from the **Command Window** by opening the **Command Window**, changing to the project directory, and entering the git commands.</span></span> <span data-ttu-id="b65c6-195">Exemplo:</span><span class="sxs-lookup"><span data-stu-id="b65c6-195">Example:</span></span>
    >
    > `git add .`
    >
    > `git commit -am "Initial Push #1"`
 
-1. <span data-ttu-id="cac64-196">Selecione **início**  >  ações de **sincronização**  >  **Actions**  >  **abrir prompt de comando** .</span><span class="sxs-lookup"><span data-stu-id="cac64-196">Select **Home** > **Sync** > **Actions** > **Open Command Prompt** .</span></span> <span data-ttu-id="cac64-197">O prompt de comando se abre no diretório do projeto.</span><span class="sxs-lookup"><span data-stu-id="cac64-197">The command prompt opens to the project directory.</span></span>
+1. <span data-ttu-id="b65c6-196">Selecione **início**  >  ações de **sincronização**  >    >  **abrir prompt de comando**.</span><span class="sxs-lookup"><span data-stu-id="b65c6-196">Select **Home** > **Sync** > **Actions** > **Open Command Prompt**.</span></span> <span data-ttu-id="b65c6-197">O prompt de comando se abre no diretório do projeto.</span><span class="sxs-lookup"><span data-stu-id="b65c6-197">The command prompt opens to the project directory.</span></span>
 
-1. <span data-ttu-id="cac64-198">Insira o seguinte comando na janela de comando:</span><span class="sxs-lookup"><span data-stu-id="cac64-198">Enter the following command in the command window:</span></span>
+1. <span data-ttu-id="b65c6-198">Insira o seguinte comando na janela de comando:</span><span class="sxs-lookup"><span data-stu-id="b65c6-198">Enter the following command in the command window:</span></span>
 
    `git push -u Azure-SampleApp master`
 
-1. <span data-ttu-id="cac64-199">Insira a senha das **credenciais de implantação** do Azure criada anteriormente no Azure.</span><span class="sxs-lookup"><span data-stu-id="cac64-199">Enter the Azure **deployment credentials** password created earlier in Azure.</span></span>
+1. <span data-ttu-id="b65c6-199">Insira a senha das **credenciais de implantação** do Azure criada anteriormente no Azure.</span><span class="sxs-lookup"><span data-stu-id="b65c6-199">Enter the Azure **deployment credentials** password created earlier in Azure.</span></span>
 
-   <span data-ttu-id="cac64-200">Esse comando inicia o processo de envio por push dos arquivos de projeto locais para o Azure.</span><span class="sxs-lookup"><span data-stu-id="cac64-200">This command starts the process of pushing the local project files to Azure.</span></span> <span data-ttu-id="cac64-201">A saída do comando acima termina com uma mensagem informando que a implantação foi bem-sucedida.</span><span class="sxs-lookup"><span data-stu-id="cac64-201">The output from the above command ends with a message that the deployment was successful.</span></span>
+   <span data-ttu-id="b65c6-200">Esse comando inicia o processo de envio por push dos arquivos de projeto locais para o Azure.</span><span class="sxs-lookup"><span data-stu-id="b65c6-200">This command starts the process of pushing the local project files to Azure.</span></span> <span data-ttu-id="b65c6-201">A saída do comando acima termina com uma mensagem informando que a implantação foi bem-sucedida.</span><span class="sxs-lookup"><span data-stu-id="b65c6-201">The output from the above command ends with a message that the deployment was successful.</span></span>
 
    ```
    remote: Finished successfully.
@@ -188,58 +188,58 @@ ms.locfileid: "93053781"
    ```
 
    > [!NOTE]
-   > <span data-ttu-id="cac64-202">Se a colaboração no projeto é necessária, considere a possibilidade de enviar por push para o [GitHub](https://github.com) antes de enviar por push para o Azure.</span><span class="sxs-lookup"><span data-stu-id="cac64-202">If collaboration on the project is required, consider pushing to [GitHub](https://github.com) before pushing to Azure.</span></span>
+   > <span data-ttu-id="b65c6-202">Se a colaboração no projeto é necessária, considere a possibilidade de enviar por push para o [GitHub](https://github.com) antes de enviar por push para o Azure.</span><span class="sxs-lookup"><span data-stu-id="b65c6-202">If collaboration on the project is required, consider pushing to [GitHub](https://github.com) before pushing to Azure.</span></span>
  
-### <a name="verify-the-active-deployment"></a><span data-ttu-id="cac64-203">Verificar a implantação ativa</span><span class="sxs-lookup"><span data-stu-id="cac64-203">Verify the Active Deployment</span></span>
+### <a name="verify-the-active-deployment"></a><span data-ttu-id="b65c6-203">Verificar a implantação ativa</span><span class="sxs-lookup"><span data-stu-id="b65c6-203">Verify the Active Deployment</span></span>
 
-<span data-ttu-id="cac64-204">Verifique se a transferência do aplicativo Web do ambiente local para o Azure é bem-sucedida.</span><span class="sxs-lookup"><span data-stu-id="cac64-204">Verify that the web app transfer from the local environment to Azure is successful.</span></span>
+<span data-ttu-id="b65c6-204">Verifique se a transferência do aplicativo Web do ambiente local para o Azure é bem-sucedida.</span><span class="sxs-lookup"><span data-stu-id="b65c6-204">Verify that the web app transfer from the local environment to Azure is successful.</span></span>
 
-<span data-ttu-id="cac64-205">No [portal do Azure](https://portal.azure.com), selecione o aplicativo Web.</span><span class="sxs-lookup"><span data-stu-id="cac64-205">In the [Azure Portal](https://portal.azure.com), select the web app.</span></span> <span data-ttu-id="cac64-206">Selecione **Deployment**  >  **Opções de implantação** de implantação.</span><span class="sxs-lookup"><span data-stu-id="cac64-206">Select **Deployment** > **Deployment options** .</span></span>
+<span data-ttu-id="b65c6-205">No [portal do Azure](https://portal.azure.com), selecione o aplicativo Web.</span><span class="sxs-lookup"><span data-stu-id="b65c6-205">In the [Azure Portal](https://portal.azure.com), select the web app.</span></span> <span data-ttu-id="b65c6-206">Selecione   >  **Opções de implantação** de implantação.</span><span class="sxs-lookup"><span data-stu-id="b65c6-206">Select **Deployment** > **Deployment options**.</span></span>
 
 ![Portal do Azure: folha Configurações: folha Implantações mostrando a implantação bem-sucedida](azure-continuous-deployment/_static/13-verify-deployment.png)
 
-## <a name="run-the-app-in-azure"></a><span data-ttu-id="cac64-208">Executar o aplicativo no Azure</span><span class="sxs-lookup"><span data-stu-id="cac64-208">Run the app in Azure</span></span>
+## <a name="run-the-app-in-azure"></a><span data-ttu-id="b65c6-208">Executar o aplicativo no Azure</span><span class="sxs-lookup"><span data-stu-id="b65c6-208">Run the app in Azure</span></span>
 
-<span data-ttu-id="cac64-209">Agora que o aplicativo Web é implantado no Azure, execute o aplicativo.</span><span class="sxs-lookup"><span data-stu-id="cac64-209">Now that the web app is deployed to Azure, run the app.</span></span>
+<span data-ttu-id="b65c6-209">Agora que o aplicativo Web é implantado no Azure, execute o aplicativo.</span><span class="sxs-lookup"><span data-stu-id="b65c6-209">Now that the web app is deployed to Azure, run the app.</span></span>
 
-<span data-ttu-id="cac64-210">Isso pode ser feito de duas maneiras:</span><span class="sxs-lookup"><span data-stu-id="cac64-210">This can be accomplished in two ways:</span></span>
+<span data-ttu-id="b65c6-210">Isso pode ser feito de duas maneiras:</span><span class="sxs-lookup"><span data-stu-id="b65c6-210">This can be accomplished in two ways:</span></span>
 
-* <span data-ttu-id="cac64-211">No portal do Azure, localize a folha do aplicativo Web desse aplicativo Web.</span><span class="sxs-lookup"><span data-stu-id="cac64-211">In the Azure Portal, locate the web app blade for the web app.</span></span> <span data-ttu-id="cac64-212">Selecione **Procurar** para exibir o aplicativo no navegador padrão.</span><span class="sxs-lookup"><span data-stu-id="cac64-212">Select **Browse** to view the app in the default browser.</span></span>
-* <span data-ttu-id="cac64-213">Abra um navegador e insira a URL para o aplicativo Web.</span><span class="sxs-lookup"><span data-stu-id="cac64-213">Open a browser and enter the URL for the web app.</span></span> <span data-ttu-id="cac64-214">Exemplo: `http://SampleWebAppDemo.azurewebsites.net`</span><span class="sxs-lookup"><span data-stu-id="cac64-214">Example: `http://SampleWebAppDemo.azurewebsites.net`</span></span>
+* <span data-ttu-id="b65c6-211">No portal do Azure, localize a folha do aplicativo Web desse aplicativo Web.</span><span class="sxs-lookup"><span data-stu-id="b65c6-211">In the Azure Portal, locate the web app blade for the web app.</span></span> <span data-ttu-id="b65c6-212">Selecione **Procurar** para exibir o aplicativo no navegador padrão.</span><span class="sxs-lookup"><span data-stu-id="b65c6-212">Select **Browse** to view the app in the default browser.</span></span>
+* <span data-ttu-id="b65c6-213">Abra um navegador e insira a URL para o aplicativo Web.</span><span class="sxs-lookup"><span data-stu-id="b65c6-213">Open a browser and enter the URL for the web app.</span></span> <span data-ttu-id="b65c6-214">Exemplo: `http://SampleWebAppDemo.azurewebsites.net`</span><span class="sxs-lookup"><span data-stu-id="b65c6-214">Example: `http://SampleWebAppDemo.azurewebsites.net`</span></span>
 
-## <a name="update-the-web-app-and-republish"></a><span data-ttu-id="cac64-215">Atualize o aplicativo Web e publique-o novamente</span><span class="sxs-lookup"><span data-stu-id="cac64-215">Update the web app and republish</span></span>
+## <a name="update-the-web-app-and-republish"></a><span data-ttu-id="b65c6-215">Atualize o aplicativo Web e publique-o novamente</span><span class="sxs-lookup"><span data-stu-id="b65c6-215">Update the web app and republish</span></span>
 
-<span data-ttu-id="cac64-216">Depois de fazer alterações ao código local, republique:</span><span class="sxs-lookup"><span data-stu-id="cac64-216">After making changes to the local code, republish:</span></span>
+<span data-ttu-id="b65c6-216">Depois de fazer alterações ao código local, republique:</span><span class="sxs-lookup"><span data-stu-id="b65c6-216">After making changes to the local code, republish:</span></span>
 
-1. <span data-ttu-id="cac64-217">No **Gerenciador de Soluções** do Visual Studio, abra o arquivo *Startup.cs* .</span><span class="sxs-lookup"><span data-stu-id="cac64-217">In **Solution Explorer** of Visual Studio, open the *Startup.cs* file.</span></span>
+1. <span data-ttu-id="b65c6-217">No **Gerenciador de Soluções** do Visual Studio, abra o arquivo *Startup.cs*.</span><span class="sxs-lookup"><span data-stu-id="b65c6-217">In **Solution Explorer** of Visual Studio, open the *Startup.cs* file.</span></span>
 
-1. <span data-ttu-id="cac64-218">No método `Configure`, modifique o método `Response.WriteAsync` para que ele seja exibido da seguinte maneira:</span><span class="sxs-lookup"><span data-stu-id="cac64-218">In the `Configure` method, modify the `Response.WriteAsync` method so that it appears as follows:</span></span>
+1. <span data-ttu-id="b65c6-218">No método `Configure`, modifique o método `Response.WriteAsync` para que ele seja exibido da seguinte maneira:</span><span class="sxs-lookup"><span data-stu-id="b65c6-218">In the `Configure` method, modify the `Response.WriteAsync` method so that it appears as follows:</span></span>
 
    ```csharp
    await context.Response.WriteAsync("Hello World! Deploy to Azure.");
    ```
 
-1. <span data-ttu-id="cac64-219">Salve as alterações em *Startup.cs* .</span><span class="sxs-lookup"><span data-stu-id="cac64-219">Save the changes to *Startup.cs* .</span></span>
+1. <span data-ttu-id="b65c6-219">Salve as alterações em *Startup.cs*.</span><span class="sxs-lookup"><span data-stu-id="b65c6-219">Save the changes to *Startup.cs*.</span></span>
 
-1. <span data-ttu-id="cac64-220">Em **Gerenciador de soluções** , clique com o botão direito do mouse em **solução ' SampleWebAppDemo '** e selecione **confirmar** .</span><span class="sxs-lookup"><span data-stu-id="cac64-220">In **Solution Explorer** , right-click **Solution 'SampleWebAppDemo'** and select **Commit** .</span></span> <span data-ttu-id="cac64-221">O **Team Explorer** é exibido.</span><span class="sxs-lookup"><span data-stu-id="cac64-221">The **Team Explorer** is displayed.</span></span>
+1. <span data-ttu-id="b65c6-220">Em **Gerenciador de soluções**, clique com o botão direito do mouse em **solução ' SampleWebAppDemo '** e selecione **confirmar**.</span><span class="sxs-lookup"><span data-stu-id="b65c6-220">In **Solution Explorer**, right-click **Solution 'SampleWebAppDemo'** and select **Commit**.</span></span> <span data-ttu-id="b65c6-221">O **Team Explorer** é exibido.</span><span class="sxs-lookup"><span data-stu-id="b65c6-221">The **Team Explorer** is displayed.</span></span>
 
-1. <span data-ttu-id="cac64-222">Escreva uma mensagem de confirmação, tal como `Update #2`.</span><span class="sxs-lookup"><span data-stu-id="cac64-222">Enter a commit message, such as `Update #2`.</span></span>
+1. <span data-ttu-id="b65c6-222">Escreva uma mensagem de confirmação, tal como `Update #2`.</span><span class="sxs-lookup"><span data-stu-id="b65c6-222">Enter a commit message, such as `Update #2`.</span></span>
 
-1. <span data-ttu-id="cac64-223">Pressione o botão **Confirmar** para confirmar as alterações do projeto.</span><span class="sxs-lookup"><span data-stu-id="cac64-223">Press the **Commit** button to commit the project changes.</span></span>
+1. <span data-ttu-id="b65c6-223">Pressione o botão **Confirmar** para confirmar as alterações do projeto.</span><span class="sxs-lookup"><span data-stu-id="b65c6-223">Press the **Commit** button to commit the project changes.</span></span>
 
-1. <span data-ttu-id="cac64-224">Selecione ações de sincronização **doméstica**  >  **Sync**  >  **Actions**  >  **enviar por push** .</span><span class="sxs-lookup"><span data-stu-id="cac64-224">Select **Home** > **Sync** > **Actions** > **Push** .</span></span>
+1. <span data-ttu-id="b65c6-224">Selecione ações de sincronização **doméstica**  >    >    >  **enviar por push**.</span><span class="sxs-lookup"><span data-stu-id="b65c6-224">Select **Home** > **Sync** > **Actions** > **Push**.</span></span>
 
 > [!NOTE]
-> <span data-ttu-id="cac64-225">Como alternativa, envie as alterações por push da **Janela Comando** abrindo a **Janela Comando** , alterando para o diretório do projeto e inserindo um comando do GIT.</span><span class="sxs-lookup"><span data-stu-id="cac64-225">As an alternative, push the changes from the **Command Window** by opening the **Command Window** , changing to the project directory, and entering a git command.</span></span> <span data-ttu-id="cac64-226">Exemplo:</span><span class="sxs-lookup"><span data-stu-id="cac64-226">Example:</span></span>
+> <span data-ttu-id="b65c6-225">Como alternativa, envie as alterações por push da **Janela Comando** abrindo a **Janela Comando**, alterando para o diretório do projeto e inserindo um comando do GIT.</span><span class="sxs-lookup"><span data-stu-id="b65c6-225">As an alternative, push the changes from the **Command Window** by opening the **Command Window**, changing to the project directory, and entering a git command.</span></span> <span data-ttu-id="b65c6-226">Exemplo:</span><span class="sxs-lookup"><span data-stu-id="b65c6-226">Example:</span></span>
 > 
 > `git push -u Azure-SampleApp master`
 
-## <a name="view-the-updated-web-app-in-azure"></a><span data-ttu-id="cac64-227">Exibir o aplicativo Web atualizado no Azure</span><span class="sxs-lookup"><span data-stu-id="cac64-227">View the updated web app in Azure</span></span>
+## <a name="view-the-updated-web-app-in-azure"></a><span data-ttu-id="b65c6-227">Exibir o aplicativo Web atualizado no Azure</span><span class="sxs-lookup"><span data-stu-id="b65c6-227">View the updated web app in Azure</span></span>
 
-<span data-ttu-id="cac64-228">Exiba o aplicativo Web atualizado selecionando **Procurar** na folha do aplicativo Web no portal do Azure ou abrindo um navegador e inserindo a URL do aplicativo Web.</span><span class="sxs-lookup"><span data-stu-id="cac64-228">View the updated web app by selecting **Browse** from the web app blade in the Azure Portal or by opening a browser and entering the URL for the web app.</span></span> <span data-ttu-id="cac64-229">Exemplo: `http://SampleWebAppDemo.azurewebsites.net`</span><span class="sxs-lookup"><span data-stu-id="cac64-229">Example: `http://SampleWebAppDemo.azurewebsites.net`</span></span>
+<span data-ttu-id="b65c6-228">Exiba o aplicativo Web atualizado selecionando **Procurar** na folha do aplicativo Web no portal do Azure ou abrindo um navegador e inserindo a URL do aplicativo Web.</span><span class="sxs-lookup"><span data-stu-id="b65c6-228">View the updated web app by selecting **Browse** from the web app blade in the Azure Portal or by opening a browser and entering the URL for the web app.</span></span> <span data-ttu-id="b65c6-229">Exemplo: `http://SampleWebAppDemo.azurewebsites.net`</span><span class="sxs-lookup"><span data-stu-id="b65c6-229">Example: `http://SampleWebAppDemo.azurewebsites.net`</span></span>
 
-## <a name="additional-resources"></a><span data-ttu-id="cac64-230">Recursos adicionais</span><span class="sxs-lookup"><span data-stu-id="cac64-230">Additional resources</span></span>
+## <a name="additional-resources"></a><span data-ttu-id="b65c6-230">Recursos adicionais</span><span class="sxs-lookup"><span data-stu-id="b65c6-230">Additional resources</span></span>
 
-* [<span data-ttu-id="cac64-231">Criar seu primeiro pipeline com o Azure Pipelines</span><span class="sxs-lookup"><span data-stu-id="cac64-231">Create your first pipeline with Azure Pipelines</span></span>](/azure/devops/pipelines/get-started-yaml)
-* [<span data-ttu-id="cac64-232">Kudu do Projeto</span><span class="sxs-lookup"><span data-stu-id="cac64-232">Project Kudu</span></span>](https://github.com/projectkudu/kudu/wiki)
+* [<span data-ttu-id="b65c6-231">Criar seu primeiro pipeline com o Azure Pipelines</span><span class="sxs-lookup"><span data-stu-id="b65c6-231">Create your first pipeline with Azure Pipelines</span></span>](/azure/devops/pipelines/get-started-yaml)
+* [<span data-ttu-id="b65c6-232">Kudu do Projeto</span><span class="sxs-lookup"><span data-stu-id="b65c6-232">Project Kudu</span></span>](https://github.com/projectkudu/kudu/wiki)
 * <xref:host-and-deploy/visual-studio-publish-profiles>

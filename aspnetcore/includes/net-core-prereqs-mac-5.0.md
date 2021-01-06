@@ -1,2 +1,2 @@
-* [<span data-ttu-id="08228-101">Versão prévia do Visual Studio para Mac</span><span class="sxs-lookup"><span data-stu-id="08228-101">Visual Studio for Mac Preview</span></span>](https://visualstudio.microsoft.com/vs/mac/)
+* [<span data-ttu-id="afd33-101">Versão prévia do Visual Studio para Mac</span><span class="sxs-lookup"><span data-stu-id="afd33-101">Visual Studio for Mac Preview</span></span>](https://visualstudio.microsoft.com/vs/mac/)
 * [!INCLUDE [.NET 5.0 SDK](~/includes/5.0-SDK.md)]

@@ -1,1 +1,1 @@
-<span data-ttu-id="93137-101">O código nesta pasta são instantâneos no tempo da série de Páginas Razor.</span><span class="sxs-lookup"><span data-stu-id="93137-101">The code in this folder is snapshots in time from the Razor Pages series.</span></span>
+<span data-ttu-id="e9c7c-101">O código nesta pasta são instantâneos no tempo da série de Páginas Razor.</span><span class="sxs-lookup"><span data-stu-id="e9c7c-101">The code in this folder is snapshots in time from the Razor Pages series.</span></span>
