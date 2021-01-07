@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: signalr/configuration
-ms.openlocfilehash: 7dac8c84683553a52e07ecc61c8bcf8616e77dc6
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: cef05b32731e0930d7a3cfc6fe4502236b07a236
+ms.sourcegitcommit: b64c44ba5e3abb4ad4d50de93b7e282bf0f251e4
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93061230"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97972061"
 ---
 # <a name="aspnet-core-no-locsignalr-configuration"></a>Configuração de ASP.NET Core SignalR
 
@@ -199,7 +199,7 @@ let connection = new signalR.HubConnectionBuilder()
 
 A tabela a seguir lista os níveis de log disponíveis. O valor que você fornece para `configureLogging` definir o nível de log **mínimo** que será registrado. As mensagens registradas nesse nível **ou os níveis listados depois dela na tabela** serão registrados.
 
-| String                      | LogLevel               |
+| Cadeia de caracteres                      | LogLevel               |
 | --------------------------- | ---------------------- |
 | `trace`                     | `LogLevel.Trace`       |
 | `debug`                     | `LogLevel.Debug`       |
@@ -293,7 +293,7 @@ let connection = new signalR.HubConnectionBuilder()
     .build();
 ```
 
-No SignalR cliente Java, você pode configurar um token de portador para usar para autenticação fornecendo um alocador de token de acesso para o [HttpHubConnectionBuilder](/java/api/com.microsoft.signalr._http_hub_connection_builder?view=aspnet-signalr-java). Use [withAccessTokenFactory](/java/api/com.microsoft.signalr._http_hub_connection_builder.withaccesstokenprovider?view=aspnet-signalr-java#com_microsoft_signalr__http_hub_connection_builder_withAccessTokenProvider_Single_String__) para fornecer um [RxJava](https://github.com/ReactiveX/RxJava) [único \<String> ](https://reactivex.io/documentation/single.html). Com uma chamada para [Single. Defer](https://reactivex.io/RxJava/javadoc/io/reactivex/Single.html#defer-java.util.concurrent.Callable-), você pode escrever lógica para produzir tokens de acesso para seu cliente.
+No SignalR cliente Java, você pode configurar um token de portador para usar para autenticação fornecendo um alocador de token de acesso para o [HttpHubConnectionBuilder](/java/api/com.microsoft.signalr.httphubconnectionbuilder?view=aspnet-signalr-java). Use [withAccessTokenFactory](/java/api/com.microsoft.signalr.httphubconnectionbuilder.withaccesstokenprovider?view=aspnet-signalr-java#com_microsoft_signalr__http_hub_connection_builder_withAccessTokenProvider_Single_String__) para fornecer um [RxJava](https://github.com/ReactiveX/RxJava) [único \<String> ](https://reactivex.io/documentation/single.html). Com uma chamada para [Single. Defer](https://reactivex.io/RxJava/javadoc/io/reactivex/Single.html#defer-java.util.concurrent.Callable-), você pode escrever lógica para produzir tokens de acesso para seu cliente.
 
 ```java
 HubConnection hubConnection = HubConnectionBuilder.create("https://example.com/chathub")
@@ -343,7 +343,7 @@ Opções adicionais podem ser configuradas `WithUrl` no `withUrl` método (em Ja
 | Opção .NET |  Valor padrão | Descrição |
 | ----------- | -------------- | ----------- |
 | `AccessTokenProvider` | `null` | Uma função que retorna uma cadeia de caracteres que é fornecida como um token de autenticação de portador em solicitações HTTP. |
-| `SkipNegotiation` | `false` | Defina como `true` para ignorar a etapa de negociação. **Com suporte apenas quando o transporte WebSockets é o único transporte habilitado** . Essa configuração não pode ser habilitada ao usar o serviço do Azure SignalR . |
+| `SkipNegotiation` | `false` | Defina como `true` para ignorar a etapa de negociação. **Com suporte apenas quando o transporte WebSockets é o único transporte habilitado**. Essa configuração não pode ser habilitada ao usar o serviço do Azure SignalR . |
 | `ClientCertificates` | Vazio | Uma coleção de certificados TLS a serem enviados para autenticar solicitações. |
 | `Cookies` | Vazio | Uma coleção de HTTP cookie s a ser enviada com cada solicitação HTTP. |
 | `Credentials` | Vazio | Credenciais a serem enviadas com cada solicitação HTTP. |
@@ -362,7 +362,7 @@ Opções adicionais podem ser configuradas `WithUrl` no `withUrl` método (em Ja
 | `transport` | `null` | Um <xref:Microsoft.AspNetCore.Http.Connections.HttpTransportType> valor que especifica o transporte a ser usado para a conexão. |
 | `headers` | `null` | Dicionário de cabeçalhos enviado com cada solicitação HTTP. O envio de cabeçalhos no navegador não funciona para WebSockets ou <xref:Microsoft.AspNetCore.Http.Connections.HttpTransportType.ServerSentEvents> fluxo. |
 | `logMessageContent` | `null` | Defina como `true` para registrar em log os bytes/caracteres de mensagens enviadas e recebidas pelo cliente. |
-| `skipNegotiation` | `false` | Defina como `true` para ignorar a etapa de negociação. **Com suporte apenas quando o transporte WebSockets é o único transporte habilitado** . Essa configuração não pode ser habilitada ao usar o serviço do Azure SignalR . |
+| `skipNegotiation` | `false` | Defina como `true` para ignorar a etapa de negociação. **Com suporte apenas quando o transporte WebSockets é o único transporte habilitado**. Essa configuração não pode ser habilitada ao usar o serviço do Azure SignalR . |
 | `withCredentials` | `true` | Especifica se as credenciais serão enviadas com a solicitação CORS. Azure App serviço usa cookie s para sessões adesivas e precisa que essa opção esteja habilitada para funcionar corretamente. Para obter mais informações sobre o CORS com SignalR , consulte <xref:signalr/security#cross-origin-resource-sharing> . |
 
 # <a name="java"></a>[Java](#tab/java)
@@ -370,7 +370,7 @@ Opções adicionais podem ser configuradas `WithUrl` no `withUrl` método (em Ja
 | Opção Java | Valor padrão | Descrição |
 | ----------- | ------------- | ----------- |
 | `withAccessTokenProvider` | `null` | Uma função que retorna uma cadeia de caracteres que é fornecida como um token de autenticação de portador em solicitações HTTP. |
-| `shouldSkipNegotiate` | `false` | Defina como `true` para ignorar a etapa de negociação. **Com suporte apenas quando o transporte WebSockets é o único transporte habilitado** . Essa configuração não pode ser habilitada ao usar o serviço do Azure SignalR . |
+| `shouldSkipNegotiate` | `false` | Defina como `true` para ignorar a etapa de negociação. **Com suporte apenas quando o transporte WebSockets é o único transporte habilitado**. Essa configuração não pode ser habilitada ao usar o serviço do Azure SignalR . |
 | `withHeader` `withHeaders` | Vazio | Um mapa de cabeçalhos HTTP adicionais para enviar com cada solicitação HTTP. |
 
 ---
@@ -591,7 +591,7 @@ let connection = new signalR.HubConnectionBuilder()
 
 A tabela a seguir lista os níveis de log disponíveis. O valor que você fornece para `configureLogging` definir o nível de log **mínimo** que será registrado. As mensagens registradas nesse nível **ou os níveis listados depois dela na tabela** serão registrados.
 
-| String                      | LogLevel               |
+| Cadeia de caracteres                      | LogLevel               |
 | --------------------------- | ---------------------- |
 | `trace`                     | `LogLevel.Trace`       |
 | `debug`                     | `LogLevel.Debug`       |
@@ -685,7 +685,7 @@ let connection = new signalR.HubConnectionBuilder()
     .build();
 ```
 
-No SignalR cliente Java, você pode configurar um token de portador para usar para autenticação fornecendo um alocador de token de acesso para o [HttpHubConnectionBuilder](/java/api/com.microsoft.signalr._http_hub_connection_builder?view=aspnet-signalr-java). Use [withAccessTokenFactory](/java/api/com.microsoft.signalr._http_hub_connection_builder.withaccesstokenprovider?view=aspnet-signalr-java#com_microsoft_signalr__http_hub_connection_builder_withAccessTokenProvider_Single_String__) para fornecer um [RxJava](https://github.com/ReactiveX/RxJava) [único \<String> ](https://reactivex.io/documentation/single.html). Com uma chamada para [Single. Defer](https://reactivex.io/RxJava/javadoc/io/reactivex/Single.html#defer-java.util.concurrent.Callable-), você pode escrever lógica para produzir tokens de acesso para seu cliente.
+No SignalR cliente Java, você pode configurar um token de portador para usar para autenticação fornecendo um alocador de token de acesso para o [HttpHubConnectionBuilder](/java/api/com.microsoft.signalr.httphubconnectionbuilder?view=aspnet-signalr-java). Use [withAccessTokenFactory](/java/api/com.microsoft.signalr.httphubconnectionbuilder.withaccesstokenprovider?view=aspnet-signalr-java#com_microsoft_signalr__http_hub_connection_builder_withAccessTokenProvider_Single_String__) para fornecer um [RxJava](https://github.com/ReactiveX/RxJava) [único \<String> ](https://reactivex.io/documentation/single.html). Com uma chamada para [Single. Defer](https://reactivex.io/RxJava/javadoc/io/reactivex/Single.html#defer-java.util.concurrent.Callable-), você pode escrever lógica para produzir tokens de acesso para seu cliente.
 
 ```java
 HubConnection hubConnection = HubConnectionBuilder.create("https://example.com/chathub")
@@ -735,7 +735,7 @@ Opções adicionais podem ser configuradas `WithUrl` no `withUrl` método (em Ja
 | Opção .NET |  Valor padrão | Descrição |
 | ----------- | -------------- | ----------- |
 | `AccessTokenProvider` | `null` | Uma função que retorna uma cadeia de caracteres que é fornecida como um token de autenticação de portador em solicitações HTTP. |
-| `SkipNegotiation` | `false` | Defina como `true` para ignorar a etapa de negociação. **Com suporte apenas quando o transporte WebSockets é o único transporte habilitado** . Essa configuração não pode ser habilitada ao usar o serviço do Azure SignalR . |
+| `SkipNegotiation` | `false` | Defina como `true` para ignorar a etapa de negociação. **Com suporte apenas quando o transporte WebSockets é o único transporte habilitado**. Essa configuração não pode ser habilitada ao usar o serviço do Azure SignalR . |
 | `ClientCertificates` | Vazio | Uma coleção de certificados TLS a serem enviados para autenticar solicitações. |
 | `Cookies` | Vazio | Uma coleção de HTTP cookie s a ser enviada com cada solicitação HTTP. |
 | `Credentials` | Vazio | Credenciais a serem enviadas com cada solicitação HTTP. |
@@ -753,14 +753,14 @@ Opções adicionais podem ser configuradas `WithUrl` no `withUrl` método (em Ja
 | `accessTokenFactory` | `null` | Uma função que retorna uma cadeia de caracteres que é fornecida como um token de autenticação de portador em solicitações HTTP. |
 | `transport` | `null` | Um <xref:Microsoft.AspNetCore.Http.Connections.HttpTransportType> valor que especifica o transporte a ser usado para a conexão. |
 | `logMessageContent` | `null` | Defina como `true` para registrar em log os bytes/caracteres de mensagens enviadas e recebidas pelo cliente. |
-| `skipNegotiation` | `false` | Defina como `true` para ignorar a etapa de negociação. **Com suporte apenas quando o transporte WebSockets é o único transporte habilitado** . Essa configuração não pode ser habilitada ao usar o serviço do Azure SignalR . |
+| `skipNegotiation` | `false` | Defina como `true` para ignorar a etapa de negociação. **Com suporte apenas quando o transporte WebSockets é o único transporte habilitado**. Essa configuração não pode ser habilitada ao usar o serviço do Azure SignalR . |
 
 # <a name="java"></a>[Java](#tab/java)
 
 | Opção Java | Valor padrão | Descrição |
 | ----------- | ------------- | ----------- |
 | `withAccessTokenProvider` | `null` | Uma função que retorna uma cadeia de caracteres que é fornecida como um token de autenticação de portador em solicitações HTTP. |
-| `shouldSkipNegotiate` | `false` | Defina como `true` para ignorar a etapa de negociação. **Com suporte apenas quando o transporte WebSockets é o único transporte habilitado** . Essa configuração não pode ser habilitada ao usar o serviço do Azure SignalR . |
+| `shouldSkipNegotiate` | `false` | Defina como `true` para ignorar a etapa de negociação. **Com suporte apenas quando o transporte WebSockets é o único transporte habilitado**. Essa configuração não pode ser habilitada ao usar o serviço do Azure SignalR . |
 | `withHeader` `withHeaders` | Vazio | Um mapa de cabeçalhos HTTP adicionais para enviar com cada solicitação HTTP. |
 
 ---
@@ -977,7 +977,7 @@ let connection = new signalR.HubConnectionBuilder()
 
 A tabela a seguir lista os níveis de log disponíveis. O valor que você fornece para `configureLogging` definir o nível de log **mínimo** que será registrado. As mensagens registradas nesse nível **ou os níveis listados depois dela na tabela** serão registrados.
 
-| String                      | LogLevel               |
+| Cadeia de caracteres                      | LogLevel               |
 | --------------------------- | ---------------------- |
 | `trace`                     | `LogLevel.Trace`       |
 | `debug`                     | `LogLevel.Debug`       |
@@ -1071,7 +1071,7 @@ let connection = new signalR.HubConnectionBuilder()
     .build();
 ```
 
-No SignalR cliente Java, você pode configurar um token de portador para usar para autenticação fornecendo um alocador de token de acesso para o [HttpHubConnectionBuilder](/java/api/com.microsoft.signalr._http_hub_connection_builder?view=aspnet-signalr-java). Use [withAccessTokenFactory](/java/api/com.microsoft.signalr._http_hub_connection_builder.withaccesstokenprovider?view=aspnet-signalr-java#com_microsoft_signalr__http_hub_connection_builder_withAccessTokenProvider_Single_String__) para fornecer um [RxJava](https://github.com/ReactiveX/RxJava) [único \<String> ](https://reactivex.io/documentation/single.html). Com uma chamada para [Single. Defer](https://reactivex.io/RxJava/javadoc/io/reactivex/Single.html#defer-java.util.concurrent.Callable-), você pode escrever lógica para produzir tokens de acesso para seu cliente.
+No SignalR cliente Java, você pode configurar um token de portador para usar para autenticação fornecendo um alocador de token de acesso para o [HttpHubConnectionBuilder](/java/api/com.microsoft.signalr.httphubconnectionbuilder?view=aspnet-signalr-java). Use [withAccessTokenFactory](/java/api/com.microsoft.signalr.httphubconnectionbuilder.withaccesstokenprovider?view=aspnet-signalr-java#com_microsoft_signalr__http_hub_connection_builder_withAccessTokenProvider_Single_String__) para fornecer um [RxJava](https://github.com/ReactiveX/RxJava) [único \<String> ](https://reactivex.io/documentation/single.html). Com uma chamada para [Single. Defer](https://reactivex.io/RxJava/javadoc/io/reactivex/Single.html#defer-java.util.concurrent.Callable-), você pode escrever lógica para produzir tokens de acesso para seu cliente.
 
 ```java
 HubConnection hubConnection = HubConnectionBuilder.create("https://example.com/chathub")
@@ -1121,7 +1121,7 @@ Opções adicionais podem ser configuradas `WithUrl` no `withUrl` método (em Ja
 | Opção .NET |  Valor padrão | Descrição |
 | ----------- | -------------- | ----------- |
 | `AccessTokenProvider` | `null` | Uma função que retorna uma cadeia de caracteres que é fornecida como um token de autenticação de portador em solicitações HTTP. |
-| `SkipNegotiation` | `false` | Defina como `true` para ignorar a etapa de negociação. **Com suporte apenas quando o transporte WebSockets é o único transporte habilitado** . Essa configuração não pode ser habilitada ao usar o serviço do Azure SignalR . |
+| `SkipNegotiation` | `false` | Defina como `true` para ignorar a etapa de negociação. **Com suporte apenas quando o transporte WebSockets é o único transporte habilitado**. Essa configuração não pode ser habilitada ao usar o serviço do Azure SignalR . |
 | `ClientCertificates` | Vazio | Uma coleção de certificados TLS a serem enviados para autenticar solicitações. |
 | `Cookies` | Vazio | Uma coleção de HTTP cookie s a ser enviada com cada solicitação HTTP. |
 | `Credentials` | Vazio | Credenciais a serem enviadas com cada solicitação HTTP. |
@@ -1139,14 +1139,14 @@ Opções adicionais podem ser configuradas `WithUrl` no `withUrl` método (em Ja
 | `accessTokenFactory` | `null` | Uma função que retorna uma cadeia de caracteres que é fornecida como um token de autenticação de portador em solicitações HTTP. |
 | `transport` | `null` | Um <xref:Microsoft.AspNetCore.Http.Connections.HttpTransportType> valor que especifica o transporte a ser usado para a conexão. |
 | `logMessageContent` | `null` | Defina como `true` para registrar em log os bytes/caracteres de mensagens enviadas e recebidas pelo cliente. |
-| `skipNegotiation` | `false` | Defina como `true` para ignorar a etapa de negociação. **Com suporte apenas quando o transporte WebSockets é o único transporte habilitado** . Essa configuração não pode ser habilitada ao usar o serviço do Azure SignalR . |
+| `skipNegotiation` | `false` | Defina como `true` para ignorar a etapa de negociação. **Com suporte apenas quando o transporte WebSockets é o único transporte habilitado**. Essa configuração não pode ser habilitada ao usar o serviço do Azure SignalR . |
 
 # <a name="java"></a>[Java](#tab/java)
 
 | Opção Java | Valor padrão | Descrição |
 | ----------- | ------------- | ----------- |
 | `withAccessTokenProvider` | `null` | Uma função que retorna uma cadeia de caracteres que é fornecida como um token de autenticação de portador em solicitações HTTP. |
-| `shouldSkipNegotiate` | `false` | Defina como `true` para ignorar a etapa de negociação. **Com suporte apenas quando o transporte WebSockets é o único transporte habilitado** . Essa configuração não pode ser habilitada ao usar o serviço do Azure SignalR . |
+| `shouldSkipNegotiate` | `false` | Defina como `true` para ignorar a etapa de negociação. **Com suporte apenas quando o transporte WebSockets é o único transporte habilitado**. Essa configuração não pode ser habilitada ao usar o serviço do Azure SignalR . |
 | `withHeader` `withHeaders` | Vazio | Um mapa de cabeçalhos HTTP adicionais para enviar com cada solicitação HTTP. |
 
 ---
@@ -1421,7 +1421,7 @@ let connection = new signalR.HubConnectionBuilder()
     .build();
 ```
 
-No SignalR cliente Java, você pode configurar um token de portador para usar para autenticação fornecendo um alocador de token de acesso para o [HttpHubConnectionBuilder](/java/api/com.microsoft.signalr._http_hub_connection_builder?view=aspnet-signalr-java). Use [withAccessTokenFactory](/java/api/com.microsoft.signalr._http_hub_connection_builder.withaccesstokenprovider?view=aspnet-signalr-java#com_microsoft_signalr__http_hub_connection_builder_withAccessTokenProvider_Single_String__) para fornecer um [RxJava](https://github.com/ReactiveX/RxJava) [único \<String> ](https://reactivex.io/documentation/single.html). Com uma chamada para [Single. Defer](https://reactivex.io/RxJava/javadoc/io/reactivex/Single.html#defer-java.util.concurrent.Callable-), você pode escrever lógica para produzir tokens de acesso para seu cliente.
+No SignalR cliente Java, você pode configurar um token de portador para usar para autenticação fornecendo um alocador de token de acesso para o [HttpHubConnectionBuilder](/java/api/com.microsoft.signalr.httphubconnectionbuilder?view=aspnet-signalr-java). Use [withAccessTokenFactory](/java/api/com.microsoft.signalr.httphubconnectionbuilder.withaccesstokenprovider?view=aspnet-signalr-java#com_microsoft_signalr__http_hub_connection_builder_withAccessTokenProvider_Single_String__) para fornecer um [RxJava](https://github.com/ReactiveX/RxJava) [único \<String> ](https://reactivex.io/documentation/single.html). Com uma chamada para [Single. Defer](https://reactivex.io/RxJava/javadoc/io/reactivex/Single.html#defer-java.util.concurrent.Callable-), você pode escrever lógica para produzir tokens de acesso para seu cliente.
 
 ```java
 HubConnection hubConnection = HubConnectionBuilder.create("https://example.com/chathub")
@@ -1471,7 +1471,7 @@ Opções adicionais podem ser configuradas `WithUrl` no `withUrl` método (em Ja
 | Opção .NET |  Valor padrão | Descrição |
 | ----------- | -------------- | ----------- |
 | `AccessTokenProvider` | `null` | Uma função que retorna uma cadeia de caracteres que é fornecida como um token de autenticação de portador em solicitações HTTP. |
-| `SkipNegotiation` | `false` | Defina como `true` para ignorar a etapa de negociação. **Com suporte apenas quando o transporte WebSockets é o único transporte habilitado** . Essa configuração não pode ser habilitada ao usar o serviço do Azure SignalR . |
+| `SkipNegotiation` | `false` | Defina como `true` para ignorar a etapa de negociação. **Com suporte apenas quando o transporte WebSockets é o único transporte habilitado**. Essa configuração não pode ser habilitada ao usar o serviço do Azure SignalR . |
 | `ClientCertificates` | Vazio | Uma coleção de certificados TLS a serem enviados para autenticar solicitações. |
 | `Cookies` | Vazio | Uma coleção de HTTP cookie s a ser enviada com cada solicitação HTTP. |
 | `Credentials` | Vazio | Credenciais a serem enviadas com cada solicitação HTTP. |
@@ -1489,14 +1489,14 @@ Opções adicionais podem ser configuradas `WithUrl` no `withUrl` método (em Ja
 | `accessTokenFactory` | `null` | Uma função que retorna uma cadeia de caracteres que é fornecida como um token de autenticação de portador em solicitações HTTP. |
 | `transport` | `null` | Um <xref:Microsoft.AspNetCore.Http.Connections.HttpTransportType> valor que especifica o transporte a ser usado para a conexão. |
 | `logMessageContent` | `null` | Defina como `true` para registrar em log os bytes/caracteres de mensagens enviadas e recebidas pelo cliente. |
-| `skipNegotiation` | `false` | Defina como `true` para ignorar a etapa de negociação. **Com suporte apenas quando o transporte WebSockets é o único transporte habilitado** . Essa configuração não pode ser habilitada ao usar o serviço do Azure SignalR . |
+| `skipNegotiation` | `false` | Defina como `true` para ignorar a etapa de negociação. **Com suporte apenas quando o transporte WebSockets é o único transporte habilitado**. Essa configuração não pode ser habilitada ao usar o serviço do Azure SignalR . |
 
 # <a name="java"></a>[Java](#tab/java)
 
 | Opção Java | Valor padrão | Descrição |
 | ----------- | ------------- | ----------- |
 | `withAccessTokenProvider` | `null` | Uma função que retorna uma cadeia de caracteres que é fornecida como um token de autenticação de portador em solicitações HTTP. |
-| `shouldSkipNegotiate` | `false` | Defina como `true` para ignorar a etapa de negociação. **Com suporte apenas quando o transporte WebSockets é o único transporte habilitado** . Essa configuração não pode ser habilitada ao usar o serviço do Azure SignalR . |
+| `shouldSkipNegotiate` | `false` | Defina como `true` para ignorar a etapa de negociação. **Com suporte apenas quando o transporte WebSockets é o único transporte habilitado**. Essa configuração não pode ser habilitada ao usar o serviço do Azure SignalR . |
 | `withHeader` `withHeaders` | Vazio | Um mapa de cabeçalhos HTTP adicionais para enviar com cada solicitação HTTP. |
 
 ---
@@ -1768,7 +1768,7 @@ let connection = new signalR.HubConnectionBuilder()
     .build();
 ```
 
-No SignalR cliente Java, você pode configurar um token de portador para usar para autenticação fornecendo um alocador de token de acesso para o [HttpHubConnectionBuilder](/java/api/com.microsoft.signalr._http_hub_connection_builder?view=aspnet-signalr-java). Use [withAccessTokenFactory](/java/api/com.microsoft.signalr._http_hub_connection_builder.withaccesstokenprovider?view=aspnet-signalr-java#com_microsoft_signalr__http_hub_connection_builder_withAccessTokenProvider_Single_String__) para fornecer um [RxJava](https://github.com/ReactiveX/RxJava) [único \<String> ](https://reactivex.io/documentation/single.html). Com uma chamada para [Single. Defer](https://reactivex.io/RxJava/javadoc/io/reactivex/Single.html#defer-java.util.concurrent.Callable-), você pode escrever lógica para produzir tokens de acesso para seu cliente.
+No SignalR cliente Java, você pode configurar um token de portador para usar para autenticação fornecendo um alocador de token de acesso para o [HttpHubConnectionBuilder](/java/api/com.microsoft.signalr.httphubconnectionbuilder?view=aspnet-signalr-java). Use [withAccessTokenFactory](/java/api/com.microsoft.signalr.httphubconnectionbuilder.withaccesstokenprovider?view=aspnet-signalr-java#com_microsoft_signalr__http_hub_connection_builder_withAccessTokenProvider_Single_String__) para fornecer um [RxJava](https://github.com/ReactiveX/RxJava) [único \<String> ](https://reactivex.io/documentation/single.html). Com uma chamada para [Single. Defer](https://reactivex.io/RxJava/javadoc/io/reactivex/Single.html#defer-java.util.concurrent.Callable-), você pode escrever lógica para produzir tokens de acesso para seu cliente.
 
 ```java
 HubConnection hubConnection = HubConnectionBuilder.create("https://example.com/chathub")
@@ -1815,7 +1815,7 @@ Opções adicionais podem ser configuradas `WithUrl` no `withUrl` método (em Ja
 | Opção .NET |  Valor padrão | Descrição |
 | ----------- | -------------- | ----------- |
 | `AccessTokenProvider` | `null` | Uma função que retorna uma cadeia de caracteres que é fornecida como um token de autenticação de portador em solicitações HTTP. |
-| `SkipNegotiation` | `false` | Defina como `true` para ignorar a etapa de negociação. **Com suporte apenas quando o transporte WebSockets é o único transporte habilitado** . Essa configuração não pode ser habilitada ao usar o serviço do Azure SignalR . |
+| `SkipNegotiation` | `false` | Defina como `true` para ignorar a etapa de negociação. **Com suporte apenas quando o transporte WebSockets é o único transporte habilitado**. Essa configuração não pode ser habilitada ao usar o serviço do Azure SignalR . |
 | `ClientCertificates` | Vazio | Uma coleção de certificados TLS a serem enviados para autenticar solicitações. |
 | `Cookies` | Vazio | Uma coleção de HTTP cookie s a ser enviada com cada solicitação HTTP. |
 | `Credentials` | Vazio | Credenciais a serem enviadas com cada solicitação HTTP. |
@@ -1833,14 +1833,14 @@ Opções adicionais podem ser configuradas `WithUrl` no `withUrl` método (em Ja
 | `accessTokenFactory` | `null` | Uma função que retorna uma cadeia de caracteres que é fornecida como um token de autenticação de portador em solicitações HTTP. |
 | `transport` | `null` | Um <xref:Microsoft.AspNetCore.Http.Connections.HttpTransportType> valor que especifica o transporte a ser usado para a conexão. |
 | `logMessageContent` | `null` | Defina como `true` para registrar em log os bytes/caracteres de mensagens enviadas e recebidas pelo cliente. |
-| `skipNegotiation` | `false` | Defina como `true` para ignorar a etapa de negociação. **Com suporte apenas quando o transporte WebSockets é o único transporte habilitado** . Essa configuração não pode ser habilitada ao usar o serviço do Azure SignalR . |
+| `skipNegotiation` | `false` | Defina como `true` para ignorar a etapa de negociação. **Com suporte apenas quando o transporte WebSockets é o único transporte habilitado**. Essa configuração não pode ser habilitada ao usar o serviço do Azure SignalR . |
 
 # <a name="java"></a>[Java](#tab/java)
 
 | Opção Java | Valor padrão | Descrição |
 | ----------- | ------------- | ----------- |
 | `withAccessTokenProvider` | `null` | Uma função que retorna uma cadeia de caracteres que é fornecida como um token de autenticação de portador em solicitações HTTP. |
-| `shouldSkipNegotiate` | `false` | Defina como `true` para ignorar a etapa de negociação. **Com suporte apenas quando o transporte WebSockets é o único transporte habilitado** . Essa configuração não pode ser habilitada ao usar o serviço do Azure SignalR . |
+| `shouldSkipNegotiate` | `false` | Defina como `true` para ignorar a etapa de negociação. **Com suporte apenas quando o transporte WebSockets é o único transporte habilitado**. Essa configuração não pode ser habilitada ao usar o serviço do Azure SignalR . |
 | `withHeader` `withHeaders` | Vazio | Um mapa de cabeçalhos HTTP adicionais para enviar com cada solicitação HTTP. |
 
 ---
