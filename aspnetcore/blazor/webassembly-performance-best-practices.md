@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/webassembly-performance-best-practices
-ms.openlocfilehash: cc090b4e56745e6b010e4a7ee17332b0d3a95560
-ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
+ms.openlocfilehash: 0753ef0f1cde7bbb45ecc09b97fecb5ce364811c
+ms.sourcegitcommit: 8b0e9a72c1599ce21830c843558a661ba908ce32
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "95417377"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98024646"
 ---
 # <a name="aspnet-core-no-locblazor-webassembly-performance-best-practices"></a>Blazor WebAssemblyPráticas recomendadas de desempenho de ASP.NET Core
 
@@ -43,16 +43,16 @@ As seções a seguir fornecem recomendações para minimizar a carga de trabalho
 
 Em tempo de execução, os componentes existem como uma hierarquia. Um componente raiz tem componentes filhos. Por sua vez, os filhos da raiz têm seus próprios componentes filho e assim por diante. Quando ocorre um evento, como um usuário selecionando um botão, é assim Blazor que decide quais componentes serão renderizados novamente:
 
- 1. O evento em si é expedido para qualquer componente que renderizasse o manipulador do evento. Depois de executar o manipulador de eventos, esse componente é renderizado novamente.
- 1. Sempre que qualquer componente for rerenderizado, ele fornecerá uma nova cópia dos valores de parâmetro para cada um de seus componentes filho.
- 1. Ao receber um novo conjunto de valores de parâmetro, cada componente escolhe se deseja rerenderizar. Por padrão, os componentes são reprocessados se os valores de parâmetro podem ter sido alterados (por exemplo, se forem objetos mutáveis).
+1. O evento em si é expedido para qualquer componente que renderizasse o manipulador do evento. Depois de executar o manipulador de eventos, esse componente é renderizado novamente.
+1. Sempre que qualquer componente for rerenderizado, ele fornecerá uma nova cópia dos valores de parâmetro para cada um de seus componentes filho.
+1. Ao receber um novo conjunto de valores de parâmetro, cada componente escolhe se deseja rerenderizar. Por padrão, os componentes são reprocessados se os valores de parâmetro podem ter sido alterados (por exemplo, se forem objetos mutáveis).
 
 As duas últimas etapas dessa sequência continuam recursivamente a hierarquia de componentes. Em muitos casos, toda a subárvore é reprocessada. Isso significa que os eventos que visam componentes de alto nível podem causar processos dispendiosos de reprocessamento porque tudo abaixo desse ponto deve ser reprocessado.
 
 Se você quiser interromper esse processo e evitar a recursão de renderização em uma subárvore específica, poderá:
 
- * Verifique se todos os parâmetros para um determinado componente são de tipos irmutáveis primitivos (por exemplo,,,, `string` `int` `bool` `DateTime` e outros). A lógica interna para detectar alterações automaticamente ignora a rerenderização se nenhum desses valores de parâmetro foram alterados. Se você renderizar um componente filho com `<Customer CustomerId="@item.CustomerId" />` , em que `CustomerId` é um `int` valor, ele não será renderizado, exceto quando houver `item.CustomerId` alterações.
- * Se você precisar aceitar valores de parâmetro não primitivos, como tipos de modelo personalizados, retornos de chamada de evento ou <xref:Microsoft.AspNetCore.Components.RenderFragment> valores, você poderá substituir <xref:Microsoft.AspNetCore.Components.ComponentBase.ShouldRender%2A> para controlar a decisão sobre se deve renderizar, que é descrito no [uso da `ShouldRender` ](#use-of-shouldrender) seção.
+* Verifique se todos os parâmetros para um determinado componente são de tipos irmutáveis primitivos (por exemplo,,,, `string` `int` `bool` `DateTime` e outros). A lógica interna para detectar alterações automaticamente ignora a rerenderização se nenhum desses valores de parâmetro foram alterados. Se você renderizar um componente filho com `<Customer CustomerId="@item.CustomerId" />` , em que `CustomerId` é um `int` valor, ele não será renderizado, exceto quando houver `item.CustomerId` alterações.
+* Se você precisar aceitar valores de parâmetro não primitivos, como tipos de modelo personalizados, retornos de chamada de evento ou <xref:Microsoft.AspNetCore.Components.RenderFragment> valores, você poderá substituir <xref:Microsoft.AspNetCore.Components.ComponentBase.ShouldRender%2A> para controlar a decisão sobre se deve renderizar, que é descrito no [uso da `ShouldRender` ](#use-of-shouldrender) seção.
 
 Ao ignorar a rerenderização de subárvores inteiras, você poderá remover a grande maioria do custo de renderização quando ocorrer um evento.
 
@@ -109,38 +109,7 @@ Para obter mais informações, consulte <xref:blazor/components/lifecycle>.
 
 Ao renderizar grandes quantidades de interface do usuário dentro de um loop, por exemplo, uma lista ou grade com milhares de entradas, a quantidade enorme de operações de renderização pode levar a um retardo na renderização da interface do usuário e, portanto, uma experiência ruim para os usuários. Considerando que o usuário só pode ver um pequeno número de elementos de uma só vez sem rolagem, parece que é dispendioso gastar muito tempo renderizando elementos que não estão visíveis no momento.
 
-Para resolver isso, o Blazor fornece um [ `<Virtualize>` componente](xref:blazor/components/virtualization) interno que cria os comportamentos de aparência e rolagem de uma lista arbitrariamente grande, mas, na verdade, apenas renderiza os itens de lista que estão dentro do visor de rolagem atual. Por exemplo, isso significa que o aplicativo pode ter uma lista com 100.000 entradas, mas apenas pagar o custo de renderização de 20 itens visíveis a qualquer momento. O uso do `<Virtualize>` componente pode escalar verticalmente o desempenho da interface do usuário em ordens de magnitude.
-
-`<Virtualize>` pode ser usado quando:
-
- * Renderizando um conjunto de itens de dados em um loop.
- * A maioria dos itens não está visível devido à rolagem.
- * Os itens processados são exatamente do mesmo tamanho. Quando o usuário rola para um ponto arbitrário, o componente pode calcular os itens visíveis a serem mostrados.
-
-Veja a seguir um exemplo de uma lista não virtualizada:
-
-```razor
-<div class="all-flights" style="height:500px;overflow-y:scroll">
-    @foreach (var flight in allFlights)
-    {
-        <FlightSummary @key="flight.FlightId" Flight="@flight" />
-    }
-</div>
-```
-
-Se a `allFlights` coleção mantiver 10.000 itens, ela instancia e renderiza as `<FlightSummary>` instâncias de componente 10.000. Em comparação, o seguinte mostra um exemplo de uma lista virtualizada:
-
-```razor
-<div class="all-flights" style="height:500px;overflow-y:scroll">
-    <Virtualize Items="@allFlights" Context="flight">
-        <FlightSummary @key="flight.FlightId" Flight="@flight" />
-    </Virtualize>
-</div>
-```
-
-Embora a interface do usuário resultante tenha a mesma aparência de um usuário, por trás dos bastidores, o componente só instancia e renderiza quantas `<FlightSummary>` instâncias forem necessárias para preencher a região rolável. O conjunto de `<FlightSummary>` instâncias exibidas é recalculado e renderizado conforme o usuário rola.
-
-`<Virtualize>` também tem outros benefícios. Por exemplo, quando um componente solicita dados de uma API externa, `<Virtualize>` permite que o componente busque apenas a fatia de registros que correspondem à região visível atual, em vez de baixar todos os dados da coleção.
+Para resolver isso, Blazor o fornece o `Virtualize` componente que cria os comportamentos de aparência e rolagem de uma lista arbitrariamente grande, mas só renderiza os itens de lista que estão dentro do visor de rolagem atual. Por exemplo, isso significa que o aplicativo pode ter uma lista com 100.000 entradas, mas apenas pagar o custo de renderização de 20 itens visíveis a qualquer momento. O uso do `Virtualize` componente pode escalar verticalmente o desempenho da interface do usuário em ordens de magnitude.
 
 Para obter mais informações, consulte <xref:blazor/components/virtualization>.
 
@@ -152,9 +121,9 @@ A maioria dos Blazor componentes não exige esforços agressivos de otimização
 
 No entanto, também há cenários comuns em que você cria componentes que precisam ser repetidos em escala. Por exemplo:
 
- * Formulários aninhados grandes podem ter centenas de entradas, rótulos e outros elementos individuais.
- * As grades podem ter milhares de células.
- * As plotagens de dispersão podem ter milhões de pontos de dados.
+* Formulários aninhados grandes podem ter centenas de entradas, rótulos e outros elementos individuais.
+* As grades podem ter milhares de células.
+* As plotagens de dispersão podem ter milhões de pontos de dados.
 
 Se modelar cada unidade como instâncias de componente separadas, haverá muitos deles que o desempenho de renderização se torna crítico. Esta seção fornece conselhos sobre como tornar esses componentes leves para que a interface do usuário permaneça rápida e responsiva.
 
@@ -162,8 +131,8 @@ Se modelar cada unidade como instâncias de componente separadas, haverá muitos
 
 Cada componente é uma ilha separada que pode ser renderizada independentemente de seus pais e filhos. Ao escolher como dividir a interface do usuário em uma hierarquia de componentes, você está tomando controle sobre a granularidade da renderização da interface do usuário. Isso pode ser bom ou ruim para o desempenho.
 
- * Dividindo a interface do usuário em mais componentes, você pode ter partes menores da rerenderização da interface do usuário quando ocorrem eventos. Por exemplo, quando um usuário clica em um botão em uma linha de tabela, você pode ter apenas a rerenderização de linha única em vez de toda a página ou tabela.
- * No entanto, cada componente extra envolve alguma sobrecarga extra de memória e CPU para lidar com seu estado independente e ciclo de vida de renderização.
+* Dividindo a interface do usuário em mais componentes, você pode ter partes menores da rerenderização da interface do usuário quando ocorrem eventos. Por exemplo, quando um usuário clica em um botão em uma linha de tabela, você pode ter apenas a rerenderização de linha única em vez de toda a página ou tabela.
+* No entanto, cada componente extra envolve alguma sobrecarga extra de memória e CPU para lidar com seu estado independente e ciclo de vida de renderização.
 
 Ao ajustar o desempenho do Blazor WebAssembly no .NET 5, medimos uma sobrecarga de renderização de cerca de 0, 6 ms por instância de componente. Isso se baseia em um componente simples que aceita três parâmetros em execução em um laptop típico. Internamente, a sobrecarga está em grande parte devido à recuperação do estado por componente de dicionários e passagem e recebimento de parâmetros. Por multiplicação, você pode ver que a adição de 2.000 instâncias de componente extras adicionará 0,12 segundos ao tempo de renderização e a interface do usuário começaria a ficar lenta para os usuários.
 
@@ -297,8 +266,8 @@ No exemplo anterior, `Data` é diferente para cada célula, mas `Options` é com
 
 O `<CascadingValue>` componente tem um parâmetro opcional chamado `IsFixed` .
 
- * Se o `IsFixed` valor for `false` (o padrão), cada destinatário do valor em cascata configurará uma assinatura para receber notificações de alteração. Nesse caso, cada `[CascadingParameter]` um é **substancialmente mais caro** do que `[Parameter]` o normal devido ao acompanhamento da assinatura.
- * Se o `IsFixed` valor for `true` (por exemplo, `<CascadingValue Value="@someValue" IsFixed="true">` ), destinatários receberá o valor inicial, mas *não* configurará nenhuma assinatura para receber atualizações. Nesse caso, cada `[CascadingParameter]` uma é leve e **não mais cara** do que uma normal `[Parameter]` .
+* Se o `IsFixed` valor for `false` (o padrão), cada destinatário do valor em cascata configurará uma assinatura para receber notificações de alteração. Nesse caso, cada `[CascadingParameter]` um é **substancialmente mais caro** do que `[Parameter]` o normal devido ao acompanhamento da assinatura.
+* Se o `IsFixed` valor for `true` (por exemplo, `<CascadingValue Value="@someValue" IsFixed="true">` ), destinatários receberá o valor inicial, mas *não* configurará nenhuma assinatura para receber atualizações. Nesse caso, cada `[CascadingParameter]` uma é leve e **não mais cara** do que uma normal `[Parameter]` .
 
 Sempre que possível, você deve usar `IsFixed="true"` em valores em cascata. Você pode fazer isso sempre que o valor que está sendo fornecido não for alterado ao longo do tempo. No padrão comum em que um componente passa `this` como um valor em cascata, você deve usar `IsFixed="true"` :
 
@@ -338,9 +307,9 @@ Um dos principais aspectos da sobrecarga de renderização por componente é gra
 
 Em alguns casos extremos, talvez você queira evitar a reflexão e implementar sua própria lógica de configuração de parâmetro manualmente. Isso pode ser aplicável quando:
 
- * Você tem um componente que renderiza extremamente frequentemente (por exemplo, há centenas ou milhares de cópias dele na interface do usuário).
- * Ele aceita muitos parâmetros.
- * Você descobre que a sobrecarga dos parâmetros de recebimento tem um impacto observável na capacidade de resposta da interface do usuário.
+* Você tem um componente que renderiza extremamente frequentemente (por exemplo, há centenas ou milhares de cópias dele na interface do usuário).
+* Ele aceita muitos parâmetros.
+* Você descobre que a sobrecarga dos parâmetros de recebimento tem um impacto observável na capacidade de resposta da interface do usuário.
 
 Nesses casos, você pode substituir o método virtual do componente <xref:Microsoft.AspNetCore.Components.ComponentBase.SetParametersAsync%2A> e implementar sua própria lógica específica do componente. O exemplo a seguir evita deliberadamente quaisquer pesquisas de dicionário:
 
@@ -452,8 +421,8 @@ Essa técnica pode ser ainda mais importante para Blazor Server o, já que cada 
 
 Chamadas entre .NET e JavaScript envolvem alguma sobrecarga adicional porque:
 
- * Por padrão, as chamadas são assíncronas.
- * Por padrão, os parâmetros e os valores de retorno são serializados em JSON. Isso é para fornecer um mecanismo de conversão fácil de entender entre os tipos .NET e JavaScript.
+* Por padrão, as chamadas são assíncronas.
+* Por padrão, os parâmetros e os valores de retorno são serializados em JSON. Isso é para fornecer um mecanismo de conversão fácil de entender entre os tipos .NET e JavaScript.
 
 Além disso Blazor Server , essas chamadas são passadas pela rede.
 

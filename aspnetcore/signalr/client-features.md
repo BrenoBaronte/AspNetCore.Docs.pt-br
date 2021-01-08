@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: signalr/client-features
-ms.openlocfilehash: 1d1778f95c53179ca05eaced3d1913f208220df4
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: 65ad619bb943a0e5ffbaec7ec80243972dafc49f
+ms.sourcegitcommit: 8b0e9a72c1599ce21830c843558a661ba908ce32
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93050973"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98024659"
 ---
 # <a name="aspnet-core-no-locsignalr-clients"></a>SignalRClientes ASP.NET Core
 
@@ -57,7 +57,7 @@ A tabela a seguir mostra os recursos e o suporte para os clientes que oferecem s
 | Transporte de eventos de Server-Sent |2.1.0|1.0.0|1.0.0|❌|
 | Transporte de sondagem longa |2.1.0|1.0.0|1.0.0|3.0.0|
 | Protocolo de Hub JSON |2.1.0|1.0.0|1.0.0|1.0.0|
-| Protocolo de Hub do MessagePack |2.1.0|1.0.0|1.0.0|❌|
+| Protocolo de Hub do MessagePack |2.1.0|1.0.0|1.0.0|5.0.0|
 
 O suporte à habilitação de recursos de cliente adicionais é acompanhado em [nosso Issue Tracker](https://github.com/dotnet/AspNetCore/issues).
 

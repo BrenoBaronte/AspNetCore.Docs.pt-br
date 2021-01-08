@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/security/webassembly/index
-ms.openlocfilehash: fc6fa075faa4fed1c2bf938d82c4dbfe631c31d3
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: c4d1095d3c3b457ca4d94cb1a573c3dc49548ff3
+ms.sourcegitcommit: 8b0e9a72c1599ce21830c843558a661ba908ce32
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93055061"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98024633"
 ---
 # <a name="secure-aspnet-core-no-locblazor-webassembly"></a>ASP.NET Core seguro Blazor WebAssembly
 
@@ -138,3 +138,9 @@ As diretrizes de configuração adicionais são encontradas nos seguintes artigo
 Para obter mais diretrizes de configuração, consulte <xref:blazor/security/webassembly/additional-scenarios> .
 
 ::: moniker-end
+
+## <a name="additional-resources"></a>Recursos adicionais
+
+* <xref:host-and-deploy/proxy-load-balancer>: Inclui diretrizes sobre:
+  * Usando o middleware de cabeçalhos encaminhados para preservar as informações do esquema HTTPS entre servidores proxy e redes internas.
+  * Cenários adicionais e casos de uso, incluindo configuração de esquema manual, alterações de caminho de solicitação para roteamento de solicitação correto e encaminhamento do esquema de solicitação para proxies inversos do Linux e não do IIS.

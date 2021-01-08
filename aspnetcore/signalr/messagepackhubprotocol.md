@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: signalr/messagepackhubprotocol
-ms.openlocfilehash: e7d19a42e48048d2be4b87d6b0ac1ba6b2596ff1
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: 7c3640e9cd2c5d392400a115813584861f789554
+ms.sourcegitcommit: 8b0e9a72c1599ce21830c843558a661ba908ce32
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93058162"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98024685"
 ---
 # <a name="use-messagepack-hub-protocol-in-no-locsignalr-for-aspnet-core"></a>Usar o protocolo Hub MessagePack no SignalR para ASP.NET Core
 
@@ -97,10 +97,10 @@ Depois de instalar o pacote NPM, o módulo pode ser usado diretamente por meio d
 
 *node_modules\\@microsoft\signalr-protocol-msgpack\dist\browser\signalr-protocol-msgpack.js* 
 
-Em um navegador, a `msgpack5` biblioteca também deve ser referenciada. Use uma `<script>` marca para criar uma referência. A biblioteca pode ser encontrada em *node_modules\msgpack5\dist\msgpack5.js* .
+Em um navegador, a `msgpack5` biblioteca também deve ser referenciada. Use uma `<script>` marca para criar uma referência. A biblioteca pode ser encontrada em *node_modules\msgpack5\dist\msgpack5.js*.
 
 > [!NOTE]
-> Ao usar o `<script>` elemento, a ordem é importante. Se *signalr-protocol-msgpack.js* for referenciado antes de *msgpack5.js* , ocorrerá um erro ao tentar se conectar com MessagePack. *signalr.js* também é necessário antes de *signalr-protocol-msgpack.js* .
+> Ao usar o `<script>` elemento, a ordem é importante. Se *signalr-protocol-msgpack.js* for referenciado antes de *msgpack5.js*, ocorrerá um erro ao tentar se conectar com MessagePack. *signalr.js* também é necessário antes de *signalr-protocol-msgpack.js*.
 
 ```html
 <script src="~/lib/signalr/signalr.js"></script>
@@ -119,6 +119,26 @@ const connection = new signalR.HubConnectionBuilder()
 
 > [!NOTE]
 > Neste momento, não há nenhuma opção de configuração para o protocolo MessagePack no cliente JavaScript.
+
+### <a name="java-client"></a>Cliente Java
+
+Para habilitar o MessagePack com Java, instale o `com.microsoft.signalr.messagepack` pacote. Ao usar gradle, adicione a seguinte linha à `dependencies` seção do arquivo *Build. gradle* :
+
+```gradle
+implementation 'com.microsoft.signalr.messagepack:signalr-messagepack:5.0.0'
+```
+
+Ao usar o Maven, adicione as seguintes linhas dentro do `<dependencies>` elemento do arquivo de *pom.xml* :
+
+[!code-xml[pom.xml dependency element messagePack](java-client/sample/pom.xml?name=snippet_dependencyElement_messagePack)]
+
+Ligue `withHubProtocol(new MessagePackHubProtocol())` para `HubConnectionBuilder` .
+
+```java
+HubConnection messagePackConnection = HubConnectionBuilder.create("YOUR HUB URL HERE")
+    .withHubProtocol(new MessagePackHubProtocol())
+    .build();
+```
 
 ## <a name="messagepack-quirks"></a>Peculiaridades MessagePacks
 
@@ -187,6 +207,10 @@ InvalidDataException: Error binding arguments. Make sure that the types of the p
 ```
 
 Para obter mais informações sobre essa limitação, consulte o problema do GitHub [ASPNET/ SignalR #2937](https://github.com/aspnet/SignalR/issues/2937).
+
+### <a name="chars-and-strings-in-java"></a>Chars e cadeias de caracteres em Java
+
+No cliente Java, os `char` objetos serão serializados como objetos de um caractere `String` . Isso está em contraste com o cliente C# e JavaScript, que os serializa como `short` objetos. A especificação de MessagePack em si não define o comportamento de `char` objetos, portanto, cabe ao autor da biblioteca determinar como serializá-los. A diferença no comportamento entre nossos clientes é um resultado das bibliotecas usadas para nossas implementações.
 
 ## <a name="related-resources"></a>Recursos relacionados
 
@@ -277,10 +301,10 @@ Depois de instalar o pacote NPM, o módulo pode ser usado diretamente por meio d
 
 *node_modules\\@microsoft\signalr-protocol-msgpack\dist\browser\signalr-protocol-msgpack.js* 
 
-Em um navegador, a `msgpack5` biblioteca também deve ser referenciada. Use uma `<script>` marca para criar uma referência. A biblioteca pode ser encontrada em *node_modules\msgpack5\dist\msgpack5.js* .
+Em um navegador, a `msgpack5` biblioteca também deve ser referenciada. Use uma `<script>` marca para criar uma referência. A biblioteca pode ser encontrada em *node_modules\msgpack5\dist\msgpack5.js*.
 
 > [!NOTE]
-> Ao usar o `<script>` elemento, a ordem é importante. Se *signalr-protocol-msgpack.js* for referenciado antes de *msgpack5.js* , ocorrerá um erro ao tentar se conectar com MessagePack. *signalr.js* também é necessário antes de *signalr-protocol-msgpack.js* .
+> Ao usar o `<script>` elemento, a ordem é importante. Se *signalr-protocol-msgpack.js* for referenciado antes de *msgpack5.js*, ocorrerá um erro ao tentar se conectar com MessagePack. *signalr.js* também é necessário antes de *signalr-protocol-msgpack.js*.
 
 ```html
 <script src="~/lib/signalr/signalr.js"></script>
@@ -457,10 +481,10 @@ Depois de instalar o pacote NPM, o módulo pode ser usado diretamente por meio d
 
 *node_modules\\@aspnet\signalr-protocol-msgpack\dist\browser\signalr-protocol-msgpack.js*
 
-Em um navegador, a `msgpack5` biblioteca também deve ser referenciada. Use uma `<script>` marca para criar uma referência. A biblioteca pode ser encontrada em *node_modules\msgpack5\dist\msgpack5.js* .
+Em um navegador, a `msgpack5` biblioteca também deve ser referenciada. Use uma `<script>` marca para criar uma referência. A biblioteca pode ser encontrada em *node_modules\msgpack5\dist\msgpack5.js*.
 
 > [!NOTE]
-> Ao usar o `<script>` elemento, a ordem é importante. Se *signalr-protocol-msgpack.js* for referenciado antes de *msgpack5.js* , ocorrerá um erro ao tentar se conectar com MessagePack. *signalr.js* também é necessário antes de *signalr-protocol-msgpack.js* .
+> Ao usar o `<script>` elemento, a ordem é importante. Se *signalr-protocol-msgpack.js* for referenciado antes de *msgpack5.js*, ocorrerá um erro ao tentar se conectar com MessagePack. *signalr.js* também é necessário antes de *signalr-protocol-msgpack.js*.
 
 ```html
 <script src="~/lib/signalr/signalr.js"></script>
