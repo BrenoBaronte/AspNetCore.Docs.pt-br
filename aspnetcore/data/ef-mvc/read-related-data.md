@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: data/ef-mvc/read-related-data
-ms.openlocfilehash: 610a9e9b0007fb468ea9cdae6fadd2e756de4290
-ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
+ms.openlocfilehash: b1adca435b48db22a176d33a216c07d6647a6695
+ms.sourcegitcommit: 97243663fd46c721660e77ef652fe2190a461f81
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "93054047"
+ms.lasthandoff: 01/09/2021
+ms.locfileid: "98058305"
 ---
 # <a name="tutorial-read-related-data---aspnet-mvc-with-ef-core"></a>Tutorial: ler dados relacionados-ASP.NET MVC com EF Core
 
@@ -183,7 +183,17 @@ Em seguida, se um curso foi selecionado, o curso selecionado é recuperado na li
 
 Em *Views/Instructors/Index.cshtml*, substitua o código de modelo pelo código a seguir. As alterações são realçadas.
 
-[!code-cshtml[](intro/samples/cu/Views/Instructors/Index1.cshtml?range=1-64&highlight=1,3-7,15-19,24,26-31,41-54,56)]
+::: moniker range=">= aspnetcore-2.2"
+
+[!code-cshtml[](intro/samples/5cu-snap/Views/Instructors/Index.cshtml?range=1-62&highlight=1,3-7,15-19,24,26-31,41-52,54)]
+
+::: moniker-end
+
+::: moniker range="<= aspnetcore-2.1"
+
+[!code-cshtml[](intro/samples/cu/Views/Instructors/Index1.cshtml?range=1-62&highlight=1,3-7,15-19,24,26-31,41-52,54)]
+
+::: moniker-end
 
 Você fez as seguintes alterações no código existente:
 
@@ -193,7 +203,7 @@ Você fez as seguintes alterações no código existente:
 
 * Adicionou uma coluna **Office** que exibe `item.OfficeAssignment.Location` somente se `item.OfficeAssignment` não é nulo. (Como essa é uma relação um para zero ou um, pode não haver uma entidade OfficeAssignment relacionada.)
 
-  ```html
+  ```cshtml
   @if (item.OfficeAssignment != null)
   {
       @item.OfficeAssignment.Location
@@ -202,20 +212,11 @@ Você fez as seguintes alterações no código existente:
 
 * Adicionou uma coluna **Courses** que exibe os cursos ministrados por cada instrutor. Para obter mais informações, consulte a seção [transição de linha explícita](xref:mvc/views/razor#explicit-line-transition) do Razor artigo de sintaxe.
 
-* Adicionou um código que adiciona `class="success"` dinamicamente ao elemento `tr` do instrutor selecionado. Isso define uma cor da tela de fundo para a linha selecionada usando uma classe Bootstrap.
-
-  ```html
-  string selectedRow = "";
-  if (item.ID == (int?)ViewData["InstructorID"])
-  {
-      selectedRow = "success";
-  }
-  <tr class="@selectedRow">
-  ```
+* Foi adicionado um código que adiciona condicionalmente uma classe CSS de Bootstrap ao `tr` elemento do instrutor selecionado. Essa classe define uma cor de plano de fundo para a linha selecionada.
 
 * Adicionou um novo hiperlink rotulado **Selecionar** imediatamente antes dos outros links em cada linha, o que faz com que a ID do instrutor selecionado seja enviada para o método `Index`.
 
-  ```html
+  ```cshtml
   <a asp-action="Index" asp-route-id="@item.ID">Select</a> |
   ```
 

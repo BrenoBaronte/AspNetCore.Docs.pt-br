@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: data/ef-mvc/update-related-data
-ms.openlocfilehash: f41d0b1d7ba46ef4867e0d160dc61f21042ce403
-ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
+ms.openlocfilehash: 9ad0de9984b42c2b14dfaf48c74660915de93be1
+ms.sourcegitcommit: 97243663fd46c721660e77ef652fe2190a461f81
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "93053937"
+ms.lasthandoff: 01/09/2021
+ms.locfileid: "98058318"
 ---
 # <a name="tutorial-update-related-data---aspnet-mvc-with-ef-core"></a>Tutorial: atualizar dados relacionados-ASP.NET MVC com EF Core
 
@@ -34,7 +34,7 @@ As ilustrações a seguir mostram algumas das páginas com as quais você trabal
 
 ![Página Editar Curso](update-related-data/_static/course-edit.png)
 
-![Página Editar Instrutor](update-related-data/_static/instructor-edit-courses.png)
+![Editar página do instrutor](update-related-data/_static/instructor-edit-courses.png)
 
 Neste tutorial, você:
 
@@ -91,7 +91,7 @@ Para otimizar o desempenho das páginas Detalhes do Curso e Excluir, adicione ch
 
 Em *Views/Courses/Create.cshtml*, adicione uma opção "Selecionar Departamento" à lista suspensa **Departamento**, altere a legenda de **DepartmentID** para **Departamento** e adicione uma mensagem de validação.
 
-[!code-cshtml[](intro/samples/cu/Views/Courses/Create.cshtml?highlight=2-6&range=29-34)]
+[!code-cshtml[](intro/samples/cu/Views/Courses/Create.cshtml?highlight=2-6&range=29-35)]
 
 Em *Views/Courses/Edit.cshtml*, faça a mesma alteração no campo Departamento que você acabou de fazer em *Create.cshtml*.
 

@@ -19,19 +19,22 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/security/webassembly/aad-groups-roles
-ms.openlocfilehash: ded70f028b3021574ba260838837d9b23abd72f1
-ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
+ms.openlocfilehash: 96a7dde9a5a756e40125ffda4c54fbf24fdc616a
+ms.sourcegitcommit: 97243663fd46c721660e77ef652fe2190a461f81
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "94981876"
+ms.lasthandoff: 01/09/2021
+ms.locfileid: "98058253"
 ---
 # <a name="azure-active-directory-aad-groups-administrator-roles-and-user-defined-roles"></a>Azure Active Directory (AAD) grupos, funções de administrador e funções definidas pelo usuário
 
 De [Luke Latham](https://github.com/guardrex) e [Javier Calvarro Nelson](https://github.com/javiercn)
 
 > [!NOTE]
-> Este artigo se aplica a Blazor ASP.NET Core aplicativos versão 3,1 com o Microsoft Identity v 1.0 e está agendado para atualização para 5,0 com Identity v 2.0. Para obter mais informações, consulte [ Blazor WASM com grupos e funções do AAD/B2C (dotnet/AspNetCore.Docs #17683)](https://github.com/dotnet/AspNetCore.Docs/issues/17683).
+> Este artigo se aplica a Blazor ASP.NET Core aplicativos versão 3,1 com o Microsoft Identity 1,0 e será atualizado para 5,0 com Identity 2,0 em breve. Para obter mais informações, consulte o seguinte problema do GitHub e solicitação de pull. A guia **arquivos alterados** da solicitação pull contém o texto de rascunho e exemplos para as atualizações do artigo. Após a revisão e as atualizações finais, a solicitação de pull será mesclada no conjunto de documentação ao vivo.
+>
+> * Problema: [ Blazor WASM com grupos e funções do AAD (dotnet/AspNetCore.Docs #17683)](https://github.com/dotnet/AspNetCore.Docs/issues/17683)
+> * Solicitação de pull: [ Blazor tópico sobre grupos e funções do AAD 5,0 (dotnet/AspNetCore.Docs #20856)](https://github.com/dotnet/AspNetCore.Docs/pull/20856)
 
 Azure Active Directory (AAD) fornece várias abordagens de autorização que podem ser combinadas com ASP.NET Core Identity :
 
@@ -521,7 +524,7 @@ A chamada para API do Graph pelo aplicativo de API de servidor requer apenas um 
 * Confirme se o registro do aplicativo do *servidor* recebeu o escopo de API do Graph de **aplicativo** (não **delegado**) para `Directory.Read.All` , que é o nível de acesso com privilégios mínimos para grupos de segurança. Confirme se o consentimento do administrador é aplicado ao escopo depois de fazer a atribuição de escopo.
 * Atribua um novo segredo do cliente ao aplicativo do *servidor* . Observe o segredo para a configuração do aplicativo na seção [configurações do aplicativo](#app-settings) .
 
-### <a name="app-settings"></a>Configurações do aplicativo
+### <a name="app-settings"></a>Configurações de aplicativo
 
 No arquivo de configurações do aplicativo ( `appsettings.json` ou `appsettings.Production.json` ), crie uma `ClientSecret` entrada com o segredo do cliente do aplicativo do *servidor* do portal do Azure:
 

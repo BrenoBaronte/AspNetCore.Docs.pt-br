@@ -17,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: mvc/views/razor
-ms.openlocfilehash: 91e35a7cbd97e2bd6e77566362f02409915de7d7
-ms.sourcegitcommit: 3f0ad1e513296ede1bff39a05be6c278e879afed
+ms.openlocfilehash: cb9ffab19062bf726dd519c782d502f76e372073
+ms.sourcegitcommit: 97243663fd46c721660e77ef652fe2190a461f81
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96035704"
+ms.lasthandoff: 01/09/2021
+ms.locfileid: "98058279"
 ---
 # <a name="no-locrazor-syntax-reference-for-aspnet-core"></a>Razor referência de sintaxe para ASP.NET Core
 
@@ -611,7 +611,7 @@ A `@inject` diretiva permite que a Razor página Insira um serviço do [contêin
 
 *Esse cenário se aplica somente a Razor componentes (. Razor).*
 
-A `@layout` diretiva especifica um layout para um Razor componente. Os componentes de layout são usados para evitar casos de duplicação e inconsistência no código. Para obter mais informações, consulte <xref:blazor/layouts>.
+A `@layout` diretiva especifica um layout para componentes roteáveis Razor que têm uma [`@page`](#page) diretiva. Os componentes de layout são usados para evitar casos de duplicação e inconsistência no código. Para obter mais informações, consulte <xref:blazor/layouts>.
 
 ::: moniker-end
 

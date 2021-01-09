@@ -5,7 +5,7 @@ description: Saiba mais sobre o tratamento de erros com as APIs da Web do ASP.NE
 monikerRange: '>= aspnetcore-2.1'
 ms.author: prkrishn
 ms.custom: mvc
-ms.date: 07/23/2020
+ms.date: 1/11/2021
 no-loc:
 - appsettings.json
 - ASP.NET Core Identity
@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: web-api/handle-errors
-ms.openlocfilehash: 0efcf1bbeeb65cf7f4420f8c50fb4adf7d1d016d
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: 92e9350a7892f8f38f64d4ebd68d54a97ec7e994
+ms.sourcegitcommit: 97243663fd46c721660e77ef652fe2190a461f81
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93052520"
+ms.lasthandoff: 01/09/2021
+ms.locfileid: "98058370"
 ---
 # <a name="handle-errors-in-aspnet-core-web-apis"></a>Tratar erros em APIs da Web ASP.NET Core
 
@@ -127,7 +127,9 @@ A resposta formatada em HTML se torna útil durante o teste por meio de ferramen
 ::: moniker-end
 
 > [!WARNING]
-> Habilite a página de exceção do desenvolvedor **somente quando o aplicativo estiver em execução no ambiente de desenvolvimento** . Não é recomendável compartilhar informações de exceção detalhadas publicamente quando o aplicativo é executado em produção. Para saber mais sobre a configuração de ambientes, confira <xref:fundamentals/environments>.
+> Habilite a página de exceção do desenvolvedor **somente quando o aplicativo estiver em execução no ambiente de desenvolvimento**. Não compartilhe informações de exceção detalhadas publicamente quando o aplicativo for executado em produção. Para saber mais sobre a configuração de ambientes, confira <xref:fundamentals/environments>.
+>
+> Não marque o método de ação do manipulador de erros com atributos do método HTTP, como `HttpGet` . Os verbos explícitos impedem que algumas solicitações atinjam o método de ação. Permitir acesso anônimo ao método se os usuários não autenticados tiverem que ver o erro.
 
 ## <a name="exception-handler"></a>Manipulador de exceção
 
@@ -222,6 +224,8 @@ O middleware de manipulação de exceção também pode fornecer uma saída de n
 
     ::: moniker-end
 
+    O código anterior chama [ControllerBase. problema](xref:Microsoft.AspNetCore.Mvc.ControllerBase.Problem%2A) para criar uma <xref:Microsoft.AspNetCore.Mvc.ProblemDetails> resposta.
+
 ## <a name="use-exceptions-to-modify-the-response"></a>Usar exceções para modificar a resposta
 
 O conteúdo da resposta pode ser modificado de fora do controlador. Na API Web do ASP.NET 4. x, uma maneira de fazer isso era usando o <xref:System.Web.Http.HttpResponseException> tipo. ASP.NET Core não inclui um tipo equivalente. O suporte para `HttpResponseException` pode ser adicionado com as seguintes etapas:
@@ -234,7 +238,7 @@ O conteúdo da resposta pode ser modificado de fora do controlador. Na API Web d
 
     [!code-csharp[](handle-errors/samples/3.x/Filters/HttpResponseExceptionFilter.cs?name=snippet_HttpResponseExceptionFilter)]
 
-    No filtro anterior, o número mágico 10 é subtraído do valor inteiro máximo. Subtrair esse número permite que outros filtros sejam executados no final do pipeline.
+    O filtro anterior especifica um `Order` do valor inteiro máximo menos 10. Isso permite que outros filtros sejam executados no final do pipeline.
 
 1. No `Startup.ConfigureServices` , adicione o filtro de ação à coleção de filtros:
 
@@ -337,3 +341,7 @@ Use a propriedade <xref:Microsoft.AspNetCore.Mvc.ApiBehaviorOptions.ClientErrorM
 [!code-csharp[](index/samples/2.x/2.2/Startup.cs?name=snippet_ConfigureApiBehaviorOptions&highlight=9-10)]
 
 ::: moniker-end
+
+## <a name="custom-middleware-to-handle-exceptions"></a>Middleware personalizado para manipular exceções
+
+Os padrões no middleware de manipulação de exceção funcionam bem para a maioria dos aplicativos. Para aplicativos que exigem manipulação de exceção especializada, considere [Personalizar o middleware de manipulação de exceção](xref:fundamentals/error-handling#exception-handler-lambda).
