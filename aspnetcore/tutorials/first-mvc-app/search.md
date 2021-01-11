@@ -17,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: tutorials/first-mvc-app/search
-ms.openlocfilehash: 657072803f59feb99de8b31ddb3a6433d832aa30
-ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
+ms.openlocfilehash: dbd970dcf8877d1bb7dc99ba5d31bd311f8a7663
+ms.sourcegitcommit: 2fea9bfe6127bbbdbb438406c82529b2bc331944
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "93059618"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98065539"
 ---
 # <a name="part-7-add-search-to-an-aspnet-core-mvc-app"></a>Parte 7, adicionar pesquisa a um aplicativo ASP.NET Core MVC
 
@@ -57,7 +57,7 @@ Navegue até `/Movies/Index`. Acrescente uma cadeia de consulta, como `?searchSt
 
 Se você alterar a assinatura do método `Index` para que ele tenha um parâmetro chamado `id`, o parâmetro `id` corresponderá o espaço reservado `{id}` opcional com as rotas padrão definidas em *Startup.cs*.
 
-[!code-csharp[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Startup.cs?highlight=5&name=snippet_1)]
+[!code-csharp[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie5/Startup.cs?highlight=5&name=snippet_route)]
 
 Altere o parâmetro para `id` e todas as ocorrências de `searchString` altere para `id`.
 
