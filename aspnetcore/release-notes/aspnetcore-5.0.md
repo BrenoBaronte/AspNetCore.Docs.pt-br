@@ -18,12 +18,12 @@ no-loc:
 - SignalR
 - Kestrel
 uid: aspnetcore-5.0
-ms.openlocfilehash: d7ffcb67637593ab2909885a9e1f6de74a78361b
-ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
+ms.openlocfilehash: 5caa412773bf9c8e3bed5ebc529d48b886de6956
+ms.sourcegitcommit: 063a06b644d3ade3c15ce00e72a758ec1187dd06
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "96855489"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98253066"
 ---
 # <a name="whats-new-in-aspnet-core-50"></a>O que há de novo no ASP.NET Core 5,0
 
@@ -333,7 +333,7 @@ Indicação de Nome de Servidor (SNI) é uma extensão de TLS para incluir um do
 ### <a name="http2"></a>HTTP/2
 
 * Reduções significativas em alocações no caminho de código HTTP/2.
-* Suporte para [compactação dinâmica HPack](https://tools.ietf.org/html/rfc7541) de cabeçalhos de resposta http/2 no [Kestrel](xref:fundamentals/servers/kestrel) . Para obter mais informações, consulte [tamanho da tabela de cabeçalho](xref:fundamentals/servers/kestrel#header-table-size) e [HPACK: a Killer (recurso) silenciosa do http/2](https://blog.cloudflare.com/hpack-the-silent-killer-feature-of-http-2/).
+* Suporte para [compactação dinâmica HPack](https://tools.ietf.org/html/rfc7541) de cabeçalhos de resposta http/2 no [Kestrel](xref:fundamentals/servers/kestrel) . Para obter mais informações, consulte [tamanho da tabela de cabeçalho](xref:fundamentals/servers/kestrel/options#header-table-size) e [HPACK: a Killer (recurso) silenciosa do http/2](https://blog.cloudflare.com/hpack-the-silent-killer-feature-of-http-2/).
 * Enviando quadros de PING HTTP/2: o HTTP/2 tem um mecanismo para enviar quadros de PING para garantir que uma conexão ociosa ainda esteja funcional. Garantir uma conexão viável é especialmente útil ao trabalhar com fluxos de vida útil longa que geralmente estão ociosos, mas apenas verificar a atividade intermitentemente, por exemplo, fluxos de gRPC. Os aplicativos podem enviar quadros de PING periódicos no [Kestrel](xref:fundamentals/servers/kestrel) definindo limites em <xref:Microsoft.AspNetCore.Server.Kestrel.KestrelServerOptions> :
 
    ```csharp

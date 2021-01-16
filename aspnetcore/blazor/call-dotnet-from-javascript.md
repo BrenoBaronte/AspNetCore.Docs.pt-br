@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/call-dotnet-from-javascript
-ms.openlocfilehash: c1a97919cb41f42a93f28d9b5f1ecf6bd3e64da0
-ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
+ms.openlocfilehash: 5a00bfb87b8cfe0fb3e2a832a553b8a4cd45ee6d
+ms.sourcegitcommit: 063a06b644d3ade3c15ce00e72a758ec1187dd06
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97592850"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98252494"
 ---
 # <a name="call-net-methods-from-javascript-functions-in-aspnet-core-no-locblazor"></a>Chamar métodos .NET de funções JavaScript no ASP.NET Core Blazor
 
@@ -456,6 +456,60 @@ Para obter mais informações, consulte os seguintes problemas:
 
 * [Não há suporte para referências circulares, use duas (dotNet/aspnetcore #20525)](https://github.com/dotnet/aspnetcore/issues/20525)
 * [Proposta: Adicionar mecanismo para lidar com referências circulares ao serializar (dotNet/tempo de execução #30820)](https://github.com/dotnet/runtime/issues/30820)
+
+## <a name="size-limits-on-js-interop-calls"></a>Limites de tamanho em chamadas de interoperabilidade JS
+
+No Blazor WebAssembly , a estrutura não impõe um limite no tamanho das entradas e saídas de interoperabilidade do js.
+
+No Blazor Server , as chamadas de interoperabilidade js têm tamanho limitado pelo SignalR tamanho máximo de mensagem de entrada permitido para métodos de Hub, que é imposto por <xref:Microsoft.AspNetCore.SignalR.HubOptions.MaximumReceiveMessageSize?displayProperty=nameWithType> (padrão: 32 KB). JS para SignalR mensagens do .net maiores do que <xref:Microsoft.AspNetCore.SignalR.HubOptions.MaximumReceiveMessageSize> lançar um erro. A estrutura não impõe um limite no tamanho de uma SignalR mensagem do hub para um cliente.
+
+Quando SignalR o log não está definido como [debug](xref:Microsoft.Extensions.Logging.LogLevel) ou [trace](xref:Microsoft.Extensions.Logging.LogLevel), um erro de tamanho de mensagem aparece apenas no console de ferramentas de desenvolvimento do navegador:
+
+> Erro: conexão desconectada com erro ' erro: o servidor retornou um erro ao fechar: a conexão foi encerrada com um erro. '.
+
+Quando o [ SignalR registro em log do lado do servidor](xref:signalr/diagnostics#server-side-logging) é definido como [depuração](xref:Microsoft.Extensions.Logging.LogLevel) ou [rastreamento](xref:Microsoft.Extensions.Logging.LogLevel), o registro em log do lado do servidor é um <xref:System.IO.InvalidDataException> erro de tamanho de mensagem.
+
+`appsettings.Development.json`:
+
+```json
+{
+  "DetailedErrors": true,
+  "Logging": {
+    "LogLevel": {
+      "Default": "Information",
+      "Microsoft": "Warning",
+      "Microsoft.Hosting.Lifetime": "Information",
+      "Microsoft.AspNetCore.SignalR": "Debug"
+    }
+  }
+}
+```
+
+> System. IO. InvalidDataException: o tamanho máximo da mensagem de 32768B foi excedido. O tamanho da mensagem pode ser configurado em AddHubOptions.
+
+Aumente o limite definindo <xref:Microsoft.AspNetCore.SignalR.HubOptions.MaximumReceiveMessageSize> em `Startup.ConfigureServices` . O exemplo a seguir define o tamanho máximo da mensagem de recebimento como 64 KB (64 * 1024):
+
+```csharp
+services.AddServerSideBlazor()
+   .AddHubOptions(options => options.MaximumReceiveMessageSize = 64 * 1024);
+```
+
+Aumentar o SignalR limite de tamanho da mensagem de entrada é o custo de exigir mais recursos do servidor e expõe o servidor para aumentar os riscos de um usuário mal-intencionado. Além disso, a leitura de uma grande quantidade de conteúdo na memória como cadeias de caracteres ou matrizes de bytes também pode resultar em alocações que funcionam mal com o coletor de lixo, resultando em penalidades de desempenho adicionais.
+
+Uma opção para ler grandes cargas é enviar o conteúdo em partes menores e processar a carga como um <xref:System.IO.Stream> . Isso pode ser usado ao ler cargas JSON grandes ou se os dados estiverem disponíveis em JavaScript como bytes brutos. Para obter um exemplo que demonstra o envio de grandes cargas binárias no Blazor Server que usa técnicas semelhantes ao `InputFile` componente, consulte o [aplicativo de exemplo enviar binário](https://github.com/aspnet/samples/tree/master/samples/aspnetcore/blazor/BinarySubmit).
+
+Considere as seguintes diretrizes ao desenvolver código que transfere uma grande quantidade de dados entre o JavaScript e o Blazor :
+
+* Divida os dados em partes menores e envie os segmentos de dados sequencialmente até que todos os dados sejam recebidos pelo servidor.
+* Não aloque objetos grandes em JavaScript e código C#.
+* Não bloqueie o thread da interface do usuário principal por longos períodos ao enviar ou receber dados.
+* Libere qualquer memória consumida quando o processo for concluído ou cancelado.
+* Impor os seguintes requisitos adicionais para fins de segurança:
+  * Declare o tamanho máximo de arquivo ou de dados que pode ser passado.
+  * Declare a taxa de carregamento mínima do cliente para o servidor.
+* Depois que os dados são recebidos pelo servidor, os dados podem ser:
+  * Temporariamente armazenados em um buffer de memória até que todos os segmentos sejam coletados.
+  * Consumido imediatamente. Por exemplo, os dados podem ser armazenados imediatamente em um banco de dado ou gravados no disco à medida que cada segmento é recebido.
 
 ## <a name="js-modules"></a>Módulos JS
 

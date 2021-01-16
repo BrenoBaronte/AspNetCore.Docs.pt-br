@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: fundamentals/servers/index
-ms.openlocfilehash: a27fdd70963830d22b3501972d6150dde5e1ea54
-ms.sourcegitcommit: fe2e3174c34bee1e425c6e52dd8f663fe52b8756
+ms.openlocfilehash: 49e299ed00ea0e5d54c1ba795971da379cd5b695
+ms.sourcegitcommit: 063a06b644d3ade3c15ce00e72a758ec1187dd06
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96174591"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98253131"
 ---
 # <a name="web-server-implementations-in-aspnet-core"></a>Implementações de servidor Web em ASP.NET Core
 
@@ -176,7 +176,30 @@ Um *launchSettings.jsno* arquivo fornece configuração ao iniciar um aplicativo
 
 O [HTTP/2](https://httpwg.org/specs/rfc7540.html) é compatível com ASP.NET Core nos seguintes cenários de implantação:
 
-::: moniker range=">= aspnetcore-2.2"
+::: moniker range=">= aspnetcore-5.0"
+
+* [Kestrel](xref:fundamentals/servers/kestrel/http2)
+  * Sistema operacional
+    * Windows Server 2016/Windows 10 ou posterior&dagger;
+    * Linux com OpenSSL 1.0.2 ou posterior (por exemplo, Ubuntu 16.04 ou posterior)
+    * O HTTP/2 será compatível com macOS em uma versão futura.
+  * Estrutura de destino: .NET Core 2.2 ou posterior
+* [HTTP.sys](xref:fundamentals/servers/httpsys#http2-support)
+  * Windows Server 2016/Windows 10 ou posterior
+  * Estrutura de destino: não aplicável a implantações de HTTP.sys.
+* [IIS (em processo)](xref:host-and-deploy/iis/index#http2-support)
+  * Windows Server 2016/Windows 10 ou posterior; IIS 10 ou posterior
+  * Estrutura de destino: .NET Core 2.2 ou posterior
+* [IIS (fora do processo)](xref:host-and-deploy/iis/index#http2-support)
+  * Windows Server 2016/Windows 10 ou posterior; IIS 10 ou posterior
+  * Conexões de servidor de borda voltadas para o público usam HTTP/2, mas a conexão de proxy reverso para o Kestrel usa HTTP/1.1.
+  * Estrutura de destino: não aplicável a implantações IIS fora de processo.
+
+&dagger;O Kestrel tem suporte limitado para HTTP/2 no Windows Server 2012 R2 e Windows 8.1. O suporte é limitado porque a lista de conjuntos de codificação TLS disponível nesses sistemas operacionais é limitada. Um certificado gerado usando um ECDSA (Algoritmo de Assinatura Digital Curva Elíptica) pode ser necessário para proteger conexões TLS.
+
+::: moniker-end
+
+::: moniker range=">= aspnetcore-2.2 < aspnetcore-5.0"
 
 * [Kestrel](xref:fundamentals/servers/kestrel#http2-support)
   * Sistema operacional

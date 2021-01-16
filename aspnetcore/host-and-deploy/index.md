@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: host-and-deploy/index
-ms.openlocfilehash: 4f3d4c29a189cf6aa14eb10f570f0b35d8ff9abc
-ms.sourcegitcommit: 92439194682dc788b8b5b3a08bd2184dc00e200b
+ms.openlocfilehash: 05d04a9c95910c805ea28578aba21a0658dd779a
+ms.sourcegitcommit: 063a06b644d3ade3c15ce00e72a758ec1187dd06
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96556613"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98252962"
 ---
 # <a name="host-and-deploy-aspnet-core"></a>Hospedar e implantar o ASP.NET Core
 
@@ -74,7 +74,17 @@ Um aplicativo ASP.NET Core é um aplicativo de console que deve ser iniciado qua
 
 Se o aplicativo usar o servidor Web do servidor [Kestrel](xref:fundamentals/servers/kestrel), você poderá usar [Nginx](xref:host-and-deploy/linux-nginx), [Apache](xref:host-and-deploy/linux-apache) ou [IIS](xref:host-and-deploy/iis/index) como um servidor proxy reverso. Um servidor proxy reverso recebe solicitações HTTP da Internet e encaminha-as para o Kestrel.
 
+::: moniker-end 
+
+::: moniker range=">= aspnetcore-5.0"
+Qualquer configuração&mdash;com ou sem um servidor proxy reverso&mdash;é uma configuração de hospedagem compatível. Para obter mais informações, consulte [Quando usar Kestrel com um proxy reverso](xref:fundamentals/servers/kestrel/when-to-use-a-reverse-proxy).
+::: moniker-end
+
+::: moniker range=">= aspnetcore-2.2 < aspnetcore-5.0"
 Qualquer configuração&mdash;com ou sem um servidor proxy reverso&mdash;é uma configuração de hospedagem compatível. Para obter mais informações, consulte [Quando usar Kestrel com um proxy reverso](xref:fundamentals/servers/kestrel#when-to-use-kestrel-with-a-reverse-proxy).
+::: moniker-end
+
+::: moniker range=">= aspnetcore-2.2"
 
 ## <a name="proxy-server-and-load-balancer-scenarios"></a>Servidor proxy e cenários de balanceador de carga
 

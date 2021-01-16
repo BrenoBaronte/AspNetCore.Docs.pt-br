@@ -5,7 +5,7 @@ description: Saiba como hospedar e implantar um Blazor aplicativo usando ASP.NET
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 10/09/2020
+ms.date: 01/12/2021
 no-loc:
 - appsettings.json
 - ASP.NET Core Identity
@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/host-and-deploy/webassembly
-ms.openlocfilehash: 55289dd7048c08ac61432c7cc062e74d2e69ee24
-ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
+ms.openlocfilehash: 77e4efe0ac2e87458558dabc78d47099b5698edc
+ms.sourcegitcommit: 063a06b644d3ade3c15ce00e72a758ec1187dd06
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97753121"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98252442"
 ---
 # <a name="host-and-deploy-aspnet-core-no-locblazor-webassembly"></a>Hospedar e implantar ASP.NET Core Blazor WebAssembly
 
@@ -620,18 +620,6 @@ Aumente o valor se as ferramentas de desenvolvedor do navegador ou uma ferrament
 
 Para obter mais informações sobre a configuração do servidor Web Nginx de produção, confira [Creating NGINX Plus and NGINX Configuration Files](https://docs.nginx.com/nginx/admin-guide/basic-functionality/managing-configuration-files/) (Criando arquivos de configuração do NGINX Plus e do NGINX).
 
-### <a name="nginx-in-docker"></a>Nginx no Docker
-
-Para hospedar Blazor no Docker usando o Nginx, configure o Dockerfile para usar a imagem Nginx baseada em Alpine. Atualize o Dockerfile para copiar o `nginx.config` arquivo para o contêiner.
-
-Adicione uma linha ao Dockerfile, conforme é mostrado no exemplo a seguir:
-
-```dockerfile
-FROM nginx:alpine
-COPY ./bin/Release/netstandard2.0/publish /usr/share/nginx/html/
-COPY nginx.conf /etc/nginx/nginx.conf
-```
-
 ### <a name="apache"></a>Apache
 
 Para implantar um Blazor WebAssembly aplicativo no CentOS 7 ou posterior:
@@ -874,7 +862,7 @@ Se os ativos de trabalho do serviço também estiverem em uso, adicione o seguin
 No Linux ou macOS:
 
 ```console
-for f in _framework/_bin/*; do mv "$f" "`echo $f | sed -e 's/\.dll\b/.bin/g'`"; done
+for f in _framework/_bin/*; do mv "$f" "`echo $f | sed -e 's/\.dll/.bin/g'`"; done
 sed -i 's/\.dll"/.bin"/g' _framework/blazor.boot.json
 ```
 

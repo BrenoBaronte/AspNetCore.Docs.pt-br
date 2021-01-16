@@ -19,18 +19,66 @@ no-loc:
 - Razor
 - SignalR
 uid: fundamentals/servers/kestrel
-ms.openlocfilehash: 5c9e1717ad603687343f015826a113e6945e4a41
-ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
+ms.openlocfilehash: 268a6e71d3bd290ed614e70d963d653924cdcc43
+ms.sourcegitcommit: 063a06b644d3ade3c15ce00e72a758ec1187dd06
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97854607"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98252728"
 ---
 # <a name="kestrel-web-server-implementation-in-aspnet-core"></a>Implementação do servidor Web Kestrel no ASP.NET Core
 
 Por [Tom Dykstra](https://github.com/tdykstra), [Chris Ross](https://github.com/Tratcher) e [Stephen Halter](https://twitter.com/halter73)
 
-::: moniker range=">= aspnetcore-3.0"
+::: moniker range=">= aspnetcore-5.0"
+
+O Kestrel é um [servidor Web multiplataforma para o ASP.NET Core](xref:fundamentals/servers/index). Kestrel é o servidor Web que está incluído e habilitado por padrão em ASP.NET Core modelos de projeto.
+
+O Kestrel dá suporte aos seguintes cenários:
+
+* HTTPS
+* [Http/2](xref:fundamentals/servers/kestrel/http2) (exceto no MacOS &dagger; )
+* Atualização do Opaque usado para habilitar o [WebSockets](xref:fundamentals/websockets)
+* Soquetes do UNIX para alto desempenho protegidos pelo Nginx
+
+&dagger;O HTTP/2 será compatível com macOS em uma versão futura.
+
+Há suporte para o Kestrel em todas as plataformas e versões compatíveis com o .NET Core.
+
+[Exibir ou baixar código de exemplo](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/servers/kestrel/samples/5.x) ([como baixar](xref:index#how-to-download-a-sample))
+
+## <a name="get-started"></a>Introdução
+
+Os modelos de projeto do ASP.NET Core usam o Kestrel por padrão. No *Program.cs*, o <xref:Microsoft.Extensions.Hosting.GenericHostBuilderExtensions.ConfigureWebHostDefaults*> método chama <xref:Microsoft.AspNetCore.Hosting.WebHostBuilderKestrelExtensions.UseKestrel*> :
+
+[!code-csharp[](kestrel/samples/5.x/KestrelSample/Program.cs?name=snippet_DefaultBuilder&highlight=8)]
+
+Para obter mais informações sobre como criar o host, consulte as seções *configurar um host* e *as configurações do construtor padrão* de <xref:fundamentals/host/generic-host#set-up-a-host> .
+
+## <a name="additional-resournces"></a>Técnicos adicionais
+
+<a name="endpoint-configuration"></a>
+* <xref:fundamentals/servers/kestrel/endpoints>
+<a name="kestrel-options"></a>
+* <xref:fundamentals/servers/kestrel/options>
+<a name="http2-support"></a>
+* <xref:fundamentals/servers/kestrel/http2>
+<a name="when-to-use-kestrel-with-a-reverse-proxy"></a>
+* <xref:fundamentals/servers/kestrel/when-to-use-a-reverse-proxy>
+<a name="host-filtering"></a>
+* <xref:fundamentals/servers/kestrel/host-filtering>
+* <xref:test/troubleshoot>
+* <xref:security/enforcing-ssl>
+* <xref:host-and-deploy/proxy-load-balancer>
+* [RFC 7230: Sintaxe e roteamento da mensagem (Seção 5.4: Host)](https://tools.ietf.org/html/rfc7230#section-5.4)
+* Ao usar soquetes UNIX no Linux, o soquete não é excluído automaticamente no aplicativo desligado. Para obter mais informações, consulte [este problema do GitHub](https://github.com/dotnet/aspnetcore/issues/14134).
+
+> [!NOTE]
+> A partir de ASP.NET Core 5,0, o transporte de libuv do Kestrel é obsoleto. O transporte libuv não recebe atualizações para dar suporte a novas plataformas de sistema operacional, como o Windows ARM64, e será removido em uma versão futura. Remova todas as chamadas para o <xref:Microsoft.AspNetCore.Hosting.WebHostBuilderLibuvExtensions.UseLibuv%2A> método obsoleto e use o transporte de soquete padrão do Kestrel em vez disso.
+
+::: moniker-end
+
+::: moniker range=">= aspnetcore-3.0 < aspnetcore-5.0"
 
 O Kestrel é um [servidor Web multiplataforma para o ASP.NET Core](xref:fundamentals/servers/index). O Kestrel é o servidor Web que está incluído por padrão em modelos de projeto do ASP.NET Core.
 
@@ -45,7 +93,7 @@ O Kestrel dá suporte aos seguintes cenários:
 
 Há suporte para o Kestrel em todas as plataformas e versões compatíveis com o .NET Core.
 
-[Exibir ou baixar código de exemplo](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/servers/kestrel/samples) ([como baixar](xref:index#how-to-download-a-sample))
+[Exibir ou baixar código de exemplo](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/servers/kestrel/samples/3.x) ([como baixar](xref:index#how-to-download-a-sample))
 
 ## <a name="http2-support"></a>Suporte do HTTP/2
 
@@ -63,7 +111,7 @@ O [HTTP/2](https://httpwg.org/specs/rfc7540.html) estará disponível para aplic
 
 Se uma conexão HTTP/2 for estabelecida, [HttpRequest.Protocol](xref:Microsoft.AspNetCore.Http.HttpRequest.Protocol*) relatará `HTTP/2`.
 
-HTTP/2 está desabilitado por padrão. Para obter mais informações sobre a configuração, consulte as seções [Opções do Kestrel](#kestrel-options) e [ListenOptions.Protocols](#listenoptionsprotocols).
+A partir do .NET Core 3,0, o HTTP/2 é habilitado por padrão. Para obter mais informações sobre a configuração, consulte as seções [Opções do Kestrel](#kestrel-options) e [ListenOptions.Protocols](#listenoptionsprotocols).
 
 ## <a name="when-to-use-kestrel-with-a-reverse-proxy"></a>Quando usar o Kestrel com um proxy reverso
 
@@ -355,34 +403,6 @@ webBuilder.ConfigureKestrel(serverOptions =>
 ```
 
 O valor padrão é 96 KB (98.304).
-
-::: moniker-end
-
-::: moniker range=">= aspnetcore-5.0"
-
-### <a name="http2-keep-alive-ping-configuration"></a>Configuração de ping de Keep Alive do HTTP/2
-
-O Kestrel pode ser configurado para enviar pings HTTP/2 para clientes conectados. Os pings HTTP/2 atendem a várias finalidades:
-
-* Mantenha as conexões ociosas ativas. Alguns clientes e servidores proxy fecham as conexões que estão ociosas. Os pings HTTP/2 são considerados como atividade em uma conexão e impedem que a conexão seja fechada como ociosa.
-* Feche as conexões não íntegras. As conexões nas quais o cliente não responde ao ping Keep Alive no tempo configurado são fechadas pelo servidor.
-
-Há duas opções de configuração relacionadas a pings de Keep Alive HTTP/2:
-
-* `Http2.KeepAlivePingInterval` é um `TimeSpan` que configura o ping interno. O servidor enviará um ping de Keep Alive para o cliente se ele não receber nenhum quadro para esse período de tempo. Os pings de Keep Alive são desabilitados quando essa opção é definida como `TimeSpan.MaxValue` . O valor padrão é `TimeSpan.MaxValue`.
-* `Http2.KeepAlivePingTimeout` é um `TimeSpan` que configura o tempo limite de ping. Se o servidor não receber nenhum quadro, como um ping de resposta, durante esse tempo limite, a conexão será fechada. O tempo limite de Keep Alive é desabilitado quando essa opção é definida como `TimeSpan.MaxValue` . O valor padrão é 20 segundos.
-
-```csharp
-webBuilder.ConfigureKestrel(serverOptions =>
-{
-    serverOptions.Limits.Http2.KeepAlivePingInterval = TimeSpan.FromSeconds(30);
-    serverOptions.Limits.Http2.KeepAlivePingTimeout = TimeSpan.FromSeconds(60);
-});
-```
-
-::: moniker-end
-
-::: moniker range=">= aspnetcore-3.0"
 
 ### <a name="trailers"></a>Trailers
 
@@ -986,18 +1006,6 @@ Middleware de Filtragem de Host está desabilitado por padrão. Para habilitar o
 >
 > Para obter mais informações sobre o Middleware de Cabeçalhos Encaminhados, confira <xref:host-and-deploy/proxy-load-balancer>.
 
-::: moniker-end
-
-::: moniker range=">= aspnetcore-5.0"
-
-## <a name="libuv-transport-configuration"></a>Configuração de transporte Libuv
-
-A partir de ASP.NET Core 5,0, o transporte de Libuv do Kestrel é obsoleto. O transporte Libuv não recebe atualizações para dar suporte a novas plataformas de sistema operacional, como o Windows ARM64, e será removido em uma versão futura. Remova todas as chamadas para o <xref:Microsoft.AspNetCore.Hosting.WebHostBuilderLibuvExtensions.UseLibuv%2A> método obsoleto e use o transporte de soquete padrão do Kestrel em vez disso.
-
-::: moniker-end
-
-::: moniker range=">= aspnetcore-3.0 < aspnetcore-5.0"
-
 ## <a name="libuv-transport-configuration"></a>Configuração de transporte Libuv
 
 Para projetos que exigem o uso de Libuv ( <xref:Microsoft.AspNetCore.Hosting.WebHostBuilderLibuvExtensions.UseLibuv%2A> ):
@@ -1029,6 +1037,44 @@ Para projetos que exigem o uso de Libuv ( <xref:Microsoft.AspNetCore.Hosting.Web
   }
   ```
 
+## <a name="http11-request-draining"></a>Descarga de solicitação HTTP/1.1
+
+A abertura de conexões HTTP é demorada. Para HTTPS, ele também consome muitos recursos. Portanto, o Kestrel tenta reutilizar conexões de acordo com o protocolo HTTP/1.1. Um corpo de solicitação deve ser totalmente consumido para permitir que a conexão seja reutilizada. O aplicativo nem sempre consome o corpo da solicitação, como `POST` solicitações em que o servidor retorna uma resposta de redirecionamento ou 404. No `POST` – caso de redirecionamento:
+
+* O cliente pode já ter enviado parte dos `POST` dados.
+* O servidor grava a resposta 301.
+* A conexão não pode ser usada para uma nova solicitação até que os `POST` dados do corpo da solicitação anterior tenham sido totalmente lidos.
+* Kestrel tenta drenar o corpo da solicitação. Drenar o corpo da solicitação significa ler e descartar os dados sem processá-los.
+
+O processo de descarga faz um tradoff entre permitir que a conexão seja reutilizada e o tempo necessário para drenar os dados restantes:
+
+* O descarregamento tem um tempo limite de cinco segundos, o que não é configurável.
+* Se todos os dados especificados pelo `Content-Length` `Transfer-Encoding` cabeçalho ou não tiverem sido lidos antes do tempo limite, a conexão será fechada.
+
+Às vezes, você pode querer encerrar a solicitação imediatamente, antes ou depois de gravar a resposta. Por exemplo, os clientes podem ter limites de dados restritivos, portanto, limitar os dados carregados pode ser uma prioridade. Nesses casos, para encerrar uma solicitação, chame [HttpContext. Abort](xref:Microsoft.AspNetCore.Http.HttpContext.Abort%2A) de um controlador, Razor página ou middleware.
+
+Há limitações para chamar `Abort` :
+
+* A criação de novas conexões pode ser lenta e dispendiosa.
+* Não há nenhuma garantia de que o cliente leu a resposta antes que a conexão seja fechada.
+* `Abort`A chamada deve ser rara e reservada para casos de erro graves, não erros comuns.
+  * Só chame `Abort` quando um problema específico precisar ser resolvido. Por exemplo, chame `Abort` se clientes mal-intencionados estão tentando `POST` dados ou quando há um bug no código do cliente que causa grandes ou inúmeras solicitações.
+  * Não chame `Abort` situações de erro comuns, como HTTP 404 (não encontrado).
+
+Chamar [HttpResponse. CompleteAsync](xref:Microsoft.AspNetCore.Http.HttpResponse.CompleteAsync%2A) antes `Abort` de chamar garante que o servidor concluiu a gravação da resposta. No entanto, o comportamento do cliente não é previsível e pode não ler a resposta antes que a conexão seja anulada.
+
+Esse processo é diferente para HTTP/2 porque o protocolo dá suporte à anulação de fluxos de solicitação individuais sem fechar a conexão. O tempo limite de esgotamento de cinco segundos não se aplica. Se houver algum dado de corpo de solicitação não lido depois de concluir uma resposta, o servidor enviará um quadro RST HTTP/2. Quadros de dados de corpo de solicitação adicionais são ignorados.
+
+Se possível, é melhor para os clientes utilizarem o cabeçalho de solicitação [esperado: 100-continue](https://developer.mozilla.org/docs/Web/HTTP/Status/100) e aguarde até que o servidor responda antes de começar a enviar o corpo da solicitação. Isso dá ao cliente uma oportunidade de examinar a resposta e anular antes de enviar dados desnecessários.
+
+## <a name="additional-resources"></a>Recursos adicionais
+
+* Ao usar soquetes UNIX no Linux, o soquete não é excluído automaticamente no aplicativo desligado. Para obter mais informações, consulte [este problema do GitHub](https://github.com/dotnet/aspnetcore/issues/14134).
+* <xref:test/troubleshoot>
+* <xref:security/enforcing-ssl>
+* <xref:host-and-deploy/proxy-load-balancer>
+* [RFC 7230: Sintaxe e roteamento da mensagem (Seção 5.4: Host)](https://tools.ietf.org/html/rfc7230#section-5.4)
+
 ::: moniker-end
 
 ::: moniker range="= aspnetcore-2.2"
@@ -1046,7 +1092,7 @@ O Kestrel dá suporte aos seguintes cenários:
 
 Há suporte para o Kestrel em todas as plataformas e versões compatíveis com o .NET Core.
 
-[Exibir ou baixar código de exemplo](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/servers/kestrel/samples) ([como baixar](xref:index#how-to-download-a-sample))
+[Exibir ou baixar código de exemplo](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/servers/kestrel/samples/2.x) ([como baixar](xref:index#how-to-download-a-sample))
 
 ## <a name="http2-support"></a>Suporte do HTTP/2
 
@@ -1980,6 +2026,44 @@ Middleware de Filtragem de Host está desabilitado por padrão. Para habilitar o
 >
 > Para obter mais informações sobre o Middleware de Cabeçalhos Encaminhados, confira <xref:host-and-deploy/proxy-load-balancer>.
 
+## <a name="http11-request-draining"></a>Descarga de solicitação HTTP/1.1
+
+A abertura de conexões HTTP é demorada. Para HTTPS, ele também consome muitos recursos. Portanto, o Kestrel tenta reutilizar conexões de acordo com o protocolo HTTP/1.1. Um corpo de solicitação deve ser totalmente consumido para permitir que a conexão seja reutilizada. O aplicativo nem sempre consome o corpo da solicitação, como `POST` solicitações em que o servidor retorna uma resposta de redirecionamento ou 404. No `POST` – caso de redirecionamento:
+
+* O cliente pode já ter enviado parte dos `POST` dados.
+* O servidor grava a resposta 301.
+* A conexão não pode ser usada para uma nova solicitação até que os `POST` dados do corpo da solicitação anterior tenham sido totalmente lidos.
+* Kestrel tenta drenar o corpo da solicitação. Drenar o corpo da solicitação significa ler e descartar os dados sem processá-los.
+
+O processo de descarga faz um tradoff entre permitir que a conexão seja reutilizada e o tempo necessário para drenar os dados restantes:
+
+* O descarregamento tem um tempo limite de cinco segundos, o que não é configurável.
+* Se todos os dados especificados pelo `Content-Length` `Transfer-Encoding` cabeçalho ou não tiverem sido lidos antes do tempo limite, a conexão será fechada.
+
+Às vezes, você pode querer encerrar a solicitação imediatamente, antes ou depois de gravar a resposta. Por exemplo, os clientes podem ter limites de dados restritivos, portanto, limitar os dados carregados pode ser uma prioridade. Nesses casos, para encerrar uma solicitação, chame [HttpContext. Abort](xref:Microsoft.AspNetCore.Http.HttpContext.Abort%2A) de um controlador, Razor página ou middleware.
+
+Há limitações para chamar `Abort` :
+
+* A criação de novas conexões pode ser lenta e dispendiosa.
+* Não há nenhuma garantia de que o cliente leu a resposta antes que a conexão seja fechada.
+* `Abort`A chamada deve ser rara e reservada para casos de erro graves, não erros comuns.
+  * Só chame `Abort` quando um problema específico precisar ser resolvido. Por exemplo, chame `Abort` se clientes mal-intencionados estão tentando `POST` dados ou quando há um bug no código do cliente que causa grandes ou inúmeras solicitações.
+  * Não chame `Abort` situações de erro comuns, como HTTP 404 (não encontrado).
+
+Chamar [HttpResponse. CompleteAsync](xref:Microsoft.AspNetCore.Http.HttpResponse.CompleteAsync%2A) antes `Abort` de chamar garante que o servidor concluiu a gravação da resposta. No entanto, o comportamento do cliente não é previsível e pode não ler a resposta antes que a conexão seja anulada.
+
+Esse processo é diferente para HTTP/2 porque o protocolo dá suporte à anulação de fluxos de solicitação individuais sem fechar a conexão. O tempo limite de esgotamento de cinco segundos não se aplica. Se houver algum dado de corpo de solicitação não lido depois de concluir uma resposta, o servidor enviará um quadro RST HTTP/2. Quadros de dados de corpo de solicitação adicionais são ignorados.
+
+Se possível, é melhor para os clientes utilizarem o cabeçalho de solicitação [esperado: 100-continue](https://developer.mozilla.org/docs/Web/HTTP/Status/100) e aguarde até que o servidor responda antes de começar a enviar o corpo da solicitação. Isso dá ao cliente uma oportunidade de examinar a resposta e anular antes de enviar dados desnecessários.
+
+## <a name="additional-resources"></a>Recursos adicionais
+
+* Ao usar soquetes UNIX no Linux, o soquete não é excluído automaticamente no aplicativo desligado. Para obter mais informações, consulte [este problema do GitHub](https://github.com/dotnet/aspnetcore/issues/14134).
+* <xref:test/troubleshoot>
+* <xref:security/enforcing-ssl>
+* <xref:host-and-deploy/proxy-load-balancer>
+* [RFC 7230: Sintaxe e roteamento da mensagem (Seção 5.4: Host)](https://tools.ietf.org/html/rfc7230#section-5.4)
+
 ::: moniker-end
 
 ::: moniker range="= aspnetcore-2.1"
@@ -1994,7 +2078,7 @@ O Kestrel dá suporte aos seguintes cenários:
 
 Há suporte para o Kestrel em todas as plataformas e versões compatíveis com o .NET Core.
 
-[Exibir ou baixar código de exemplo](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/servers/kestrel/samples) ([como baixar](xref:index#how-to-download-a-sample))
+[Exibir ou baixar código de exemplo](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/servers/kestrel/samples/2.x) ([como baixar](xref:index#how-to-download-a-sample))
 
 ## <a name="when-to-use-kestrel-with-a-reverse-proxy"></a>Quando usar o Kestrel com um proxy reverso
 
@@ -2770,8 +2854,6 @@ Middleware de Filtragem de Host está desabilitado por padrão. Para habilitar o
 >
 > Para obter mais informações sobre o Middleware de Cabeçalhos Encaminhados, confira <xref:host-and-deploy/proxy-load-balancer>.
 
-::: moniker-end
-
 ## <a name="http11-request-draining"></a>Descarga de solicitação HTTP/1.1
 
 A abertura de conexões HTTP é demorada. Para HTTPS, ele também consome muitos recursos. Portanto, o Kestrel tenta reutilizar conexões de acordo com o protocolo HTTP/1.1. Um corpo de solicitação deve ser totalmente consumido para permitir que a conexão seja reutilizada. O aplicativo nem sempre consome o corpo da solicitação, como `POST` solicitações em que o servidor retorna uma resposta de redirecionamento ou 404. No `POST` – caso de redirecionamento:
@@ -2809,3 +2891,5 @@ Se possível, é melhor para os clientes utilizarem o cabeçalho de solicitaçã
 * <xref:security/enforcing-ssl>
 * <xref:host-and-deploy/proxy-load-balancer>
 * [RFC 7230: Sintaxe e roteamento da mensagem (Seção 5.4: Host)](https://tools.ietf.org/html/rfc7230#section-5.4)
+
+::: moniker-end

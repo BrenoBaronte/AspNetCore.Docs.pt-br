@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: grpc/troubleshoot
-ms.openlocfilehash: cbce85caf7ba792253ba62c6be084c8905acd00f
-ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
+ms.openlocfilehash: 61d4d2204886f26b4ff55bc876825012809f1dfa
+ms.sourcegitcommit: 063a06b644d3ade3c15ce00e72a758ec1187dd06
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "93058708"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98253092"
 ---
 # <a name="troubleshoot-grpc-on-net-core"></a>Solucionar problemas do gRPC no .NET Core
 
@@ -126,7 +126,13 @@ public static IHostBuilder CreateHostBuilder(string[] args) =>
         });
 ```
 
+::: moniker range=">= aspnetcore-5.0"
+Quando um ponto de extremidade HTTP/2 é configurado sem TLS, o [ListenerOptions](xref:fundamentals/servers/kestrel/endpoints#listenoptionsprotocols) do ponto de extremidade deve ser definido como `HttpProtocols.Http2` . `HttpProtocols.Http1AndHttp2` Não pode ser usado porque o TLS é necessário para negociar HTTP/2. Sem o TLS, todas as conexões com o ponto de extremidade padrão para HTTP/1.1 e chamadas gRPC falham.
+::: moniker-end
+
+::: moniker range="< aspnetcore-5.0"
 Quando um ponto de extremidade HTTP/2 é configurado sem TLS, o [ListenerOptions](xref:fundamentals/servers/kestrel#listenoptionsprotocols) do ponto de extremidade deve ser definido como `HttpProtocols.Http2` . `HttpProtocols.Http1AndHttp2` Não pode ser usado porque o TLS é necessário para negociar HTTP/2. Sem o TLS, todas as conexões com o ponto de extremidade padrão para HTTP/1.1 e chamadas gRPC falham.
+::: moniker-end
 
 O cliente gRPC também deve ser configurado para não usar o TLS. Para obter mais informações, consulte [chamar serviços gRPCs inseguros com o cliente .NET Core](#call-insecure-grpc-services-with-net-core-client).
 

@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: host-and-deploy/windows-service
-ms.openlocfilehash: 31a738e7aa8779171dfa09a5678d7240b8f62343
-ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
+ms.openlocfilehash: 63267bf938c6d16b8a1b13940a4b3f8a02d1a1e4
+ms.sourcegitcommit: 063a06b644d3ade3c15ce00e72a758ec1187dd06
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "93057226"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98252741"
 ---
 # <a name="host-aspnet-core-in-a-windows-service"></a>Hospedar o ASP.NET Core em um serviço Windows
 
@@ -236,7 +236,22 @@ Por padrão, o ASP.NET Core é associado a `http://localhost:5000`. Configure a 
 
 Para obter mais abordagens de configuração de porta e URL, consulte o artigo relevante do servidor:
 
+::: moniker-end
+
+::: moniker range=">= aspnetcore-5.0"
+
+* <xref:fundamentals/servers/kestrel/endpoints>
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-5.0 >= aspnetcore-3.0"
+
 * <xref:fundamentals/servers/kestrel#endpoint-configuration>
+
+::: moniker-end
+
+::: moniker range=">= aspnetcore-3.0"
+
 * <xref:fundamentals/servers/httpsys#configure-windows-server>
 
 As diretrizes anteriores abordam o suporte para pontos de extremidade HTTPS. Por exemplo, configure o aplicativo para HTTPS quando a autenticação for usada com um serviço do Windows.
@@ -246,25 +261,25 @@ As diretrizes anteriores abordam o suporte para pontos de extremidade HTTPS. Por
 
 ## <a name="current-directory-and-content-root"></a>Diretório atual e a raiz do conteúdo
 
-O diretório de trabalho atual retornado ao chamar <xref:System.IO.Directory.GetCurrentDirectory*> de um serviço Windows é a pasta *C:\\WINDOWS\\system32*. A pasta *system32* não é um local adequado para armazenar os arquivos de um serviço (por exemplo, os arquivos de configurações). Use uma das seguintes abordagens para manter e acessar ativos e os arquivos de configuração de um serviço.
+O diretório de trabalho atual retornado ao chamar <xref:System.IO.Directory.GetCurrentDirectory%2A> de um serviço Windows é a pasta *C:\\WINDOWS\\system32*. A pasta *system32* não é um local adequado para armazenar os arquivos de um serviço (por exemplo, os arquivos de configurações). Use uma das seguintes abordagens para manter e acessar ativos e os arquivos de configuração de um serviço.
 
 ### <a name="use-contentrootpath-or-contentrootfileprovider"></a>Usar ContentRootPath ou ContentRootFileProvider
 
 Use [IHostEnvironment.ContentRootPath](xref:Microsoft.Extensions.Hosting.IHostEnvironment.ContentRootPath) ou <xref:Microsoft.Extensions.Hosting.IHostEnvironment.ContentRootFileProvider> para localizar os recursos do aplicativo.
 
-Quando o aplicativo é executado como um serviço, <xref:Microsoft.Extensions.Hosting.WindowsServiceLifetimeHostBuilderExtensions.UseWindowsService*> o define <xref:Microsoft.Extensions.Hosting.IHostEnvironment.ContentRootPath> como [AppContext. BaseDirectory](xref:System.AppContext.BaseDirectory).
+Quando o aplicativo é executado como um serviço, <xref:Microsoft.Extensions.Hosting.WindowsServiceLifetimeHostBuilderExtensions.UseWindowsService%2A> o define <xref:Microsoft.Extensions.Hosting.IHostEnvironment.ContentRootPath> como [AppContext. BaseDirectory](xref:System.AppContext.BaseDirectory).
 
 Os arquivos de configurações padrão do aplicativo *appsettings.json* e *appSettings. { Environment}. JSON*, são carregados a partir da raiz do conteúdo do aplicativo chamando [CreateDefaultBuilder durante a construção do host](xref:fundamentals/host/generic-host#set-up-a-host).
 
-Para outros arquivos de configurações carregados pelo código do desenvolvedor no <xref:Microsoft.Extensions.Hosting.HostBuilder.ConfigureAppConfiguration*> , não há necessidade de chamar <xref:Microsoft.Extensions.Configuration.FileConfigurationExtensions.SetBasePath*> . No exemplo a seguir, o *custom_settings.jsno* arquivo existe na raiz do conteúdo do aplicativo e é carregado sem definir explicitamente um caminho base:
+Para outros arquivos de configurações carregados pelo código do desenvolvedor no <xref:Microsoft.Extensions.Hosting.HostBuilder.ConfigureAppConfiguration%2A> , não há necessidade de chamar <xref:Microsoft.Extensions.Configuration.FileConfigurationExtensions.SetBasePath%2A> . No exemplo a seguir, o *custom_settings.jsno* arquivo existe na raiz do conteúdo do aplicativo e é carregado sem definir explicitamente um caminho base:
 
 [!code-csharp[](windows-service/samples_snapshot/CustomSettingsExample.cs?highlight=13)]
 
-Não tente usar <xref:System.IO.Directory.GetCurrentDirectory*> para obter um caminho de recurso porque um aplicativo de serviço do Windows retorna a pasta *C: \\ Windows \\ System32* como seu diretório atual.
+Não tente usar <xref:System.IO.Directory.GetCurrentDirectory%2A> para obter um caminho de recurso porque um aplicativo de serviço do Windows retorna a pasta *C: \\ Windows \\ System32* como seu diretório atual.
 
 ### <a name="store-a-services-files-in-a-suitable-location-on-disk"></a>Armazenar os arquivos do serviço em um local adequado no disco
 
-Especifique um caminho absoluto com <xref:Microsoft.Extensions.Configuration.FileConfigurationExtensions.SetBasePath*> quando usar um <xref:Microsoft.Extensions.Configuration.IConfigurationBuilder> para a pasta que contém os arquivos.
+Especifique um caminho absoluto com <xref:Microsoft.Extensions.Configuration.FileConfigurationExtensions.SetBasePath%2A> quando usar um <xref:Microsoft.Extensions.Configuration.IConfigurationBuilder> para a pasta que contém os arquivos.
 
 ## <a name="troubleshoot"></a>Solucionar problemas
 
@@ -345,7 +360,16 @@ Um despejo de memória pode ser analisado usando várias abordagens. Para obter 
 
 ## <a name="additional-resources"></a>Recursos adicionais
 
+::: moniker-end
+
+::: moniker range=">= aspnetcore-5.0"
+* [Configuração do ponto de extremidade Kestrel](xref:fundamentals/servers/kestrel/endpoints) (inclui a configuração HTTPS e suporte à SNI)
+::: moniker-end
+::: moniker range="< aspnetcore-5.0 >= aspnetcore-3.0"
 * [Configuração do ponto de extremidade Kestrel](xref:fundamentals/servers/kestrel#endpoint-configuration) (inclui a configuração HTTPS e suporte à SNI)
+::: moniker-end
+
+::: moniker range=">= aspnetcore-3.0"
 * <xref:fundamentals/host/generic-host>
 * <xref:test/troubleshoot>
 

@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: fundamentals/host/generic-host
-ms.openlocfilehash: 263c7713166005dfdec8ede6bfa9b03b730dede7
-ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
+ms.openlocfilehash: b99b0f0ab6e67ac84bf1232ff6681c5edd54ffb9
+ms.sourcegitcommit: 063a06b644d3ade3c15ce00e72a758ec1187dd06
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "96035808"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98253170"
 ---
 # <a name="net-generic-host-in-aspnet-core"></a>Host genérico .NET no ASP.NET Core
 
@@ -39,7 +39,7 @@ Este tópico fornece informações sobre como usar o host genérico .NET no ASP.
 Um *host* é um objeto que encapsula os recursos de um aplicativo, tais como:
 
 * DI (injeção de dependência)
-* Log
+* Registro em log
 * Configuração
 * Implementações de `IHostedService`
 
@@ -129,8 +129,8 @@ O método <xref:Microsoft.Extensions.Hosting.Host.CreateDefaultBuilder*>:
 O método <xref:Microsoft.Extensions.Hosting.GenericHostBuilderExtensions.ConfigureWebHostDefaults*>:
 
 * Carrega a configuração de host de variáveis de ambiente prefixadas com `ASPNETCORE_` .
-* Define o servidor [Kestrel](xref:fundamentals/servers/kestrel) como o servidor Web e configura-o usando provedores de configuração de hospedagem do aplicativo. Para obter as opções padrão do servidor Kestrel, confira <xref:fundamentals/servers/kestrel#kestrel-options>.
-* Adiciona [middleware de filtragem de Host](xref:fundamentals/servers/kestrel#host-filtering).
+* Define o servidor [Kestrel](xref:fundamentals/servers/kestrel) como o servidor Web e configura-o usando provedores de configuração de hospedagem do aplicativo. Para obter as opções padrão do servidor Kestrel, confira <xref:fundamentals/servers/kestrel/options>.
+* Adiciona [middleware de filtragem de Host](xref:fundamentals/servers/kestrel/host-filtering).
 * Adiciona o [middleware de cabeçalhos encaminhados](xref:host-and-deploy/proxy-load-balancer#forwarded-headers) , se `ASPNETCORE_FORWARDEDHEADERS_ENABLED` for igual a `true` .
 * Habilita a integração de IIS. Para as opções padrão do IIS, veja <xref:host-and-deploy/iis/index#iis-options>.
 
@@ -437,7 +437,7 @@ Para definir esse valor, use a variável de ambiente ou a chamada `UseUrls`:
 webBuilder.UseUrls("http://*:5000;http://localhost:5001;https://hostname:5002");
 ```
 
-O Kestrel tem sua própria API de configuração de ponto de extremidade. Para obter mais informações, consulte <xref:fundamentals/servers/kestrel#endpoint-configuration>.
+O Kestrel tem sua própria API de configuração de ponto de extremidade. Para obter mais informações, consulte <xref:fundamentals/servers/kestrel/endpoints>.
 
 ### <a name="webroot"></a>WebRoot
 
@@ -540,7 +540,7 @@ Este tópico fornece informações sobre como usar o host genérico .NET no ASP.
 Um *host* é um objeto que encapsula os recursos de um aplicativo, tais como:
 
 * DI (injeção de dependência)
-* Log
+* Registro em log
 * Configuração
 * Implementações de `IHostedService`
 

@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: razor-pages/index
-ms.openlocfilehash: bc5f3c85d7ace120dec8369f4550a097b4f258ce
-ms.sourcegitcommit: aa85f2911792a1e4783bcabf0da3b3e7e218f63a
+ms.openlocfilehash: f8cdbbffae9b291923a6d425fef5526b0ec88f61
+ms.sourcegitcommit: 063a06b644d3ade3c15ce00e72a758ec1187dd06
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95417637"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98253183"
 ---
 # <a name="introduction-to-no-locrazor-pages-in-aspnet-core"></a>Introdução às Razor páginas no ASP.NET Core
 
@@ -161,7 +161,7 @@ Por convenção, a classe `PageModel` é chamada de `<PageName>Model` e está no
 A classe `PageModel` permite separar a lógica de uma página da respectiva apresentação. Ela define manipuladores para as solicitações enviadas e os dados usados para renderizar a página. Essa separação permite:
 
 * Gerenciamento de dependências de página por meio de [injeção de dependência](xref:fundamentals/dependency-injection).
-* [Testes de unidade](xref:test/razor-pages-tests)
+* [Teste de unidade](xref:test/razor-pages-tests)
 
 A página tem um  *método de manipulador*`OnPostAsync`, que é executado em solicitações `POST` (quando um usuário posta o formulário). Métodos de manipulador para qualquer verbo HTTP podem ser adicionados. Os manipuladores mais comuns são:
 
@@ -467,13 +467,13 @@ O aplicativo tem a estrutura de arquivos/pastas a seguir:
     * *Edit.cshtml*
     * *Index.cshtml*
 
-As páginas *pages/Customers/Create. cshtml* e *pages/Customers/Edit. cshtml* redirecionam para *pages/Customers/index. cshtml* após o êxito. A cadeia de caracteres `./Index` é um nome de página relativo usado para acessar a página anterior. Ele é usado para gerar URLs para a página *pages/Customers/index. cshtml* . Por exemplo: 
+As páginas *pages/Customers/Create. cshtml* e *pages/Customers/Edit. cshtml* redirecionam para *pages/Customers/index. cshtml* após o êxito. A cadeia de caracteres `./Index` é um nome de página relativo usado para acessar a página anterior. Ele é usado para gerar URLs para a página *pages/Customers/index. cshtml* . Por exemplo:
 
 * `Url.Page("./Index", ...)`
 * `<a asp-page="./Index">Customers Index Page</a>`
 * `RedirectToPage("./Index")`
 
-O nome de página absoluto `/Index` é usado para gerar URLs para a página *pages/index. cshtml* . Por exemplo: 
+O nome de página absoluto `/Index` é usado para gerar URLs para a página *pages/index. cshtml* . Por exemplo:
 
 * `Url.Page("/Index", ...)`
 * `<a asp-page="/Index">Home Index Page</a>`
@@ -483,7 +483,7 @@ O nome da página é o caminho para a página da pasta raiz */Pages*, incluindo 
 
 A Geração de URL para páginas dá suporte a nomes relativos. A tabela a seguir mostra qual página de índice é selecionada usando `RedirectToPage` parâmetros diferentes em *pages/Customers/Create. cshtml*.
 
-| RedirectToPage(x)| Página |
+| RedirectToPage(x)| ? |
 | ----------------- | ------------ |
 | RedirectToPage("/Index") | *Pages/Index* |
 | RedirectToPage("./Index"); | *Pages/Customers/Index* |
@@ -632,7 +632,7 @@ Adicionar <xref:Microsoft.Extensions.DependencyInjection.MvcRazorPagesMvcCoreBui
 * [Autorizar atributo e Razor páginas](xref:security/authorization/simple#aarp)
 * [Baixar ou exibir código de exemplo](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/razor-pages/index/3.0sample)
 * <xref:index>
-* <xref:mvc/views/razor>
+* [Razor referência de sintaxe para ASP.NET Core](xref:mvc/views/razor)
 * <xref:mvc/controllers/areas>
 * <xref:tutorials/razor-pages/razor-pages-start>
 * <xref:security/authorization/razor-pages-authorization>
@@ -973,7 +973,7 @@ O aplicativo tem a estrutura de arquivos/pastas a seguir:
     * *Edit.cshtml*
     * *Index.cshtml*
 
-As páginas *Pages/Customers/Create.cshtml* e *Pages/Customers/Edit.cshtml* redirecionam para o *Pages/Index.cshtml* após êxito. A cadeia de caracteres `/Index` faz parte do URI para acessar a página anterior. A cadeia de caracteres `/Index` pode ser usada para gerar URIs para a página *Pages/Index.cshtml*. Por exemplo: 
+As páginas *Pages/Customers/Create.cshtml* e *Pages/Customers/Edit.cshtml* redirecionam para o *Pages/Index.cshtml* após êxito. A cadeia de caracteres `/Index` faz parte do URI para acessar a página anterior. A cadeia de caracteres `/Index` pode ser usada para gerar URIs para a página *Pages/Index.cshtml*. Por exemplo:
 
 * `Url.Page("/Index", ...)`
 * `<a asp-page="/Index">My Index Page</a>`
@@ -983,7 +983,7 @@ O nome da página é o caminho para a página da pasta raiz */Pages*, incluindo 
 
 A Geração de URL para páginas dá suporte a nomes relativos. A tabela a seguir mostra qual página de Índice é selecionada com diferentes parâmetros `RedirectToPage` de *Pages/Customers/Create.cshtml*:
 
-| RedirectToPage(x)| Página |
+| RedirectToPage(x)| ? |
 | ----------------- | ------------ |
 | RedirectToPage("/Index") | *Pages/Index* |
 | RedirectToPage("./Index"); | *Pages/Customers/Index* |
@@ -1143,7 +1143,7 @@ services.AddMvc()
 
 * [Autorizar atributo e Razor páginas](xref:security/authorization/simple#aarp)
 * <xref:index>
-* <xref:mvc/views/razor>
+* [Razor referência de sintaxe para ASP.NET Core](xref:mvc/views/razor)
 * <xref:mvc/controllers/areas>
 * <xref:tutorials/razor-pages/razor-pages-start>
 * <xref:security/authorization/razor-pages-authorization>

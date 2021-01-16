@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/security/webassembly/standalone-with-authentication-library
-ms.openlocfilehash: a4f3234aa4b4b02244d17615a9033db3094d3580
-ms.sourcegitcommit: 8b0e9a72c1599ce21830c843558a661ba908ce32
+ms.openlocfilehash: 3da9ea045de996602ead052f6f13ffc999273a50
+ms.sourcegitcommit: 063a06b644d3ade3c15ce00e72a758ec1187dd06
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98024776"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98252481"
 ---
 # <a name="secure-an-aspnet-core-no-locblazor-webassembly-standalone-app-with-the-authentication-library"></a>Proteger um Blazor WebAssembly aplicativo ASP.NET Core autônomo com a biblioteca de autenticação
 
@@ -33,6 +33,9 @@ Por [Javier Calvarro Nelson](https://github.com/javiercn) e [Luke Latham](https:
 *Para Azure Active Directory (AAD) e Azure Active Directory B2C (AAD B2C), não siga as orientações neste tópico. Consulte os tópicos do AAD e do AAD B2C no nó Sumário.*
 
 Para criar um [ Blazor WebAssembly aplicativo autônomo](xref:blazor/hosting-models#blazor-webassembly) que usa [`Microsoft.AspNetCore.Components.WebAssembly.Authentication`](https://www.nuget.org/packages/Microsoft.AspNetCore.Components.WebAssembly.Authentication) a biblioteca do, siga as orientações para sua escolha de ferramentas.
+
+> [!NOTE]
+> O Identity provedor (IP) deve usar o [OpenID Connect (OIDC)](https://openid.net/connect/). Por exemplo, o IP do Facebook não é um provedor compatível com OIDC, portanto, as diretrizes neste tópico não funcionam com o IP do Facebook. Para obter mais informações, consulte <xref:blazor/security/webassembly/index#authentication-library>.
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
@@ -99,12 +102,28 @@ A configuração é fornecida pelo `wwwroot/appsettings.json` arquivo:
 
 ```json
 {
-    "Local": {
-        "Authority": "{AUTHORITY}",
-        "ClientId": "{CLIENT ID}"
-    }
+  "Local": {
+    "Authority": "{AUTHORITY}",
+    "ClientId": "{CLIENT ID}"
+  }
 }
 ```
+
+Exemplo de OIDC do Google OAuth 2,0:
+
+```json
+{
+  "Local": {
+    "Authority": "https://accounts.google.com/",
+    "ClientId": "2.......7-e.....................q.apps.googleusercontent.com",
+    "PostLogoutRedirectUri": "https://localhost:5001/authentication/logout-callback",
+    "RedirectUri": "https://localhost:5001/authentication/login-callback",
+    "ResponseType": "id_token"
+  }
+}
+```
+
+O URI de redirecionamento ( `https://localhost:5001/authentication/login-callback` ) é registrado no [console de APIs do Google](https://console.developers.google.com/apis/dashboard) em **credenciais**  >  **`{NAME}`**  >  **URIs de redirecionamento autorizado**, em que `{NAME}` é o nome do cliente do aplicativo na lista de aplicativos **IDs de cliente do OAuth 2,0** do console do Google APIs.
 
 O suporte de autenticação para aplicativos autônomos é oferecido usando o OpenID Connect (OIDC). O <xref:Microsoft.Extensions.DependencyInjection.WebAssemblyAuthenticationServiceCollectionExtensions.AddOidcAuthentication%2A> método aceita um retorno de chamada para configurar os parâmetros necessários para autenticar um aplicativo usando o OIDC. Os valores necessários para configurar o aplicativo podem ser obtidos do IP em conformidade com o OIDC. Obtenha os valores ao registrar o aplicativo, que normalmente ocorre em seu portal online.
 

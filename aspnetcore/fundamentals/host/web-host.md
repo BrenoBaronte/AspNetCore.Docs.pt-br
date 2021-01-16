@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: fundamentals/host/web-host
-ms.openlocfilehash: 904b57f95cbc48a8177174dc9be770e8a6abf146
-ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
+ms.openlocfilehash: 98be96bf60441cf09a315dbd1c60e109a7a08afe
+ms.sourcegitcommit: 063a06b644d3ade3c15ce00e72a758ec1187dd06
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "96035873"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98253105"
 ---
 # <a name="aspnet-core-web-host"></a>Host da Web do ASP.NET Core
 
@@ -66,7 +66,12 @@ O código que chama `CreateDefaultBuilder` está em um método chamado `CreateWe
 
 `CreateDefaultBuilder` realiza as seguintes tarefas:
 
+::: moniker range=">= aspnetcore-5.0"
+* Configura o servidor [Kestrel](xref:fundamentals/servers/kestrel) como o servidor Web usando provedores de configuração de hospedagem do aplicativo. Para obter as opções padrão do servidor Kestrel, confira <xref:fundamentals/servers/kestrel/options>.
+::: moniker-end
+::: moniker range="< aspnetcore-5.0"
 * Configura o servidor [Kestrel](xref:fundamentals/servers/kestrel) como o servidor Web usando provedores de configuração de hospedagem do aplicativo. Para obter as opções padrão do servidor Kestrel, confira <xref:fundamentals/servers/kestrel#kestrel-options>.
+::: moniker-end
 * Define a [raiz do conteúdo](xref:fundamentals/index#content-root) para o caminho retornado por [Directory. GetCurrentDirectory](/dotnet/api/system.io.directory.getcurrentdirectory).
 * Carrega a [configuração do host](#host-configuration-values) de:
   * Variáveis de ambiente prefixadas com `ASPNETCORE_` (por exemplo, `ASPNETCORE_ENVIRONMENT`).
@@ -345,7 +350,12 @@ WebHost.CreateDefaultBuilder(args)
     .UseUrls("http://*:5000;http://localhost:5001;https://hostname:5002")
 ```
 
+::: moniker range=">= aspnetcore-5.0"
+O Kestrel tem sua própria API de configuração de ponto de extremidade. Para obter mais informações, consulte <xref:fundamentals/servers/kestrel/endpoints>.
+::: moniker-end
+::: moniker range="< aspnetcore-5.0"
 O Kestrel tem sua própria API de configuração de ponto de extremidade. Para obter mais informações, consulte <xref:fundamentals/servers/kestrel#endpoint-configuration>.
+::: moniker-end
 
 ### <a name="shutdown-timeout"></a>Tempo limite de desligamento
 

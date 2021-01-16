@@ -4,7 +4,7 @@ author: juntaoluo
 description: Aprenda os conceitos básicos ao escrever serviços gRPCs com ASP.NET Core.
 monikerRange: '>= aspnetcore-3.0'
 ms.author: johluo
-ms.date: 09/03/2019
+ms.date: 01/14/2021
 no-loc:
 - appsettings.json
 - ASP.NET Core Identity
@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: grpc/aspnetcore
-ms.openlocfilehash: b120aa4ab6922445f2c53f3b1cb3bd5c159d8a84
-ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
+ms.openlocfilehash: 44a6f1d2a25314460fa4bce469f697a2fa4c0825
+ms.sourcegitcommit: 063a06b644d3ade3c15ce00e72a758ec1187dd06
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "93057824"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98252845"
 ---
 # <a name="grpc-services-with-aspnet-core"></a>Serviços do gRPC com o ASP.NET Core
 
@@ -77,6 +77,8 @@ Em *Startup.cs*:
 
 ASP.NET Core middleware e recursos compartilham o pipeline de roteamento, portanto um aplicativo pode ser configurado para atender a manipuladores de solicitação adicionais. Os manipuladores de solicitação adicionais, como controladores MVC, funcionam em paralelo com os serviços gRPCs configurados.
 
+::: moniker range=">= aspnetcore-5.0"
+
 ### <a name="configure-kestrel"></a>Configurar o Kestrel
 
 Kestrel pontos de extremidade gRPC:
@@ -86,7 +88,47 @@ Kestrel pontos de extremidade gRPC:
 
 #### <a name="http2"></a>HTTP/2
 
-gRPC requer HTTP/2. gRPC para ASP.NET Core valida [HttpRequest. Protocol](xref:Microsoft.AspNetCore.Http.HttpRequest.Protocol*) é `HTTP/2` .
+gRPC requer HTTP/2. gRPC para ASP.NET Core valida [HttpRequest. Protocol](xref:Microsoft.AspNetCore.Http.HttpRequest.Protocol%2A) é `HTTP/2` .
+
+O Kestrel [dá suporte a http/2](xref:fundamentals/servers/kestrel/http2) na maioria dos sistemas operacionais modernos. Os pontos de extremidade Kestrel são configurados para dar suporte a conexões HTTP/1.1 e HTTP/2 por padrão.
+
+#### <a name="tls"></a>TLS
+
+Os pontos de extremidade Kestrel usados para gRPC devem ser protegidos com TLS. No desenvolvimento, um ponto de extremidade protegido com TLS é criado automaticamente `https://localhost:5001` quando o certificado de desenvolvimento de ASP.NET Core está presente. Nenhuma configuração é necessária. Um `https` prefixo verifica se o ponto de extremidade Kestrel está usando TLS.
+
+Em produção, o TLS deve ser configurado explicitamente. No exemplo a seguir *appsettings.json* , um ponto de extremidade http/2 protegido com TLS é fornecido:
+
+[!code-json[](~/grpc/aspnetcore/sample/appsettings.json?highlight=4)]
+
+Como alternativa, os pontos de extremidade Kestrel podem ser configurados no *Program.cs*:
+
+[!code-csharp[](~/grpc/aspnetcore/sample/Program.cs?highlight=7&name=snippet)]
+
+#### <a name="protocol-negotiation"></a>Negociação de protocolo
+
+O TLS é usado para mais do que proteger a comunicação. O handshake [ALPN (negociação do protocolo de camada de aplicativo)](https://tools.ietf.org/html/rfc7301#section-3) TLS é usado para negociar o protocolo de conexão entre o cliente e o servidor quando um ponto de extremidade dá suporte a vários protocolos. Essa negociação determina se a conexão usa HTTP/1.1 ou HTTP/2.
+
+Se um ponto de extremidade HTTP/2 estiver configurado sem TLS, os [protocolos de escuta](xref:fundamentals/servers/kestrel/endpoints#listenoptionsprotocols) do ponto de extremidade deverão ser definidos como `HttpProtocols.Http2` . Um ponto de extremidade com vários protocolos (por exemplo, `HttpProtocols.Http1AndHttp2` ) não pode ser usado sem TLS porque não há negociação. Todas as conexões com o ponto de extremidade não seguro padrão para HTTP/1.1 e chamadas gRPC falham.
+
+Para obter mais informações sobre como habilitar HTTP/2 e TLS com Kestrel, consulte [configuração de ponto de extremidade Kestrel](xref:fundamentals/servers/kestrel/endpoints).
+
+> [!NOTE]
+> O macOS não é compatível com gRPC do ASP.NET Core com TLS. É necessária uma configuração adicional para executar com êxito os serviços gRPC no macOS. Para obter mais informações, confira [Não é possível iniciar o aplicativo ASP.NET Core gRPC no macOS](xref:grpc/troubleshoot#unable-to-start-aspnet-core-grpc-app-on-macos).
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-5.0"
+
+### <a name="configure-kestrel"></a>Configurar o Kestrel
+
+Kestrel pontos de extremidade gRPC:
+
+* Exigir HTTP/2.
+* Deve ser protegido com [TLS (Transport Layer Security)](https://tools.ietf.org/html/rfc5246).
+
+#### <a name="http2"></a>HTTP/2
+
+gRPC requer HTTP/2. gRPC para ASP.NET Core valida [HttpRequest. Protocol](xref:Microsoft.AspNetCore.Http.HttpRequest.Protocol%2A) é `HTTP/2` .
 
 O Kestrel [dá suporte a http/2](xref:fundamentals/servers/kestrel#http2-support) na maioria dos sistemas operacionais modernos. Os pontos de extremidade Kestrel são configurados para dar suporte a conexões HTTP/1.1 e HTTP/2 por padrão.
 
@@ -112,6 +154,8 @@ Para obter mais informações sobre como habilitar HTTP/2 e TLS com Kestrel, con
 
 > [!NOTE]
 > O macOS não é compatível com gRPC do ASP.NET Core com TLS. É necessária uma configuração adicional para executar com êxito os serviços gRPC no macOS. Para obter mais informações, confira [Não é possível iniciar o aplicativo ASP.NET Core gRPC no macOS](xref:grpc/troubleshoot#unable-to-start-aspnet-core-grpc-app-on-macos).
+
+::: moniker-end
 
 ## <a name="integration-with-aspnet-core-apis"></a>Integração com APIs de ASP.NET Core
 

@@ -17,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: security/authentication/community
-ms.openlocfilehash: fcea5384b9f1d9f7e4c5a210dd2ceb7cf2e957ca
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: 9bb9848398ecc0c0909f93798a56061a8e57b782
+ms.sourcegitcommit: 063a06b644d3ade3c15ce00e72a758ec1187dd06
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93061358"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98252975"
 ---
 # <a name="community-oss-authentication-options-for-aspnet-core"></a>Opções de autenticação OSS da Comunidade para ASP.NET Core
 
@@ -32,11 +32,10 @@ Esta página contém opções de autenticação de software livre fornecidas pel
 
 A lista abaixo é classificada alfabeticamente.
 
-| Nome | Descrição |
+| Name | Descrição |
 | ---- | ----------- |
-| [AspNet. Security. OpenIdConnect. Server (ASOS)](https://github.com/aspnet-contrib/AspNet.Security.OpenIdConnect.Server) | ASOS é uma estrutura de servidor OpenID Connect de baixo nível e protocolo primeiro para ASP.NET Core e OWIN/katana. |
 | [Servidor Gluu](https://gluu.org/) | Pronto para empresas, software livre para identidade, gerenciamento de acesso (IAM) e logon único (SSO). Para obter mais informações, consulte a [documentação do produto Gluu](https://gluu.org/docs/). |
 | [IdentityServidor](https://identityserver.io/) | IdentityO servidor é um OpenID Connect e a estrutura do OAuth 2,0 para ASP.NET Core, oficialmente certificado pelo OpenID Foundation e sob governança do .NET Foundation. Para obter mais informações, consulte [Bem-vindo ao Identity Server4 (documentação)](https://identityserver4.readthedocs.io/en/latest/). |
-| [OpenIddict](https://github.com/openiddict/openiddict-core) | OpenIddict é um servidor de OpenID Connect fácil de usar para ASP.NET Core. |
+| [OpenIddict](https://github.com/openiddict/openiddict-core) | Pilha do OpenID Connect versátil para ASP.NET Core 2.1/3.1/5.0 e Microsoft. Owin 4,1 (compatível com ASP.NET 4.6.1). |
 
 Para adicionar um provedor, [Edite esta página](https://github.com/login?return_to=https%3A%2F%2Fgithub.com%2Faspnet%2FDocs%2Fedit%2Fmaster%2Faspnetcore%2Fsecurity%2Fauthentication%2Fcommunity.md).

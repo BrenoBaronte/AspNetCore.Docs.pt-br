@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: fundamentals/routing
-ms.openlocfilehash: e134832ad00b10bb01239afa06acc74d86707af1
-ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
+ms.openlocfilehash: 1355fdaeae58b6f4e0cf8d41a74b1c28aee0e8fe
+ms.sourcegitcommit: 063a06b644d3ade3c15ce00e72a758ec1187dd06
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "94422555"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98253079"
 ---
 # <a name="routing-in-aspnet-core"></a>Roteamento no ASP.NET Core
 
@@ -569,12 +569,12 @@ As expressões regulares usadas no roteamento geralmente começam com o `^` cara
 
 | Expression   | String    | Correspondência | Comentário               |
 | ------------ | --------- | :---: |  -------------------- |
-| `[a-z]{2}`   | hello     | Sim   | A subcadeia de caracteres corresponde     |
-| `[a-z]{2}`   | 123abc456 | Sim   | A subcadeia de caracteres corresponde     |
-| `[a-z]{2}`   | mz        | Sim   | Corresponde à expressão    |
-| `[a-z]{2}`   | MZ        | Sim   | Não diferencia maiúsculas de minúsculas    |
-| `^[a-z]{2}$` | hello     | Não    | Confira `^` e `$` acima |
-| `^[a-z]{2}$` | 123abc456 | Não    | Confira `^` e `$` acima |
+| `[a-z]{2}`   | hello     | Yes   | A subcadeia de caracteres corresponde     |
+| `[a-z]{2}`   | 123abc456 | Yes   | A subcadeia de caracteres corresponde     |
+| `[a-z]{2}`   | mz        | Yes   | Corresponde à expressão    |
+| `[a-z]{2}`   | MZ        | Yes   | Não diferencia maiúsculas de minúsculas    |
+| `^[a-z]{2}$` | hello     | No    | Confira `^` e `$` acima |
+| `^[a-z]{2}$` | 123abc456 | No    | Confira `^` e `$` acima |
 
 Para saber mais sobre a sintaxe de expressões regulares, confira [Expressões regulares do .NET Framework](/dotnet/standard/base-types/regular-expression-language-quick-reference).
 
@@ -663,7 +663,7 @@ O processo de geração de URL começa com uma chamada para [LinkGenerator. GetP
 
 A primeira etapa é usar o endereço para resolver um conjunto de pontos de extremidade candidatos usando um [`IEndpointAddressScheme<TAddress>`](xref:Microsoft.AspNetCore.Routing.IEndpointAddressScheme`1) que corresponda ao tipo do endereço.
 
-Uma vez do conjunto de candidatos é encontrado pelo esquema de endereço, os pontos de extremidade são ordenados e processados iterativamente até que uma operação de geração de URL tenha sucesso. A geração de URL **não** verifica ambiguidades, o primeiro resultado retornado é o resultado final.
+Depois que o conjunto de candidatos for encontrado pelo esquema de endereço, os pontos de extremidade serão ordenados e processados iterativamente até que uma operação de geração de URL tenha sucesso. A geração de URL **não** verifica ambiguidades, o primeiro resultado retornado é o resultado final.
 
 ### <a name="troubleshooting-url-generation-with-logging"></a>Solução de problemas de geração de URL com registro em log
 
@@ -1490,12 +1490,12 @@ As expressões regulares usadas no roteamento geralmente começam com o `^` cara
 
 | Expression   | String    | Correspondência | Comentário               |
 | ------------ | --------- | :---: |  -------------------- |
-| `[a-z]{2}`   | hello     | Sim   | A subcadeia de caracteres corresponde     |
-| `[a-z]{2}`   | 123abc456 | Sim   | A subcadeia de caracteres corresponde     |
-| `[a-z]{2}`   | mz        | Sim   | Corresponde à expressão    |
-| `[a-z]{2}`   | MZ        | Sim   | Não diferencia maiúsculas de minúsculas    |
-| `^[a-z]{2}$` | hello     | Não    | Confira `^` e `$` acima |
-| `^[a-z]{2}$` | 123abc456 | Não    | Confira `^` e `$` acima |
+| `[a-z]{2}`   | hello     | Yes   | A subcadeia de caracteres corresponde     |
+| `[a-z]{2}`   | 123abc456 | Yes   | A subcadeia de caracteres corresponde     |
+| `[a-z]{2}`   | mz        | Yes   | Corresponde à expressão    |
+| `[a-z]{2}`   | MZ        | Yes   | Não diferencia maiúsculas de minúsculas    |
+| `^[a-z]{2}$` | hello     | No    | Confira `^` e `$` acima |
+| `^[a-z]{2}$` | 123abc456 | No    | Confira `^` e `$` acima |
 
 Para saber mais sobre a sintaxe de expressões regulares, confira [Expressões regulares do .NET Framework](/dotnet/standard/base-types/regular-expression-language-quick-reference).
 
@@ -1934,12 +1934,12 @@ As expressões regulares usadas no roteamento geralmente começam com o caracter
 
 | Expression   | String    | Correspondência | Comentário               |
 | ------------ | --------- | :---: |  -------------------- |
-| `[a-z]{2}`   | hello     | Sim   | A subcadeia de caracteres corresponde     |
-| `[a-z]{2}`   | 123abc456 | Sim   | A subcadeia de caracteres corresponde     |
-| `[a-z]{2}`   | mz        | Sim   | Corresponde à expressão    |
-| `[a-z]{2}`   | MZ        | Sim   | Não diferencia maiúsculas de minúsculas    |
-| `^[a-z]{2}$` | hello     | Não    | Confira `^` e `$` acima |
-| `^[a-z]{2}$` | 123abc456 | Não    | Confira `^` e `$` acima |
+| `[a-z]{2}`   | hello     | Yes   | A subcadeia de caracteres corresponde     |
+| `[a-z]{2}`   | 123abc456 | Yes   | A subcadeia de caracteres corresponde     |
+| `[a-z]{2}`   | mz        | Yes   | Corresponde à expressão    |
+| `[a-z]{2}`   | MZ        | Yes   | Não diferencia maiúsculas de minúsculas    |
+| `^[a-z]{2}$` | hello     | No    | Confira `^` e `$` acima |
+| `^[a-z]{2}$` | 123abc456 | No    | Confira `^` e `$` acima |
 
 Para saber mais sobre a sintaxe de expressões regulares, confira [Expressões regulares do .NET Framework](/dotnet/standard/base-types/regular-expression-language-quick-reference).
 

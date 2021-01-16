@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/debug
-ms.openlocfilehash: 990882c03ddc14c664aa8da0518fb36087199aca
-ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
+ms.openlocfilehash: 5bdfcc5660b4c897d3552d4cf25e43dade71541c
+ms.sourcegitcommit: 063a06b644d3ade3c15ce00e72a758ec1187dd06
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "94550511"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98252507"
 ---
 # <a name="debug-aspnet-core-no-locblazor-webassembly"></a>ASP.NET Core de depuração Blazor WebAssembly
 
@@ -50,6 +50,7 @@ Por enquanto, você *não pode*:
 * Interromper em exceções sem tratamento.
 * Acerte os pontos de interrupção durante a inicialização do aplicativo antes da execução do proxy de depuração. Isso inclui pontos de interrupção em `Program.Main` ( `Program.cs` ) e pontos de interrupção nos [ `OnInitialized{Async}` métodos](xref:blazor/components/lifecycle#component-initialization-methods) de componentes que são carregados pela primeira página solicitada do aplicativo.
 * Depure em cenários não locais (por exemplo, [subsistema do Windows para Linux (WSL)](/windows/wsl/) ou [Visual Studio Codespaces](/visualstudio/codespaces/overview/what-is-vsonline)).
+* Reconstrua automaticamente o `*Server*` aplicativo de back-end de uma solução hospedada Blazor durante a depuração, por exemplo, executando o aplicativo com [`dotnet watch run`](xref:tutorials/dotnet-watch) .
 
 ## <a name="prerequisites"></a>Pré-requisitos
 

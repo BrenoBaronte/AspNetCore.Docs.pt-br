@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: security/cookie-sharing
-ms.openlocfilehash: 8f54f2e4894328f8471d5f80c8184839ce47add6
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: 0d43bbbc44015aff040b12dfacb260fe50492e54
+ms.sourcegitcommit: 063a06b644d3ade3c15ce00e72a758ec1187dd06
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93059683"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98252988"
 ---
 # <a name="share-authentication-no-loccookies-among-aspnet-apps"></a>Compartilhar s de autenticação cookie entre aplicativos ASP.net
 
@@ -65,6 +65,8 @@ services.ConfigureApplicationCookie(options => {
     options.Cookie.Name = ".AspNet.SharedCookie";
 });
 ```
+
+**Observação:** As instruções anteriores não funcionam com o `ITicketStore` ( `CookieAuthenticationOptions.SessionStore` ).  Para obter mais informações, consulte [este problema do GitHub](https://github.com/dotnet/AspNetCore.Docs/issues/21163).
 
 ## <a name="share-authentication-no-loccookies-without-no-locaspnet-core-identity"></a>Compartilhar s de autenticação cookie sem ASP.NET Core Identity
 
@@ -135,7 +137,7 @@ Localize e modifique a chamada para `UseCookieAuthentication` :
 
 Se não estiver configurando `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier` e `http://schemas.microsoft.com/accesscontrolservice/2010/07/claims/identityprovider` , defina <xref:System.Web.Helpers.AntiForgeryConfig.UniqueClaimTypeIdentifier> como uma declaração que diferencie usuários exclusivos.
 
-*App_Start/Startup.auth.cs* :
+*App_Start/Startup.auth.cs*:
 
 ```csharp
 app.UseCookieAuthentication(new CookieAuthenticationOptions
@@ -168,9 +170,9 @@ System.Web.Helpers.AntiForgeryConfig.UniqueClaimTypeIdentifier =
     "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name";
 ```
 
-Ao gerar uma identidade de usuário, o tipo de autenticação ( `Identity.Application` ) deve corresponder ao tipo definido em `AuthenticationType` conjunto com `UseCookieAuthentication` em *App_Start/Startup.auth.cs* .
+Ao gerar uma identidade de usuário, o tipo de autenticação ( `Identity.Application` ) deve corresponder ao tipo definido em `AuthenticationType` conjunto com `UseCookieAuthentication` em *App_Start/Startup.auth.cs*.
 
-*Modelos/ Identity Models.cs* :
+*Modelos/ Identity Models.cs*:
 
 ```csharp
 public class ApplicationUser : IdentityUser

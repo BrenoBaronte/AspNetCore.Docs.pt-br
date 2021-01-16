@@ -17,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: mvc/controllers/routing
-ms.openlocfilehash: a163c87fdb9a02c1b074ab32c19c11932c66cfd4
-ms.sourcegitcommit: 04a404a9655c59ad1ea02aff5d399ae1b833ad6a
+ms.openlocfilehash: 44c507fb5e0ff4477a84bfc1e4d0c62180c8dd37
+ms.sourcegitcommit: 063a06b644d3ade3c15ce00e72a758ec1187dd06
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 01/03/2021
-ms.locfileid: "97854529"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98252832"
 ---
 # <a name="routing-to-controller-actions-in-aspnet-core"></a>Roteamento para ações do controlador no ASP.NET Core
 
@@ -30,7 +30,7 @@ Por [Ryan Nowak](https://github.com/rynowak), [Kirk Larkin](https://twitter.com/
 
 ::: moniker range=">= aspnetcore-3.0"
 
-Os controladores de ASP.NET Core usam o [middleware](xref:fundamentals/middleware/index) de roteamento para corresponder as URLs de solicitações de entrada e mapeá-las para [ações](#action).  Modelos de rotas:
+Os controladores de ASP.NET Core usam o [middleware](xref:fundamentals/middleware/index) de roteamento para corresponder as URLs de solicitações de entrada e mapeá-las para [ações](#action).  Modelos de rota:
 
 * São definidos em código ou atributos de inicialização.
 * Descreva como os caminhos de URL são correspondidos às [ações](#action).
@@ -435,7 +435,7 @@ A tabela a seguir explica os `[Route]` atributos no código anterior:
 | `[Route("")]` | Sim | `"Home"` |
 | `[Route("Index")]` | Sim | `"Home/Index"` |
 | `[Route("/")]` | **Não** | `""` |
-| `[Route("About")]` | Sim | `"Home/About"` |
+| `[Route("About")]` | Yes | `"Home/About"` |
 
 <a name="routing-ordering-ref-label"></a>
 <a name="oar"></a>
@@ -570,7 +570,7 @@ Rotas de atributo dão suporte à mesma sintaxe embutida que as rotas convencion
 
 [!code-csharp[](routing/samples/3.x/main/Controllers/ProductsController.cs?name=snippet8&highlight=3)]
 
-No código anterior, o `[HttpPost("product/{id:int}")]` aplica uma restrição de rota. A `ProductsController.ShowProduct` ação é correspondida somente por caminhos de URL como `/product/3` . A parte do modelo de rota `{id:int}` restringe esse segmento a apenas inteiros.
+No código anterior, o `[HttpPost("product14/{id:int}")]` aplica uma restrição de rota. A `Products14Controller.ShowProduct` ação é correspondida somente por caminhos de URL como `/product14/3` . A parte do modelo de rota `{id:int}` restringe esse segmento a apenas inteiros.
 
 Consulte [Referência de modelo de rota](xref:fundamentals/routing#route-template-reference) para obter uma descrição detalhada da sintaxe do modelo de rota.
 
