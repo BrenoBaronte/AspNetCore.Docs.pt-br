@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: fundamentals/servers/kestrel
-ms.openlocfilehash: 268a6e71d3bd290ed614e70d963d653924cdcc43
-ms.sourcegitcommit: 063a06b644d3ade3c15ce00e72a758ec1187dd06
+ms.openlocfilehash: d53cafb605939fd85bdbb71b2fbf13e7bd7a9b7b
+ms.sourcegitcommit: cb984e0d7dc23a88c3a4121f23acfaea0acbfe1e
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98252728"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98571002"
 ---
 # <a name="kestrel-web-server-implementation-in-aspnet-core"></a>Implementação do servidor Web Kestrel no ASP.NET Core
 
@@ -55,7 +55,7 @@ Os modelos de projeto do ASP.NET Core usam o Kestrel por padrão. No *Program.cs
 
 Para obter mais informações sobre como criar o host, consulte as seções *configurar um host* e *as configurações do construtor padrão* de <xref:fundamentals/host/generic-host#set-up-a-host> .
 
-## <a name="additional-resournces"></a>Técnicos adicionais
+## <a name="additional-resources"></a>Recursos adicionais
 
 <a name="endpoint-configuration"></a>
 * <xref:fundamentals/servers/kestrel/endpoints>

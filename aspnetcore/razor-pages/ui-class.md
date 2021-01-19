@@ -3,7 +3,7 @@ title: IU reutilizável Razor em bibliotecas de classes com ASP.NET Core
 author: Rick-Anderson
 description: Explica como criar Razor uma interface do usuário reutilizável usando exibições parciais em uma biblioteca de classes no ASP.NET Core.
 ms.author: riande
-ms.date: 01/25/2020
+ms.date: 01/19/2021
 ms.custom: mvc, seodec18
 no-loc:
 - appsettings.json
@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: razor-pages/ui-class
-ms.openlocfilehash: 0bfdb1932d829ec00c9de1bd38b7920cb1f40c51
-ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
+ms.openlocfilehash: a878a3485ecee0782b21ac69c5ec6ff832b9f06c
+ms.sourcegitcommit: cb984e0d7dc23a88c3a4121f23acfaea0acbfe1e
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "94570166"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98571006"
 ---
 # <a name="create-reusable-ui-using-the-no-locrazor-class-library-project-in-aspnet-core"></a>Criar interface do usuário reutilizável usando o Razor projeto de biblioteca de classes no ASP.NET Core
 
@@ -94,6 +94,14 @@ Suponha que *Razor UIClassLib/Pages/Shared* contenham dois arquivos parciais: *_
   @RenderBody()
   <partial name="_Footer">
 </body>
+```
+
+Adicione o arquivo *_ViewStart. cshtml* à pasta *páginas* do projeto RCL para usar o arquivo *_Layout. cshtml* do aplicativo Web host:
+
+```cshtml
+@{
+    Layout = "_Layout";
+}
 ```
 
 ## <a name="create-an-rcl-with-static-assets"></a>Criar um RCL com ativos estáticos
@@ -190,7 +198,7 @@ Quando o aplicativo de consumo for executado:
 
 Quando o RCL é criado, é produzido um manifesto que descreve os locais estáticos de ativos da Web. O aplicativo de consumo lê o manifesto em tempo de execução para consumir os ativos de projetos e pacotes referenciados. Quando um novo ativo é adicionado a um RCL, o RCL deve ser recriado para atualizar seu manifesto antes que um aplicativo de consumo possa acessar o novo ativo.
 
-### <a name="publish"></a>Publicar
+### <a name="publish"></a>Publicação
 
 Quando o aplicativo é publicado, os ativos complementares de todos os projetos e pacotes referenciados são copiados para a pasta *wwwroot* do aplicativo publicado em `_content/{LIBRARY NAME}/` .
 

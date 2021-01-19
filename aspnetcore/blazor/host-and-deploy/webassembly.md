@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/host-and-deploy/webassembly
-ms.openlocfilehash: 77e4efe0ac2e87458558dabc78d47099b5698edc
-ms.sourcegitcommit: 063a06b644d3ade3c15ce00e72a758ec1187dd06
+ms.openlocfilehash: 2b464c2b6ca434ce4c3b559480da69945266ff69
+ms.sourcegitcommit: cb984e0d7dc23a88c3a4121f23acfaea0acbfe1e
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98252442"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98570967"
 ---
 # <a name="host-and-deploy-aspnet-core-no-locblazor-webassembly"></a>Hospedar e implantar ASP.NET Core Blazor WebAssembly
 
@@ -52,15 +52,12 @@ Blazor o se baseia no host para o fornecer os arquivos compactados apropriados. 
 * Para `web.config` a configuração de compactação do IIS, consulte a seção [IIS: Brotli e a compactação Gzip](#brotli-and-gzip-compression) . 
 * Ao hospedar soluções de hospedagem estática que não dão suporte à negociação de conteúdo de arquivo compactado estaticamente, como páginas do GitHub, considere configurar o aplicativo para buscar e decodificar arquivos compactados Brotli:
 
-  * Obtenha o decodificador Brotli do JavaScript do [repositório GitHub do Google/Brotli](https://github.com/google/brotli). A partir de setembro de 2020, o arquivo de decodificador é nomeado `decode.js` e encontrado na [ `js` pasta](https://github.com/google/brotli/tree/master/js)do repositório.
-  
-    > [!NOTE]
-    > Uma regressão está presente na versão reduzidos do `decode.js` script ( `decode.min.js` ) no [repositório GitHub do Google/brotli](https://github.com/google/brotli). Reduzir o script por conta própria ou use o [pacote NPM](https://www.npmjs.com/package/brotli) até que a janela de problema [. BrotliDecode não esteja definida em decode.min.js (google/brotli #844)](https://github.com/google/brotli/issues/844) seja resolvida. O código de exemplo nesta seção usa a versão **unminified** do script.
+  * Obtenha o decodificador Brotli do JavaScript do [repositório GitHub do Google/Brotli](https://github.com/google/brotli). O arquivo do decodificador é nomeado `decode.min.js` e encontrado na [ `js` pasta](https://github.com/google/brotli/tree/master/js)do repositório.
 
   * Atualize o aplicativo para usar o decodificador. Altere a marcação dentro da `<body>` marca de fechamento `wwwroot/index.html` para o seguinte:
   
     ```html
-    <script src="decode.js"></script>
+    <script src="decode.min.js"></script>
     <script src="_framework/blazor.webassembly.js" autostart="false"></script>
     <script>
       Blazor.start({
