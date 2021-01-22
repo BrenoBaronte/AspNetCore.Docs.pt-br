@@ -5,7 +5,7 @@ description: Saiba mais sobre as plataformas com suporte para ASP.NET Core Signa
 monikerRange: '>= aspnetcore-2.1'
 ms.author: bradyg
 ms.custom: mvc, devx-track-js
-ms.date: 01/16/2020
+ms.date: 01/21/2021
 no-loc:
 - appsettings.json
 - ASP.NET Core Identity
@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: signalr/supported-platforms
-ms.openlocfilehash: ee6e263fb5bef7bfb84587c3b0f04175eb8073cd
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: 0a858de44f4a87b182a43a776154b782c7e96288
+ms.sourcegitcommit: ebc5beccba5f3f7619de20baa58ad727d2a3d18c
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93051012"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98689221"
 ---
 # <a name="aspnet-core-no-locsignalr-supported-platforms"></a>ASP.NET Core SignalR plataformas com suporte
 
@@ -44,6 +44,8 @@ O [cliente JavaScript](xref:signalr/javascript-client) é executado no NodeJS 8 
 | Mozilla Firefox                  | Atualizados&dagger; |
 
 &dagger;*Atual* refere-se à versão mais recente do navegador.
+
+O cliente JavaScript não dá suporte ao Internet Explorer e a outros navegadores mais antigos. O cliente pode ter comportamento inesperado e erros em navegadores sem suporte.
 
 ## <a name="net-client"></a>Cliente .NET
 

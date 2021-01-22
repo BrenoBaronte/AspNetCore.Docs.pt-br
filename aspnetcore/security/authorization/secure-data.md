@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: security/authorization/secure-data
-ms.openlocfilehash: dc70cfe7cb0c0f044f5f1e7ee68a293b3ea7507f
-ms.sourcegitcommit: 04a404a9655c59ad1ea02aff5d399ae1b833ad6a
+ms.openlocfilehash: ebd3c0dc9baa63b30f142773d7a3d621ce4082d9
+ms.sourcegitcommit: ebc5beccba5f3f7619de20baa58ad727d2a3d18c
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 01/03/2021
-ms.locfileid: "97854646"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98689299"
 ---
 # <a name="create-an-aspnet-core-web-app-with-user-data-protected-by-authorization"></a>Criar um aplicativo Web ASP.NET Core com dados de usuário protegidos por autorização
 
@@ -129,6 +129,8 @@ Defina a política de autenticação de fallback para exigir que os usuários se
 [!code-csharp[](secure-data/samples/final3/Startup.cs?name=snippet&highlight=13-99)]
 
 O código realçado anterior define a [política de autenticação de fallback](xref:Microsoft.AspNetCore.Authorization.AuthorizationOptions.FallbackPolicy). A política de autenticação de fallback exige que **_todos_* os usuários sejam autenticados, exceto por Razor páginas, controladores ou métodos de ação com um atributo de autenticação. Por exemplo, Razor páginas, controladores ou métodos de ação com `[AllowAnonymous]` ou `[Authorize(PolicyName="MyPolicy")]` usam o atributo de autenticação aplicado em vez da política de autenticação de fallback.
+
+<xref:Microsoft.AspNetCore.Authorization.AuthorizationPolicyBuilder.RequireAuthenticatedUser%2A> Adiciona <xref:Microsoft.AspNetCore.Authorization.Infrastructure.DenyAnonymousAuthorizationRequirement> à instância atual, que impõe que o usuário atual seja autenticado.
 
 A política de autenticação de fallback:
 
@@ -332,7 +334,7 @@ Uma maneira fácil de testar o aplicativo concluído é iniciar três navegadore
 * Os gerentes podem aprovar/rejeitar dados de contato. A `Details` exibição mostra os botões **aprovar** e **rejeitar** .
 * Os administradores podem aprovar/rejeitar e editar/excluir todos os dados.
 
-| Usuário                | Propagado pelo aplicativo | Opções                                  |
+| User                | Propagado pelo aplicativo | Opções                                  |
 | ------------------- | :---------------: | ---------------------------------------- |
 | test@example.com    | Não                | Edite/exclua os próprios dados.                |
 | manager@contoso.com | Sim               | Aprovar/rejeitar e editar/excluir os próprios dados. |
@@ -659,7 +661,7 @@ Uma maneira fácil de testar o aplicativo concluído é iniciar três navegadore
 * Os gerentes podem aprovar/rejeitar dados de contato. A `Details` exibição mostra os botões **aprovar** e **rejeitar** .
 * Os administradores podem aprovar/rejeitar e editar/excluir todos os dados.
 
-| Usuário                | Propagado pelo aplicativo | Opções                                  |
+| User                | Propagado pelo aplicativo | Opções                                  |
 | ------------------- | :---------------: | ---------------------------------------- |
 | test@example.com    | Não                | Edite/exclua os próprios dados.                |
 | manager@contoso.com | Sim               | Aprovar/rejeitar e editar/excluir os próprios dados. |

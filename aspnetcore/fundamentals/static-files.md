@@ -16,12 +16,12 @@ no-loc:
 - Razor
 - SignalR
 uid: fundamentals/static-files
-ms.openlocfilehash: 2e25af03a8a6aaff5b343885711c6ebb68340fac
-ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
+ms.openlocfilehash: d97caeffc6e8beebddb01a5bd126d61ba988de65
+ms.sourcegitcommit: ebc5beccba5f3f7619de20baa58ad727d2a3d18c
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "93057850"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98689286"
 ---
 # <a name="static-files-in-aspnet-core"></a>Arquivos estáticos no ASP.NET Core
 
@@ -54,7 +54,7 @@ Considere criar a pasta *wwwroot/images* e adicionar o arquivo *wwwroot/images/M
 
 ### <a name="serve-files-in-web-root"></a>Fornecer arquivos na raiz da Web
 
-Os modelos de aplicativo Web padrão chamam o <xref:Owin.StaticFileExtensions.UseStaticFiles%2A> método no `Startup.Configure` , que permite que os arquivos estáticos sejam atendidos:
+Os modelos de aplicativo Web padrão chamam o <xref:Microsoft.AspNetCore.Builder.StaticFileExtensions.UseStaticFiles%2A> método no `Startup.Configure` , que permite que os arquivos estáticos sejam atendidos:
 
 [!code-csharp[](~/fundamentals/static-files/samples/3.x/StaticFilesSample/Startup.cs?name=snippet_Configure&highlight=15)]
 
@@ -104,23 +104,31 @@ Os arquivos estáticos são publicamente armazenáveis em cache por 600 segundos
 
 ## <a name="static-file-authorization"></a>Autorização de arquivo estático
 
-O middleware de arquivos estáticos não fornece verificações de autorização. Todos os arquivos servidos por ele, incluindo aqueles em `wwwroot` , estão publicamente acessíveis. Para fornecer arquivos com base na autorização:
+Os modelos de ASP.NET Core chamam <xref:Microsoft.AspNetCore.Builder.StaticFileExtensions.UseStaticFiles%2A> antes de chamar <xref:Microsoft.AspNetCore.Builder.AuthorizationAppBuilderExtensions.UseAuthorization%2A> . A maioria dos aplicativos segue esse padrão. Quando o middleware de arquivo estático é chamado antes do middleware de autorização:
 
-* Armazene-os fora do `wwwroot` e de qualquer diretório acessível ao middleware de arquivo estático padrão.
-* Chame `UseStaticFiles` após `UseAuthorization` e especifique o caminho:
-
-  [!code-csharp[](static-files/samples/3.x/StaticFileAuth/Startup.cs?name=snippet2)]
+  * Nenhuma verificação de autorização é executada nos arquivos estáticos.
+  * Os arquivos estáticos servidos pelo middleware de arquivo estático, como aqueles que `wwwroot` estão em, estão publicamente acessíveis.
   
-  A abordagem anterior exige que os usuários sejam autenticados:
+Para fornecer arquivos estáticos com base na autorização:
 
-  [!code-csharp[](static-files/samples/3.x/StaticFileAuth/Startup.cs?name=snippet1&highlight=20-99)]
+  * Armazene-os fora do `wwwroot` .
+  * Chame `UseStaticFiles` , especificando um caminho, depois de chamar `UseAuthorization` .
+  * Defina a [política de autorização de fallback](xref:Microsoft.AspNetCore.Authorization.AuthorizationOptions.FallbackPolicy).
 
-   [!INCLUDE[](~/includes/requireAuth.md)]
+  [!code-csharp[](static-files/samples/3.x/StaticFileAuth/Startup.cs?name=snippet2&highlight=24-29)]
+  
+  [!code-csharp[](static-files/samples/3.x/StaticFileAuth/Startup.cs?name=snippet1&highlight=20-25)]
 
-Uma abordagem alternativa para fornecer arquivos com base na autorização:
+  No código anterior, a política de autorização de fallback exige que ***todos** os usuários sejam autenticados. Pontos de extremidade como, por exemplo, controladores, Razor páginas, etc. que especificam seus próprios requisitos de autorização, não usam a política de autorização de fallback. Por exemplo, Razor páginas, controladores ou métodos de ação com `[AllowAnonymous]` ou `[Authorize(PolicyName="MyPolicy")]` usam o atributo de autorização aplicado em vez da política de autorização de fallback.
 
-* Armazene-os fora do `wwwroot` e de qualquer diretório acessível ao middleware de arquivo estático.
-* Sirva-os por meio de um método de ação ao qual a autorização é aplicada e retorna um <xref:Microsoft.AspNetCore.Mvc.FileResult> objeto:
+  <xref:Microsoft.AspNetCore.Authorization.AuthorizationPolicyBuilder.RequireAuthenticatedUser%2A> Adiciona <xref:Microsoft.AspNetCore.Authorization.Infrastructure.DenyAnonymousAuthorizationRequirement> à instância atual, que impõe que o usuário atual seja autenticado.
+
+  Ativos estáticos em `wwwroot` são publicamente acessíveis porque o middleware de arquivo estático padrão ( `app.UseStaticFiles();` ) é chamado antes `UseAuthentication` . Ativos estáticos na pasta _MyStaticFiles * exigem autenticação. O [código de exemplo](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/static-files/samples) demonstra isso.
+
+Uma abordagem alternativa para fornecer arquivos com base na autorização é:
+
+  * Armazene-os fora do `wwwroot` e de qualquer diretório acessível ao middleware de arquivo estático.
+  * Sirva-os por meio de um método de ação ao qual a autorização é aplicada e retorna um <xref:Microsoft.AspNetCore.Mvc.FileResult> objeto:
 
   [!code-csharp[](static-files/samples/3.x/StaticFilesSample/Controllers/HomeController.cs?name=snippet_BannerImage)]
 

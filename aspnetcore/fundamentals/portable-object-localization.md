@@ -17,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: fundamentals/portable-object-localization
-ms.openlocfilehash: f9c0ecd32f0e5c05782c2db76eff92bb64845db7
-ms.sourcegitcommit: 53e01d6e9b70a18a05618f0011cf115a16633c21
+ms.openlocfilehash: 175614c426c564ce91068e18035ce05311432698
+ms.sourcegitcommit: ebc5beccba5f3f7619de20baa58ad727d2a3d18c
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97878393"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98689234"
 ---
 # <a name="configure-portable-object-localization-in-aspnet-core"></a>Configurar a localização de objeto portátil no ASP.NET Core
 
@@ -81,7 +81,7 @@ Este exemplo se baseia em um aplicativo ASP.NET Core MVC gerado com base em um m
 
 ### <a name="referencing-the-package"></a>Referenciando o pacote
 
-Adicione uma referência ao pacote NuGet `OrchardCore.Localization.Core`. Ele está disponível em [MyGet](https://www.myget.org/) na fonte do pacote a seguir: https://www.myget.org/F/orchardcore-preview/api/v3/index.json
+Adicione uma referência ao pacote NuGet `OrchardCore.Localization.Core`.
 
 O arquivo *.csproj* agora contém uma linha semelhante à seguinte (o número de versão pode variar):
 
@@ -296,7 +296,7 @@ Este exemplo se baseia em um aplicativo ASP.NET Core MVC gerado com base em um m
 
 ### <a name="referencing-the-package"></a>Referenciando o pacote
 
-Adicione uma referência ao pacote NuGet `OrchardCore.Localization.Core`. Ele está disponível em [MyGet](https://www.myget.org/) na fonte do pacote a seguir: https://www.myget.org/F/orchardcore-preview/api/v3/index.json
+Adicione uma referência ao pacote NuGet `OrchardCore.Localization.Core`.
 
 O arquivo *.csproj* agora contém uma linha semelhante à seguinte (o número de versão pode variar):
 
