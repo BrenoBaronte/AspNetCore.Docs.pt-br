@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/security/webassembly/hosted-with-identity-server
-ms.openlocfilehash: fdd7eb3c4a3b07022760a43cbde80838bfaf7c84
-ms.sourcegitcommit: 8b0e9a72c1599ce21830c843558a661ba908ce32
+ms.openlocfilehash: d35dd0acf626a6305f00e295e7918c82c7d6a912
+ms.sourcegitcommit: cc405f20537484744423ddaf87bd1e7d82b6bdf0
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98024789"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98658697"
 ---
 # <a name="secure-an-aspnet-core-no-locblazor-webassembly-hosted-app-with-no-locidentity-server"></a>Proteger um Blazor WebAssembly aplicativo ASP.NET Core hospedado com o Identity servidor
 
@@ -130,6 +130,10 @@ A `Startup` classe tem as seguintes adições.
     app.UseAuthorization();
     ```
 
+### <a name="azure-app-service-on-linux"></a>Serviço de Aplicativo do Azure no Linux
+
+Especifique o emissor explicitamente ao implantar no serviço Azure App no Linux. Para obter mais informações, consulte <xref:security/authentication/identity/spa#azure-app-service-on-linux>.
+
 ### <a name="addapiauthorization"></a>AddApiAuthorization
 
 O <xref:Microsoft.Extensions.DependencyInjection.IdentityServerBuilderConfigurationExtensions.AddApiAuthorization%2A> método auxiliar configura o [ Identity servidor](https://identityserver.io/) para cenários de ASP.NET Core. IdentityO servidor é uma estrutura avançada e extensível para lidar com questões de segurança de aplicativo. IdentityO servidor expõe complexidade desnecessária para os cenários mais comuns. Consequentemente, um conjunto de convenções e opções de configuração é fornecido para considerarmos um bom ponto de partida. Depois que a autenticação precisar ser alterada, todo o poder do Identity servidor estará disponível para personalizar a autenticação de acordo com os requisitos do aplicativo.
@@ -155,7 +159,7 @@ Para obter controle total do esquema de banco de dados, herde de uma das Identit
 
 No `OidcConfigurationController` ( `Controllers/OidcConfigurationController.cs` ), o ponto de extremidade do cliente é provisionado para atender aos parâmetros OIDC.
 
-### <a name="app-settings"></a>Configurações de aplicativo
+### <a name="app-settings"></a>Configurações do aplicativo
 
 No arquivo de configurações do aplicativo ( `appsettings.json` ) na raiz do projeto, a `IdentityServer` seção descreve a lista de clientes configurados. No exemplo a seguir, há um único cliente. O nome do cliente corresponde ao nome do aplicativo e é mapeado por convenção para o `ClientId` parâmetro OAuth. O perfil indica o tipo de aplicativo que está sendo configurado. O perfil é usado internamente para direcionar as convenções que simplificam o processo de configuração para o servidor. <!-- There are several profiles available, as explained in the [Application profiles](#application-profiles) section. -->
 
@@ -277,7 +281,7 @@ O `LoginDisplay` componente ( `Shared/LoginDisplay.razor` ) é renderizado no `M
 
 [!INCLUDE[](~/blazor/includes/security/fetchdata-component.md)]
 
-## <a name="run-the-app"></a>Executar o aplicativo
+## <a name="run-the-app"></a>Execute o aplicativo
 
 Execute o aplicativo no projeto do servidor. Ao usar o Visual Studio, seja:
 
@@ -468,9 +472,12 @@ No *`Client`* aplicativo, as abordagens de autorização de componente são func
 
 [!INCLUDE[](~/blazor/includes/security/usermanager-signinmanager.md)]
 
-## <a name="host-in-azure-app-service-with-a-custom-domain"></a>Hospedar no serviço de Azure App com um domínio personalizado
+## <a name="host-in-azure-app-service-with-a-custom-domain-and-certificate"></a>Host no serviço de Azure App com um domínio e certificado personalizados
 
-As diretrizes a seguir explicam como implantar um Blazor WebAssembly aplicativo hospedado com o Identity servidor do para [Azure app serviço](https://azure.microsoft.com/services/app-service/) com um domínio personalizado.
+As diretrizes a seguir explicam:
+
+* Como implantar um aplicativo hospedado Blazor WebAssembly com Identity o servidor para [Azure app serviço](https://azure.microsoft.com/services/app-service/) com um domínio personalizado.
+* Como criar e usar um certificado TLS para comunicação de protocolo HTTPS com navegadores. Embora a orientação se concentre em usar o certificado com um domínio personalizado, as diretrizes são igualmente aplicáveis ao uso de um domínio padrão de aplicativos do Azure, por exemplo `contoso.azurewebsites.net` .
 
 Para esse cenário de hospedagem, **não use o** mesmo certificado para a [ Identity chave de assinatura de token do servidor](https://docs.identityserver.io/en/latest/topics/crypto.html#token-signing-and-validation) e a comunicação https segura do site com navegadores:
 

@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: fundamentals/servers/kestrel/endpoints
-ms.openlocfilehash: 780250feab456fa3eedee4e023c9bc774e748291
-ms.sourcegitcommit: 063a06b644d3ade3c15ce00e72a758ec1187dd06
+ms.openlocfilehash: 5fec573013da5bcb5039b7a189fd84d964349b3a
+ms.sourcegitcommit: cc405f20537484744423ddaf87bd1e7d82b6bdf0
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98253916"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98658736"
 ---
 # <a name="configure-endpoints-for-the-aspnet-core-kestrel-web-server"></a>Configurar pontos de extremidade para o servidor Web ASP.NET Core Kestrel
 
@@ -169,7 +169,7 @@ Há um esquema de definições de configurações de aplicativo HTTPS padrão di
 No exemplo a seguir *appsettings.json* :
 
 * Defina `AllowInvalid` como `true` para permitir o uso de certificados inválidos (por exemplo, certificados autoassinados).
-* Qualquer ponto de extremidade HTTPS que não especifique um certificado ( `HttpsDefaultCert` no exemplo a seguir) volta para o certificado definido em `Certificates`  >  `Default` ou o certificado de desenvolvimento.
+* Qualquer ponto de extremidade HTTPS que não especifique um certificado ( `HttpsDefaultCert` no exemplo a seguir) volta para o certificado definido em `Certificates:Default` ou o certificado de desenvolvimento.
 
 ```json
 {
@@ -185,8 +185,16 @@ No exemplo a seguir *appsettings.json* :
           "Password": "<certificate password>"
         }
       },
-      "HttpsInlineCertStore": {
+      "HttpsInlineCertAndKeyFile": {
         "Url": "https://localhost:5002",
+        "Certificate": {
+          "Path": "<path to .pem/.crt file>",
+          "KeyPath": "<path to .key file>",
+          "Password": "<certificate password>"
+        }
+      },
+      "HttpsInlineCertStore": {
+        "Url": "https://localhost:5003",
         "Certificate": {
           "Subject": "<subject; required>",
           "Store": "<certificate store; required>",
@@ -195,14 +203,7 @@ No exemplo a seguir *appsettings.json* :
         }
       },
       "HttpsDefaultCert": {
-        "Url": "https://localhost:5003"
-      },
-      "Https": {
-        "Url": "https://*:5004",
-        "Certificate": {
-          "Path": "<path to .pfx file>",
-          "Password": "<certificate password>"
-        }
+        "Url": "https://localhost:5004"
       }
     },
     "Certificates": {
@@ -215,7 +216,24 @@ No exemplo a seguir *appsettings.json* :
 }
 ```
 
-Uma alternativa ao uso `Path` `Password` de e para qualquer nó de certificado é especificar o certificado usando campos de repositório de certificados. Por exemplo, o `Certificates`  >  `Default` certificado pode ser especificado como:
+Observações do esquema:
+
+* Os nomes dos pontos de extremidade não diferenciam [maiúsculas de minúsculas](xref:fundamentals/configuration/index#configuration-keys-and-values). Por exemplo: `HTTPS` and `Https` são equivalentes.
+* O parâmetro `Url` é necessário para cada ponto de extremidade. O formato desse parâmetro é o mesmo que o do parâmetro de configuração de `Urls` de nível superior, exceto que ele é limitado a um único valor.
+* Esses pontos de extremidade substituem aqueles definidos na configuração de `Urls` de nível superior em vez de serem adicionados a eles. Os pontos de extremidade definidos no código por meio de `Listen` são acumulados com os pontos de extremidade definidos na seção de configuração.
+* A seção `Certificate` é opcional. Se a `Certificate` seção não for especificada, os padrões definidos em `Certificates:Default` serão usados. Se nenhum padrão estiver disponível, o certificado de desenvolvimento será usado. Se não houver padrões e o certificado de desenvolvimento não estiver presente, o servidor gerará uma exceção e não será iniciado.
+* A `Certificate` seção dá suporte a várias [fontes de certificado](#certificate-sources).
+* Qualquer número de pontos de extremidade pode ser definido na [configuração](xref:fundamentals/configuration/index) contanto que eles não causem conflitos de porta.
+
+#### <a name="certificate-sources"></a>Fontes de certificado
+
+Os nós de certificado podem ser configurados para carregar certificados de várias fontes:
+
+* `Path` e `Password` carregar arquivos *. pfx* .
+* `Path``KeyPath`e `Password` para carregar arquivos. *PEM* / *. CRT* e *. Key* .
+* `Subject` e `Store` para carregar do repositório de certificados.
+
+Por exemplo, o `Certificates:Default` certificado pode ser especificado como:
 
 ```json
 "Default": {
@@ -226,15 +244,9 @@ Uma alternativa ao uso `Path` `Password` de e para qualquer nó de certificado �
 }
 ```
 
-Observações do esquema:
+#### <a name="configurationloader"></a>ConfigurationLoader
 
-* Os nomes de pontos de extremidade diferenciam maiúsculas de minúsculas. Por exemplo, `HTTPS` e `Https` são válidos.
-* O parâmetro `Url` é necessário para cada ponto de extremidade. O formato desse parâmetro é o mesmo que o do parâmetro de configuração de `Urls` de nível superior, exceto que ele é limitado a um único valor.
-* Esses pontos de extremidade substituem aqueles definidos na configuração de `Urls` de nível superior em vez de serem adicionados a eles. Os pontos de extremidade definidos no código por meio de `Listen` são acumulados com os pontos de extremidade definidos na seção de configuração.
-* A seção `Certificate` é opcional. Se a seção `Certificate` não for especificada, os padrões definidos nos cenários anteriores serão usados. Se não houver nenhum padrão disponível, o servidor gerará uma exceção e não poderá ser iniciado.
-* A `Certificate` seção dá suporte a ambos os `Path` &ndash; `Password` `Subject` &ndash; `Store` certificados e.
-* Qualquer número de pontos de extremidade pode ser definido dessa forma, contanto que eles não causem conflitos de porta.
-* `options.Configure(context.Configuration.GetSection("{SECTION}"))` retorna um `KestrelConfigurationLoader` com um método `.Endpoint(string name, listenOptions => { })` que pode ser usado para complementar as definições de um ponto de extremidade configurado:
+`options.Configure(context.Configuration.GetSection("{SECTION}"))` retorna um <xref:Microsoft.AspNetCore.Server.Kestrel.KestrelConfigurationLoader> com um método `.Endpoint(string name, listenOptions => { })` que pode ser usado para complementar as definições de um ponto de extremidade configurado:
 
 ```csharp
 webBuilder.UseKestrel((context, serverOptions) =>

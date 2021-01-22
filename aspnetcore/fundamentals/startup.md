@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: fundamentals/startup
-ms.openlocfilehash: 747b13abb0ce3fed2d1dc018c6dbf82db1ae7130
-ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
+ms.openlocfilehash: e2825476c5fe36571b365ac5ee3c57ff4db61b87
+ms.sourcegitcommit: cc405f20537484744423ddaf87bd1e7d82b6bdf0
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "93052234"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98658671"
 ---
 # <a name="app-startup-in-aspnet-core"></a>Inicialização de aplicativo no ASP.NET Core
 
@@ -124,7 +124,7 @@ Para configurar serviços e o pipeline de processamento de solicitação sem usa
 
 Use <xref:Microsoft.AspNetCore.Hosting.IStartupFilter> :
 
-* Para configurar o middleware no início ou no final de um pipeline de middleware de [configuração](#the-configure-method) de um aplicativo sem uma chamada explícita para `Use{Middleware}` . `IStartupFilter` é usado pelo ASP.NET Core para adicionar padrões ao início do pipeline sem precisar fazer com que o autor do aplicativo registre explicitamente o middleware padrão. `IStartupFilter` permite uma chamada de componente diferente `Use{Middleware}` em nome do autor do aplicativo.
+* Para configurar o middleware no início ou no final de um pipeline de middleware de [configuração](#the-configure-method) de um aplicativo sem uma chamada explícita para `Use{Middleware}` . `IStartupFilter` é usado pelo ASP.NET Core para adicionar padrões ao início do pipeline sem precisar fazer com que o autor do aplicativo registre explicitamente o middleware padrão. `IStartupFilter` permite que um componente diferente chame `Use{Middleware}` em nome do autor do aplicativo.
 * Para criar um pipeline de `Configure` métodos. [IStartupFilter.Configure](xref:Microsoft.AspNetCore.Hosting.IStartupFilter.Configure*) pode definir um middleware para ser executado antes ou depois do middleware adicionado pelas bibliotecas.
 
 `IStartupFilter` implementa <xref:Microsoft.AspNetCore.Hosting.StartupBase.Configure*>, que recebe e retorna um `Action<IApplicationBuilder>`. Um <xref:Microsoft.AspNetCore.Builder.IApplicationBuilder> define uma classe para configurar o pipeline de solicitação do aplicativo. Para obter mais informações, confira [Criar um pipeline de middleware com o IApplicationBuilder](xref:fundamentals/middleware/index#create-a-middleware-pipeline-with-iapplicationbuilder).

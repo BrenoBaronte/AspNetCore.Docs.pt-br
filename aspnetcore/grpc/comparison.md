@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: grpc/comparison
-ms.openlocfilehash: 0fb50f07153f5f9953b667fe32062ad24b2bd66d
-ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
+ms.openlocfilehash: 1ec553d54a9cad170cb322bc186bb67ac8bbded4
+ms.sourcegitcommit: cc405f20537484744423ddaf87bd1e7d82b6bdf0
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "93059943"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98658723"
 ---
 # <a name="compare-grpc-services-with-http-apis"></a>Comparar serviços gRPC com APIs HTTP
 
@@ -42,7 +42,7 @@ A tabela a seguir oferece uma comparação de alto nível dos recursos entre as 
 | Carga útil          | [Protobuf (pequeno, binário)](#performance)           | JSON (grande, legível por humanos)  |
 | Prescriptiveness | [Especificação estrita](#strict-specification)      | Cancelar. Qualquer HTTP é válido.     |
 | Streaming        | [Cliente, servidor, bidirecional](#streaming)       | Cliente, servidor                |
-| Suporte ao navegador  | [Não (requer grpc-Web)](#limited-browser-support) | Sim                           |
+| Suporte ao navegador  | [Não (requer grpc-Web)](#limited-browser-support) | Yes                           |
 | Segurança         | Transporte (TLS)                                    | Transporte (TLS)               |
 | Geração de código de cliente | [Sim](#code-generation)                      | OpenAPI + ferramentas de terceiros |
 
@@ -61,7 +61,7 @@ HTTP/2 não é exclusivo para gRPC. Muitos tipos de solicitação, incluindo API
 
 ### <a name="code-generation"></a>Geração de código
 
-Todas as estruturas gRPC fornecem suporte de primeira classe para geração de código. Um arquivo de núcleo para o desenvolvimento de gRPC é o [arquivo. proto](https://developers.google.com/protocol-buffers/docs/proto3), que define o contrato de serviços e mensagens do gRPC. Desse arquivo, as estruturas do gRPC de código gerarão uma classe base de serviço, mensagens e um cliente completo.
+Todas as estruturas gRPC fornecem suporte de primeira classe para geração de código. Um arquivo de núcleo para o desenvolvimento de gRPC é o [ `.proto` arquivo](https://developers.google.com/protocol-buffers/docs/proto3), que define o contrato de serviços e mensagens do gRPC. A partir desse arquivo, as estruturas gRPC geram uma classe base de serviço, mensagens e um cliente completo.
 
 Ao compartilhar o arquivo *. proto* entre o servidor e o cliente, as mensagens e o código do cliente podem ser gerados de ponta a ponta. A geração de código do cliente elimina a duplicação de mensagens no cliente e no servidor e cria um cliente fortemente tipado para você. Não ter de escrever um cliente economiza um tempo de desenvolvimento significativo em aplicativos com muitos serviços.
 

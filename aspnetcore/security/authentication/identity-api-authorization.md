@@ -19,30 +19,30 @@ no-loc:
 - Razor
 - SignalR
 uid: security/authentication/identity/spa
-ms.openlocfilehash: 8acc34c88bf62b3da1b920acc7318c94435c100e
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: 5a6c160ebdda3ec600980aa839770f4f22a9c2fc
+ms.sourcegitcommit: cc405f20537484744423ddaf87bd1e7d82b6bdf0
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93051974"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98658658"
 ---
 # <a name="authentication-and-authorization-for-spas"></a>Autenticação e autorização para SPAs
 
 Os modelos ASP.NET Core 3,1 e posterior oferecem autenticação em aplicativos de página única (SPAs) usando o suporte para autorização de API. ASP.NET Core Identitypara autenticar e armazenar usuários, é combinado com o [ Identity servidor](https://identityserver.io/) para implementar o OpenID Connect.
 
-Um parâmetro de autenticação foi adicionado aos modelos de projeto **angular** e **reajam** que é semelhante ao parâmetro de autenticação nos modelos de projeto de **aplicativo Web (Model-View-Controller)** (MVC) e **aplicativo Web** ( Razor páginas). Os valores de parâmetro permitidos são **None** e **individual** . O modelo de projeto **React.js e Redux** não dá suporte ao parâmetro de autenticação neste momento.
+Um parâmetro de autenticação foi adicionado aos modelos de projeto **angular** e **reajam** que é semelhante ao parâmetro de autenticação nos modelos de projeto de **aplicativo Web (Model-View-Controller)** (MVC) e **aplicativo Web** ( Razor páginas). Os valores de parâmetro permitidos são **None** e **individual**. O modelo de projeto **React.js e Redux** não dá suporte ao parâmetro de autenticação neste momento.
 
 ## <a name="create-an-app-with-api-authorization-support"></a>Criar um aplicativo com suporte à autorização de API
 
 A autenticação e a autorização do usuário podem ser usadas com SPAs angular e reagir. Abra um shell de comando e execute o seguinte comando:
 
-**Angular** :
+**Angular**:
 
 ```dotnetcli
 dotnet new angular -o <output_directory_name> -au Individual
 ```
 
-**Reagir** :
+**Reagir**:
 
 ```dotnetcli
 dotnet new react -o <output_directory_name> -au Individual
@@ -98,6 +98,27 @@ A `Startup` classe tem as seguintes adições:
     app.UseIdentityServer();
     ```
 
+### <a name="azure-app-service-on-linux"></a>Serviço de Aplicativo do Azure no Linux
+
+Para implantações de serviço Azure App no Linux, especifique o emissor explicitamente no `Startup.ConfigureServices` :
+
+```csharp
+services.Configure<JwtBearerOptions>(
+    IdentityServerJwtConstants.IdentityServerJwtBearerScheme, 
+    options =>
+    {
+        options.Authority = "{AUTHORITY}";
+    });
+```
+
+No código anterior, o `{AUTHORITY}` espaço reservado é o <xref:Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerOptions.Authority> a ser usado ao fazer chamadas do OpenID Connect.
+
+Exemplo:
+
+```csharp
+options.Authority = "https://contoso-service.azurewebsites.net";
+```
+
 ### <a name="addapiauthorization"></a>AddApiAuthorization
 
 Esse método auxiliar configura o Identity servidor para usar nossa configuração com suporte. IdentityO servidor é uma estrutura avançada e extensível para lidar com questões de segurança de aplicativo. Ao mesmo tempo, isso expõe uma complexidade desnecessária para os cenários mais comuns. Consequentemente, um conjunto de convenções e opções de configuração é fornecido para você que são considerados um bom ponto de partida. Depois que a autenticação precisar ser alterada, todo o poder do Identity servidor ainda estará disponível para personalizar a autenticação de acordo com suas necessidades.
@@ -151,9 +172,9 @@ No *appsettings.Development.jsno* arquivo da raiz do projeto, há uma `IdentityS
 O suporte de autorização de API e autenticação no modelo angular reside em seu próprio módulo angular no diretório *ClientApp\src\api-Authorization* . O módulo é composto pelos seguintes elementos:
 
 * 3 componentes:
-  * *login. Component. TS* : manipula o fluxo de logon do aplicativo.
-  * *logout. Component. TS* : manipula o fluxo de logout do aplicativo.
-  * *login-menu. Component. TS* : um widget que exibe um dos seguintes conjuntos de links:
+  * *login. Component. TS*: manipula o fluxo de logon do aplicativo.
+  * *logout. Component. TS*: manipula o fluxo de logout do aplicativo.
+  * *login-menu. Component. TS*: um widget que exibe um dos seguintes conjuntos de links:
     * Os links de gerenciamento de perfil de usuário e logoff quando o usuário é autenticado.
     * Os links de registro e logon quando o usuário não está autenticado.
 * Uma proteção de rota `AuthorizeGuard` que pode ser adicionada a rotas e requer que um usuário seja autenticado antes de visitar a rota.
@@ -166,12 +187,12 @@ O suporte de autorização de API e autenticação no modelo angular reside em s
 O suporte para autenticação e autorização de API no modelo reagir reside no diretório *ClientApp\src\components\api-Authorization* Ele é composto pelos seguintes elementos:
 
 * 4 componentes:
-  * *Login.js* : manipula o fluxo de logon do aplicativo.
-  * *Logout.js* : manipula o fluxo de logout do aplicativo.
-  * *LoginMenu.js* : um widget que exibe um dos seguintes conjuntos de links:
+  * *Login.js*: manipula o fluxo de logon do aplicativo.
+  * *Logout.js*: manipula o fluxo de logout do aplicativo.
+  * *LoginMenu.js*: um widget que exibe um dos seguintes conjuntos de links:
     * Os links de gerenciamento de perfil de usuário e logoff quando o usuário é autenticado.
     * Os links de registro e logon quando o usuário não está autenticado.
-  * *AuthorizeRoute.js* : um componente de rota que exige que um usuário seja autenticado antes de renderizar o componente indicado no `Component` parâmetro.
+  * *AuthorizeRoute.js*: um componente de rota que exige que um usuário seja autenticado antes de renderizar o componente indicado no `Component` parâmetro.
 * Uma instância exportada `authService` da classe `AuthorizeService` que manipula os detalhes de nível inferior do processo de autenticação e expõe informações sobre o usuário autenticado para o restante do aplicativo para consumo.
 
 Agora que você já viu os principais componentes da solução, pode fazer uma análise mais profunda de cenários individuais para o aplicativo.
