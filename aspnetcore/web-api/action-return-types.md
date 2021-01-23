@@ -1,5 +1,5 @@
 ---
-title: Tipos de retorno de ação do controlador em ASP.NET Core API Web
+title: Tipos de retorno de ação do controlador na API Web do ASP.NET Core
 author: scottaddie
 description: Saiba como usar os vários tipos de retorno do método de ação do controlador em uma API da Web do ASP.NET Core.
 ms.author: scaddie
@@ -18,14 +18,14 @@ no-loc:
 - Razor
 - SignalR
 uid: web-api/action-return-types
-ms.openlocfilehash: a2866970a20785ae8fa306d484972697817b7f92
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: 62c8227ca770a3a9adbe780685b140bc0e86841e
+ms.sourcegitcommit: da5a5bed5718a9f8db59356ef8890b4b60ced6e9
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93058942"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98710692"
 ---
-# <a name="controller-action-return-types-in-aspnet-core-web-api"></a>Tipos de retorno de ação do controlador em ASP.NET Core API Web
+# <a name="controller-action-return-types-in-aspnet-core-web-api"></a>Tipos de retorno de ação do controlador na API Web do ASP.NET Core
 
 Por [Scott Addie](https://github.com/scottaddie)
 
@@ -92,11 +92,11 @@ Considere declarar o tipo de retorno da assinatura de ação como `IAsyncEnumera
 
 Considere a seguinte ação, que retorna registros de produtos com preço de venda como `IEnumerable<Product>` :
 
-[!code-csharp[](../web-api/action-return-types/samples/3x/WebApiSample.Api.30/Controllers/ProductsController.cs?name=snippet_GetOnSaleProducts)]
+[!code-csharp[](../web-api/action-return-types/samples/3x/WebApiSample.Api.31/Controllers/ProductsController.cs?name=snippet_GetOnSaleProducts)]
 
 O `IAsyncEnumerable<Product>` equivalente da ação anterior é:
 
-[!code-csharp[](../web-api/action-return-types/samples/3x/WebApiSample.Api.30/Controllers/ProductsController.cs?name=snippet_GetOnSaleProductsAsync)]
+[!code-csharp[](../web-api/action-return-types/samples/3x/WebApiSample.Api.31/Controllers/ProductsController.cs?name=snippet_GetOnSaleProductsAsync)]
 
 As duas ações anteriores não são bloqueadas a partir do ASP.NET Core 3,0.
 

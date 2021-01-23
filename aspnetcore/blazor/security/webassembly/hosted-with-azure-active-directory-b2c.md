@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/security/webassembly/hosted-with-azure-active-directory-b2c
-ms.openlocfilehash: dac2203d63b2d924ee6ae4f7012e9c33739e6213
-ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
+ms.openlocfilehash: 1c87330dec069e05f274206d2d35f50f489f9623
+ms.sourcegitcommit: da5a5bed5718a9f8db59356ef8890b4b60ced6e9
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97792074"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98710614"
 ---
 # <a name="secure-an-aspnet-core-no-locblazor-webassembly-hosted-app-with-azure-active-directory-b2c"></a>Proteger um Blazor WebAssembly aplicativo ASP.NET Core hospedado com Azure Active Directory B2C
 
@@ -132,7 +132,7 @@ No mínimo, selecione o atributo de usuário nome de exibição de **declaraçõ
 
 Registre o nome do fluxo de usuário de entrada e de entrada criado para o aplicativo (por exemplo, `B2C_1_signupsignin` ).
 
-### <a name="create-the-app"></a>Criar o aplicativo
+### <a name="create-the-app"></a>Crie o aplicativo
 
 Substitua os espaços reservados no comando a seguir pelas informações registradas anteriormente e execute o comando em um shell de comando:
 
@@ -484,7 +484,7 @@ Para obter mais informações, consulte as seguintes seções do artigo *cenári
 
 [!INCLUDE[](~/blazor/includes/security/fetchdata-component.md)]
 
-## <a name="run-the-app"></a>Executar o aplicativo
+## <a name="run-the-app"></a>Execute o aplicativo
 
 Execute o aplicativo no projeto do servidor. Ao usar o Visual Studio, seja:
 
@@ -502,6 +502,7 @@ Execute o aplicativo no projeto do servidor. Ao usar o Visual Studio, seja:
 ## <a name="additional-resources"></a>Recursos adicionais
 
 * <xref:blazor/security/webassembly/additional-scenarios>
+* [Criar uma versão personalizada da biblioteca de JavaScript de autenticação. MSAL](xref:blazor/security/webassembly/additional-scenarios#build-a-custom-version-of-the-authenticationmsal-javascript-library)
 * [Solicitações de API Web não autenticadas ou não autorizadas em um aplicativo com um cliente padrão seguro](xref:blazor/security/webassembly/additional-scenarios#unauthenticated-or-unauthorized-web-api-requests-in-an-app-with-a-secure-default-client)
 * <xref:security/authentication/azure-ad-b2c>
 * [Tutorial: Criar um locatário do Azure Active Directory B2C](/azure/active-directory-b2c/tutorial-create-tenant)

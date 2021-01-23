@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/security/webassembly/hosted-with-azure-active-directory
-ms.openlocfilehash: e65be6e2ddc1a9de6f0ba20fe50f63b650e0bff5
-ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
+ms.openlocfilehash: f0c7723e8de7167b4fe5021ea1ca26e7cf198581
+ms.sourcegitcommit: da5a5bed5718a9f8db59356ef8890b4b60ced6e9
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97792038"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98710562"
 ---
 # <a name="secure-an-aspnet-core-no-locblazor-webassembly-hosted-app-with-azure-active-directory"></a>Proteger um Blazor WebAssembly aplicativo ASP.NET Core hospedado com Azure Active Directory
 
@@ -137,7 +137,7 @@ Em **permissões de API**:
 1. Escolha **Adicionar permissões**.
 1. Selecione o botão **conceder consentimento de administrador para {nome do locatário}** . Clique em **Sim** para confirmar.
 
-### <a name="create-the-app"></a>Criar o aplicativo
+### <a name="create-the-app"></a>Crie o aplicativo
 
 Em uma pasta vazia, substitua os espaços reservados no comando a seguir pelas informações registradas anteriormente e execute o comando em um shell de comando:
 
@@ -543,7 +543,7 @@ Para obter mais informações, consulte as seguintes seções do artigo *cenári
 
 [!INCLUDE[](~/blazor/includes/security/fetchdata-component.md)]
 
-## <a name="run-the-app"></a>Executar o aplicativo
+## <a name="run-the-app"></a>Execute o aplicativo
 
 Execute o aplicativo no projeto do servidor. Ao usar o Visual Studio, seja:
 
@@ -559,6 +559,7 @@ Execute o aplicativo no projeto do servidor. Ao usar o Visual Studio, seja:
 ## <a name="additional-resources"></a>Recursos adicionais
 
 * <xref:blazor/security/webassembly/additional-scenarios>
+* [Criar uma versão personalizada da biblioteca de JavaScript de autenticação. MSAL](xref:blazor/security/webassembly/additional-scenarios#build-a-custom-version-of-the-authenticationmsal-javascript-library)
 * [Solicitações de API Web não autenticadas ou não autorizadas em um aplicativo com um cliente padrão seguro](xref:blazor/security/webassembly/additional-scenarios#unauthenticated-or-unauthorized-web-api-requests-in-an-app-with-a-secure-default-client)
 * <xref:blazor/security/webassembly/aad-groups-roles>
 * <xref:security/authentication/azure-active-directory/index>
