@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: fundamentals/error-handling
-ms.openlocfilehash: ad9920ccd830b93d083f3c5ede03702164842b6e
-ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
+ms.openlocfilehash: e65983fb1a440057283111ea5a79a79b765607b7
+ms.sourcegitcommit: 610936e4d3507f7f3d467ed7859ab9354ec158ba
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97753108"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98751689"
 ---
 # <a name="handle-errors-in-aspnet-core"></a>Tratar erros no ASP.NET Core
 
@@ -68,7 +68,14 @@ No exemplo a seguir, <xref:Microsoft.AspNetCore.Builder.ExceptionHandlerExtensio
 
 O Razor modelo de aplicativo pages fornece uma página de erro (*. cshtml*) e uma <xref:Microsoft.AspNetCore.Mvc.RazorPages.PageModel> classe ( `ErrorModel` ) na pasta *páginas* . Para um aplicativo MVC, o modelo de projeto inclui um `Error` método de ação e uma exibição de erro para o controlador inicial.
 
-Não marque o método de ação do manipulador de erros com atributos do método HTTP, como `HttpGet` . Os verbos explícitos impedem que algumas solicitações atinjam o método de ação. Permitir acesso anônimo ao método se usuários não autenticados devem ver o modo de exibição de erro.
+O middleware de manipulação de exceção executa novamente a solicitação usando o método http *original* . Se um ponto de extremidade do manipulador de erro for restrito a um conjunto específico de métodos HTTP, ele será executado somente para esses métodos HTTP. Por exemplo, uma ação do controlador MVC que usa o `[HttpGet]` atributo é executada somente para solicitações GET. Para garantir que *todas as* solicitações alcancem a página de tratamento de erros personalizada, não as restrinja a um conjunto específico de métodos http.
+
+Para lidar com exceções de maneira diferente com base no método HTTP original:
+
+* Para Razor páginas, crie vários métodos de manipulador. Por exemplo, use `OnGet` para manipular exceções Get e use `OnPost` para manipular exceções post.
+* Para o MVC, aplique atributos de verbo HTTP a várias ações. Por exemplo, use `[HttpGet]` para manipular exceções Get e use `[HttpPost]` para manipular exceções post.
+
+Para permitir que usuários não autenticados exibam a página tratamento de erros personalizados, verifique se ele oferece suporte a acesso anônimo.
 
 ### <a name="access-the-exception"></a>Acessar a exceção
 
