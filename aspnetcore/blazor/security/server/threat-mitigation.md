@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/security/server/threat-mitigation
-ms.openlocfilehash: d0ed36731d78d3e98aa294aca50492f0a3ac8174
-ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
+ms.openlocfilehash: 4256e90ca5f185992a73d1e43460ca5d27159d6f
+ms.sourcegitcommit: d4836f9b7c508f51c6c4ee6d0cc719b38c1729c4
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97506689"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98758280"
 ---
 # <a name="threat-mitigation-guidance-for-aspnet-core-no-locblazor-server"></a>Diretrizes de mitigação de ameaças para ASP.NET Core Blazor Server
 
@@ -306,12 +306,7 @@ As interações de interoperabilidade do JS entre o cliente e o servidor são re
 
 Quando ocorre um erro no servidor, a estrutura notifica o cliente e destrói a sessão. Por padrão, o cliente recebe uma mensagem de erro genérica que pode ser vista nas ferramentas de desenvolvedor do navegador.
 
-O erro do lado do cliente não inclui a pilha de chamadas e não fornece detalhes sobre a causa do erro, mas os logs do servidor contêm essas informações. Para fins de desenvolvimento, informações de erro confidenciais podem ser disponibilizadas para o cliente habilitando erros detalhados.
-
-Habilitar erros detalhados em JavaScript com:
-
-* <xref:Microsoft.AspNetCore.Components.Server.CircuitOptions.DetailedErrors?displayProperty=nameWithType>.
-* A `DetailedErrors` chave de configuração definida como `true` , que pode ser definida no arquivo de configurações do aplicativo ( `appsettings.json` ). A chave também pode ser definida usando a `ASPNETCORE_DETAILEDERRORS` variável de ambiente com um valor de `true` .
+O erro do lado do cliente não inclui a pilha de chamadas e não fornece detalhes sobre a causa do erro, mas os logs do servidor contêm essas informações. Para fins de desenvolvimento, informações de erro confidenciais podem ser disponibilizadas para o cliente [habilitando erros detalhados](xref:blazor/fundamentals/handle-errors#blazor-server-detailed-circuit-errors).
 
 > [!WARNING]
 > Expor informações de erro aos clientes na Internet é um risco de segurança que sempre deve ser evitado.

@@ -19,22 +19,16 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/security/webassembly/aad-groups-roles
-ms.openlocfilehash: 8d18a8f9282e83c3b3ef5b9c7c6651c9b525a21f
-ms.sourcegitcommit: 610936e4d3507f7f3d467ed7859ab9354ec158ba
+ms.openlocfilehash: d1c75d85283b583d8bfd885fcd6552b69c2528c7
+ms.sourcegitcommit: d4836f9b7c508f51c6c4ee6d0cc719b38c1729c4
 ms.translationtype: MT
 ms.contentlocale: pt-BR
 ms.lasthandoff: 01/25/2021
-ms.locfileid: "98751577"
+ms.locfileid: "98758263"
 ---
 # <a name="azure-active-directory-aad-groups-administrator-roles-and-app-roles"></a>Grupos do Azure Active Directory (AAD), funções de administrador e funções de aplicativo
 
 De [Luke Latham](https://github.com/guardrex) e [Javier Calvarro Nelson](https://github.com/javiercn)
-
-> [!NOTE]
-> Este artigo se aplica a Blazor ASP.NET Core aplicativos versão 3,1 com o Microsoft Identity 1,0 e será atualizado para 5,0 com Identity 2,0 em breve. Para obter mais informações, consulte o seguinte problema do GitHub e solicitação de pull. A guia **arquivos alterados** da solicitação pull contém o texto de rascunho e exemplos para as atualizações do artigo. Após a revisão e as atualizações finais, a solicitação de pull será mesclada no conjunto de documentação ao vivo.
->
-> * Problema: [ Blazor WASM com grupos e funções do AAD (dotnet/AspNetCore.Docs #17683)](https://github.com/dotnet/AspNetCore.Docs/issues/17683)
-> * Solicitação de pull: [ Blazor tópico sobre grupos e funções do AAD 5,0 (dotnet/AspNetCore.Docs #20856)](https://github.com/dotnet/AspNetCore.Docs/pull/20856)
 
 Azure Active Directory (AAD) fornece várias abordagens de autorização que podem ser combinadas com ASP.NET Core Identity :
 
