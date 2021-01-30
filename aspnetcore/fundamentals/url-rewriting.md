@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: fundamentals/url-rewriting
-ms.openlocfilehash: e7bd5f4d61661dd23eb0907f896d0d32b7799aac
-ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
+ms.openlocfilehash: 55993f951bfe910fb179fdb25b8d04f81d4ee2c9
+ms.sourcegitcommit: 83524f739dd25fbfa95ee34e95342afb383b49fe
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "93061295"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99057454"
 ---
 # <a name="url-rewriting-middleware-in-aspnet-core"></a>Middleware de Reconfiguração de URL no ASP.NET Core
 
@@ -290,7 +290,7 @@ Caso você tenha um Módulo de Reconfiguração do IIS ativo com regras no níve
 
 #### <a name="unsupported-features"></a>Recursos sem suporte
 
-O middleware liberado com o ASP.NET Core 2.x não dá suporte aos seguintes recursos do Módulo de Reconfiguração de URL do IIS:
+O middleware não dá suporte aos seguintes recursos do módulo de reescrita de URL do IIS:
 
 * Regras de saída
 * Variáveis de servidor personalizadas

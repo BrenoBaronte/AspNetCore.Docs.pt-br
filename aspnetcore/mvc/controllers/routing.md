@@ -17,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: mvc/controllers/routing
-ms.openlocfilehash: 44c507fb5e0ff4477a84bfc1e4d0c62180c8dd37
-ms.sourcegitcommit: 063a06b644d3ade3c15ce00e72a758ec1187dd06
+ms.openlocfilehash: 04ece9628265135efd0dd92d29c8b14fc897329e
+ms.sourcegitcommit: 83524f739dd25fbfa95ee34e95342afb383b49fe
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98252832"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99057350"
 ---
 # <a name="routing-to-controller-actions-in-aspnet-core"></a>Roteamento para ações do controlador no ASP.NET Core
 
@@ -120,7 +120,7 @@ O roteamento convencional é usado com controladores e exibições. A rota `defa
 
 [!code-csharp[](routing/samples/3.x/main/StartupDefaultMVC.cs?name=snippet2)]
 
-é um exemplo de *roteamento convencional*. Ele é chamado de *Roteamento convencional* porque estabelece uma *Convenção* para caminhos de URL:
+O anterior é um exemplo de uma *rota convencional*. Ele é chamado de *Roteamento convencional* porque estabelece uma *Convenção* para caminhos de URL:
 
 * O primeiro segmento de caminho, `{controller=Home}` , é mapeado para o nome do controlador.
 * O segundo segmento, `{action=Index}` , é mapeado para o nome da [ação](#action) .

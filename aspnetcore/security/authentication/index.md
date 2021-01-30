@@ -4,7 +4,7 @@ author: mjrousos
 description: Saiba mais sobre a autenticação no ASP.NET Core.
 ms.author: riande
 ms.custom: mvc
-ms.date: 03/03/2020
+ms.date: 1/24/2021
 no-loc:
 - appsettings.json
 - ASP.NET Core Identity
@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: security/authentication/index
-ms.openlocfilehash: e9e4ca11d20557666c75b84e56af825d002df0f1
-ms.sourcegitcommit: fbd5427293d9ecccc388bd5fd305c2eb8ada7281
+ms.openlocfilehash: 72036e9c4c92ee5dd82ac4a67e766fb0e5c8f924
+ms.sourcegitcommit: 83524f739dd25fbfa95ee34e95342afb383b49fe
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94463997"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99057285"
 ---
 # <a name="overview-of-aspnet-core-authentication"></a>Visão geral da autenticação ASP.NET Core
 
@@ -62,7 +62,19 @@ O middleware de autenticação é adicionado no `Startup.Configure` chamando o <
 
 ## <a name="authentication-concepts"></a>Conceitos de autenticação
 
+A autenticação é responsável por fornecer a <xref:System.Security.Claims.ClaimsPrincipal> autorização para tomar decisões de permissão. Há várias abordagens de esquema de autenticação para selecionar qual manipulador de autenticação é responsável por gerar o conjunto correto de declarações:
+
+  * [Esquema de autenticação](xref:security/authorization/limitingidentitybyscheme), também abordado na próxima seção.
+  * O esquema de autenticação padrão, abordado na próxima seção.
+  * Defina o [HttpContext. User](xref:Microsoft.AspNetCore.Http.HttpContext.User)diretamente.
+
+Não há nenhuma investigação automática de esquemas. Se o esquema padrão não for especificado, o esquema deverá ser especificado no atributo autorizar, caso contrário, o seguinte erro será gerado:
+
+  InvalidOperationException: nenhum authenticationScheme foi especificado e nenhum DefaultAuthenticateScheme foi encontrado. Os esquemas padrão podem ser definidos usando addauthentication (cadeia de caracteres defaultscheme) ou addauthentication (ação &lt; authenticationoptions &gt; configureoptions).
+
 ### <a name="authentication-scheme"></a>Esquema de autenticação
+
+O [esquema de autenticação](xref:security/authorization/limitingidentitybyscheme) pode selecionar qual manipulador de autenticação é responsável por gerar o conjunto correto de declarações. Para obter mais informações, consulte [autorizar com um esquema específico](xref:security/authorization/limitingidentitybyscheme).
 
 Um esquema de autenticação é um nome que corresponde a:
 

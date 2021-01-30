@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: fundamentals/servers/kestrel/endpoints
-ms.openlocfilehash: 5fec573013da5bcb5039b7a189fd84d964349b3a
-ms.sourcegitcommit: cc405f20537484744423ddaf87bd1e7d82b6bdf0
+ms.openlocfilehash: f9d82409f4b31a5564c7cdfa48beb303d784e213
+ms.sourcegitcommit: 83524f739dd25fbfa95ee34e95342afb383b49fe
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98658736"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99057142"
 ---
 # <a name="configure-endpoints-for-the-aspnet-core-kestrel-web-server"></a>Configurar pontos de extremidade para o servidor Web ASP.NET Core Kestrel
 
@@ -76,24 +76,6 @@ webBuilder.ConfigureKestrel(serverOptions =>
 > [!NOTE]
 > Os pontos de extremidade criados chamando <xref:Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerOptions.Listen%2A> **antes** <xref:Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerOptions.ConfigureEndpointDefaults%2A> de chamar não terão os padrões aplicados.
 
-## <a name="configurehttpsdefaultsactionhttpsconnectionadapteroptions"></a>ConfigureHttpsDefaults (ação \<HttpsConnectionAdapterOptions> )
-
-Especifica uma `Action` de configuração a ser executada para cada ponto de extremidade HTTPS. Chamar `ConfigureHttpsDefaults` várias vezes substitui as `Action`s pela última `Action` especificada.
-
-```csharp
-webBuilder.ConfigureKestrel(serverOptions =>
-{
-    serverOptions.ConfigureHttpsDefaults(listenOptions =>
-    {
-        // certificate is an X509Certificate2
-        listenOptions.ServerCertificate = certificate;
-    });
-});
-```
-
-> [!NOTE]
-> Os pontos de extremidade criados chamando <xref:Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerOptions.Listen%2A> **antes** <xref:Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerOptions.ConfigureHttpsDefaults%2A> de chamar não terão os padrões aplicados.
-
 ## <a name="configureiconfiguration"></a>Configure(IConfiguration)
 
 Cria um carregador de configuração para configurar o Kestrel que usa uma <xref:Microsoft.Extensions.Configuration.IConfiguration> como entrada. A configuração precisa estar no escopo da seção de configuração do Kestrel.
@@ -118,6 +100,24 @@ Cria um carregador de configuração para configurar o Kestrel que usa uma <xref
   }
 }
 ```
+
+## <a name="configurehttpsdefaultsactionhttpsconnectionadapteroptions"></a>ConfigureHttpsDefaults (ação \<HttpsConnectionAdapterOptions> )
+
+Especifica uma `Action` de configuração a ser executada para cada ponto de extremidade HTTPS. Chamar `ConfigureHttpsDefaults` várias vezes substitui as `Action`s pela última `Action` especificada.
+
+```csharp
+webBuilder.ConfigureKestrel(serverOptions =>
+{
+    serverOptions.ConfigureHttpsDefaults(listenOptions =>
+    {
+        // certificate is an X509Certificate2
+        listenOptions.ServerCertificate = certificate;
+    });
+});
+```
+
+> [!NOTE]
+> Os pontos de extremidade criados chamando <xref:Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerOptions.Listen%2A> **antes** <xref:Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerOptions.ConfigureHttpsDefaults%2A> de chamar não terão os padrões aplicados.
 
 ## <a name="listenoptionsusehttps"></a>ListenOptions.UseHttps
 
@@ -335,6 +335,21 @@ O suporte para SNI requer:
 * Em execução na estrutura de destino `netcoreapp2.1` ou posterior. No `net461` ou posterior, o retorno de chamada é invocado, mas o `name` sempre é `null` . O `name` também será `null` se o cliente não fornecer o parâmetro de nome do host no handshake TLS.
 * Todos os sites executados na mesma instância do Kestrel. Kestrel não é compatível com o compartilhamento de endereço IP e porta entre várias instâncias sem um proxy reverso.
 
+## <a name="ssltls-protocols"></a>Protocolos SSL/TLS
+
+Os protocolos SSL são protocolos usados para criptografar e descriptografar o tráfego entre dois pares, tradicionalmente um cliente e um servidor.
+
+```csharp
+webBuilder.ConfigureKestrel(serverOptions =>
+{
+    serverOptions.ConfigureHttpsDefaults(listenOptions =>
+    {
+        listenOptions.SslProtocols = SslProtocols.Tls13;
+    });
+});
+```
+
+O valor padrão, `SslProtocols.None` , faz com que o Kestrel use os padrões do sistema operacional para escolher o melhor protocolo. A menos que você tenha um motivo específico para selecionar um protocolo, use o padrão.
 ## <a name="connection-logging"></a>Log de conexão
 
 Chamada <xref:Microsoft.AspNetCore.Hosting.ListenOptionsConnectionLoggingExtensions.UseConnectionLogging%2A> para emitir logs de nível de depuração para comunicação em nível de byte em uma conexão. O log de conexões é útil para solucionar problemas em comunicação de nível baixo, como durante a criptografia TLS e atrás de proxies. Se `UseConnectionLogging` for colocado antes `UseHttps` , o tráfego criptografado será registrado. Se `UseConnectionLogging` for colocado depois `UseHttps` , o tráfego descriptografado será registrado. Este é o middleware de [conexão](#connection-middleware)interno.

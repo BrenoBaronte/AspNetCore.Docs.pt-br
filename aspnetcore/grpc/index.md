@@ -1,5 +1,5 @@
 ---
-title: Introdução ao gRPC no .NET Core
+title: Introdução ao gRPC no .NET
 author: juntaoluo
 description: Saiba mais sobre os serviços de gRPC com a pilha do ASP.NET Core e o servidor Kestrel.
 monikerRange: '>= aspnetcore-3.0'
@@ -18,14 +18,14 @@ no-loc:
 - Razor
 - SignalR
 uid: grpc/index
-ms.openlocfilehash: 80f44e3845cc1e3c87d5d657807a318eb65e6c6f
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: 5820049aba90a2fbd06a23756b12ac9656c3b2c4
+ms.sourcegitcommit: 83524f739dd25fbfa95ee34e95342afb383b49fe
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93059891"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99057506"
 ---
-# <a name="introduction-to-grpc-on-net-core"></a>Introdução ao gRPC no .NET Core
+# <a name="introduction-to-grpc-on-net"></a>Introdução ao gRPC no .NET
 
 Por [John Luo](https://github.com/juntaoluo) e [James Newton – King](https://twitter.com/jamesnk)
 
@@ -106,7 +106,7 @@ public class GreeterService : Greeter.GreeterBase
 }
 ```
 
-`GreeterService`herda do `GreeterBase` tipo, que é gerado a partir do `Greeter` serviço no arquivo *\* . proto* . O serviço torna-se acessível para clientes no *Startup.cs* :
+`GreeterService`herda do `GreeterBase` tipo, que é gerado a partir do `Greeter` serviço no arquivo *\* . proto* . O serviço torna-se acessível para clientes no *Startup.cs*:
 
 ```csharp
 app.UseEndpoints(endpoints =>

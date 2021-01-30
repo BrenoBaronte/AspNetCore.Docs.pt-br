@@ -17,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: mvc/overview
-ms.openlocfilehash: 4f0e98057c03769a672ef350cc3ec724a4f7e721
-ms.sourcegitcommit: fe5a287fa6b9477b130aa39728f82cdad57611ee
+ms.openlocfilehash: 642a7b26a3ba0a79a35437a5c19ee0be63a367af
+ms.sourcegitcommit: 83524f739dd25fbfa95ee34e95342afb383b49fe
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94431050"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99057311"
 ---
 # <a name="overview-of-aspnet-core-mvc"></a>Visão geral sobre o ASP.NET Core MVC
 
@@ -71,7 +71,7 @@ ASP.NET Core MVC fornece uma maneira com base em padrões para criar sites dinâ
 
 ASP.NET Core MVC inclui o seguinte:
 
-* [Roteiros](#routing)
+* [Roteamento](#routing)
 * [Model binding](#model-binding)
 * [Validação de modelo](#model-validation)
 * [Injeção de dependência](../fundamentals/dependency-injection.md)
@@ -88,7 +88,7 @@ ASP.NET Core MVC inclui o seguinte:
 
 O ASP.NET Core MVC baseia-se no [roteamento do ASP.NET Core](../fundamentals/routing.md), um componente de mapeamento de URL avançado que permite criar aplicativos que têm URLs compreensíveis e pesquisáveis. Isso permite que você defina padrões de nomenclatura de URL do aplicativo que funcionam bem para SEO (otimização do mecanismo de pesquisa) e para a geração de links, sem levar em consideração como os arquivos no servidor Web estão organizados. Defina as rotas usando uma sintaxe de modelo de rota conveniente que dá suporte a restrições de valor de rota, padrões e valores opcionais.
 
-O *roteamento baseado em convenção* permite definir globalmente os formatos de URL aceitos pelo aplicativo e como cada um desses formatos é mapeado para um método de ação específico em determinado controlador. Quando uma solicitação de entrada é recebida, o mecanismo de roteamento analisa a URL e corresponde-a a um dos formatos de URL definidos. Em seguida, ele chama o método de ação do controlador associado.
+O *roteamento baseado em Convenção* permite que você defina globalmente os formatos de URL que seu aplicativo aceita e como cada um desses formatos é mapeado para um método de ação específico em um determinado controlador. Quando uma solicitação de entrada é recebida, o mecanismo de roteamento analisa a URL e corresponde-a a um dos formatos de URL definidos. Em seguida, ele chama o método de ação do controlador associado.
 
 ```csharp
 routes.MapRoute(name: "Default", template: "{controller=Home}/{action=Index}/{id?}");
@@ -269,5 +269,5 @@ Para obter mais informações, consulte <xref:mvc/compatibility-version>.
 
 ## <a name="additional-resources"></a>Recursos adicionais
 
-* [Mytested. AspNetCore. Mvc-biblioteca de testes fluente para ASP.NET Core MVC](https://github.com/ivaylokenov/MyTested.AspNetCore.Mvc): biblioteca de testes de unidade fortemente tipada, fornecendo uma interface fluente para testar MVC e aplicativos de API Web. ( *Não é mantido ou não tem suporte da Microsoft.* )
+* [Mytested. AspNetCore. Mvc-biblioteca de testes fluente para ASP.NET Core MVC](https://github.com/ivaylokenov/MyTested.AspNetCore.Mvc): biblioteca de testes de unidade fortemente tipada, fornecendo uma interface fluente para testar MVC e aplicativos de API Web. (*Não é mantido ou não tem suporte da Microsoft.*)
 * <xref:blazor/components/prerendering-and-integration>

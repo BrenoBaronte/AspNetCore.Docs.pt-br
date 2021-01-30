@@ -5,7 +5,7 @@ description: Saiba mais sobre como usar a interface IHttpClientFactory para gere
 monikerRange: '>= aspnetcore-2.1'
 ms.author: scaddie
 ms.custom: mvc
-ms.date: 02/09/2020
+ms.date: 1/21/2021
 no-loc:
 - appsettings.json
 - ASP.NET Core Identity
@@ -19,18 +19,18 @@ no-loc:
 - Razor
 - SignalR
 uid: fundamentals/http-requests
-ms.openlocfilehash: 34c35daac3da845bac9156fe96078df7902a4cd0
-ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
+ms.openlocfilehash: 1cf3029452f87a396847f969f0f3136a75874752
+ms.sourcegitcommit: 83524f739dd25fbfa95ee34e95342afb383b49fe
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "93059488"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99057324"
 ---
 # <a name="make-http-requests-using-ihttpclientfactory-in-aspnet-core"></a>Fazer solicitações HTTP usando IHttpClientFactory no ASP.NET Core
 
 ::: moniker range=">= aspnetcore-3.0"
 
-Por [Glenn Condron](https://github.com/glennc), [Ryan Nowak](https://github.com/rynowak),  [Steve Gordon](https://github.com/stevejgordon), [Rick Anderson](https://twitter.com/RickAndMSFT)e [Kirk Larkin](https://github.com/serpent5)
+Por [Kirk Larkin](https://github.com/serpent5), [Steve Gordon](https://github.com/stevejgordon), [Glenn Condron](https://github.com/glennc)e [Ryan Nowak](https://github.com/rynowak).
 
 É possível registrar e usar um <xref:System.Net.Http.IHttpClientFactory> para configurar e criar instâncias de <xref:System.Net.Http.HttpClient> em um aplicativo. `IHttpClientFactory` oferece os seguintes benefícios:
 
@@ -58,7 +58,7 @@ A melhor abordagem depende dos requisitos do aplicativo.
 
 `IHttpClientFactory` pode ser registrado chamando `AddHttpClient` :
 
-[!code-csharp[](http-requests/samples/3.x/HttpClientFactorySample/Startup.cs?name=snippet1)]
+[!code-csharp[](http-requests/samples/3.x/HttpClientFactorySample/Startup.cs?name=snippet1&highlight=13)]
 
 Um `IHttpClientFactory` pode ser solicitado usando [injeção de dependência (di)](xref:fundamentals/dependency-injection). O código a seguir usa `IHttpClientFactory` para criar uma `HttpClient` instância do:
 
@@ -238,16 +238,15 @@ Para saber mais sobre como usar verbos HTTP diferentes com o `HttpClient` , cons
 
 `HttpClient` tem o conceito de delegar manipuladores que podem ser vinculados juntos para solicitações HTTP de saída. `IHttpClientFactory`:
 
-* Simplifica a definição dos manipuladores a serem aplicados para cada cliente nomeado.
-* Dá suporte ao registro e encadeamento de vários manipuladores para criar um pipeline de middleware de solicitação de saída. Cada um desses manipuladores é capaz de executar o trabalho antes e após a solicitação de saída. Esse padrão:
-
-  * É semelhante ao pipeline de middleware de entrada no ASP.NET Core.
-  * Fornece um mecanismo para gerenciar preocupações abrangentes em relação a solicitações HTTP, como:
-
-    * cache
-    * tratamento de erros
-    * serialização
-    * registro em log
+  * Simplifica a definição dos manipuladores a serem aplicados para cada cliente nomeado.
+  * Dá suporte ao registro e encadeamento de vários manipuladores para criar um pipeline de middleware de solicitação de saída. Cada um desses manipuladores é capaz de realizar o trabalho antes e após a solicitação de saída. Esse padrão:
+  
+    * É semelhante ao pipeline de middleware de entrada no ASP.NET Core.
+    * Fornece um mecanismo para gerenciar preocupações abrangentes em relação a solicitações HTTP, como:
+      * cache
+      * tratamento de erros
+      * serialização
+      * registro em log
 
 Para criar um manipulador de delegação:
 
@@ -262,13 +261,31 @@ Mais de um manipulador pode ser adicionado à configuração para um `HttpClient
 
 [!code-csharp[](http-requests/samples/3.x/HttpClientFactorySample/Startup2.cs?name=snippet1)]
 
-No código anterior, o `ValidateHeaderHandler` é registrado com a DI. O `IHttpClientFactory` cria um escopo de injeção de dependência separado para cada manipulador. Os manipuladores podem depender dos serviços de qualquer escopo. Os serviços dos quais os manipuladores dependem são descartados quando o manipulador é descartado.
-
-Depois de registrado, o <xref:Microsoft.Extensions.DependencyInjection.HttpClientBuilderExtensions.AddHttpMessageHandler*> poderá ser chamado, passando o tipo para o manipulador.
+No código anterior, o `ValidateHeaderHandler` é registrado com a DI. Depois de registrado, o <xref:Microsoft.Extensions.DependencyInjection.HttpClientBuilderExtensions.AddHttpMessageHandler*> poderá ser chamado, passando o tipo para o manipulador.
 
 Vários manipuladores podem ser registrados na ordem em que eles devem ser executados. Cada manipulador encapsula o próximo manipulador até que o `HttpClientHandler` final execute a solicitação:
 
 [!code-csharp[](http-requests/samples/3.x/HttpClientFactorySample/Startup.cs?name=snippet6)]
+
+### <a name="use-di-in-outgoing-request-middleware"></a>Usar DI no middleware de solicitação de saída
+
+Quando `IHttpClientFactory` o cria um novo manipulador de delegação, ele usa di para atender aos parâmetros do construtor do manipulador. `IHttpClientFactory` Cria um escopo de di **separado** para cada manipulador, o que pode levar a um comportamento surpreendente quando um manipulador consome um serviço com *escopo* .
+
+Por exemplo, considere a seguinte interface e sua implementação, que representa uma tarefa como uma operação com um identificador, `OperationId` :
+
+[!code-csharp[](http-requests/samples/3.x/HttpRequestsSample/Models/OperationScoped.cs?name=snippet_Types)]
+
+Como o nome sugere, `IOperationScoped` é registrado com di usando um tempo de vida no *escopo* :
+
+[!code-csharp[](http-requests/samples/3.x/HttpRequestsSample/Startup.cs?name=snippet_IOperationScoped&highlight=18,26)]
+
+O manipulador de delegação a seguir consome e usa `IOperationScoped` para definir o `X-OPERATION-ID` cabeçalho para a solicitação de saída:
+
+[!code-csharp[](http-requests/samples/3.x/HttpRequestsSample/Handlers/OperationHandler.cs?name=snippet_Class&highlight=13)]
+
+No [ `HttpRequestsSample` Download](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/http-requests/samples/3.x/HttpRequestsSample)], navegue até `/Operation` e atualize a página. O valor do escopo da solicitação é alterado para cada solicitação, mas o valor do escopo do manipulador só é alterado a cada 5 segundos.
+
+Os manipuladores podem depender dos serviços de qualquer escopo. Os serviços dos quais os manipuladores dependem são descartados quando o manipulador é descartado.
 
 Use uma das seguintes abordagens para compartilhar o estado por solicitação com os manipuladores de mensagens:
 
@@ -374,7 +391,7 @@ Chamada <xref:Microsoft.Extensions.DependencyInjection.HttpClientBuilderExtensio
 
 [!code-csharp[](http-requests/samples/2.x/HttpClientFactorySample/Startup.cs?name=snippet13)]
 
-## <a name="logging"></a>Log
+## <a name="logging"></a>Registrando em log
 
 Os clientes criado pelo `IHttpClientFactory` registram mensagens de log para todas as solicitações. Habilite o nível de informações apropriado na configuração de log para ver as mensagens de log padrão. Os registros em log adicionais, como o registro em log dos cabeçalhos de solicitação, estão incluídos somente no nível de rastreamento.
 
@@ -692,7 +709,7 @@ Chamada <xref:Microsoft.Extensions.DependencyInjection.HttpClientBuilderExtensio
 
 [!code-csharp[](http-requests/samples/2.x/HttpClientFactorySample/Startup.cs?name=snippet13)]
 
-## <a name="logging"></a>Log
+## <a name="logging"></a>Registrando em log
 
 Os clientes criado pelo `IHttpClientFactory` registram mensagens de log para todas as solicitações. Habilite o nível apropriado de informações na configuração de log para ver as mensagens de log padrão. Os registros em log adicionais, como o registro em log dos cabeçalhos de solicitação, estão incluídos somente no nível de rastreamento.
 
@@ -1000,7 +1017,7 @@ Chamada <xref:Microsoft.Extensions.DependencyInjection.HttpClientBuilderExtensio
 
 [!code-csharp[](http-requests/samples/2.x/HttpClientFactorySample/Startup.cs?name=snippet13)]
 
-## <a name="logging"></a>Log
+## <a name="logging"></a>Registrando em log
 
 Os clientes criado pelo `IHttpClientFactory` registram mensagens de log para todas as solicitações. Habilite o nível apropriado de informações na configuração de log para ver as mensagens de log padrão. Os registros em log adicionais, como o registro em log dos cabeçalhos de solicitação, estão incluídos somente no nível de rastreamento.
 
