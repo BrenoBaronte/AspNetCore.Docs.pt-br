@@ -1,5 +1,5 @@
 ---
-title: gRPC para plataformas com suporte do .NET
+title: gRPC em plataformas com suporte do .NET
 author: jamesnk
 description: Saiba mais sobre as plataformas com suporte para o gRPC no .NET.
 monikerRange: '>= aspnetcore-3.0'
@@ -18,29 +18,29 @@ no-loc:
 - Razor
 - SignalR
 uid: grpc/supported-platforms
-ms.openlocfilehash: 92ca38875c6618c8630a66af16548d32bc469a62
-ms.sourcegitcommit: 83524f739dd25fbfa95ee34e95342afb383b49fe
+ms.openlocfilehash: 88d371f460839261b618a32564a723c257b0b119
+ms.sourcegitcommit: 7e394a8527c9818caebb940f692ae4fcf2f1b277
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99057708"
+ms.lasthandoff: 01/31/2021
+ms.locfileid: "99217486"
 ---
-# <a name="grpc-for-net-supported-platforms"></a>gRPC para plataformas com suporte do .NET
+# <a name="grpc-on-net-supported-platforms"></a>gRPC em plataformas com suporte do .NET
 
 Por [James Newton – King](https://twitter.com/jamesnk)
 
 Este artigo aborda os requisitos e as plataformas com suporte para o uso do gRPC com o .NET.
 
-o gRPC foi projetado para usar HTTP/2 para alguns de seus recursos mais avançados. Não há suporte para HTTP/2 em todos os lugares que podem impedir o uso de gRPC. Por causa disso, há um segundo formato de transmissão compatível com HTTP/1.1 para enviar chamadas gRPC entre clientes e servidores:
+o gRPC aproveita os recursos avançados disponíveis no HTTP/2. O HTTP/2 não tem suporte em todos os lugares, mas um segundo formato de conexão usando HTTP/1.1 está disponível para gRPC:
 
 * [`application/grpc`](https://github.com/grpc/grpc/blob/master/doc/PROTOCOL-HTTP2.md) -gRPC sobre HTTP/2 é como o gRPC normalmente é usado.
 * [`application/grpc-web`](https://github.com/grpc/grpc/blob/master/doc/PROTOCOL-WEB.md) -gRPC-Web modifica o protocolo gRPC para que seja compatível com HTTP/1.1. o gRPC-Web pode ser usado em mais lugares, notadamente que é possível chamá-lo por aplicativos de navegador. Dois recursos avançados do gRPC não têm mais suporte: streaming de cliente e streaming bidirecional.
 
-o gRPC para .NET dá suporte a formatos de fios. Para obter informações sobre como configurar o gRPC-Web, consulte <xref:grpc/browser> .
+o gRPC no .NET dá suporte a formatos de fios. o gRPC sobre HTTP/2 é usado por padrão. Para obter informações sobre como configurar o gRPC-Web, consulte <xref:grpc/browser> .
 
 ## <a name="device-requirements"></a>Requisitos do dispositivo
 
-o gRPC para .NET dá suporte a qualquer dispositivo compatível com o .NET Core.
+o gRPC no .NET dá suporte a qualquer dispositivo compatível com o .NET Core.
 
 > [!div class="checklist"]
 >
@@ -49,7 +49,7 @@ o gRPC para .NET dá suporte a qualquer dispositivo compatível com o .NET Core.
 > * macOS&dagger;
 > * Navegadores&Dagger;
 
-&dagger;ASP.NET Core aplicativos hospedados no macOS não dão suporte a HTTPS. Os clientes do gRPC no macOS ainda podem usar HTTPS ao chamar serviços remotos.
+&dagger;o [MacOS não dá suporte à Hospedagem de aplicativos ASP.NET Core com HTTPS](xref:grpc/troubleshoot#unable-to-start-aspnet-core-grpc-app-on-macos). Os clientes do gRPC no macOS podem chamar serviços remotos que usam HTTPS.
 
 &Dagger;Blazor WebAssembly os aplicativos podem chamar serviços gRPCs com gRPC-Web.
 
@@ -70,14 +70,14 @@ Para obter mais informações, consulte <xref:grpc/aspnetcore>.
 
 ## <a name="net-version-requirements"></a>Requisitos de versão do .NET
 
-o gRPC para .NET dá suporte ao .NET Core 3 e ao .NET 5 ou posterior.
+o gRPC no .NET dá suporte ao .NET Core 3 e ao .NET 5 ou posterior.
 
 > [!div class="checklist"]
 >
 > * .NET 5 ou posterior
 > * .NET Core 3
 
-o gRPC para .NET não dá suporte à execução em .NET Framework e Xamarin. [GRPC C# core-library](https://grpc.io/docs/languages/csharp/quickstart/) é uma biblioteca de terceiros que dá suporte a .NET Framework e Xamarin. o gRPC C-Core não tem suporte da Microsoft.
+o gRPC no .NET não dá suporte à execução em .NET Framework e Xamarin. [GRPC C# core-library](https://grpc.io/docs/languages/csharp/quickstart/) é uma biblioteca de terceiros que dá suporte a .NET Framework e Xamarin. o gRPC C-Core não tem suporte da Microsoft.
 
 ## <a name="azure-services"></a>Serviços do Azure
 

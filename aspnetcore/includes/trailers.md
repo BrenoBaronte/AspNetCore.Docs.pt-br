@@ -1,4 +1,4 @@
-Os trailers HTTP são semelhantes aos cabeçalhos HTTP, exceto que são enviados depois que o corpo da resposta é enviado. Para o IIS e HTTP.SYS, há suporte apenas para os trailers de resposta HTTP/2.
+Os trailers HTTP são semelhantes aos cabeçalhos HTTP, exceto que são enviados depois que o corpo da resposta é enviado. Para o IIS e HTTP.sys, há suporte apenas para os trailers de resposta HTTP/2.
 
 ```csharp
 if (httpContext.Response.SupportsTrailers())

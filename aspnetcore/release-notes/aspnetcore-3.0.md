@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: aspnetcore-3.0
-ms.openlocfilehash: 235daac5c08248ca2052de6b44e66a8162ce23ad
-ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
+ms.openlocfilehash: 161d6aeefe1882b86ce97cdcfa7e5b23048693f0
+ms.sourcegitcommit: 7e394a8527c9818caebb940f692ae4fcf2f1b277
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "93051233"
+ms.lasthandoff: 01/31/2021
+ms.locfileid: "99217499"
 ---
 # <a name="whats-new-in-aspnet-core-30"></a>O que há de novo no ASP.NET Core 3,0
 
@@ -376,7 +376,7 @@ As opções de autenticação de certificado incluem a capacidade de:
 
 Uma entidade de usuário padrão é construída a partir das propriedades do certificado. A entidade de usuário contém um evento que permite complementar ou substituir a entidade de segurança. Para obter mais informações, consulte <xref:security/authentication/certauth>.
 
-A [autenticação do Windows](/windows-server/security/windows-authentication/windows-authentication-overview) foi estendida para Linux e MacOS. Em versões anteriores, a autenticação do Windows era limitada ao [IIS](xref:host-and-deploy/iis/index) e à [https](xref:fundamentals/servers/httpsys). No ASP.NET Core 3,0, o [Kestrel](xref:fundamentals/servers/kestrel) tem a capacidade de usar Negotiate, [Kerberos](/windows-server/security/kerberos/kerberos-authentication-overview)e [NTLM no Windows](/windows-server/security/kerberos/ntlm-overview), Linux e MacOS para hosts ingressados no domínio do Windows. O suporte do Kestrel desses esquemas de autenticação é fornecido pelo pacote [NuGet Microsoft. AspNetCore. Authentication. Negotiate](https://www.nuget.org/packages/Microsoft.AspNetCore.Authentication.Negotiate) . Assim como acontece com os outros serviços de autenticação, configure o aplicativo de autenticação de todo e configure o serviço:
+A [autenticação do Windows](/windows-server/security/windows-authentication/windows-authentication-overview) foi estendida para Linux e MacOS. Em versões anteriores, a autenticação do Windows era limitada ao [IIS](xref:host-and-deploy/iis/index) e [HTTP.sys](xref:fundamentals/servers/httpsys). No ASP.NET Core 3,0, o [Kestrel](xref:fundamentals/servers/kestrel) tem a capacidade de usar Negotiate, [Kerberos](/windows-server/security/kerberos/kerberos-authentication-overview)e [NTLM no Windows](/windows-server/security/kerberos/ntlm-overview), Linux e MacOS para hosts ingressados no domínio do Windows. O suporte do Kestrel desses esquemas de autenticação é fornecido pelo pacote [NuGet Microsoft. AspNetCore. Authentication. Negotiate](https://www.nuget.org/packages/Microsoft.AspNetCore.Authentication.Negotiate) . Assim como acontece com os outros serviços de autenticação, configure o aplicativo de autenticação de todo e configure o serviço:
 
 ```csharp
 public void ConfigureServices(IServiceCollection services)

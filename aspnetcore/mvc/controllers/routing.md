@@ -17,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: mvc/controllers/routing
-ms.openlocfilehash: 04ece9628265135efd0dd92d29c8b14fc897329e
-ms.sourcegitcommit: 83524f739dd25fbfa95ee34e95342afb383b49fe
+ms.openlocfilehash: 0863b5758f33b720636f3b927fcb9014cd106c21
+ms.sourcegitcommit: 7e394a8527c9818caebb940f692ae4fcf2f1b277
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99057350"
+ms.lasthandoff: 01/31/2021
+ms.locfileid: "99217538"
 ---
 # <a name="routing-to-controller-actions-in-aspnet-core"></a>Roteamento para ações do controlador no ASP.NET Core
 
@@ -826,7 +826,7 @@ O atributo [[Area]](xref:Microsoft.AspNetCore.Mvc.AreaAttribute) é o que denota
 
 [!code-csharp[](routing/samples/3.x/AreasRouting/Controllers/UsersController.cs)]
 
-O namespace de cada controlador é mostrado aqui para fins de integridade. Se os controladores anteriores usarem o mesmo namespace, um erro do compilador será gerado. Namespaces de classe não têm efeito sobre o roteamento do MVC.
+O namespace de cada controlador é mostrado aqui para fins de integridade. Se os controladores anteriores usaram o mesmo namespace, um erro do compilador será gerado. Namespaces de classe não têm efeito sobre o roteamento do MVC.
 
 Os primeiros dois controladores são membros de áreas e correspondem somente quando seus respectivos nomes de área são fornecidos pelo valor de rota `area`. O terceiro controlador não é um membro de nenhuma área e só pode corresponder quando nenhum valor para `area` for fornecido pelo roteamento.
 

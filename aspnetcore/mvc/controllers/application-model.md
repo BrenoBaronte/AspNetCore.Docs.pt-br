@@ -17,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: mvc/controllers/application-model
-ms.openlocfilehash: a7a654eb43c0dbf375af911d8d5353ac4c04a825
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: cf16536284ee9c88913257607df837ad6e50ea2c
+ms.sourcegitcommit: 7e394a8527c9818caebb940f692ae4fcf2f1b277
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93060931"
+ms.lasthandoff: 01/31/2021
+ms.locfileid: "99217369"
 ---
 # <a name="work-with-the-application-model-in-aspnet-core"></a>Trabalhar com o modelo de aplicativo no ASP.NET Core
 
@@ -32,7 +32,7 @@ O ASP.NET Core MVC define um *modelo de aplicativo* que representa os componente
 
 ## <a name="models-and-providers"></a>Modelos e provedores
 
-O modelo de aplicativo ASP.NET Core MVC inclui interfaces abstratas e classes de implementação concreta que descrevem um aplicativo MVC. Esse modelo é o resultado da descoberta do MVC de controladores, ações, parâmetros de ação, rotas e filtros do aplicativo de acordo com as convenções padrão. Trabalhando com o modelo de aplicativo, você pode modificar o aplicativo para seguir convenções diferentes do comportamento padrão do MVC. Os parâmetros, os nomes, as rotas e os filtros são todos usados como dados de configuração para ações e controladores.
+O modelo de aplicativo ASP.NET Core MVC inclui interfaces abstratas e classes de implementação concretas que descrevem um aplicativo MVC. Esse modelo é o resultado da descoberta do MVC de controladores, ações, parâmetros de ação, rotas e filtros do aplicativo de acordo com as convenções padrão. Trabalhando com o modelo de aplicativo, você pode modificar o aplicativo para seguir convenções diferentes do comportamento padrão do MVC. Os parâmetros, os nomes, as rotas e os filtros são todos usados como dados de configuração para ações e controladores.
 
 O Modelo de Aplicativo ASP.NET Core MVC tem a seguinte estrutura:
 

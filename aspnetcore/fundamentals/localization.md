@@ -17,12 +17,12 @@ no-loc:
 - Razor
 - SignalR
 uid: fundamentals/localization
-ms.openlocfilehash: 07e2f561b0e9db58780d6e8a271e32b00132b1b5
-ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
+ms.openlocfilehash: 67f245b7f4e4aa97b30c5318c73732617aea44c7
+ms.sourcegitcommit: 7e394a8527c9818caebb940f692ae4fcf2f1b277
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "93059514"
+ms.lasthandoff: 01/31/2021
+ms.locfileid: "99217564"
 ---
 # <a name="globalization-and-localization-in-aspnet-core"></a>Globalização e localização no ASP.NET Core
 
@@ -134,7 +134,7 @@ No código anterior, `SharedResource` é a classe correspondente ao resx em que 
 
 ### <a name="supportedcultures-and-supporteduicultures"></a>SupportedCultures e SupportedUICultures
 
-O ASP.NET Core permite que você especifique dois valores de cultura, `SupportedCultures` e `SupportedUICultures`. O objeto [CultureInfo](/dotnet/api/system.globalization.cultureinfo) para `SupportedCultures` determina os resultados das funções dependentes de cultura, como data, hora, número e formatação de moeda. `SupportedCultures` também determina a ordem de classificação de texto, convenções de uso de maiúsculas e comparações de cadeia de caracteres. Consulte [CultureInfo.CurrentCulture](/dotnet/api/system.stringcomparer.currentculture#System_StringComparer_CurrentCulture) para obter mais informações sobre como o servidor obtém a Cultura. O `SupportedUICultures` determina quais cadeias de caracteres traduzidas (de arquivos *. resx* ) são pesquisadas pelo [ResourceManager](/dotnet/api/system.resources.resourcemanager). O `ResourceManager` apenas pesquisa cadeias de caracteres específicas a uma cultura determinadas por `CurrentUICulture`. Cada thread no .NET tem objetos `CurrentCulture` e `CurrentUICulture`. O ASP.NET Core inspeciona esses valores durante a renderização de funções dependentes de cultura. Por exemplo, se a cultura do thread atual estiver definida como "en-US" (inglês, Estados Unidos), `DateTime.Now.ToLongDateString()` exibirá "Thursday, February 18, 2016", mas se `CurrentCulture` estiver definida como "es-ES" (espanhol, Espanha), o resultado será "jueves, 18 de febrero de 2016".
+O ASP.NET Core permite que você especifique dois valores de cultura, <xref:Microsoft.AspNetCore.Builder.RequestLocalizationOptions.SupportedCultures> e <xref:Microsoft.AspNetCore.Builder.RequestLocalizationOptions.SupportedUICultures>. O <xref:System.Globalization.CultureInfo> objeto para `SupportedCultures` determina os resultados de funções dependentes de cultura, como data, hora, número e formatação de moeda. `SupportedCultures` também determina a ordem de classificação de texto, convenções de uso de maiúsculas e comparações de cadeia de caracteres. Para obter mais informações sobre como o servidor Obtém a cultura, consulte <xref:System.Globalization.CultureInfo.CurrentCulture?displayProperty=nameWithType> e <xref:System.Globalization.CultureInfo.CurrentUICulture?displayProperty=nameWithType> . O `SupportedUICultures` determina quais cadeias de caracteres traduzidas (de `.resx` arquivos) são pesquisadas pelo <xref:System.Resources.ResourceManager> . O `ResourceManager` pesquisa cadeias de caracteres específicas de cultura que são determinadas pelo `CurrentUICulture` . Cada thread no .NET tem objetos `CurrentCulture` e `CurrentUICulture`. A estrutura inspeciona esses valores ao renderizar funções dependentes de cultura. Se a cultura do thread atual estiver definida como `en-US` (Inglês, Estados Unidos), `DateTime.Now.ToLongDateString()` exibe `Thursday, February 18, 2016` ; mas se `CurrentCulture` for definido como `es-ES` (espanhol, Espanha), a saída será `jueves, 18 de febrero de 2016` .
 
 ## <a name="resource-files"></a>Arquivos de recurso
 
@@ -177,7 +177,7 @@ Se você não usar a opção `ResourcesPath`, o arquivo *.resx* de uma exibiçã
 
 ### <a name="rootnamespaceattribute"></a>RootNamespaceAttribute 
 
-O atributo [RootNamespace](/dotnet/api/microsoft.extensions.localization.rootnamespaceattribute?view=aspnetcore-2.1) fornece o namespace raiz de um assembly quando o namespace raiz de um assembly é diferente do nome do assembly. 
+O <xref:Microsoft.Extensions.Localization.RootNamespaceAttribute> atributo fornece o namespace raiz de um assembly quando o namespace raiz de um assembly é diferente do nome do assembly. 
 
 > [!WARNING]
 > Isso pode ocorrer quando o nome de um projeto não é um identificador .NET válido. Por exemplo `my-project-name.csproj` , usará o namespace raiz `my_project_name` e o nome do assembly `my-project-name` que levam a esse erro. 
@@ -531,7 +531,7 @@ Se você não usar a opção `ResourcesPath`, o arquivo *.resx* de uma exibiçã
 
 ### <a name="rootnamespaceattribute"></a>RootNamespaceAttribute 
 
-O atributo [RootNamespace](/dotnet/api/microsoft.extensions.localization.rootnamespaceattribute?view=aspnetcore-2.1) fornece o namespace raiz de um assembly quando o namespace raiz de um assembly é diferente do nome do assembly. 
+O <xref:Microsoft.Extensions.Localization.RootNamespaceAttribute> atributo fornece o namespace raiz de um assembly quando o namespace raiz de um assembly é diferente do nome do assembly. 
 
 > [!WARNING]
 > Isso pode ocorrer quando o nome de um projeto não é um identificador .NET válido. Por exemplo `my-project-name.csproj` , usará o namespace raiz `my_project_name` e o nome do assembly `my-project-name` que levam a esse erro. 
@@ -886,7 +886,7 @@ Se você não usar a opção `ResourcesPath`, o arquivo *.resx* de uma exibiçã
 
 ### <a name="rootnamespaceattribute"></a>RootNamespaceAttribute 
 
-O atributo [RootNamespace](/dotnet/api/microsoft.extensions.localization.rootnamespaceattribute?view=aspnetcore-2.1) fornece o namespace raiz de um assembly quando o namespace raiz de um assembly é diferente do nome do assembly. 
+O <xref:Microsoft.Extensions.Localization.RootNamespaceAttribute> atributo fornece o namespace raiz de um assembly quando o namespace raiz de um assembly é diferente do nome do assembly. 
 
 > [!WARNING]
 > Isso pode ocorrer quando o nome de um projeto não é um identificador .NET válido. Por exemplo `my-project-name.csproj` , usará o namespace raiz `my_project_name` e o nome do assembly `my-project-name` que levam a esse erro. 

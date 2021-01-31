@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: security/authentication/certauth
-ms.openlocfilehash: 71f05163c075a2ef88d5c606814925cdcef879d2
-ms.sourcegitcommit: 063a06b644d3ade3c15ce00e72a758ec1187dd06
+ms.openlocfilehash: c862bc8bff6c4cc80696d92067e814889d6e7782
+ms.sourcegitcommit: 7e394a8527c9818caebb940f692ae4fcf2f1b277
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98253040"
+ms.lasthandoff: 01/31/2021
+ms.locfileid: "99217525"
 ---
 # <a name="configure-certificate-authentication-in-aspnet-core"></a>Configurar a autenticação de certificado no ASP.NET Core
 
@@ -650,7 +650,7 @@ A seguinte abordagem dá suporte a certificados de cliente opcionais:
     * IIS
       * [Hospedando o IIS](xref:host-and-deploy/iis/index#create-the-iis-site)
       * [Configurar a segurança no IIS](/iis/manage/configuring-security/how-to-set-up-ssl-on-iis#configure-ssl-settings-2)
-    * Http.Sys: [Configurar o Windows Server](xref:fundamentals/servers/httpsys#configure-windows-server)
+    * HTTP.sys: [Configurar o Windows Server](xref:fundamentals/servers/httpsys#configure-windows-server)
 
 ::: moniker-end
 
@@ -666,7 +666,7 @@ A seguinte abordagem dá suporte a certificados de cliente opcionais:
     * IIS
       * [Hospedando o IIS](xref:host-and-deploy/iis/index#create-the-iis-site)
       * [Configurar a segurança no IIS](/iis/manage/configuring-security/how-to-set-up-ssl-on-iis#configure-ssl-settings-2)
-    * Http.Sys: [Configurar o Windows Server](xref:fundamentals/servers/httpsys#configure-windows-server)
+    * HTTP.sys: [Configurar o Windows Server](xref:fundamentals/servers/httpsys#configure-windows-server)
 
 ::: moniker-end
 
