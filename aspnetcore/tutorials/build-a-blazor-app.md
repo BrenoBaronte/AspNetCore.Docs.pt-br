@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: tutorials/build-a-blazor-app
-ms.openlocfilehash: 6659b075f54292d9546466919f6842b920e6ece1
-ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
+ms.openlocfilehash: 106e1119db777074b5eae24f5d7e216e6127ca13
+ms.sourcegitcommit: 75db2f684a9302b0be7925eab586aa091c6bd19f
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97808732"
+ms.lasthandoff: 02/01/2021
+ms.locfileid: "99238301"
 ---
 # <a name="build-a-no-locblazor-todo-list-app"></a>Compilar um Blazor aplicativo de lista de tarefas pendentes
 
@@ -108,6 +108,12 @@ No final deste tutorial, você terá um aplicativo de lista de tarefas em funcio
    `TodoItem.cs`:
 
    [!code-csharp[](build-a-blazor-app/samples_snapshot/TodoItem.cs)]
+   
+   > [!NOTE]
+   > Se estiver usando o Visual Studio para criar o `ToDoItem.cs` arquivo e a `ToDoItem` classe, use uma das seguintes abordagens:
+   >
+   > * Remova o namespace que o Visual Studio gera para a classe.
+   > * Use o botão de **cópia** no bloco de código anterior e substitua todo o conteúdo do arquivo que o Visual Studio gera.
 
 1. Retorne ao `Todo` componente e execute as seguintes tarefas:
 

@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: mvc/controllers/filters
-ms.openlocfilehash: 72ee8f5dfdf8ffd6cfcb74b13fa0738893d8e214
-ms.sourcegitcommit: 6299f08aed5b7f0496001d093aae617559d73240
+ms.openlocfilehash: ee30ef89c5d7aeae83f23a81eb02235397c89ac2
+ms.sourcegitcommit: 75db2f684a9302b0be7925eab586aa091c6bd19f
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97486129"
+ms.lasthandoff: 02/01/2021
+ms.locfileid: "99238319"
 ---
 # <a name="filters-in-aspnet-core"></a>Filtros no ASP.NET Core
 
@@ -565,7 +565,8 @@ O runtime do ASP.NET Core não garante:
 _ Uma única instância do filtro será criada.
 * Que o filtro não será solicitado novamente no contêiner de DI em algum momento posterior.
 
-[!WARNING] Somente configure `IFilterFactory.IsReusable` para retornar `true` se a origem dos filtros não for ambígua, se os filtros forem sem estado e forem seguros para uso em várias solicitações HTTP. Por exemplo, não retorne filtros de DI que são registrados como escopo ou transitório se `IFilterFactory.IsReusable` retorna `true`
+> [!WARNING] 
+> Somente configure <xref:Microsoft.AspNetCore.Mvc.Filters.IFilterFactory.IsReusable?displayProperty=nameWithType> para retornar `true` se a origem dos filtros não for ambígua, se os filtros forem sem estado e se os filtros forem seguros para serem usados em várias solicitações HTTP. Por exemplo, não retorne filtros de DI que são registrados como escopo ou transitório se `IFilterFactory.IsReusable` retorna `true` .
 
 Implemente `IFilterFactory` usando implementações personalizadas de atributo como outra abordagem à criação de filtros:
 
