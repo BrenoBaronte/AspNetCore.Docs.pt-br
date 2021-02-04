@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: web-api/index
-ms.openlocfilehash: 51f76bc33d2da6097d26c1ffe17b1c93046a7b88
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: 03debcb211a8cb8f0ebd6d5e67fbc8de7b574e27
+ms.sourcegitcommit: c1839f2992b003c92cd958244a2e0771ae928786
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93052455"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99551664"
 ---
 # <a name="create-web-apis-with-aspnet-core"></a>Criar APIs Web com o ASP.NET Core
 
@@ -76,7 +76,7 @@ O namespace <xref:Microsoft.AspNetCore.Mvc> fornece atributos que podem ser usad
 
 Confira mais alguns exemplos de atributos disponíveis.
 
-|Atributo|Observações|
+|Atributo|Anotações|
 |---------|-----|
 |[`[Route]`](<xref:Microsoft.AspNetCore.Mvc.RouteAttribute>)      |Especifica o padrão de URL para um controlador ou ação.|
 |[`[Bind]`](<xref:Microsoft.AspNetCore.Mvc.BindAttribute>)        |Especifica o prefixo e as propriedades que serão incluídos no model binding.|
@@ -440,3 +440,4 @@ O `[Consumes]` atributo é aplicado a ambas as ações. A `PostJson` ação mani
 * <xref:web-api/advanced/formatting>
 * <xref:tutorials/web-api-help-pages-using-swagger>
 * <xref:mvc/controllers/routing>
+* [Microsoft Learn: criar uma API Web com ASP.NET Core](/learn/modules/build-web-api-aspnet-core/)

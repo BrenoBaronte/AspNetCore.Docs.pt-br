@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: fundamentals/configuration/index
-ms.openlocfilehash: 97ee00dd37ed4eef1c013e0f45b598a79f3f260c
-ms.sourcegitcommit: 3f0ad1e513296ede1bff39a05be6c278e879afed
+ms.openlocfilehash: 62c9d1a58e0f771d91e2bc57f39ec5ebb25baaed
+ms.sourcegitcommit: 37186f76e4a50d7fb7389026dd0e5e234b51ebb2
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96035860"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99541362"
 ---
 # <a name="configuration-in-aspnet-core"></a>Configuração no ASP.NET Core
 
@@ -98,7 +98,7 @@ O padrão <xref:Microsoft.Extensions.Configuration.Json.JsonConfigurationProvide
 
 [!INCLUDE[](~/includes/bind.md)]
 
-Usando a configuração [padrão](#default) , o *appsettings.json* e *appSettings.* `Environment` os arquivos *. JSON* são habilitados com [reloadOnChange: true](https://github.com/dotnet/extensions/blob/release/3.1/src/Hosting/Hosting/src/Host.cs#L74-L75). As alterações feitas no *appsettings.json* e *appSettings.* `Environment` o arquivo *. JSON* ***após** _, o aplicativo iniciado é lido pelo [provedor de configuração JSON](#jcp).
+Usando a configuração [padrão](#default) , o *appsettings.json* e *appSettings.* `Environment` os arquivos *. JSON* são habilitados com [reloadOnChange: true](https://github.com/dotnet/extensions/blob/release/3.1/src/Hosting/Hosting/src/Host.cs#L74-L75). As alterações feitas no *appsettings.json* e *appSettings.* `Environment` o arquivo *. JSON* ***após*** o início do aplicativo é lido pelo [provedor de configuração JSON](#jcp).
 
 Consulte [provedor de configuração JSON](#jcp) neste documento para obter informações sobre como adicionar arquivos de configuração JSON adicionais.
 
@@ -112,7 +112,7 @@ Consulte [provedor de configuração JSON](#jcp) neste documento para obter info
 
 Diretrizes de dados de configuração:
 
-_ Nunca armazene senhas ou outros dados confidenciais no código do provedor de configuração ou em arquivos de configuração de texto sem formatação. A ferramenta [Gerenciador de segredo](xref:security/app-secrets) pode ser usada para armazenar segredos no desenvolvimento.
+* Nunca armazene senhas ou outros dados confidenciais no código do provedor de configuração ou nos arquivos de configuração de texto sem formatação. A ferramenta [Gerenciador de segredo](xref:security/app-secrets) pode ser usada para armazenar segredos no desenvolvimento.
 * Não use segredos de produção em ambientes de teste ou de desenvolvimento.
 * Especifique segredos fora do projeto para que eles não sejam acidentalmente comprometidos com um repositório de código-fonte.
 
@@ -349,7 +349,7 @@ A tabela a seguir mostra os provedores de configuração disponíveis para aplic
 | -------- | ----------------------------------- |
 | [Provedor de configuração de Azure Key Vault](xref:security/key-vault-configuration) | Cofre de Chave do Azure |
 | [Provedor de configuração de Azure App](/azure/azure-app-configuration/quickstart-aspnet-core-app) | Configuração de Aplicativo do Azure |
-| [Provedor de configuração de linha de comando](#clcp) | Parâmetros de linha de comando |
+| [Provedor de configuração de linha de comando](#clcp) | Parâmetros da linha de comando |
 | [Provedor de Configuração personalizado](#custom-configuration-provider) | Fonte personalizada |
 | [Provedor de configuração de variáveis de ambiente](#evcp) | Variáveis de ambiente |
 | [Provedor de configuração de arquivo](#file-configuration-provider) | Arquivos INI, JSON e XML |
@@ -449,13 +449,13 @@ O código anterior:
   * `reloadOnChange: true` : O arquivo é recarregado quando as alterações são salvas.
 * Lê os [provedores de configuração padrão](#default) antes da *MyConfig.jsno* arquivo. As configurações no *MyConfig.jsna* configuração de substituição de arquivo nos provedores de configuração padrão, incluindo o [provedor de configuração de variáveis de ambiente](#evcp) e o provedor de configuração de linha de [comando](#clcp).
 
-Normalmente, você ***não** precisa de um arquivo JSON personalizado que substitua valores definidos no [provedor de configuração de variáveis de ambiente](#evcp) e no provedor de configuração de linha de [comando](#clcp).
+Normalmente, você ***não*** deseja que um arquivo JSON personalizado substitua valores definidos no [provedor de configuração de variáveis de ambiente](#evcp) e no provedor de configuração de linha de [comando](#clcp).
 
 O código a seguir limpa todos os provedores de configuração e adiciona vários provedores de configuração:
 
 [!code-csharp[](index/samples/3.x/ConfigSample/ProgramJSON2.cs?name=snippet)]
 
-No código anterior, as configurações na _MyConfig.jsem * e  *myconfig*. `Environment` . arquivos *JSON* :
+No código anterior, as configurações na *MyConfig.jsem* e  *myconfig*. `Environment` . arquivos *JSON* :
 
 * Substituir as configurações no *appsettings.json* e *appSettings*. `Environment` . arquivos *JSON* .
 * São substituídos por configurações no [provedor de configuração de variáveis de ambiente](#evcp) e no [provedor de configuração de linha de comando](#clcp).
@@ -727,7 +727,7 @@ O código a seguir exibe dados de configuração em `Startup` métodos:
 
 Para obter um exemplo de como acessar a configuração usando os métodos de conveniência de inicialização, consulte [Inicialização do aplicativo: métodos de conveniência](xref:fundamentals/startup#convenience-methods).
 
-## <a name="access-configuration-in-no-locrazor-pages"></a>Configuração de acesso em Razor páginas
+## <a name="access-configuration-in-razor-pages"></a>Configuração de acesso em Razor páginas
 
 O código a seguir exibe os dados de configuração em uma Razor página:
 
@@ -805,7 +805,7 @@ Uma implementação <xref:Microsoft.AspNetCore.Hosting.IHostingStartup> permite 
 
 ## <a name="additional-resources"></a>Recursos adicionais
 
-* [Código-fonte de configuração](https://github.com/dotnet/extensions/tree/master/src/Configuration)
+* [Código-fonte de configuração](https://github.com/dotnet/runtime/tree/master/src/libraries/Microsoft.Extensions.Configuration)
 * <xref:fundamentals/configuration/options>
 * <xref:blazor/fundamentals/configuration>
 
@@ -977,7 +977,7 @@ A tabela a seguir mostra os provedores de configuração disponíveis para aplic
 | -------- | ----------------------------------- |
 | [Provedor de Configuração do Azure Key Vault](xref:security/key-vault-configuration) (tópicos de *Segurança*) | Cofre de Chave do Azure |
 | [Provedor da Configuração de Aplicativos do Azure](/azure/azure-app-configuration/quickstart-aspnet-core-app) (documentação do Azure) | Configuração de Aplicativo do Azure |
-| [Provedor de Configuração de Linha de Comando](#command-line-configuration-provider) | Parâmetros de linha de comando |
+| [Provedor de Configuração de Linha de Comando](#command-line-configuration-provider) | Parâmetros da linha de comando |
 | [Provedor de Configuração personalizado](#custom-configuration-provider) | Fonte personalizada |
 | [Provedor de Configuração de Variáveis de Ambiente](#environment-variables-configuration-provider) | Variáveis de ambiente |
 | [Provedor de Configuração de Arquivo](#file-configuration-provider) | Arquivos (INI, JSON, XML) |
@@ -990,7 +990,7 @@ Na inicialização, as fontes de configuração são lidas na ordem especificada
 Uma sequência comum de provedores de configuração é:
 
 1. Arquivos ( *appsettings.json* , *appSettings. { Ambiente}. JSON*, em que `{Environment}` é o ambiente de hospedagem atual do aplicativo)
-1. [Cofre da Chave do Azure](xref:security/key-vault-configuration)
+1. [Azure Key Vault](xref:security/key-vault-configuration)
 1. [Segredos do usuário](xref:security/app-secrets) (somente ambiente de desenvolvimento)
 1. Variáveis de ambiente
 1. Argumentos de linha de comando
@@ -1839,7 +1839,7 @@ public class Startup
 
 Para obter um exemplo de como acessar a configuração usando os métodos de conveniência de inicialização, consulte [Inicialização do aplicativo: métodos de conveniência](xref:fundamentals/startup#convenience-methods).
 
-## <a name="access-configuration-in-a-no-locrazor-pages-page-or-mvc-view"></a>Acessar a configuração em uma Razor página de páginas ou exibição do MVC
+## <a name="access-configuration-in-a-razor-pages-page-or-mvc-view"></a>Acessar a configuração em uma Razor página de páginas ou exibição do MVC
 
 Para acessar as definições de configuração em uma Razor página de páginas ou em uma exibição do MVC, adicione uma [diretiva using](xref:mvc/views/razor#using) ([referência C#: usando diretiva](/dotnet/csharp/language-reference/keywords/using-directive)) para o [ namespaceMicrosoft.Extensions.Configuração](xref:Microsoft.Extensions.Configuration) e insira <xref:Microsoft.Extensions.Configuration.IConfiguration> na página ou exibição.
 
