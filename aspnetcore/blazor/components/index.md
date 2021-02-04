@@ -19,14 +19,14 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/components/index
-ms.openlocfilehash: fe30c3b3be92c30dea6d0cb97e642eec1da6328b
-ms.sourcegitcommit: 72c8ada9b9644ee4751ed6869e892a8558dd8e66
+ms.openlocfilehash: efc73022d0bd8c29595f9bed1c06fe07002eb54a
+ms.sourcegitcommit: e311cfb77f26a0a23681019bd334929d1aaeda20
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98723506"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99530093"
 ---
-# <a name="create-and-use-aspnet-core-no-locrazor-components"></a>Criar e usar componentes de ASP.NET Core Razor
+# <a name="create-and-use-aspnet-core-razor-components"></a>Criar e usar componentes de ASP.NET Core Razor
 
 Por [Luke Latham](https://github.com/guardrex), [Daniel Roth](https://github.com/danroth27), [Scott Addie](https://github.com/scottaddie)e [Tobias Bartsch](https://www.aveo-solutions.com/)
 
@@ -38,7 +38,7 @@ Blazor os aplicativos são criados usando *componentes*. Um componente é uma pa
 
 Os componentes são implementados em [Razor](xref:mvc/views/razor) arquivos de componente ( `.razor` ) usando uma combinação de C# e marcação HTML. Um componente no Blazor é conhecido formalmente como um *Razor componente*.
 
-### <a name="no-locrazor-syntax"></a>Sintaxe de Razor
+### <a name="razor-syntax"></a>Sintaxe de Razor
 
 Razor os componentes em Blazor aplicativos usam extensivamente a Razor sintaxe. Se você não estiver familiarizado com a Razor linguagem de marcação, é recomendável ler a [ Razor referência de sintaxe para ASP.NET Core](xref:mvc/views/razor) antes de continuar.
 
@@ -339,6 +339,11 @@ Devido à maneira que Blazor renderiza conteúdo filho, os componentes de render
 >     </ChildComponent>
 > }
 > ```
+
+Para obter informações sobre como um <xref:Microsoft.AspNetCore.Components.RenderFragment> pode ser usado como um modelo para Razor a interface do usuário do componente, consulte os seguintes artigos:
+
+* <xref:blazor/components/templated-components>
+* <xref:blazor/webassembly-performance-best-practices#define-reusable-renderfragments-in-code>
 
 ## <a name="attribute-splatting-and-arbitrary-parameters"></a>Atributo nivelamento e parâmetros arbitrários
 
@@ -824,7 +829,7 @@ O exemplo a seguir mostra como usar o `MarkupString` tipo para adicionar um bloc
 }
 ```
 
-## <a name="no-locrazor-templates"></a>Razor modelo
+## <a name="razor-templates"></a>Razor modelo
 
 Os fragmentos de renderização podem ser definidos usando a Razor sintaxe do modelo. Razor os modelos são uma maneira de definir um trecho de interface do usuário e assumir o seguinte formato:
 

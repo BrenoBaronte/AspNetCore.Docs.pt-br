@@ -19,14 +19,14 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/components/css-isolation
-ms.openlocfilehash: 92545eab4004f6b67080f79d64b94bb424d5a102
-ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
+ms.openlocfilehash: 0748f606314963788e6733ca2ae2ca2123d839b3
+ms.sourcegitcommit: e311cfb77f26a0a23681019bd334929d1aaeda20
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "96320077"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99529976"
 ---
-# <a name="aspnet-core-no-locblazor-css-isolation"></a>BlazorIsolamento ASP.NET Core CSS
+# <a name="aspnet-core-blazor-css-isolation"></a>BlazorIsolamento ASP.NET Core CSS
 
 Por [Dave Brock](https://twitter.com/daveabrock)
 
@@ -34,11 +34,19 @@ O isolamento CSS simplifica a superfície CSS de um aplicativo, impedindo depend
 
 ## <a name="enable-css-isolation"></a>Habilitar isolamento de CSS 
 
-Para definir estilos específicos do componente, crie um `.razor.css` arquivo correspondente ao nome do `.razor` arquivo para o componente. Este `.razor.css` arquivo é um *arquivo CSS com escopo definido*. 
+Para definir estilos específicos do componente, crie um `.razor.css` arquivo que corresponda ao nome do `.razor` arquivo para o componente na mesma pasta. O `.razor.css` arquivo é um *arquivo CSS com escopo*. 
 
-Para um `MyComponent` componente que tenha um `MyComponent.razor` arquivo, crie um arquivo junto com o componente chamado `MyComponent.razor.css` . O `MyComponent` valor no `.razor.css` nome do arquivo **não** diferencia maiúsculas de minúsculas.
+Para um `Example` componente em um `Example.razor` arquivo, crie um arquivo junto com o componente chamado `Example.razor.css` . O `Example.razor.css` arquivo deve residir na mesma pasta que o `Example` componente ( `Example.razor` ). O `Example` nome base do arquivo "" **não** diferencia maiúsculas de minúsculas.
 
-Por exemplo, para adicionar o isolamento de CSS ao `Counter` componente no Blazor modelo de projeto padrão, adicione um novo arquivo chamado `Counter.razor.css` junto com o `Counter.razor` arquivo e, em seguida, adicione o seguinte CSS:
+`Pages/Example.razor`:
+
+```razor
+@page "/example"
+
+<h1>Scoped CSS Example</h1>
+```
+
+`Pages/Example.razor.css`:
 
 ```css
 h1 { 
@@ -47,10 +55,10 @@ h1 {
 }
 ```
 
-Os estilos definidos em `Counter.razor.css` são aplicados somente à saída renderizada do `Counter` componente. Quaisquer `h1` declarações CSS definidas em outro lugar no aplicativo não entram em conflito com os `Counter` estilos.
+**Os estilos definidos em `Example.razor.css` são aplicados somente à saída renderizada do `Example` componente.** O isolamento de CSS é aplicado aos elementos HTML no Razor arquivo correspondente. Quaisquer `h1` declarações CSS definidas em outro lugar no aplicativo não entram em conflito com os `Example` estilos do componente.
 
 > [!NOTE]
-> Para garantir o isolamento de estilo quando o agrupamento ocorre, `@import` Razor os blocos não têm suporte com arquivos CSS com escopo definido.
+> Para garantir o isolamento de estilo quando ocorre o agrupamento, não há suporte para a importação de CSS em Razor blocos de código.
 
 ## <a name="css-isolation-bundling"></a>Agrupamento de isolamento de CSS
 
@@ -59,7 +67,7 @@ O isolamento de CSS ocorre no momento da compilação. Durante esse processo, o 
 Por padrão, esses arquivos estáticos são referenciados no caminho raiz do aplicativo. No aplicativo, referencie o arquivo agrupado inspecionando a referência dentro da `<head>` marca do HTML gerado:
 
 ```html
-<link href="MyProjectName.styles.css" rel="stylesheet">
+<link href="ProjectName.styles.css" rel="stylesheet">
 ```
 
 No arquivo empacotado, cada componente é associado a um identificador de escopo. Para cada componente com estilo, um atributo HTML é anexado com o formato `b-<10-character-string>` . O identificador é exclusivo e diferente para cada aplicativo. No componente renderizado `Counter` , Blazor acrescenta um identificador de escopo ao `h1` elemento:
@@ -68,7 +76,7 @@ No arquivo empacotado, cada componente é associado a um identificador de escopo
 <h1 b-3xxtam6d07>
 ```
 
-O `MyProjectName.styles.css` arquivo usa o identificador de escopo para agrupar uma declaração de estilo com seu componente. O exemplo a seguir fornece o estilo para o `<h1>` elemento anterior:
+O `ProjectName.styles.css` arquivo usa o identificador de escopo para agrupar uma declaração de estilo com seu componente. O exemplo a seguir fornece o estilo para o `<h1>` elemento anterior:
 
 ```css
 /* /Pages/Counter.razor.rz.scp.css */
@@ -77,7 +85,7 @@ h1[b-3xxtam6d07] {
 }
 ```
 
-No momento da compilação, um pacote de projeto é criado com a Convenção `{STATIC WEB ASSETS BASE PATH}/MyProject.lib.scp.css` , em que o espaço reservado `{STATIC WEB ASSETS BASE PATH}` é o caminho base dos ativos da Web estáticos.
+No momento da compilação, um pacote de projeto é criado com a Convenção `{STATIC WEB ASSETS BASE PATH}/Project.lib.scp.css` , em que o espaço reservado `{STATIC WEB ASSETS BASE PATH}` é o caminho base dos ativos da Web estáticos.
 
 Se outros projetos forem utilizados, como pacotes NuGet ou bibliotecas de [ Razor classes](xref:blazor/components/class-libraries), o arquivo agrupado:
 
@@ -90,7 +98,7 @@ Por padrão, o isolamento de CSS só se aplica ao componente que você associa a
 
 O exemplo a seguir mostra um componente pai chamado `Parent` com um componente filho chamado `Child` .
 
-`Parent.razor`:
+`Pages/Parent.razor`:
 
 ```razor
 @page "/parent"
@@ -102,13 +110,15 @@ O exemplo a seguir mostra um componente pai chamado `Parent` com um componente f
 </div>
 ```
 
-`Child.razor`:
+`Shared/Child.razor`:
 
 ```razor
 <h1>Child Component</h1>
 ```
 
-Atualize a `h1` declaração em `Parent.razor.css` com o `::deep` combinador para significar que a `h1` declaração de estilo deve ser aplicada ao componente pai e a seus filhos:
+Atualize a `h1` declaração em `Parent.razor.css` com o `::deep` combinador para significar que a `h1` declaração de estilo deve ser aplicada ao componente pai e a seus filhos.
+
+`Pages/Parent.razor.css`:
 
 ```css
 ::deep h1 { 
@@ -118,26 +128,27 @@ Atualize a `h1` declaração em `Parent.razor.css` com o `::deep` combinador par
 
 O `h1` estilo agora se aplica aos `Parent` `Child` componentes e sem a necessidade de criar um arquivo CSS com escopo separado para o componente filho.
 
-> [!NOTE]
-> O `::deep` combinador funciona apenas com elementos descendentes. A seguinte estrutura HTML aplica os `h1` estilos aos componentes conforme esperado:
-> 
-> ```razor
-> <div>
->     <h1>Parent</h1>
->
->     <Child />
-> </div>
-> ```
->
-> Nesse cenário, ASP.NET Core aplica o identificador de escopo do componente pai ao `div` elemento, portanto, o navegador sabe herdar estilos do componente pai.
->
-> No entanto, a exclusão do `div` elemento remove a relação descendente e o estilo **não** é aplicado ao componente filho:
->
-> ```razor
-> <h1>Parent</h1>
->
-> <Child />
-> ```
+O `::deep` combinador funciona apenas com elementos descendentes. A marcação a seguir aplica os `h1` estilos aos componentes conforme o esperado. O identificador de escopo do componente pai é aplicado ao `div` elemento, portanto, o navegador sabe herdar estilos do componente pai.
+
+`Pages/Parent.razor`:
+
+```razor
+<div>
+    <h1>Parent</h1>
+
+    <Child />
+</div>
+```
+
+No entanto, a exclusão do `div` elemento remove a relação descendente. No exemplo a seguir, o estilo **não** é aplicado ao componente filho.
+
+`Pages/Parent.razor`:
+
+```razor
+<h1>Parent</h1>
+
+<Child />
+```
 
 ## <a name="css-preprocessor-support"></a>Suporte ao pré-processador do CSS
 
@@ -155,11 +166,28 @@ Por padrão, os identificadores de escopo usam o formato `b-<10-character-string
 
 ```xml
 <ItemGroup>
-    <None Update="MyComponent.razor.css" CssScope="my-custom-scope-identifier" />
+  <None Update="Pages/Example.razor.css" CssScope="my-custom-scope-identifier" />
 </ItemGroup>
 ```
 
-No exemplo anterior, o CSS gerado para `MyComponent.Razor.css` altera seu identificador de escopo de `b-<10-character-string>` para `my-custom-scope-identifier` .
+No exemplo anterior, o CSS gerado para `Example.Razor.css` altera seu identificador de escopo de `b-<10-character-string>` para `my-custom-scope-identifier` .
+
+Use identificadores de escopo para obter herança com arquivos CSS com escopo definido. No exemplo de arquivo de projeto a seguir, um `BaseComponent.razor.css` arquivo contém estilos comuns entre componentes. Um `DerivedComponent.razor.css` arquivo herda esses estilos.
+
+```xml
+<ItemGroup>
+  <None Update="Pages/BaseComponent.razor.css" CssScope="my-custom-scope-identifier" />
+  <None Update="Pages/DerivedComponent.razor.css" CssScope="my-custom-scope-identifier" />
+</ItemGroup>
+```
+
+Use o operador curinga ( `*` ) para compartilhar identificadores de escopo entre vários arquivos:
+
+```xml
+<ItemGroup>
+  <None Update="Pages/*.razor.css" CssScope="my-custom-scope-identifier" />
+</ItemGroup>
+```
 
 ### <a name="change-base-path-for-static-web-assets"></a>Alterar o caminho base para ativos da Web estáticos
 
@@ -181,7 +209,7 @@ Para recusar a forma como Blazor o publica e carrega arquivos com escopo em temp
 </PropertyGroup>
 ```
 
-## <a name="no-locrazor-class-library-rcl-support"></a>Razor suporte à biblioteca de classes (RCL)
+## <a name="razor-class-library-rcl-support"></a>Razor suporte à biblioteca de classes (RCL)
 
 Quando uma [ Razor biblioteca de classes (RCL)](xref:razor-pages/ui-class) fornece estilos isolados, o `<link>` atributo da marca `href` aponta para `{STATIC WEB ASSET BASE PATH}/{ASSEMBLY NAME}.bundle.scp.css` , onde os espaços reservados são:
 
@@ -192,6 +220,8 @@ No exemplo a seguir:
 
 * O caminho base do ativo da Web estático é `_content/ClassLib` .
 * O nome do assembly da biblioteca de classes é `ClassLib` .
+
+`wwwroot/index.html` ( Blazor WebAssembly ) ou `Pages_Host.cshtml` (Blazor Server):
 
 ```html
 <link href="_content/ClassLib/ClassLib.bundle.scp.css" rel="stylesheet">

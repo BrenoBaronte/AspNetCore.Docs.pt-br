@@ -19,14 +19,14 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/components/virtualization
-ms.openlocfilehash: c2b16f4bc8e69265b1d59082c3f029541f277d8b
-ms.sourcegitcommit: 063a06b644d3ade3c15ce00e72a758ec1187dd06
+ms.openlocfilehash: 72b33bc3c2861380551915b1e8caab49122e8fab
+ms.sourcegitcommit: e311cfb77f26a0a23681019bd334929d1aaeda20
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98252283"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99529911"
 ---
-# <a name="aspnet-core-no-locblazor-component-virtualization"></a>BlazorVirtualização de componente ASP.NET Core
+# <a name="aspnet-core-blazor-component-virtualization"></a>BlazorVirtualização de componente ASP.NET Core
 
 Por [Daniel Roth](https://github.com/danroth27)
 
@@ -149,7 +149,7 @@ Como a solicitação de itens de uma fonte de dados remota pode levar algum temp
 
 ## <a name="item-size"></a>Tamanho do item
 
-O tamanho de cada item em pixels pode ser definido com <xref:Microsoft.AspNetCore.Components.Web.Virtualization.Virtualize%601.ItemSize%2A?displayProperty=nameWithType> (padrão: 50):
+A altura de cada item em pixels pode ser definida com <xref:Microsoft.AspNetCore.Components.Web.Virtualization.Virtualize%601.ItemSize%2A?displayProperty=nameWithType> (padrão: 50):
 
 ```razor
 <Virtualize Context="employee" Items="@employees" ItemSize="25">

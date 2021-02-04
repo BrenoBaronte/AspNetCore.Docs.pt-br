@@ -19,14 +19,14 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/webassembly-performance-best-practices
-ms.openlocfilehash: 0753ef0f1cde7bbb45ecc09b97fecb5ce364811c
-ms.sourcegitcommit: 8b0e9a72c1599ce21830c843558a661ba908ce32
+ms.openlocfilehash: 58a87bc5413523fdf052a9e1c41196bb8b0ab457
+ms.sourcegitcommit: e311cfb77f26a0a23681019bd334929d1aaeda20
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98024646"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99529963"
 ---
-# <a name="aspnet-core-no-locblazor-webassembly-performance-best-practices"></a>Blazor WebAssemblyPráticas recomendadas de desempenho de ASP.NET Core
+# <a name="aspnet-core-blazor-webassembly-performance-best-practices"></a>Blazor WebAssemblyPráticas recomendadas de desempenho de ASP.NET Core
 
 Por [Pranav Krishnamoorthy](https://github.com/pranavkm) e [Steve Sanderson](https://github.com/SteveSandersonMS)
 
@@ -191,7 +191,7 @@ Você pode estar decompondo componentes filho puramente como uma maneira de reut
 @RenderWelcomeInfo
 
 @code {
-    RenderFragment RenderWelcomeInfo = __builder =>
+    private RenderFragment RenderWelcomeInfo = __builder =>
     {
         <div>
             <p>Welcome to your new app!</p>
@@ -221,12 +221,12 @@ Agora, isso pode ser invocado a partir de um componente não relacionado. Essa t
 <div class="chat">
     @foreach (var message in messages)
     {
-        @DisplayChatMessage(message)
+        @ChatMessageDisplay(message)
     }
 </div>
 
 @code {
-    RenderFragment<ChatMessage> DisplayChatMessage = message => __builder =>
+    private RenderFragment<ChatMessage> ChatMessageDisplay = message => __builder =>
     {
         <div class="chat-message">
             <span class="author">@message.Author</span>
@@ -237,6 +237,17 @@ Agora, isso pode ser invocado a partir de um componente não relacionado. Essa t
 ```
 
 Essa abordagem fornece o benefício de reutilizar a lógica de renderização sem sobrecarga por componente. No entanto, ele não tem o benefício de ser capaz de atualizar sua subárvore da interface do usuário de forma independente, nem tem a capacidade de ignorar o processamento dessa subárvore da interface do usuário quando seu pai é renderizado, já que não há nenhum limite de componente.
+
+Para um campo, método ou propriedade não estática que não pode ser referenciado por um inicializador de campo, como `TitleTemplate` no exemplo a seguir, use uma propriedade em vez de um campo para <xref:Microsoft.AspNetCore.Components.RenderFragment> :
+
+```csharp
+protected RenderFragment DisplayTitle => __builder =>
+{
+    <div>
+        @TitleTemplate
+    </div>   
+};
+```
 
 #### <a name="dont-receive-too-many-parameters"></a>Não receber muitos parâmetros
 

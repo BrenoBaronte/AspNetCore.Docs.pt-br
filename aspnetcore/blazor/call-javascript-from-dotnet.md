@@ -19,14 +19,14 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/call-javascript-from-dotnet
-ms.openlocfilehash: 53b702cddca778e06e617df3798bffb21677d36b
-ms.sourcegitcommit: 610936e4d3507f7f3d467ed7859ab9354ec158ba
+ms.openlocfilehash: ca42b611a61fc394655e396f914e8e050c578e6a
+ms.sourcegitcommit: e311cfb77f26a0a23681019bd334929d1aaeda20
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98751649"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99530080"
 ---
-# <a name="call-javascript-functions-from-net-methods-in-aspnet-core-no-locblazor"></a>Chamar funções JavaScript de métodos .NET no ASP.NET Core Blazor
+# <a name="call-javascript-functions-from-net-methods-in-aspnet-core-blazor"></a>Chamar funções JavaScript de métodos .NET no ASP.NET Core Blazor
 
 Por [Javier Calvarro Nelson](https://github.com/javiercn), [Daniel Roth](https://github.com/danroth27), [Pranav Krishnamoorthy](https://github.com/pranavkm)e [Luke Latham](https://github.com/guardrex)
 
@@ -173,7 +173,7 @@ Use <xref:Microsoft.JSInterop.JSRuntimeExtensions.InvokeVoidAsync%2A?displayProp
 * Funções JavaScript que retornam [void (0)/void 0](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Operators/void) ou [indefinido](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/undefined).
 * Se o .NET não for necessário para ler o resultado de uma chamada JavaScript.
 
-## <a name="detect-when-a-no-locblazor-server-app-is-prerendering"></a>Detectar quando um Blazor Server aplicativo está sendo renderizado
+## <a name="detect-when-a-blazor-server-app-is-prerendering"></a>Detectar quando um Blazor Server aplicativo está sendo renderizado
  
 [!INCLUDE[](~/blazor/includes/prerendering.md)]
 
@@ -508,7 +508,7 @@ Para obter mais informações, consulte [referências circulares não são supor
 
 ::: moniker range=">= aspnetcore-5.0"
 
-## <a name="no-locblazor-javascript-isolation-and-object-references"></a>Blazor Isolamento de JavaScript e referências de objeto
+## <a name="blazor-javascript-isolation-and-object-references"></a>Blazor Isolamento de JavaScript e referências de objeto
 
 Blazor habilita o isolamento de JavaScript em [módulos JavaScript](https://developer.mozilla.org/docs/Web/JavaScript/Guide/Modules)padrão. O isolamento de JavaScript oferece os seguintes benefícios:
 
@@ -523,14 +523,14 @@ export function showPrompt(message) {
 }
 ```
 
-Adicione o módulo JavaScript anterior a uma biblioteca do .NET como um ativo da Web estático ( `wwwroot/exampleJsInterop.js` ) e, em seguida, importe o módulo para o código .NET usando o <xref:Microsoft.JSInterop.IJSRuntime> serviço. O serviço é injetado como `js` (não mostrado) para o exemplo a seguir:
+Adicione o módulo JavaScript anterior a uma biblioteca do .NET como um ativo da Web estático ( `wwwroot/exampleJsInterop.js` ) e, em seguida, importe o módulo para o código .net chamando <xref:Microsoft.JSInterop.IJSRuntime.InvokeAsync%2A> no <xref:Microsoft.JSInterop.IJSRuntime> serviço. O serviço é injetado como `js` (não mostrado) para o exemplo a seguir:
 
 ```csharp
 var module = await js.InvokeAsync<IJSObjectReference>(
     "import", "./_content/MyComponents/exampleJsInterop.js");
 ```
 
-O `import` identificador no exemplo anterior é um identificador especial usado especificamente para importar um módulo JavaScript. Especifique o módulo usando seu caminho de ativo da Web estático estável: `./_content/{LIBRARY NAME}/{PATH UNDER WWWROOT}` . O segmento de caminho para o diretório atual ( `./` ) é necessário para criar o caminho de ativo estático correto para o arquivo JavaScript. O espaço reservado `{LIBRARY NAME}` é o nome da biblioteca. O espaço reservado `{PATH UNDER WWWROOT}` é o caminho para o script em `wwwroot` .
+O `import` identificador no exemplo anterior é um identificador especial usado especificamente para importar um módulo JavaScript. Especifique o módulo usando seu caminho de ativo da Web estático estável: `./_content/{LIBRARY NAME}/{PATH UNDER WWWROOT}` . O segmento de caminho para o diretório atual ( `./` ) é necessário para criar o caminho de ativo estático correto para o arquivo JavaScript. A importação dinâmica de um módulo requer uma solicitação de rede, portanto, ela só pode ser Obtida de forma assíncrona chamando <xref:Microsoft.JSInterop.IJSRuntime.InvokeAsync%2A> . O `{LIBRARY NAME}` espaço reservado é o nome da biblioteca. O `{PATH UNDER WWWROOT}` espaço reservado é o caminho para o script em `wwwroot` .
 
 <xref:Microsoft.JSInterop.IJSRuntime> importa o módulo como um `IJSObjectReference` , que representa uma referência a um objeto JavaScript do código .net. Use o `IJSObjectReference` para invocar funções JavaScript exportadas do módulo:
 

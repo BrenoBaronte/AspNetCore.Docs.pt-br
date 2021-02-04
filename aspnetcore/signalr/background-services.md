@@ -19,14 +19,14 @@ no-loc:
 - Razor
 - SignalR
 uid: signalr/background-services
-ms.openlocfilehash: 810eff7ccb08ecc22ea255bf0a9fe3d22637179f
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: 4b877c64a881fec15ac9e9bd74ffdde0b5fa60f9
+ms.sourcegitcommit: e311cfb77f26a0a23681019bd334929d1aaeda20
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93060099"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99530171"
 ---
-# <a name="host-aspnet-core-no-locsignalr-in-background-services"></a>ASP.NET Core SignalR de host em serviços em segundo plano
+# <a name="host-aspnet-core-signalr-in-background-services"></a>ASP.NET Core SignalR de host em serviços em segundo plano
 
 Por [Brady GASTER](https://twitter.com/bradygaster)
 
@@ -46,7 +46,7 @@ Este artigo fornece diretrizes para:
 
 ::: moniker-end
 
-## <a name="enable-no-locsignalr-in-startup"></a>Habilitar SignalR na inicialização
+## <a name="enable-signalr-in-startup"></a>Habilitar SignalR na inicialização
 
 ::: moniker range=">= aspnetcore-3.0"
 
@@ -94,7 +94,7 @@ A interface usada pelo fortemente tipado `ClockHub` é a `IClock` interface.
 
 ::: moniker-end
 
-## <a name="call-a-no-locsignalr-hub-from-a-background-service"></a>Chamar um SignalR Hub de um serviço em segundo plano
+## <a name="call-a-signalr-hub-from-a-background-service"></a>Chamar um SignalR Hub de um serviço em segundo plano
 
 Durante a inicialização, a `Worker` classe, a `BackgroundService` , é habilitada usando `AddHostedService` .
 
@@ -117,9 +117,9 @@ Como SignalR o também é habilitado durante a `Startup` fase, na qual cada Hub 
 
 Como o `ExecuteAsync` método é chamado iterativamente no serviço em segundo plano, a data e hora atuais do servidor são enviadas para os clientes conectados usando o `ClockHub` .
 
-## <a name="react-to-no-locsignalr-events-with-background-services"></a>Reagir a SignalR eventos com serviços em segundo plano
+## <a name="react-to-signalr-events-with-background-services"></a>Reagir a SignalR eventos com serviços em segundo plano
 
-Como um aplicativo de página única usando o cliente JavaScript para o SignalR ou um aplicativo de desktop .net pode fazer uso do <xref:signalr/dotnet-client> , a ou a `BackgroundService` `IHostedService` implementação também pode ser usada para conectar-se a SignalR hubs e responder a eventos.
+Como um aplicativo de página única usando o cliente JavaScript para o SignalR , ou um aplicativo de desktop .NET usando o <xref:signalr/dotnet-client> , a ou a `BackgroundService` `IHostedService` implementação também pode ser usada para conectar-se a SignalR hubs e responder a eventos.
 
 A `ClockHubClient` classe implementa a `IClock` interface e a `IHostedService` interface. Dessa forma, ele pode ser habilitado durante `Startup` a execução contínua e responder a eventos de Hub do servidor.
 

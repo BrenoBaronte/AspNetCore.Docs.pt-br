@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: host-and-deploy/proxy-load-balancer
-ms.openlocfilehash: 461f6d2105d38c5dbea2f8cf479e027c2edede14
-ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
+ms.openlocfilehash: e63821743dad565b51d5c2360dcc2fbf0632754f
+ms.sourcegitcommit: e311cfb77f26a0a23681019bd334929d1aaeda20
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "96024936"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99530041"
 ---
 # <a name="configure-aspnet-core-to-work-with-proxy-servers-and-load-balancers"></a>Configure o ASP.NET Core para trabalhar com servidores proxy e balanceadores de carga
 
@@ -43,7 +43,7 @@ Essas informações podem ser importantes no processamento de solicitações, po
 
 Por convenção, os proxies encaminham informações em cabeçalhos HTTP.
 
-| Cabeçalho | Descrição |
+| parâmetro | Descrição |
 | ------ | ----------- |
 | X-Forwarded-For | Contém informações sobre o cliente que iniciou a solicitação e os proxies subsequentes em uma cadeia de proxies. Esse parâmetro pode conter endereços IP (e, opcionalmente, os números de porta). Em uma cadeia de servidores proxy, o primeiro parâmetro indica o cliente em que a solicitação foi feita pela primeira vez. Depois, vêm os identificadores de proxy subsequentes. O último proxy na cadeia não está na lista de parâmetros. O endereço IP do último proxy (e opcionalmente um número da porta) estão disponíveis como o endereço IP remoto na camada de transporte. |
 | X-Forwarded-Proto | O valor do esquema de origem (HTTP/HTTPS). O valor também pode ser uma lista de esquemas se a solicitação percorreu vários proxies. |
@@ -123,8 +123,8 @@ services.Configure<ForwardedHeadersOptions>(options =>
 | <xref:Microsoft.AspNetCore.Builder.ForwardedHeadersOptions.ForwardedHostHeaderName> | Use o cabeçalho especificado por essa propriedade, em vez de um especificado por [ForwardedHeadersDefaults.XForwardedHostHeaderName](xref:Microsoft.AspNetCore.HttpOverrides.ForwardedHeadersDefaults.XForwardedHostHeaderName). Esta opção é usada quando o proxy/encaminhador não usa o cabeçalho `X-Forwarded-Host`, mas usa algum outro cabeçalho para encaminhar as informações.<br><br>O padrão é `X-Forwarded-Host`. |
 | <xref:Microsoft.AspNetCore.Builder.ForwardedHeadersOptions.ForwardedProtoHeaderName> | Use o cabeçalho especificado por essa propriedade, em vez de um especificado por [ForwardedHeadersDefaults.XForwardedProtoHeaderName](xref:Microsoft.AspNetCore.HttpOverrides.ForwardedHeadersDefaults.XForwardedProtoHeaderName). Esta opção é usada quando o proxy/encaminhador não usa o cabeçalho `X-Forwarded-Proto`, mas usa algum outro cabeçalho para encaminhar as informações.<br><br>O padrão é `X-Forwarded-Proto`. |
 | <xref:Microsoft.AspNetCore.Builder.ForwardedHeadersOptions.ForwardLimit> | Limita o número de entradas nos cabeçalhos que são processados. Defina para `null` para desabilitar o limite, mas isso só deve ser feito se `KnownProxies` ou `KnownNetworks` estão configurados. A definição de um valor não `null` é feita por precaução (o que não implica em uma garantia), para proteção contra proxies mal configurados e solicitações mal-intencionadas que chegam de canais secundários na rede.<br><br>O middleware de cabeçalhos encaminhados processa cabeçalhos na ordem inversa, da direita para esquerda. Se o valor padrão for usado (`1`), apenas o valor mais à direita dos cabeçalhos será processado, a menos que o valor de `ForwardLimit` seja aumentado.<br><br>O padrão é `1`. |
-| <xref:Microsoft.AspNetCore.Builder.ForwardedHeadersOptions.KnownNetworks> | Intervalos de endereços de redes conhecidas dos quais aceitar cabeçalhos encaminhados. Forneça os intervalos de IP usando notação de CIDR (Roteamento entre Domínios sem Classificação).<br><br>O servidor usa soquetes de modo duplo e os endereços IPv4 são fornecidos em um formato IPv6 (por exemplo, `10.0.0.1` no formato IPv4 representado no formato IPv6 como `::ffff:10.0.0.1`). Confira [IPAddress.MapToIPv6](xref:System.Net.IPAddress.MapToIPv6*). Para determinar se este formato é obrigatório, veja [HttpContext.Connection.RemoteIpAddress](xref:Microsoft.AspNetCore.Http.ConnectionInfo.RemoteIpAddress*). Para saber mais, veja a seção [Configuração de endereços IPv4 representados como endereços IPv6](#configuration-for-an-ipv4-address-represented-as-an-ipv6-address).<br><br>O padrão é uma `IList`\<<xref:Microsoft.AspNetCore.HttpOverrides.IPNetwork>> que contém uma única entrada para `IPAddress.Loopback`. |
-| <xref:Microsoft.AspNetCore.Builder.ForwardedHeadersOptions.KnownProxies> | Endereços de proxies conhecidos dos quais aceitar cabeçalhos encaminhados. Use `KnownProxies` especificar correspondências exatas de endereço IP.<br><br>O servidor usa soquetes de modo duplo e os endereços IPv4 são fornecidos em um formato IPv6 (por exemplo, `10.0.0.1` no formato IPv4 representado no formato IPv6 como `::ffff:10.0.0.1`). Confira [IPAddress.MapToIPv6](xref:System.Net.IPAddress.MapToIPv6*). Para determinar se este formato é obrigatório, veja [HttpContext.Connection.RemoteIpAddress](xref:Microsoft.AspNetCore.Http.ConnectionInfo.RemoteIpAddress*). Para saber mais, veja a seção [Configuração de endereços IPv4 representados como endereços IPv6](#configuration-for-an-ipv4-address-represented-as-an-ipv6-address).<br><br>O padrão é uma `IList`\<<xref:System.Net.IPAddress>> que contém uma única entrada para `IPAddress.IPv6Loopback`. |
+| <xref:Microsoft.AspNetCore.Builder.ForwardedHeadersOptions.KnownNetworks> | Intervalos de endereços de redes conhecidas dos quais aceitar cabeçalhos encaminhados. Forneça os intervalos de IP usando notação de CIDR (Roteamento entre Domínios sem Classificação).<br><br>O servidor usa soquetes de modo duplo e os endereços IPv4 são fornecidos em um formato IPv6 (por exemplo, `10.0.0.1` no formato IPv4 representado no formato IPv6 como `::ffff:10.0.0.1`). Confira [IPAddress.MapToIPv6](xref:System.Net.IPAddress.MapToIPv6*). Para determinar se este formato é obrigatório, veja [HttpContext.Connection.RemoteIpAddress](xref:Microsoft.AspNetCore.Http.ConnectionInfo.RemoteIpAddress*).<br><br>O padrão é uma `IList`\<<xref:Microsoft.AspNetCore.HttpOverrides.IPNetwork>> que contém uma única entrada para `IPAddress.Loopback`. |
+| <xref:Microsoft.AspNetCore.Builder.ForwardedHeadersOptions.KnownProxies> | Endereços de proxies conhecidos dos quais aceitar cabeçalhos encaminhados. Use `KnownProxies` especificar correspondências exatas de endereço IP.<br><br>O servidor usa soquetes de modo duplo e os endereços IPv4 são fornecidos em um formato IPv6 (por exemplo, `10.0.0.1` no formato IPv4 representado no formato IPv6 como `::ffff:10.0.0.1`). Confira [IPAddress.MapToIPv6](xref:System.Net.IPAddress.MapToIPv6*). Para determinar se este formato é obrigatório, veja [HttpContext.Connection.RemoteIpAddress](xref:Microsoft.AspNetCore.Http.ConnectionInfo.RemoteIpAddress*).<br><br>O padrão é uma `IList`\<<xref:System.Net.IPAddress>> que contém uma única entrada para `IPAddress.IPv6Loopback`. |
 | <xref:Microsoft.AspNetCore.Builder.ForwardedHeadersOptions.OriginalForHeaderName> | Use o cabeçalho especificado por essa propriedade, em vez de um especificado por [ForwardedHeadersDefaults.XOriginalForHeaderName](xref:Microsoft.AspNetCore.HttpOverrides.ForwardedHeadersDefaults.XOriginalForHeaderName).<br><br>O padrão é `X-Original-For`. |
 | <xref:Microsoft.AspNetCore.Builder.ForwardedHeadersOptions.OriginalHostHeaderName> | Use o cabeçalho especificado por essa propriedade, em vez de um especificado por [ForwardedHeadersDefaults.XOriginalHostHeaderName](xref:Microsoft.AspNetCore.HttpOverrides.ForwardedHeadersDefaults.XOriginalHostHeaderName).<br><br>O padrão é `X-Original-Host`. |
 | <xref:Microsoft.AspNetCore.Builder.ForwardedHeadersOptions.OriginalProtoHeaderName> | Use o cabeçalho especificado por essa propriedade, em vez de um especificado por [ForwardedHeadersDefaults.XOriginalProtoHeaderName](xref:Microsoft.AspNetCore.HttpOverrides.ForwardedHeadersDefaults.XOriginalProtoHeaderName).<br><br>O padrão é `X-Original-Proto`. |
@@ -191,32 +191,6 @@ services.Configure<ForwardedHeadersOptions>(options =>
 {
     options.ForwardedForHeaderName = "Header_Name_Used_By_Proxy_For_X-Forwarded-For_Header";
     options.ForwardedProtoHeaderName = "Header_Name_Used_By_Proxy_For_X-Forwarded-Proto_Header";
-});
-```
-
-### <a name="configuration-for-an-ipv4-address-represented-as-an-ipv6-address"></a>Configuração de endereços IPv4 representados como endereços IPv6
-
-O servidor usa soquetes de modo duplo e os endereços IPv4 são fornecidos em um formato IPv6 (por exemplo, `10.0.0.1` no formato IPv4 representado no formato IPv6 como `::ffff:10.0.0.1` ou `::ffff:a00:1`). Confira [IPAddress.MapToIPv6](xref:System.Net.IPAddress.MapToIPv6*). Para determinar se este formato é obrigatório, veja [HttpContext.Connection.RemoteIpAddress](xref:Microsoft.AspNetCore.Http.ConnectionInfo.RemoteIpAddress*).
-
-No exemplo a seguir, um endereço de rede que fornece cabeçalhos encaminhados é adicionado à lista `KnownNetworks` no formato IPv6.
-
-Endereço IPv4: `10.11.12.1/8`
-
-Conversão em endereço IPv6: `::ffff:10.11.12.1`  
-Comprimento do prefixo convertido: 104
-
-Você pode também fornecer o endereço no formato hexadecimal (`10.11.12.1`, representado no formato IPv6 como `::ffff:0a0b:0c01`). Quando converter um endereço IPv4 em IPv6, adicione 96 ao comprimento do prefixo CIDR (`8` no exemplo) para levar em conta o prefixo IPv6 adicional `::ffff:` (8 + 96 = 104). 
-
-```csharp
-// To access IPNetwork and IPAddress, add the following namespaces:
-// using System.Net;
-// using Microsoft.AspNetCore.HttpOverrides;
-services.Configure<ForwardedHeadersOptions>(options =>
-{
-    options.ForwardedHeaders =
-        ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto;
-    options.KnownNetworks.Add(new IPNetwork(
-        IPAddress.Parse("::ffff:10.11.12.1"), 104));
 });
 ```
 
@@ -401,7 +375,7 @@ Essas informações podem ser importantes no processamento de solicitações, po
 
 Por convenção, os proxies encaminham informações em cabeçalhos HTTP.
 
-| Cabeçalho | Descrição |
+| parâmetro | Descrição |
 | ------ | ----------- |
 | X-Forwarded-For | Contém informações sobre o cliente que iniciou a solicitação e os proxies subsequentes em uma cadeia de proxies. Esse parâmetro pode conter endereços IP (e, opcionalmente, os números de porta). Em uma cadeia de servidores proxy, o primeiro parâmetro indica o cliente em que a solicitação foi feita pela primeira vez. Depois, vêm os identificadores de proxy subsequentes. O último proxy na cadeia não está na lista de parâmetros. O endereço IP do último proxy (e opcionalmente um número da porta) estão disponíveis como o endereço IP remoto na camada de transporte. |
 | X-Forwarded-Proto | O valor do esquema de origem (HTTP/HTTPS). O valor também pode ser uma lista de esquemas se a solicitação percorreu vários proxies. |
