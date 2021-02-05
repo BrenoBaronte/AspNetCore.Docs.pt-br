@@ -4,7 +4,7 @@ author: rick-anderson
 description: Saiba como criar uma API Web com o ASP.NET Core.
 ms.author: riande
 ms.custom: mvc, devx-track-js
-ms.date: 08/13/2020
+ms.date: 02/04/2021
 no-loc:
 - appsettings.json
 - ASP.NET Core Identity
@@ -19,12 +19,12 @@ no-loc:
 - SignalR
 - Models
 uid: tutorials/first-web-api
-ms.openlocfilehash: ccbfc27eb89e23938a69f0ab4cb306d6a4136889
-ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
+ms.openlocfilehash: bef6efab3e5e84908a36c2c70f019cdd3b3e059e
+ms.sourcegitcommit: 20a41c8e40a2e69e99291e2fe18caa04c02e7109
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "96175046"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99578394"
 ---
 # <a name="tutorial-create-a-web-api-with-aspnet-core"></a>Tutorial: criar uma API Web com o ASP.NET Core
 
@@ -51,10 +51,10 @@ Este tutorial cria a seguinte API:
 
 |API | Descrição | Corpo da solicitação | Corpo da resposta |
 |--- | ---- | ---- | ---- |
-|`GET /api/TodoItems` | Obter todos os itens de tarefas pendentes | Nenhum | Matriz de itens de tarefas pendentes|
-|`GET /api/TodoItems/{id}` | Obter um item por ID | Nenhum | Item de tarefas pendentes|
+|`GET /api/TodoItems` | Obter todos os itens de tarefas pendentes | Nenhuma | Matriz de itens de tarefas pendentes|
+|`GET /api/TodoItems/{id}` | Obter um item por ID | Nenhuma | Item de tarefas pendentes|
 |`POST /api/TodoItems` | Adicionar um novo item | Item de tarefas pendentes | Item de tarefas pendentes |
-|`PUT /api/TodoItems/{id}` | Atualizar um item &nbsp; existente | Item de tarefas pendentes | Nenhum |
+|`PUT /api/TodoItems/{id}` | Atualizar um item &nbsp; existente | Item de tarefas pendentes | Nenhuma |
 |`DELETE /api/TodoItems/{id}` &nbsp; &nbsp; | Excluir um item &nbsp;&nbsp; | Nenhum | Nenhum|
 
 O diagrama a seguir mostra o design do aplicativo.
@@ -97,7 +97,6 @@ O diagrama a seguir mostra o design do aplicativo.
    ```dotnetcli
    dotnet new webapi -o TodoApi
    cd TodoApi
-   dotnet add package Microsoft.EntityFrameworkCore.SqlServer
    dotnet add package Microsoft.EntityFrameworkCore.InMemory
    code -r ../TodoApi
    ```
@@ -127,10 +126,9 @@ O diagrama a seguir mostra o design do aplicativo.
 
 [!INCLUDE[](~/includes/mac-terminal-access.md)]
 
-Abra um terminal de comando na pasta do projeto e execute os seguintes comandos:
+Abra um terminal de comando na pasta do projeto e execute o seguinte comando:
 
    ```dotnetcli
-   dotnet add package Microsoft.EntityFrameworkCore.SqlServer
    dotnet add package Microsoft.EntityFrameworkCore.InMemory
    ```
 
@@ -270,14 +268,11 @@ O *contexto de banco de dados* é a classe principal que coordena a funcionalida
 ### <a name="add-nuget-packages"></a>Adicionar pacotes NuGet
 
 * No menu **Ferramentas**, selecione **Gerenciador de Pacotes do NuGet > Gerenciar Pacotes do NuGet para a Solução**.
-* Selecione a guia **Procurar** e, em seguida, insira **Microsoft.EntityFrameworkCore.SqlServer** na caixa de pesquisa.
-<!-- https://github.com/dotnet/AspNetCore.Docs/issues/19782 Delete this line at RTM -->
-* Selecione **Microsoft. EntityFrameworkCore. SqlServer** no painel esquerdo.
+* Selecione a guia **procurar** e, em seguida, insira **Microsoft. EntityFrameworkCore. inmemory** na caixa de pesquisa.
+* Selecione **Microsoft. EntityFrameworkCore. inmemory** no painel esquerdo.
 * Selecione a caixa de seleção **Projeto** no painel direito e, em seguida, selecione **Instalar**.
-* Use as instruções anteriores para adicionar o pacote NuGet **Microsoft. EntityFrameworkCore. inmemory** .
 
-<!-- https://github.com/dotnet/AspNetCore.Docs/issues/19782 Update this image at RTM -->
-![Gerenciador de Pacotes do NuGet](first-web-api/_static/5/vsNuGet.png)
+![Gerenciador de Pacotes NuGet](first-web-api/_static/5/vsNuGet.png)
 
 ## <a name="add-the-todocontext-database-context"></a>Adicione o contexto de banco de dados TodoContext
 
@@ -575,10 +570,10 @@ Este tutorial cria a seguinte API:
 
 |API | Descrição | Corpo da solicitação | Corpo da resposta |
 |--- | ---- | ---- | ---- |
-|`GET /api/TodoItems` | Obter todos os itens de tarefas pendentes | Nenhum | Matriz de itens de tarefas pendentes|
-|`GET /api/TodoItems/{id}` | Obter um item por ID | Nenhum | Item de tarefas pendentes|
+|`GET /api/TodoItems` | Obter todos os itens de tarefas pendentes | Nenhuma | Matriz de itens de tarefas pendentes|
+|`GET /api/TodoItems/{id}` | Obter um item por ID | Nenhuma | Item de tarefas pendentes|
 |`POST /api/TodoItems` | Adicionar um novo item | Item de tarefas pendentes | Item de tarefas pendentes |
-|`PUT /api/TodoItems/{id}` | Atualizar um item &nbsp; existente | Item de tarefas pendentes | Nenhum |
+|`PUT /api/TodoItems/{id}` | Atualizar um item &nbsp; existente | Item de tarefas pendentes | Nenhuma |
 |`DELETE /api/TodoItems/{id}` &nbsp; &nbsp; | Excluir um item &nbsp;&nbsp; | Nenhum | Nenhum|
 
 O diagrama a seguir mostra o design do aplicativo.
@@ -621,7 +616,6 @@ O diagrama a seguir mostra o design do aplicativo.
    ```dotnetcli
    dotnet new webapi -o TodoApi
    cd TodoApi
-   dotnet add package Microsoft.EntityFrameworkCore.SqlServer
    dotnet add package Microsoft.EntityFrameworkCore.InMemory
    code -r ../TodoApi
    ```
@@ -651,10 +645,9 @@ O diagrama a seguir mostra o design do aplicativo.
 
 [!INCLUDE[](~/includes/mac-terminal-access.md)]
 
-Abra um terminal de comando na pasta do projeto e execute os seguintes comandos:
+Abra um terminal de comando na pasta do projeto e execute o seguinte comando:
 
    ```dotnetcli
-   dotnet add package Microsoft.EntityFrameworkCore.SqlServer
    dotnet add package Microsoft.EntityFrameworkCore.InMemory
    ```
 
@@ -764,10 +757,9 @@ O *contexto de banco de dados* é a classe principal que coordena a funcionalida
 ### <a name="add-nuget-packages"></a>Adicionar pacotes NuGet
 
 * No menu **Ferramentas**, selecione **Gerenciador de Pacotes do NuGet > Gerenciar Pacotes do NuGet para a Solução**.
-* Selecione a guia **Procurar** e, em seguida, insira **Microsoft.EntityFrameworkCore.SqlServer** na caixa de pesquisa.
-* Selecione **Microsoft. EntityFrameworkCore. SqlServer** no painel esquerdo.
+* Selecione a guia **procurar** e, em seguida, insira **Microsoft. EntityFrameworkCore. inmemory** na caixa de pesquisa.
+* Selecione **Microsoft. EntityFrameworkCore. inmemory** no painel esquerdo.
 * Selecione a caixa de seleção **Projeto** no painel direito e, em seguida, selecione **Instalar**.
-* Use as instruções anteriores para adicionar o pacote NuGet **Microsoft. EntityFrameworkCore. inmemory** .
 
 ![Gerenciador de Pacotes NuGet](first-web-api/_static/vs3NuGet.png)
 
@@ -1066,10 +1058,10 @@ Este tutorial cria a seguinte API:
 
 |API | Descrição | Corpo da solicitação | Corpo da resposta |
 |--- | ---- | ---- | ---- |
-|GET /api/TodoItems | Obter todos os itens de tarefas pendentes | Nenhum | Matriz de itens de tarefas pendentes|
-|GET /api/TodoItems/{id} | Obter um item por ID | Nenhum | Item de tarefas pendentes|
+|GET /api/TodoItems | Obter todos os itens de tarefas pendentes | Nenhuma | Matriz de itens de tarefas pendentes|
+|GET /api/TodoItems/{id} | Obter um item por ID | Nenhuma | Item de tarefas pendentes|
 |POST /api/TodoItems | Adicionar um novo item | Item de tarefas pendentes | Item de tarefas pendentes |
-|PUT /api/TodoItems/{id} | Atualizar um item &nbsp; existente | Item de tarefas pendentes | Nenhum |
+|PUT /api/TodoItems/{id} | Atualizar um item &nbsp; existente | Item de tarefas pendentes | Nenhuma |
 |EXCLUIR/api/TodoItems/{id} &nbsp;&nbsp; | Excluir um item &nbsp;&nbsp; | Nenhum | Nenhum|
 
 O diagrama a seguir mostra o design do aplicativo.

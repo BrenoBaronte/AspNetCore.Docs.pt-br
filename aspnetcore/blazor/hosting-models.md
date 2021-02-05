@@ -19,14 +19,14 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/hosting-models
-ms.openlocfilehash: a6f1c88b8e93c0d8ccfebca482895ebab8d18a81
-ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
+ms.openlocfilehash: c60191cc8822dd875db613fb70516beb08a659d8
+ms.sourcegitcommit: 20a41c8e40a2e69e99291e2fe18caa04c02e7109
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97506910"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99578276"
 ---
-# <a name="aspnet-core-no-locblazor-hosting-models"></a>BlazorModelos de hospedagem ASP.NET Core
+# <a name="aspnet-core-blazor-hosting-models"></a>BlazorModelos de hospedagem ASP.NET Core
 
 Por [Daniel Roth](https://github.com/danroth27)
 
@@ -38,7 +38,7 @@ O Blazor modelo de hospedagem primário está executando o lado do cliente no na
 
 ![::: no-Loc (Webassembly do mais alto):::: o::: no-Loc (mais alto)::: o aplicativo é executado em um thread de interface do usuário dentro do navegador.](hosting-models/_static/blazor-webassembly.png)
 
-Quando o Blazor WebAssembly aplicativo é criado para implantação sem um back-end ASP.NET Core aplicativo para atender a seus arquivos, o aplicativo é chamado de aplicativo *autônomo* Blazor WebAssembly . Quando o aplicativo é criado para implantação com um aplicativo de back-end para atender a seus arquivos, o aplicativo é chamado de aplicativo *hospedado* Blazor WebAssembly . Um Blazor WebAssembly aplicativo hospedado normalmente interage com o servidor pela rede usando chamadas de API Web ou [SignalR](xref:signalr/introduction) ( <xref:tutorials/signalr-blazor-webassembly> ).
+Quando o Blazor WebAssembly aplicativo é criado para implantação sem um back-end ASP.NET Core aplicativo para atender a seus arquivos, o aplicativo é chamado de aplicativo *autônomo* Blazor WebAssembly . Quando o aplicativo é criado para implantação com um aplicativo de back-end para atender a seus arquivos, o aplicativo é chamado de aplicativo *hospedado* Blazor WebAssembly . Um Blazor WebAssembly aplicativo hospedado normalmente interage com o servidor pela rede usando chamadas de API Web ou [SignalR](xref:signalr/introduction) ( <xref:tutorials/signalr-blazor> ).
 
 O `blazor.webassembly.js` script é fornecido pela estrutura e pelos identificadores:
 
@@ -161,4 +161,4 @@ Ao usar o IIS, as sessões adesivas são habilitadas com *Application Request Ro
 * <xref:blazor/tooling>
 * <xref:signalr/introduction>
 * <xref:blazor/fundamentals/additional-scenarios>
-* <xref:tutorials/signalr-blazor-webassembly>
+* <xref:tutorials/signalr-blazor>
