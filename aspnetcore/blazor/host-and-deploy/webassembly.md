@@ -19,14 +19,14 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/host-and-deploy/webassembly
-ms.openlocfilehash: 2b464c2b6ca434ce4c3b559480da69945266ff69
-ms.sourcegitcommit: cb984e0d7dc23a88c3a4121f23acfaea0acbfe1e
+ms.openlocfilehash: 67d7ed9656b2236ffe4f6b65899b807c0ba46ebb
+ms.sourcegitcommit: 19a004ff2be73876a9ef0f1ac44d0331849ad159
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 01/19/2021
-ms.locfileid: "98570967"
+ms.lasthandoff: 02/07/2021
+ms.locfileid: "99804520"
 ---
-# <a name="host-and-deploy-aspnet-core-no-locblazor-webassembly"></a>Hospedar e implantar ASP.NET Core Blazor WebAssembly
+# <a name="host-and-deploy-aspnet-core-blazor-webassembly"></a>Hospedar e implantar ASP.NET Core Blazor WebAssembly
 
 Por [Luke Latham](https://github.com/guardrex), [Rainer Stropek](https://www.timecockpit.com), [Daniel Roth](https://github.com/danroth27), [Ben Adams](https://twitter.com/ben_a_adams)e [Safia Abdalla](https://safia.rocks)
 
@@ -52,12 +52,15 @@ Blazor o se baseia no host para o fornecer os arquivos compactados apropriados. 
 * Para `web.config` a configuração de compactação do IIS, consulte a seção [IIS: Brotli e a compactação Gzip](#brotli-and-gzip-compression) . 
 * Ao hospedar soluções de hospedagem estática que não dão suporte à negociação de conteúdo de arquivo compactado estaticamente, como páginas do GitHub, considere configurar o aplicativo para buscar e decodificar arquivos compactados Brotli:
 
-  * Obtenha o decodificador Brotli do JavaScript do [repositório GitHub do Google/Brotli](https://github.com/google/brotli). O arquivo do decodificador é nomeado `decode.min.js` e encontrado na [ `js` pasta](https://github.com/google/brotli/tree/master/js)do repositório.
+  * Obtenha o decodificador Brotli do JavaScript do [repositório GitHub do Google/Brotli](https://github.com/google/brotli). O arquivo do decodificador é nomeado `decode.js` e encontrado na [ `js` pasta](https://github.com/google/brotli/tree/master/js)do repositório.
+  
+    > [!NOTE]
+    > Uma regressão está presente na versão reduzidos do `decode.js` script ( `decode.min.js` ) no [repositório GitHub do Google/brotli](https://github.com/google/brotli). Seja reduzir o script por conta própria ou use o [pacote NPM](https://www.npmjs.com/package/brotli) até que o problema [TypeError em decode.min.js (google/brotli #881)](https://github.com/google/brotli/issues/881) seja resolvido. O código de exemplo nesta seção usa a versão **unminified** do script.
 
   * Atualize o aplicativo para usar o decodificador. Altere a marcação dentro da `<body>` marca de fechamento `wwwroot/index.html` para o seguinte:
   
     ```html
-    <script src="decode.min.js"></script>
+    <script src="decode.js"></script>
     <script src="_framework/blazor.webassembly.js" autostart="false"></script>
     <script>
       Blazor.start({
@@ -128,7 +131,7 @@ Para obter mais informações sobre a implantação e a hospedagem de aplicativo
 
 Confira como implantar o Serviço de Aplicativo do Azure em <xref:tutorials/publish-to-azure-webapp-using-vs>.
 
-## <a name="hosted-deployment-with-multiple-no-locblazor-webassembly-apps"></a>Implantação hospedada com vários Blazor WebAssembly aplicativos
+## <a name="hosted-deployment-with-multiple-blazor-webassembly-apps"></a>Implantação hospedada com vários Blazor WebAssembly aplicativos
 
 ### <a name="app-configuration"></a>Configuração de aplicativo
 

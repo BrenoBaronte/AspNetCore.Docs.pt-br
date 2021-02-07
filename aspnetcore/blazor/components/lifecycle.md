@@ -19,14 +19,14 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/components/lifecycle
-ms.openlocfilehash: 3591ba18351b89e2d5dfaef796777273c97ce98b
-ms.sourcegitcommit: 610936e4d3507f7f3d467ed7859ab9354ec158ba
+ms.openlocfilehash: f19d25006009723a8e69f24af92155f65c2195fe
+ms.sourcegitcommit: 19a004ff2be73876a9ef0f1ac44d0331849ad159
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98751625"
+ms.lasthandoff: 02/07/2021
+ms.locfileid: "99804455"
 ---
-# <a name="aspnet-core-no-locblazor-lifecycle"></a>BlazorCiclo de vida ASP.NET Core
+# <a name="aspnet-core-blazor-lifecycle"></a>BlazorCiclo de vida ASP.NET Core
 
 De [Luke Latham](https://github.com/guardrex) e [Daniel Roth](https://github.com/danroth27)
 
@@ -70,7 +70,9 @@ Chamadas de desenvolvedor para [`StateHasChanged`](#state-changes) resultar em u
 
 <xref:Microsoft.AspNetCore.Components.ComponentBase.SetParametersAsync%2A> define os parâmetros fornecidos pelo pai do componente na árvore de renderização ou nos parâmetros de rota. Ao substituir o método, o código do desenvolvedor pode interagir diretamente com os <xref:Microsoft.AspNetCore.Components.ParameterView> parâmetros do.
 
-No exemplo a seguir, <xref:Microsoft.AspNetCore.Components.ParameterView.TryGetValue%2A?displayProperty=nameWithType> atribui o `Param` valor do parâmetro para se a `value` análise de um parâmetro de rota para `Param` for bem-sucedida. Quando `value` não estiver `null` , o valor será exibido pelo `SetParametersAsyncExample` componente.
+No exemplo a seguir, <xref:Microsoft.AspNetCore.Components.ParameterView.TryGetValue%2A?displayProperty=nameWithType> atribui o `Param` valor do parâmetro para se a `value` análise de um parâmetro de rota para `Param` for bem-sucedida. Quando `value` não estiver `null` , o valor será exibido pelo componente.
+
+Embora a [correspondência de parâmetro de rota não diferencia maiúsculas de minúsculas](xref:blazor/fundamentals/routing#route-parameters), o <xref:Microsoft.AspNetCore.Components.ParameterView.TryGetValue%2A> corresponde apenas a nomes de parâmetro com diferenciação de maiúsculas e minúsculas O exemplo a seguir é necessário para usar `/{Param?}` , não `/{param?}` , para obter o valor. Se `/{param?}` é usado neste cenário, <xref:Microsoft.AspNetCore.Components.ParameterView.TryGetValue%2A> retorna `false` e `message` não é definido como uma cadeia de caracteres.
 
 `Pages/SetParametersAsyncExample.razor`:
 
@@ -91,11 +93,14 @@ No exemplo a seguir, <xref:Microsoft.AspNetCore.Components.ParameterView.TryGetV
     {
         if (parameters.TryGetValue<string>(nameof(Param), out var value))
         {
-            message = $"The value of 'Param' is {value}.";
-        }
-        else 
-        {
-            message = "The value of 'Param' is null.";
+            if (value is null)
+            {
+                message = "The value of 'Param' is null.";
+            }
+            else
+            {
+                message = $"The value of 'Param' is {value}.";
+            }
         }
 
         await base.SetParametersAsync(parameters);
@@ -432,6 +437,6 @@ No exemplo a seguir:
 }
 ```
 
-## <a name="no-locblazor-server-reconnection-events"></a>Blazor Server eventos de reconexão
+## <a name="blazor-server-reconnection-events"></a>Blazor Server eventos de reconexão
 
 Os eventos de ciclo de vida do componente abordados neste artigo operam separadamente dos [ Blazor Server manipuladores de eventos de reconexão](xref:blazor/fundamentals/additional-scenarios#reflect-the-connection-state-in-the-ui). Quando um Blazor Server aplicativo perde sua SignalR conexão com o cliente, somente as atualizações da interface do usuário são interrompidas. As atualizações da interface do usuário são retomadas quando a conexão é restabelecida. Para obter mais informações sobre eventos e configurações do manipulador de circuitos, consulte <xref:blazor/fundamentals/additional-scenarios> .
