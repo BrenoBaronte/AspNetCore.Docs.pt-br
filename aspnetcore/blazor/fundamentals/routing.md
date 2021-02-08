@@ -19,14 +19,14 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/fundamentals/routing
-ms.openlocfilehash: 74886eae7431045e56de535b5221040bd56cdc2d
-ms.sourcegitcommit: 610936e4d3507f7f3d467ed7859ab9354ec158ba
+ms.openlocfilehash: c53263ea48bc2900fd811f6e159aca97cdff26f7
+ms.sourcegitcommit: 50d3e939a90c5480df480f651dda032901468dd5
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98751562"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99819023"
 ---
-# <a name="aspnet-core-no-locblazor-routing"></a>Roteamento de ASP.NET Core Blazor
+# <a name="aspnet-core-blazor-routing"></a>Roteamento de ASP.NET Core Blazor
 
 Por [Luke Latham](https://github.com/guardrex)
 
@@ -164,7 +164,7 @@ Não há suporte para parâmetros opcionais. No exemplo a seguir, duas [ `@page`
 
 ::: moniker-end
 
-Use on [`OnParametersSet`](xref:blazor/components/lifecycle#after-parameters-are-set) em vez de [`OnInitialized`](xref:blazor/components/lifecycle#component-initialization-methods) para permitir a navegação do aplicativo para o mesmo componente com um valor de parâmetro opcional diferente. Com base no exemplo anterior, use `OnParametersSet` quando o usuário deve ser capaz de navegar de `/RouteParameter` para `/RouteParameter/amazing` ou de `/RouteParameter/amazing` `/RouteParameter` :
+Use [`OnParametersSet`](xref:blazor/components/lifecycle#after-parameters-are-set) em vez de [`OnInitialized`](xref:blazor/components/lifecycle#component-initialization-methods) para permitir a navegação do aplicativo para o mesmo componente com um valor de parâmetro opcional diferente. Com base no exemplo anterior, use `OnParametersSet` quando o usuário deve ser capaz de navegar de `/RouteParameter` para `/RouteParameter/amazing` ou de `/RouteParameter/amazing` `/RouteParameter` :
 
 ```csharp
 protected override void OnParametersSet()

@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: grpc/aspnetcore
-ms.openlocfilehash: f17ba247747f906cf026fc0f7bc04d51f4c8cb2a
-ms.sourcegitcommit: e311cfb77f26a0a23681019bd334929d1aaeda20
+ms.openlocfilehash: 1a5510364ee46165e275d07073ab087d79d65313
+ms.sourcegitcommit: 50d3e939a90c5480df480f651dda032901468dd5
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99530197"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99819036"
 ---
 # <a name="grpc-services-with-aspnet-core"></a>Serviços do gRPC com o ASP.NET Core
 
@@ -142,7 +142,7 @@ O IIS deve ser configurado para usar TLS e HTTP/2. Para obter mais informações
 
 ## <a name="httpsys"></a>HTTP.sys
 
-O [HTTP.sys](xref:fundamentals/servers/httpsys) é um servidor Web para ASP.NET Core executado apenas no Windows. O .NET 5 e o Windows 10 Build 20241 ou posterior são necessários para hospedar serviços gRPCs com HTTP.sys.
+O [HTTP.sys](xref:fundamentals/servers/httpsys) é um servidor Web para ASP.NET Core executado apenas no Windows. O .NET 5 e o Windows 10 Build 19529 ou posterior são necessários para hospedar serviços gRPCs com HTTP.sys.
 
 HTTP.sys deve ser configurado para usar TLS e HTTP/2. Para obter mais informações, consulte  [ suporte ao servidor Web doHTTP.sys http/2](xref:fundamentals/servers/httpsys#http2-support).
 
