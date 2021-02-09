@@ -4,7 +4,7 @@ author: ardalis
 description: Descubra como o ASP.NET Core dá suporte ao OWIN (Open Web Interface para .NET), que permite que aplicativos Web sejam desacoplados de servidores Web.
 ms.author: riande
 ms.custom: H1Hack27Feb2017
-ms.date: 12/18/2018
+ms.date: 2/8/2021
 no-loc:
 - appsettings.json
 - ASP.NET Core Identity
@@ -18,18 +18,23 @@ no-loc:
 - Razor
 - SignalR
 uid: fundamentals/owin
-ms.openlocfilehash: 6085abc45137223d7a676107cf06dc2cf97a5c19
-ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
+ms.openlocfilehash: c44803c6f67d8e03759a01f7aa71d82088be9a11
+ms.sourcegitcommit: ef8d8c79993a6608bf597ad036edcf30b231843f
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "93060671"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99975268"
 ---
 # <a name="open-web-interface-for-net-owin-with-aspnet-core"></a>OWIN (Open Web Interface para .NET) com o ASP.NET Core
 
 Por [Steve Smith](https://ardalis.com/) e [Rick Anderson](https://twitter.com/RickAndMSFT)
 
-O ASP.NET Core dá suporte para OWIN (Open Web Interface para .NET). O OWIN permite que os aplicativos Web sejam separados dos servidores Web. Ele define uma maneira padrão de usar o middleware em um pipeline para manipular solicitações e respostas associadas. O middleware e os aplicativos ASP.NET Core podem interoperar com aplicativos, servidores e middleware baseados no OWIN.
+ASP.NET Core:
+
+* Dá suporte à interface Web aberta para .NET (OWIN).
+* Tem substituições compatíveis com o .NET Core para as `Microsoft.Owin.*` bibliotecas ([Katana](/aspnet/aspnet/overview/owin-and-katana/)).
+
+O OWIN permite que os aplicativos Web sejam separados dos servidores Web. Ele define uma maneira padrão de usar o middleware em um pipeline para manipular solicitações e respostas associadas. O middleware e os aplicativos ASP.NET Core podem interoperar com aplicativos, servidores e middleware baseados no OWIN.
 
 O OWIN fornece uma camada de desacoplamento que permite duas estruturas com modelos de objeto diferentes para ser usadas juntas. O pacote `Microsoft.AspNetCore.Owin` fornece duas implementações de adaptador:
 

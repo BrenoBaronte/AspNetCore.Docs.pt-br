@@ -18,12 +18,12 @@ no-loc:
 - SignalR
 uid: tutorials/first-mvc-app/adding-controller
 ms.custom: contperf-fy21q3
-ms.openlocfilehash: 1f8291cca1923d42eeb1ce689b268a23b60537ba
-ms.sourcegitcommit: 19a004ff2be73876a9ef0f1ac44d0331849ad159
+ms.openlocfilehash: 47bb9b96bd5565a3a67f3cbdf9a4b6bc1f987447
+ms.sourcegitcommit: ef8d8c79993a6608bf597ad036edcf30b231843f
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 02/07/2021
-ms.locfileid: "99804650"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99975255"
 ---
 # <a name="part-2-add-a-controller-to-an-aspnet-core-mvc-app"></a>Parte 2, adicionar um controlador a um aplicativo ASP.NET Core MVC
 
@@ -49,7 +49,7 @@ Em um aplicativo MVC, o modo de exibição exibe apenas informações. O control
 
 Os dados de rota são explicados posteriormente no tutorial.
 
-o padrão de arquitetura MVC do it separa um aplicativo em três grupos principais de componentes: modelos, exibições e controladores. Esse padrão ajuda a obter a separação das preocupações: a lógica da interface do usuário pertence à exibição. A lógica de entrada pertence ao controlador. A lógica de negócios pertence ao modelo. Essa separação ajuda a gerenciar a complexidade ao criar um aplicativo, pois ele permite trabalhar em um aspecto da implementação de cada vez sem afetar o código de outro. Por exemplo, você pode trabalhar no código de exibição sem depender do código da lógica de negócios.
+O padrão de arquitetura MVC separa um aplicativo em três grupos principais de componentes: modelos, exibições e controladores. Esse padrão ajuda a obter a separação das preocupações: a lógica da interface do usuário pertence à exibição. A lógica de entrada pertence ao controlador. A lógica de negócios pertence ao modelo. Essa separação ajuda a gerenciar a complexidade ao criar um aplicativo, pois ele permite trabalhar em um aspecto da implementação de cada vez sem afetar o código de outro. Por exemplo, você pode trabalhar no código de exibição sem depender do código da lógica de negócios.
 
 Esses conceitos são apresentados e demonstrados nesta série de tutoriais durante a criação de um aplicativo de filme. O projeto MVC contém pastas para os *Controladores* e as *Exibições*.
 

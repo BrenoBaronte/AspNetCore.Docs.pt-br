@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/webassembly-performance-best-practices
-ms.openlocfilehash: 28fe6a114f767246f49ac275d02c28f4572ce4e4
-ms.sourcegitcommit: 19a004ff2be73876a9ef0f1ac44d0331849ad159
+ms.openlocfilehash: 64eb69ba597b1e48489733275ac3bed96c6c3241
+ms.sourcegitcommit: ef8d8c79993a6608bf597ad036edcf30b231843f
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 02/07/2021
-ms.locfileid: "99804507"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99975229"
 ---
 # <a name="aspnet-core-blazor-webassembly-performance-best-practices"></a>Blazor WebAssemblyPráticas recomendadas de desempenho de ASP.NET Core
 
@@ -545,7 +545,7 @@ function jsInteropCall() {
 
 ### <a name="intermediate-language-il-trimming"></a>Corte de IL (linguagem intermediária)
 
-A [corte de assemblies não utilizados de um Blazor WebAssembly aplicativo](xref:blazor/host-and-deploy/configure-trimmer) reduz o tamanho do aplicativo removendo o código não utilizado nos binários do aplicativo. Por padrão, o corte é executado durante a publicação de um aplicativo. Para se beneficiar da remoção, publique o aplicativo para implantação usando o [`dotnet publish`](/dotnet/core/tools/dotnet-publish) comando com a opção de [configuração-c |--](/dotnet/core/tools/dotnet-publish#options) definida como `Release` :
+A corte de assemblies não utilizados de um Blazor WebAssembly aplicativo reduz o tamanho do aplicativo removendo o código não utilizado nos binários do aplicativo. Para obter mais informações, consulte <xref:blazor/host-and-deploy/configure-trimmer>.
 
 ::: moniker-end
 
@@ -555,11 +555,11 @@ A [corte de assemblies não utilizados de um Blazor WebAssembly aplicativo](xref
 
 A [vinculação de um Blazor WebAssembly aplicativo](xref:blazor/host-and-deploy/configure-linker) reduz o tamanho do aplicativo ao cortar o código não utilizado nos binários do aplicativo. Por padrão, o vinculador de linguagem intermediária (IL) só é habilitado durante a criação da `Release` configuração. Para se beneficiar disso, publique o aplicativo para implantação usando o [`dotnet publish`](/dotnet/core/tools/dotnet-publish) comando com a opção de [configuração-c |--](/dotnet/core/tools/dotnet-publish#options) definida como `Release` :
 
-::: moniker-end
-
 ```dotnetcli
 dotnet publish -c Release
 ```
+
+::: moniker-end
 
 ### <a name="use-systemtextjson"></a>Usar System.Text.Jsem
 

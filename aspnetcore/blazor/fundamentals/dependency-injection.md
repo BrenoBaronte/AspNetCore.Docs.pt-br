@@ -20,14 +20,14 @@ no-loc:
 - SignalR
 uid: blazor/fundamentals/dependency-injection
 zone_pivot_groups: blazor-hosting-models
-ms.openlocfilehash: 3f2b4eff5422acbec80b2fd9b801101271cc3f75
-ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
+ms.openlocfilehash: 6f41cc102411377f144dd8e12f7942031c59619a
+ms.sourcegitcommit: ef8d8c79993a6608bf597ad036edcf30b231843f
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97808719"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99975203"
 ---
-# <a name="aspnet-core-no-locblazor-dependency-injection"></a>Injeção de dependência de ASP.NET Core Blazor
+# <a name="aspnet-core-blazor-dependency-injection"></a>Injeção de dependência de ASP.NET Core Blazor
 
 Por [Rainer Stropek](https://www.timecockpit.com) e [Mike Rousos](https://github.com/mjrousos)
 
