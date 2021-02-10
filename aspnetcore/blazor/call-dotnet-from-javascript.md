@@ -19,14 +19,14 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/call-dotnet-from-javascript
-ms.openlocfilehash: e602f29e6932280f4625ade64201ff232e02150d
-ms.sourcegitcommit: 610936e4d3507f7f3d467ed7859ab9354ec158ba
+ms.openlocfilehash: 645bbb33b5a0a43e630095e375526b0686f86277
+ms.sourcegitcommit: 04ad9cd26fcaa8bd11e261d3661f375f5f343cdc
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98751627"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100106577"
 ---
-# <a name="call-net-methods-from-javascript-functions-in-aspnet-core-no-locblazor"></a>Chamar métodos .NET de funções JavaScript no ASP.NET Core Blazor
+# <a name="call-net-methods-from-javascript-functions-in-aspnet-core-blazor"></a>Chamar métodos .NET de funções JavaScript no ASP.NET Core Blazor
 
 Por [Javier Calvarro Nelson](https://github.com/javiercn), [Daniel Roth](https://github.com/danroth27), [Shashikant Rudrawadi](http://wisne.co)e [Luke Latham](https://github.com/guardrex)
 
@@ -41,9 +41,9 @@ Este artigo aborda a invocação de métodos .NET do JavaScript. Para obter info
 
 ## <a name="static-net-method-call"></a>Chamada de método .NET estático
 
-Para invocar um método .NET estático do JavaScript, use `DotNet.invokeMethod` as `DotNet.invokeMethodAsync` funções ou. Passe o identificador do método estático que você deseja chamar, o nome do assembly que contém a função e os argumentos. A versão assíncrona é preferida para dar suporte a Blazor Server cenários. O método .NET deve ser público, estático e ter o [`[JSInvokable]`](xref:Microsoft.JSInterop.JSInvokableAttribute) atributo. Atualmente, não há suporte para chamar métodos genéricos abertos.
+Para invocar um método .NET estático do JavaScript, use `DotNet.invokeMethod` as `DotNet.invokeMethodAsync` funções ou. Passe o identificador do método estático que você deseja chamar, o nome do assembly que contém a função e os argumentos. A versão assíncrona é preferida para dar suporte a Blazor Server cenários. O método .NET deve ser público, estático e ter o [ `[JSInvokable]` atributo](xref:Microsoft.JSInterop.JSInvokableAttribute). Atualmente, não há suporte para chamar métodos genéricos abertos.
 
-O aplicativo de exemplo inclui um método C# para retornar uma `int` matriz. O [`[JSInvokable]`](xref:Microsoft.JSInterop.JSInvokableAttribute) atributo é aplicado ao método.
+O aplicativo de exemplo inclui um método C# para retornar uma `int` matriz. O [ `[JSInvokable]` atributo](xref:Microsoft.JSInterop.JSInvokableAttribute) é aplicado ao método.
 
 `Pages/JsInterop.razor`:
 
@@ -78,7 +78,7 @@ Array(4) [ 1, 2, 3, 4 ]
 
 O quarto valor de matriz é enviado por push para a matriz ( `data.push(4);` ) retornada por `ReturnArrayAsync` .
 
-Por padrão, o identificador de método é o nome do método, mas você pode especificar um identificador diferente usando o [`[JSInvokable]`](xref:Microsoft.JSInterop.JSInvokableAttribute) Construtor de atributos:
+Por padrão, o identificador de método é o nome do método, mas você pode especificar um identificador diferente usando o construtor de [ `[JSInvokable]` atributos](xref:Microsoft.JSInterop.JSInvokableAttribute) :
 
 ```csharp
 @code {

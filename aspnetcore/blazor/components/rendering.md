@@ -19,14 +19,14 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/components/rendering
-ms.openlocfilehash: 1a4d4116b8a6d9266bbacbbdd8f20dc49b4e1db0
-ms.sourcegitcommit: 063a06b644d3ade3c15ce00e72a758ec1187dd06
+ms.openlocfilehash: 27701d175c86cdf4b74a9e6332b30b4d55806650
+ms.sourcegitcommit: 04ad9cd26fcaa8bd11e261d3661f375f5f343cdc
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98253911"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100107032"
 ---
-# <a name="aspnet-core-no-locblazor-component-rendering"></a>BlazorRenderização de componente ASP.NET Core
+# <a name="aspnet-core-blazor-component-rendering"></a>BlazorRenderização de componente ASP.NET Core
 
 Por [Steve Sanderson](https://github.com/SteveSandersonMS)
 
@@ -109,18 +109,20 @@ Considere o seguinte `Counter` componente, que atualiza a contagem quatro vezes 
 
 Devido à maneira como as tarefas são definidas no .NET, um receptor de um <xref:System.Threading.Tasks.Task> só pode observar sua conclusão final, não os Estados assíncronos intermediários. Portanto, o <xref:Microsoft.AspNetCore.Components.ComponentBase> só pode disparar a rerenderização quando o <xref:System.Threading.Tasks.Task> é retornado pela primeira vez e quando o <xref:System.Threading.Tasks.Task> finalmente é concluído. Não é possível saber reprocessar em outros pontos intermediários. Se você quiser reprocessar em pontos intermediários, use <xref:Microsoft.AspNetCore.Components.ComponentBase.StateHasChanged%2A> .
 
-### <a name="receiving-a-call-from-something-external-to-the-no-locblazor-rendering-and-event-handling-system"></a>Recebendo uma chamada de algo externo para o Blazor sistema de processamento e manipulação de eventos
+### <a name="receiving-a-call-from-something-external-to-the-blazor-rendering-and-event-handling-system"></a>Recebendo uma chamada de algo externo para o Blazor sistema de processamento e manipulação de eventos
 
 <xref:Microsoft.AspNetCore.Components.ComponentBase> Só sabe sobre seus próprios métodos de ciclo de vida e Blazor eventos disparados. <xref:Microsoft.AspNetCore.Components.ComponentBase> Não sabe sobre outros eventos que podem ocorrer em seu código. Por exemplo, qualquer evento C# gerado por um repositório de dados personalizado é desconhecido para Blazor . Para que tais eventos disparem a rerenderização para exibir valores atualizados na interface do usuário, use <xref:Microsoft.AspNetCore.Components.ComponentBase.StateHasChanged%2A> .
 
 Em outro caso de uso, considere o seguinte `Counter` componente que o usa <xref:System.Timers.Timer?displayProperty=fullName> para atualizar a contagem em um intervalo regular e chamadas <xref:Microsoft.AspNetCore.Components.ComponentBase.StateHasChanged%2A> para atualizar a interface do usuário.
 
-`Pages/Counter.razor`:
+`Pages/CounterWithTimerDisposal.razor`:
 
 ```razor
-@page "/counter"
+@page "/counter-with-timer-disposal"
 @using System.Timers
 @implements IDisposable
+
+<h1>Counter with <code>Timer</code> disposal</h1>
 
 <p>Current count: @currentCount</p>
 
@@ -134,7 +136,7 @@ Em outro caso de uso, considere o seguinte `Counter` componente que o usa <xref:
         timer.Start();
     }
 
-    void OnTimerCallback()
+    private void OnTimerCallback()
     {
         _ = InvokeAsync(() =>
         {
@@ -143,11 +145,14 @@ Em outro caso de uso, considere o seguinte `Counter` componente que o usa <xref:
         });
     }
 
-    void IDisposable.Dispose() => timer.Dispose();
+    public void IDisposable.Dispose() => timer.Dispose();
 }
 ```
 
-No exemplo anterior, `OnTimerCallback` deve chamar <xref:Microsoft.AspNetCore.Components.ComponentBase.StateHasChanged%2A> porque Blazor não está ciente das alterações `currentCount` no retorno de chamada. `OnTimerCallback` é executado fora de qualquer Blazor fluxo de renderização gerenciado ou notificação de eventos.
+No exemplo anterior:
+
+* `OnTimerCallback` é necessário chamar <xref:Microsoft.AspNetCore.Components.ComponentBase.StateHasChanged%2A> porque Blazor não está ciente das alterações `currentCount` no retorno de chamada. `OnTimerCallback` é executado fora de qualquer Blazor fluxo de renderização gerenciado ou notificação de eventos.
+* O componente implementa <xref:System.IDisposable> , onde o <xref:System.Timers.Timer> é Descartado quando a estrutura chama o `Dispose` método. Para obter mais informações, consulte <xref:blazor/components/lifecycle#component-disposal-with-idisposable>.
 
 Da mesma forma, como o retorno de chamada é invocado no Blazor contexto de sincronização de fora, é necessário encapsular a lógica no <xref:Microsoft.AspNetCore.Components.ComponentBase.InvokeAsync%2A?displayProperty=nameWithType> para movê-lo para o contexto de sincronização do renderizador. <xref:Microsoft.AspNetCore.Components.ComponentBase.StateHasChanged%2A> Só pode ser chamado a partir do contexto de sincronização do renderizador e gera uma exceção de outra forma. Isso é equivalente ao empacotamento para o thread de interface do usuário em outras estruturas de interface do usuário.
 

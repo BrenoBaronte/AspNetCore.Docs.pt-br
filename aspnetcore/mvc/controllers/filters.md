@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: mvc/controllers/filters
-ms.openlocfilehash: ee30ef89c5d7aeae83f23a81eb02235397c89ac2
-ms.sourcegitcommit: 75db2f684a9302b0be7925eab586aa091c6bd19f
+ms.openlocfilehash: 79457d55e0dcda342bc0017bb386c23525666657
+ms.sourcegitcommit: 04ad9cd26fcaa8bd11e261d3661f375f5f343cdc
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 02/01/2021
-ms.locfileid: "99238319"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100107188"
 ---
 # <a name="filters-in-aspnet-core"></a>Filtros no ASP.NET Core
 
@@ -403,7 +403,7 @@ Os filtros de recursos são úteis para causar um curto-circuito na maior parte 
 Exemplos de filtros de recurso:
 
 * [O filtro de recurso em curto-circuito](#short-circuiting-resource-filter) mostrado anteriormente.
-* [DisableFormValueModelBindingAttribute](https://github.com/aspnet/Entropy/blob/rel/2.0.0-preview2/samples/Mvc.FileUpload/Filters/DisableFormValueModelBindingAttribute.cs):
+* [DisableFormValueModelBindingAttribute](https://github.com/aspnet/Entropy/blob/master/samples/Mvc.FileUpload/Filters/DisableFormValueModelBindingAttribute.cs):
 
   * Impede o model binding de acessar os dados do formulário.
   * Usado para uploads de arquivos grandes para impedir que os dados de formulário sejam lidos na memória.
@@ -558,11 +558,11 @@ Por exemplo, o filtro a seguir sempre é executado e define o resultado de uma a
 `IFilterFactory.IsReusable`:
 
 * É uma dica pela fábrica que a instância de filtro criada pela fábrica pode ser reutilizada fora do escopo de solicitação em que foi criada.
-* ***Não** deve ser usado com um filtro que dependa de serviços com um tempo de vida diferente do singleton.
+* ***Não*** deve ser usado com um filtro que depende de serviços com um tempo de vida diferente do singleton.
 
 O runtime do ASP.NET Core não garante:
 
-_ Uma única instância do filtro será criada.
+* Que uma única instância do filtro será criada.
 * Que o filtro não será solicitado novamente no contêiner de DI em algum momento posterior.
 
 > [!WARNING] 
@@ -763,7 +763,7 @@ Esta sequência mostra:
 * O filtro de método está aninhado no filtro de controlador.
 * O filtro de controlador está aninhado no filtro global.
 
-### <a name="controller-and-no-locrazor-page-level-filters"></a>Filtros de nível de página e de controlador Razor
+### <a name="controller-and-razor-page-level-filters"></a>Filtros de nível de página e de controlador Razor
 
 Cada controlador que herda da classe base <xref:Microsoft.AspNetCore.Mvc.Controller> inclui os métodos [Controller.OnActionExecuting](xref:Microsoft.AspNetCore.Mvc.Controller.OnActionExecuting*),  [Controller.OnActionExecutionAsync](xref:Microsoft.AspNetCore.Mvc.Controller.OnActionExecutionAsync*) e [Controller.OnActionExecuted](xref:Microsoft.AspNetCore.Mvc.Controller.OnActionExecuted*)
 `OnActionExecuted`. Estes métodos:

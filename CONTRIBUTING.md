@@ -16,7 +16,7 @@ Você precisa de uma compreensão básica do [Git e do GitHub.com](https://guide
 * Se a PR tiver o rótulo 'cla-required' atribuído, [conclua o CLA (Contrato de Licença de Contribuição)](https://cla.dotnetfoundation.org/).
 * Responda aos comentários de PR.
 
-Para obter um exemplo em que esse processo levou à publicação de um novo artigo, confira [Problema &num;67](https://github.com/dotnet/docs/issues/67) e [Solicitação Pull &num;798](https://github.com/dotnet/docs/pull/798) no repositório de Documentos do .NET. O novo artigo é [Documentando seu código](https://docs.microsoft.com/dotnet/articles/csharp/codedoc).
+Para obter um exemplo em que esse processo levou à publicação de um novo artigo, consulte [emitir 1477](https://github.com/dotnet/docs/issues/1477) e [solicitação pull 18955](https://github.com/dotnet/docs/pull/18955) no repositório de documentos do .net. O novo artigo é [usar a cobertura de código para testes de unidade](/dotnet/core/testing/unit-testing-code-coverage).
 
 ## <a name="docs-authoring-pack-extension-in-visual-studio-code"></a>Extensão do Pacote de Criação de Documentos no Visual Studio Code
 

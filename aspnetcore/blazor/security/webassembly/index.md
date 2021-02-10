@@ -19,14 +19,14 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/security/webassembly/index
-ms.openlocfilehash: 0b555ad7befe882c4ffd06e2505a9edc1263eee2
-ms.sourcegitcommit: 83524f739dd25fbfa95ee34e95342afb383b49fe
+ms.openlocfilehash: fc2ebae6e88e312aafec790229f978c3130e64de
+ms.sourcegitcommit: 04ad9cd26fcaa8bd11e261d3661f375f5f343cdc
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99057077"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100106681"
 ---
-# <a name="secure-aspnet-core-no-locblazor-webassembly"></a>ASP.NET Core seguro Blazor WebAssembly
+# <a name="secure-aspnet-core-blazor-webassembly"></a>ASP.NET Core seguro Blazor WebAssembly
 
 Por [Javier Calvarro Nelson](https://github.com/javiercn)
 
@@ -52,7 +52,7 @@ Existem outras opções para autenticar SPAs, como o uso de SameSite cookie s. N
 
 A [`Microsoft.AspNetCore.Components.WebAssembly.Authentication`](https://www.nuget.org/packages/Microsoft.AspNetCore.Components.WebAssembly.Authentication) biblioteca oferece vários primitivos para implementar a autenticação e a autorização usando o OIDC. Em termos gerais, a autenticação funciona da seguinte maneira:
 
-* Quando um usuário anônimo seleciona o botão de logon ou solicita uma página com o [`[Authorize]`](xref:Microsoft.AspNetCore.Authorization.AuthorizeAttribute) atributo aplicado, o usuário é redirecionado para a página de logon do aplicativo ( `/authentication/login` ).
+* Quando um usuário anônimo seleciona o botão de logon ou solicita uma página com o [ `[Authorize]` atributo](xref:Microsoft.AspNetCore.Authorization.AuthorizeAttribute) aplicado, o usuário é redirecionado para a página de logon do aplicativo ( `/authentication/login` ).
 * Na página de logon, a biblioteca de autenticação se prepara para um redirecionamento para o ponto de extremidade de autorização. O ponto de extremidade de autorização está fora do Blazor WebAssembly aplicativo e pode ser hospedado em uma origem separada. O ponto de extremidade é responsável por determinar se o usuário está autenticado e para emitir um ou mais tokens em resposta. A biblioteca de autenticação fornece um retorno de chamada de logon para receber a resposta de autenticação.
   * Se o usuário não for autenticado, o usuário será redirecionado para o sistema de autenticação subjacente, que geralmente é ASP.NET Core Identity .
   * Se o usuário já foi autenticado, o ponto de extremidade de autorização gera os tokens apropriados e redireciona o navegador de volta para o ponto de extremidade de retorno de chamada de logon ( `/authentication/login-callback` ).
@@ -107,7 +107,7 @@ Aplicativos geralmente exigem declarações para usuários com base em uma chama
 * [Cenários adicionais: personalizar o usuário](xref:blazor/security/webassembly/additional-scenarios#customize-the-user)
 * <xref:blazor/security/webassembly/aad-groups-roles>
 
-## <a name="azure-app-service-on-linux-with-no-locidentity-server"></a>Serviço de Azure App no Linux com o Identity servidor
+## <a name="azure-app-service-on-linux-with-identity-server"></a>Serviço de Azure App no Linux com o Identity servidor
 
 Especifique o emissor explicitamente ao implantar no serviço de Azure App no Linux com o Identity servidor. Para obter mais informações, consulte <xref:security/authentication/identity/spa#azure-app-service-on-linux>.
 

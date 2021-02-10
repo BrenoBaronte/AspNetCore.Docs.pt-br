@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/components/virtualization
-ms.openlocfilehash: 72b33bc3c2861380551915b1e8caab49122e8fab
-ms.sourcegitcommit: e311cfb77f26a0a23681019bd334929d1aaeda20
+ms.openlocfilehash: 5e058c33dcf52faf722b27e361491dd8dbc47dc1
+ms.sourcegitcommit: 04ad9cd26fcaa8bd11e261d3661f375f5f343cdc
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99529911"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100107019"
 ---
 # <a name="aspnet-core-blazor-component-virtualization"></a>BlazorVirtualização de componente ASP.NET Core
 
@@ -156,6 +156,8 @@ A altura de cada item em pixels pode ser definida com <xref:Microsoft.AspNetCore
     ...
 </Virtualize>
 ```
+
+Por padrão, o `Virtualize` componente mede o tamanho real da renderização *após* a ocorrência do processamento inicial. Use <xref:Microsoft.AspNetCore.Components.Web.Virtualization.Virtualize%601.ItemSize%2A> para fornecer um tamanho exato de item com antecedência para auxiliar no desempenho de renderização inicial preciso e para garantir a posição de rolagem correta para recargas de página. Se o padrão <xref:Microsoft.AspNetCore.Components.Web.Virtualization.Virtualize%601.ItemSize%2A> fizer com que alguns itens sejam renderizados fora da exibição visível no momento, um segundo reprocessamento será disparado. Para manter corretamente a posição de rolagem do navegador em uma lista virtualizada, a renderização inicial deve estar correta. Caso contrário, os usuários poderão exibir os itens errados. 
 
 ## <a name="overscan-count"></a>Contagem de sobreverificações
 

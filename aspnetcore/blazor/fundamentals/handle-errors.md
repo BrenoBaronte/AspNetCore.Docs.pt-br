@@ -19,14 +19,14 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/fundamentals/handle-errors
-ms.openlocfilehash: 5a255c2d3535311cecd6b7219447e80d1ae78877
-ms.sourcegitcommit: d4836f9b7c508f51c6c4ee6d0cc719b38c1729c4
+ms.openlocfilehash: cb3c64ab7340a67a6730d98af8a91c4e9837acf1
+ms.sourcegitcommit: 04ad9cd26fcaa8bd11e261d3661f375f5f343cdc
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98758250"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100106941"
 ---
-# <a name="handle-errors-in-aspnet-core-no-locblazor-apps"></a>Tratar erros em Blazor aplicativos ASP.NET Core
+# <a name="handle-errors-in-aspnet-core-blazor-apps"></a>Tratar erros em Blazor aplicativos ASP.NET Core
 
 Por [Steve Sanderson](https://github.com/SteveSandersonMS)
 
@@ -89,7 +89,7 @@ O `blazor-error-ui` elemento é oculto pelos estilos incluídos nos Blazor model
 }
 ```
 
-## <a name="no-locblazor-server-detailed-circuit-errors"></a>Blazor Server erros de circuito detalhado
+## <a name="blazor-server-detailed-circuit-errors"></a>Blazor Server erros de circuito detalhado
 
 Os erros do lado do cliente não incluem a pilha de chamadas e não fornecem detalhes sobre a causa do erro, mas os logs do servidor contêm essas informações. Para fins de desenvolvimento, informações de erro de circuito confidencial podem ser disponibilizadas para o cliente habilitando erros detalhados.
 
@@ -118,7 +118,7 @@ Habilite Blazor Server erros detalhados usando as seguintes abordagens:
 > [!WARNING]
 > Expor informações de erro aos clientes na Internet é um risco de segurança que sempre deve ser evitado.
 
-## <a name="how-a-no-locblazor-server-app-reacts-to-unhandled-exceptions"></a>Como um Blazor Server aplicativo reage a exceções sem tratamento
+## <a name="how-a-blazor-server-app-reacts-to-unhandled-exceptions"></a>Como um Blazor Server aplicativo reage a exceções sem tratamento
 
 Blazor Server é uma estrutura com estado. Enquanto os usuários interagem com um aplicativo, eles mantêm uma conexão com o servidor conhecido como um *circuito*. O circuito contém instâncias de componentes ativos, além de muitos outros aspectos do estado, como:
 
@@ -173,7 +173,7 @@ As exceções sem tratamento anteriores são descritas nas seções a seguir des
 Quando o Blazor cria uma instância de um componente:
 
 * O construtor do componente é invocado.
-* Os construtores de quaisquer serviços não singleton de DI fornecidos ao construtor do componente por meio da [`@inject`](xref:mvc/views/razor#inject) diretiva ou do [`[Inject]`](xref:blazor/fundamentals/dependency-injection#request-a-service-in-a-component) atributo são invocados.
+* Os construtores de quaisquer serviços não singleton de DI fornecidos ao construtor do componente por meio da [`@inject`](xref:mvc/views/razor#inject) diretiva ou do [ `[Inject]` atributo](xref:blazor/fundamentals/dependency-injection#request-a-service-in-a-component) são invocados.
 
 Um Blazor Server circuito falha quando qualquer Construtor executado ou um setter para qualquer `[Inject]` propriedade gera uma exceção sem tratamento. A exceção é fatal porque a estrutura não pode instanciar o componente. Se a lógica do Construtor puder gerar exceções, o aplicativo deverá interceptar as exceções usando uma [`try-catch`](/dotnet/csharp/language-reference/keywords/try-catch) instrução com tratamento de erros e registro em log.
 
@@ -242,7 +242,7 @@ As seguintes condições se aplicam ao tratamento de erros com <xref:Microsoft.J
 * Se uma chamada para <xref:Microsoft.JSInterop.IJSRuntime.InvokeAsync%2A> falhar de forma assíncrona, o .NET <xref:System.Threading.Tasks.Task> falhará. Uma chamada para <xref:Microsoft.JSInterop.IJSRuntime.InvokeAsync%2A> pode falhar, por exemplo, porque o código do lado do JavaScript gera uma exceção ou retorna um `Promise` que foi concluído como `rejected` . O código do desenvolvedor deve capturar a exceção. Se estiver usando o [`await`](/dotnet/csharp/language-reference/keywords/await) operador, considere encapsular a chamada de método em uma [`try-catch`](/dotnet/csharp/language-reference/keywords/try-catch) instrução com tratamento de erros e registro em log. Caso contrário, o código com falha resultará em uma exceção sem tratamento que é fatal para um Blazor Server circuito.
 * Por padrão, as chamadas para <xref:Microsoft.JSInterop.IJSRuntime.InvokeAsync%2A> devem ser concluídas em um determinado período ou a chamada atinge o tempo limite. O período de tempo limite padrão é de um minuto. O tempo limite protege o código contra uma perda na conectividade de rede ou no código JavaScript que nunca envia uma mensagem de conclusão. Se a chamada atingir o tempo limite, o resultado <xref:System.Threading.Tasks> falhará com um <xref:System.OperationCanceledException> . Interceptar e processar a exceção com registro em log.
 
-Da mesma forma, o código JavaScript pode iniciar chamadas para métodos .NET indicados pelo [`[JSInvokable]`](xref:blazor/call-dotnet-from-javascript) atributo. Se esses métodos .NET lançarem uma exceção sem tratamento:
+Da mesma forma, o código JavaScript pode iniciar chamadas para métodos .NET indicados pelo [ `[JSInvokable]` atributo](xref:blazor/call-dotnet-from-javascript). Se esses métodos .NET lançarem uma exceção sem tratamento:
 
 * A exceção não é tratada como fatal para um Blazor Server circuito.
 * O lado do JavaScript `Promise` é rejeitado.
@@ -254,7 +254,7 @@ Para obter mais informações, consulte os seguintes artigos:
 * <xref:blazor/call-javascript-from-dotnet>
 * <xref:blazor/call-dotnet-from-javascript>
 
-### <a name="no-locblazor-server-prerendering"></a>Blazor Server prerenderizando
+### <a name="blazor-server-prerendering"></a>Blazor Server prerenderizando
 
 Blazor os componentes podem ser renderizados usando o [auxiliar de marca do componente](xref:mvc/views/tag-helpers/builtin-th/component-tag-helper) para que sua marcação HTML renderizada seja retornada como parte da solicitação HTTP inicial do usuário. Isso funciona por:
 

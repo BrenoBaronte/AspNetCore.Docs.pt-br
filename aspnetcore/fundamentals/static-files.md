@@ -16,12 +16,12 @@ no-loc:
 - Razor
 - SignalR
 uid: fundamentals/static-files
-ms.openlocfilehash: d97caeffc6e8beebddb01a5bd126d61ba988de65
-ms.sourcegitcommit: ebc5beccba5f3f7619de20baa58ad727d2a3d18c
+ms.openlocfilehash: fad569ab06735600299d8051a258651e329db8ce
+ms.sourcegitcommit: 04ad9cd26fcaa8bd11e261d3661f375f5f343cdc
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98689286"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100107175"
 ---
 # <a name="static-files-in-aspnet-core"></a>Arquivos estáticos no ASP.NET Core
 
@@ -119,11 +119,11 @@ Para fornecer arquivos estáticos com base na autorização:
   
   [!code-csharp[](static-files/samples/3.x/StaticFileAuth/Startup.cs?name=snippet1&highlight=20-25)]
 
-  No código anterior, a política de autorização de fallback exige que ***todos** os usuários sejam autenticados. Pontos de extremidade como, por exemplo, controladores, Razor páginas, etc. que especificam seus próprios requisitos de autorização, não usam a política de autorização de fallback. Por exemplo, Razor páginas, controladores ou métodos de ação com `[AllowAnonymous]` ou `[Authorize(PolicyName="MyPolicy")]` usam o atributo de autorização aplicado em vez da política de autorização de fallback.
+  No código anterior, a política de autorização de fallback requer que ***todos*** os usuários sejam autenticados. Pontos de extremidade como, por exemplo, controladores, Razor páginas, etc. que especificam seus próprios requisitos de autorização, não usam a política de autorização de fallback. Por exemplo, Razor páginas, controladores ou métodos de ação com `[AllowAnonymous]` ou `[Authorize(PolicyName="MyPolicy")]` usam o atributo de autorização aplicado em vez da política de autorização de fallback.
 
   <xref:Microsoft.AspNetCore.Authorization.AuthorizationPolicyBuilder.RequireAuthenticatedUser%2A> Adiciona <xref:Microsoft.AspNetCore.Authorization.Infrastructure.DenyAnonymousAuthorizationRequirement> à instância atual, que impõe que o usuário atual seja autenticado.
 
-  Ativos estáticos em `wwwroot` são publicamente acessíveis porque o middleware de arquivo estático padrão ( `app.UseStaticFiles();` ) é chamado antes `UseAuthentication` . Ativos estáticos na pasta _MyStaticFiles * exigem autenticação. O [código de exemplo](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/static-files/samples) demonstra isso.
+  Ativos estáticos em `wwwroot` são publicamente acessíveis porque o middleware de arquivo estático padrão ( `app.UseStaticFiles();` ) é chamado antes `UseAuthentication` . Ativos estáticos na pasta *MyStaticFiles* exigem autenticação. O [código de exemplo](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/static-files/samples) demonstra isso.
 
 Uma abordagem alternativa para fornecer arquivos com base na autorização é:
 
@@ -469,7 +469,7 @@ A <xref:Microsoft.AspNetCore.StaticFiles.FileExtensionContentTypeProvider> class
 
 Consulte [Tipos de conteúdo MIME](https://www.iana.org/assignments/media-types/media-types.xhtml).
 
-Para obter informações sobre como usar um personalizado <xref:Microsoft.AspNetCore.StaticFiles.FileExtensionContentTypeProvider> ou configurar outros <xref:Microsoft.AspNetCore.Builder.StaticFileOptions> em Blazor aplicativos de servidor, consulte <xref:blazor/fundamentals/additional-scenarios#static-files> .
+Para obter informações sobre como usar um personalizado <xref:Microsoft.AspNetCore.StaticFiles.FileExtensionContentTypeProvider> ou configurar outros <xref:Microsoft.AspNetCore.Builder.StaticFileOptions> em Blazor aplicativos de servidor, consulte <xref:blazor/fundamentals/static-files> .
 
 ## <a name="non-standard-content-types"></a>Tipos de conteúdo não padrão
 

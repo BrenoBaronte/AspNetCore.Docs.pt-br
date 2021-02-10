@@ -19,14 +19,14 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/security/index
-ms.openlocfilehash: 0a271b2e306e2969530248fe820ed8aab2fa45e0
-ms.sourcegitcommit: 75db2f684a9302b0be7925eab586aa091c6bd19f
+ms.openlocfilehash: c786c00892772f9f0ce80c903bde495d4f2523f2
+ms.sourcegitcommit: 04ad9cd26fcaa8bd11e261d3661f375f5f343cdc
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 02/01/2021
-ms.locfileid: "99238190"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100106733"
 ---
-# <a name="aspnet-core-no-locblazor-authentication-and-authorization"></a>BlazorAutenticação e autorização do ASP.NET Core
+# <a name="aspnet-core-blazor-authentication-and-authorization"></a>BlazorAutenticação e autorização do ASP.NET Core
 
 Por [Steve Sanderson](https://github.com/SteveSandersonMS) e [Luke Latham](https://github.com/guardrex)
 
@@ -48,7 +48,7 @@ As [ Razor convenções de autorização de páginas](xref:security/authorizatio
 
 Blazor usa os mecanismos de autenticação de ASP.NET Core existentes para estabelecer a identidade do usuário. O mecanismo exato depende de como o Blazor aplicativo é hospedado Blazor WebAssembly ou Blazor Server .
 
-### <a name="no-locblazor-webassembly-authentication"></a>autenticação Blazor WebAssembly
+### <a name="blazor-webassembly-authentication"></a>autenticação Blazor WebAssembly
 
 Em Blazor WebAssembly aplicativos, as verificações de autenticação podem ser ignoradas porque todo o código do lado do cliente pode ser modificado por usuários. Isso também ocorre com todas as tecnologias de aplicativo do lado do cliente, incluindo estruturas de SPA do JavaScript ou aplicativos nativos em qualquer sistema operacional.
 
@@ -61,7 +61,7 @@ Para lidar com a autenticação, o uso de um serviço interno ou personalizado <
 
 Para obter mais informações sobre como criar aplicativos e configuração, consulte <xref:blazor/security/webassembly/index> .
 
-### <a name="no-locblazor-server-authentication"></a>autenticação Blazor Server
+### <a name="blazor-server-authentication"></a>autenticação Blazor Server
 
 Blazor Server os aplicativos operam em uma conexão em tempo real que é criada usando o SignalR . A [autenticação em SignalR aplicativos baseados no](xref:signalr/authn-and-authz) é tratada quando a conexão é estabelecida. A autenticação pode ser baseada em um cookie ou algum outro token de portador.
 
@@ -352,7 +352,7 @@ Essa abordagem não é normalmente aplicável a Blazor Server aplicativos. Blazo
 
 ## <a name="authorize-attribute"></a>Atributo [Authorize]
 
-O [`[Authorize]`](xref:Microsoft.AspNetCore.Authorization.AuthorizeAttribute) atributo pode ser usado em Razor componentes:
+O [ `[Authorize]` atributo](xref:Microsoft.AspNetCore.Authorization.AuthorizeAttribute) pode ser usado em Razor componentes:
 
 ```razor
 @page "/"
@@ -364,7 +364,7 @@ You can only see this if you're signed in.
 > [!IMPORTANT]
 > Somente [`[Authorize]`](xref:Microsoft.AspNetCore.Authorization.AuthorizeAttribute) o uso em `@page` componentes foi atingido por meio do Blazor roteador. A autorização é realizada apenas como um aspecto do roteamento e *não* para componentes filho renderizados dentro de uma página. Para autorizar a exibição de partes específicas dentro de uma página, use <xref:Microsoft.AspNetCore.Components.Authorization.AuthorizeView>.
 
-O [`[Authorize]`](xref:Microsoft.AspNetCore.Authorization.AuthorizeAttribute) atributo também oferece suporte à autorização baseada em função ou em políticas. Para a autorização baseada em funções, use o parâmetro <xref:Microsoft.AspNetCore.Authorization.AuthorizeAttribute.Roles>:
+O [ `[Authorize]` atributo](xref:Microsoft.AspNetCore.Authorization.AuthorizeAttribute) também oferece suporte à autorização baseada em função ou em políticas. Para a autorização baseada em funções, use o parâmetro <xref:Microsoft.AspNetCore.Authorization.AuthorizeAttribute.Roles>:
 
 ```razor
 @page "/"
