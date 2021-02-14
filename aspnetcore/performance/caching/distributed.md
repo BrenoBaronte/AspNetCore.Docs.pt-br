@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: performance/caching/distributed
-ms.openlocfilehash: 6d87c8de66bf5600189465b96dee903841106b6f
-ms.sourcegitcommit: ca34c1ac578e7d3daa0febf1810ba5fc74f60bbf
+ms.openlocfilehash: 6f89046f2e1805111dd81b3282253a72a7c6ea09
+ms.sourcegitcommit: 1166b0ff3828418559510c661e8240e5c5717bb7
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93061139"
+ms.lasthandoff: 02/12/2021
+ms.locfileid: "100281012"
 ---
 # <a name="distributed-caching-in-aspnet-core"></a>Caching distribuído no ASP.NET Core
 
@@ -129,12 +129,12 @@ Consulte [este problema do GitHub](https://github.com/dotnet/AspNetCore.Docs/iss
 
 O [NCache](https://github.com/Alachisoft/NCache) é um cache distribuído na memória de código aberto desenvolvido nativamente no .net e no .NET Core. O NCache funciona tanto localmente quanto configurado como um cluster de cache distribuído para um aplicativo ASP.NET Core em execução no Azure ou em outras plataformas de hospedagem.
 
-Para instalar e configurar o NCache em seu computador local, consulte [Guia do ncache introdução para Windows](https://www.alachisoft.com/resources/docs/ncache-oss/getting-started-guide-windows/).
+Para instalar e configurar o NCache em seu computador local, consulte [Guia de introdução para Windows (.net e .NET Core)](https://www.alachisoft.com/resources/docs/ncache/getting-started-guide-windows/).
 
 Para configurar o NCache:
 
 1. Instale o [NuGet de código-fonte aberto do NCache](https://www.nuget.org/packages/Alachisoft.NCache.OpenSource.SDK/).
-1. Configure o cluster de cache em [Client. ncconf](https://www.alachisoft.com/resources/docs/ncache-oss/admin-guide/client-config.html).
+1. Configure o cluster de cache em [Client. ncconf](https://www.alachisoft.com/resources/docs/ncache/admin-guide/client-config.html).
 1. Adicione o seguinte código a `Startup.ConfigureServices`:
 
    ```csharp
@@ -156,7 +156,7 @@ Quando o aplicativo de exemplo é iniciado, <xref:Microsoft.Extensions.Caching.D
 
 O aplicativo de exemplo injeta <xref:Microsoft.Extensions.Caching.Distributed.IDistributedCache> no `IndexModel` para ser usado pela página de índice.
 
-Cada vez que a página de índice é carregada, o cache é verificado quanto ao tempo em cache `OnGetAsync` . Se o tempo em cache não tiver expirado, a hora será exibida. Se 20 segundos tiverem decorrido desde a última vez em que o tempo de cache foi acessado (na última vez em que essa página foi carregada), a página exibirá o *tempo de cache expirado* .
+Cada vez que a página de índice é carregada, o cache é verificado quanto ao tempo em cache `OnGetAsync` . Se o tempo em cache não tiver expirado, a hora será exibida. Se 20 segundos tiverem decorrido desde a última vez em que o tempo de cache foi acessado (na última vez em que essa página foi carregada), a página exibirá o *tempo de cache expirado*.
 
 Atualize imediatamente a hora em cache para a hora atual selecionando o botão **Redefinir tempo de cache** . O botão dispara o `OnPostResetCachedTime` método do manipulador.
 
@@ -299,12 +299,12 @@ Para instalar o Redis em seu computador local:
 
 O [NCache](https://github.com/Alachisoft/NCache) é um cache distribuído na memória de código aberto desenvolvido nativamente no .net e no .NET Core. O NCache funciona tanto localmente quanto configurado como um cluster de cache distribuído para um aplicativo ASP.NET Core em execução no Azure ou em outras plataformas de hospedagem.
 
-Para instalar e configurar o NCache em seu computador local, consulte [Guia do ncache introdução para Windows](https://www.alachisoft.com/resources/docs/ncache-oss/getting-started-guide-windows/).
+Para instalar e configurar o NCache em seu computador local, consulte [Guia de introdução para Windows (.net e .NET Core)](https://www.alachisoft.com/resources/docs/ncache/getting-started-guide-windows/).
 
 Para configurar o NCache:
 
 1. Instale o [NuGet de código-fonte aberto do NCache](https://www.nuget.org/packages/Alachisoft.NCache.OpenSource.SDK/).
-1. Configure o cluster de cache em [Client. ncconf](https://www.alachisoft.com/resources/docs/ncache-oss/admin-guide/client-config.html).
+1. Configure o cluster de cache em [Client. ncconf](https://www.alachisoft.com/resources/docs/ncache/admin-guide/client-config.html).
 1. Adicione o seguinte código a `Startup.ConfigureServices`:
 
    ```csharp
@@ -326,7 +326,7 @@ Quando o aplicativo de exemplo é iniciado, <xref:Microsoft.Extensions.Caching.D
 
 O aplicativo de exemplo injeta <xref:Microsoft.Extensions.Caching.Distributed.IDistributedCache> no `IndexModel` para ser usado pela página de índice.
 
-Cada vez que a página de índice é carregada, o cache é verificado quanto ao tempo em cache `OnGetAsync` . Se o tempo em cache não tiver expirado, a hora será exibida. Se 20 segundos tiverem decorrido desde a última vez em que o tempo de cache foi acessado (na última vez em que essa página foi carregada), a página exibirá o *tempo de cache expirado* .
+Cada vez que a página de índice é carregada, o cache é verificado quanto ao tempo em cache `OnGetAsync` . Se o tempo em cache não tiver expirado, a hora será exibida. Se 20 segundos tiverem decorrido desde a última vez em que o tempo de cache foi acessado (na última vez em que essa página foi carregada), a página exibirá o *tempo de cache expirado*.
 
 Atualize imediatamente a hora em cache para a hora atual selecionando o botão **Redefinir tempo de cache** . O botão dispara o `OnPostResetCachedTime` método do manipulador.
 
@@ -475,12 +475,12 @@ Para instalar o Redis em seu computador local:
 
 O [NCache](https://github.com/Alachisoft/NCache) é um cache distribuído na memória de código aberto desenvolvido nativamente no .net e no .NET Core. O NCache funciona tanto localmente quanto configurado como um cluster de cache distribuído para um aplicativo ASP.NET Core em execução no Azure ou em outras plataformas de hospedagem.
 
-Para instalar e configurar o NCache em seu computador local, consulte [Guia do ncache introdução para Windows](https://www.alachisoft.com/resources/docs/ncache-oss/getting-started-guide-windows/).
+Para instalar e configurar o NCache em seu computador local, consulte [Guia de introdução para Windows (.net e .NET Core)](https://www.alachisoft.com/resources/docs/ncache/getting-started-guide-windows/).
 
 Para configurar o NCache:
 
 1. Instale o [NuGet de código-fonte aberto do NCache](https://www.nuget.org/packages/Alachisoft.NCache.OpenSource.SDK/).
-1. Configure o cluster de cache em [Client. ncconf](https://www.alachisoft.com/resources/docs/ncache-oss/admin-guide/client-config.html).
+1. Configure o cluster de cache em [Client. ncconf](https://www.alachisoft.com/resources/docs/ncache/admin-guide/client-config.html).
 1. Adicione o seguinte código a `Startup.ConfigureServices`:
 
    ```csharp
@@ -502,7 +502,7 @@ Quando o aplicativo de exemplo é iniciado, <xref:Microsoft.Extensions.Caching.D
 
 O aplicativo de exemplo injeta <xref:Microsoft.Extensions.Caching.Distributed.IDistributedCache> no `IndexModel` para ser usado pela página de índice.
 
-Cada vez que a página de índice é carregada, o cache é verificado quanto ao tempo em cache `OnGetAsync` . Se o tempo em cache não tiver expirado, a hora será exibida. Se 20 segundos tiverem decorrido desde a última vez em que o tempo de cache foi acessado (na última vez em que essa página foi carregada), a página exibirá o *tempo de cache expirado* .
+Cada vez que a página de índice é carregada, o cache é verificado quanto ao tempo em cache `OnGetAsync` . Se o tempo em cache não tiver expirado, a hora será exibida. Se 20 segundos tiverem decorrido desde a última vez em que o tempo de cache foi acessado (na última vez em que essa página foi carregada), a página exibirá o *tempo de cache expirado*.
 
 Atualize imediatamente a hora em cache para a hora atual selecionando o botão **Redefinir tempo de cache** . O botão dispara o `OnPostResetCachedTime` método do manipulador.
 

@@ -20,16 +20,14 @@ no-loc:
 - SignalR
 uid: blazor/tooling
 zone_pivot_groups: operating-systems
-ms.openlocfilehash: 5901a1cb693dfe8e34e62ce2a28456bcf584221c
-ms.sourcegitcommit: 063a06b644d3ade3c15ce00e72a758ec1187dd06
+ms.openlocfilehash: a17b16563ac12d634e6bdc32638991f45e2a66d5
+ms.sourcegitcommit: 1166b0ff3828418559510c661e8240e5c5717bb7
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98252260"
+ms.lasthandoff: 02/12/2021
+ms.locfileid: "100280677"
 ---
-# <a name="tooling-for-aspnet-core-no-locblazor"></a>Ferramentas para ASP.NET Core Blazor
-
-Por [Daniel Roth](https://github.com/danroth27) e [Luke Latham](https://github.com/guardrex)
+# <a name="tooling-for-aspnet-core-blazor"></a>Ferramentas para ASP.NET Core Blazor
 
 ::: zone pivot="windows"
 
@@ -87,7 +85,7 @@ Para obter mais informações sobre como confiar no certificado de desenvolvimen
 
 1. Abra a pasta `WebApplication1` no Visual Studio Code.
 
-1. O IDE solicita que você adicione ativos para compilar e depurar o projeto. Selecione **Sim** na barra superior.
+1. O IDE solicita que você adicione ativos para compilar e depurar o projeto. Selecione **Sim**.
 
 1. Pressione <kbd>Ctrl</kbd> + <kbd>F5</kbd> para executar o aplicativo.
 
@@ -127,11 +125,11 @@ Se aparecer um prompt para confiar no certificado de desenvolvimento, confie no 
 
 ::: zone-end
 
-## <a name="use-visual-studio-code-for-cross-platform-no-locblazor-development"></a>Usar Visual Studio Code para o desenvolvimento de plataforma cruzada Blazor
+## <a name="use-visual-studio-code-for-cross-platform-blazor-development"></a>Usar Visual Studio Code para o desenvolvimento de plataforma cruzada Blazor
 
 O [Visual Studio Code](https://code.visualstudio.com/) é um IDE (ambiente de desenvolvimento integrado) de plataforma cruzada de software livre que pode ser usado para desenvolver Blazor aplicativos. Use a CLI do .NET para criar um novo Blazor aplicativo para desenvolvimento com o Visual Studio Code. Para obter mais informações, consulte a [versão do Linux deste artigo](?pivots=linux).
 
-## <a name="no-locblazor-template-options"></a>Blazor opções de modelo
+## <a name="blazor-template-options"></a>Blazor opções de modelo
 
 A Blazor estrutura fornece modelos para a criação de novos aplicativos para cada um dos dois Blazor modelos de hospedagem. Os modelos são usados para criar novos Blazor projetos e soluções, independentemente das ferramentas que você selecionar para Blazor desenvolvimento (Visual Studio, Visual Studio para Mac, Visual Studio Code ou a CLI do .net):
 

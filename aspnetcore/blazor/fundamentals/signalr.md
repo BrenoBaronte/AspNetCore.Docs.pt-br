@@ -19,16 +19,14 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/fundamentals/signalr
-ms.openlocfilehash: 31cd68baa0fbc773f09fe3a1b37091b2dfc0b0a0
-ms.sourcegitcommit: 04ad9cd26fcaa8bd11e261d3661f375f5f343cdc
+ms.openlocfilehash: 3198f45819020ca551617aa12a146f2b8a9a9f8e
+ms.sourcegitcommit: 1166b0ff3828418559510c661e8240e5c5717bb7
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100110003"
+ms.lasthandoff: 02/12/2021
+ms.locfileid: "100279865"
 ---
 # <a name="aspnet-core-blazor-signalr-guidance"></a>Diretrizes de ASP.NET Core Blazor SignalR
-
-Por [Daniel Roth](https://github.com/danroth27), [Mackinnon Buck](https://github.com/MackinnonBuck)e [Luke Latham](https://github.com/guardrex)
 
 Para obter diretrizes gerais sobre a configuração do ASP.NET Core SignalR , consulte os tópicos na <xref:signalr/introduction> área da documentação do. Para configurar SignalR [o adicionado a uma Blazor WebAssembly solução hospedada](xref:tutorials/signalr-blazor), consulte <xref:signalr/configuration#configure-server-options> .
 
@@ -218,7 +216,7 @@ Para executar tarefas adicionais, como a inicialização de interoperabilidade d
 
 ### <a name="configure-the-signalr-client"></a>Configurar o SignalR cliente
 
-#### <a name="logging"></a>Registrando em log
+#### <a name="logging"></a>Registro em log
 
 Para configurar SignalR o log do cliente, passe um objeto de configuração ( `configureSignalR` ) que chame `configureLogging` com o nível de log no construtor do cliente:
 

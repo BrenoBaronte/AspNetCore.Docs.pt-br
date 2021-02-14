@@ -19,16 +19,14 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/debug
-ms.openlocfilehash: 5bdfcc5660b4c897d3552d4cf25e43dade71541c
-ms.sourcegitcommit: 063a06b644d3ade3c15ce00e72a758ec1187dd06
+ms.openlocfilehash: aed9e800074dc72a2b55b816a2710722470cd7d1
+ms.sourcegitcommit: 1166b0ff3828418559510c661e8240e5c5717bb7
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98252507"
+ms.lasthandoff: 02/12/2021
+ms.locfileid: "100280054"
 ---
-# <a name="debug-aspnet-core-no-locblazor-webassembly"></a>ASP.NET Core de depuração Blazor WebAssembly
-
-[Daniel Roth](https://github.com/danroth27)
+# <a name="debug-aspnet-core-blazor-webassembly"></a>ASP.NET Core de depuração Blazor WebAssembly
 
 Blazor WebAssembly os aplicativos podem ser depurados usando as ferramentas de desenvolvimento do navegador em navegadores baseados em Chromium (borda/Chrome). Você também pode depurar seu aplicativo usando os seguintes IDEs (ambientes de desenvolvimento integrado):
 
@@ -192,11 +190,11 @@ Para obter informações sobre como usar um caminho básico do aplicativo person
 > [!NOTE]
 > Os pontos de interrupção **não** são atingidos durante a inicialização do aplicativo antes da execução do proxy de depuração. Isso inclui pontos de interrupção em `Program.Main` ( `Program.cs` ) e pontos de interrupção nos [ `OnInitialized{Async}` métodos](xref:blazor/components/lifecycle#component-initialization-methods) de componentes que são carregados pela primeira página solicitada do aplicativo.
 
-## <a name="debug-hosted-no-locblazor-webassembly"></a>Depuração hospedada Blazor WebAssembly
+## <a name="debug-hosted-blazor-webassembly"></a>Depuração hospedada Blazor WebAssembly
 
 1. Abra a Blazor WebAssembly pasta de solução do aplicativo hospedado no vs Code.
 
-1. Se não houver uma configuração de inicialização definida para o projeto, a notificação a seguir será exibida. Selecione **Sim** na barra superior.
+1. Se não houver uma configuração de inicialização definida para o projeto, a notificação a seguir será exibida. Selecione **Sim**.
 
    > Os ativos necessários para compilar e depurar estão ausentes em ' {nome do aplicativo} '. Deseja adicioná-los?
 
@@ -226,8 +224,8 @@ As opções de configuração de inicialização a seguir têm suporte para o `b
 | Opção    | Descrição |
 | --------- | ----------- |
 | `request` | Use `launch` para iniciar e anexar uma sessão de depuração a um Blazor WebAssembly aplicativo ou `attach` para anexar uma sessão de depuração a um aplicativo já em execução. |
-| `url`     | A URL a ser aberta no navegador durante a depuração. O padrão é `https://localhost:5001`. |
-| `browser` | O navegador a ser iniciado para a sessão de depuração. Definir como `edge` ou `chrome`. O padrão é `chrome`. |
+| `url`     | A URL a ser aberta no navegador durante a depuração. Assume o padrão de `https://localhost:5001`. |
+| `browser` | O navegador a ser iniciado para a sessão de depuração. Definir como `edge` ou `chrome`. Assume o padrão de `chrome`. |
 | `trace`   | Usado para gerar logs do depurador JS. Defina como `true` para gerar logs. |
 | `hosted`  | Deve ser definido como `true` se estiver iniciando e depurando um Blazor WebAssembly aplicativo hospedado. |
 | `webRoot` | Especifica o caminho absoluto do servidor Web. Deve ser definido se um aplicativo for servido de uma sub-roteiro. |
@@ -238,7 +236,7 @@ As opções de configuração de inicialização a seguir têm suporte para o `b
 
 ## <a name="example-launch-configurations"></a>Exemplo de configurações de inicialização
 
-### <a name="launch-and-debug-a-standalone-no-locblazor-webassembly-app"></a>Iniciar e depurar um Blazor WebAssembly aplicativo autônomo
+### <a name="launch-and-debug-a-standalone-blazor-webassembly-app"></a>Iniciar e depurar um Blazor WebAssembly aplicativo autônomo
 
 ```json
 {
@@ -259,7 +257,7 @@ As opções de configuração de inicialização a seguir têm suporte para o `b
 }
 ```
 
-### <a name="launch-and-debug-a-hosted-no-locblazor-webassembly-app-with-microsoft-edge"></a>Iniciar e depurar um Blazor WebAssembly aplicativo hospedado com o Microsoft Edge
+### <a name="launch-and-debug-a-hosted-blazor-webassembly-app-with-microsoft-edge"></a>Iniciar e depurar um Blazor WebAssembly aplicativo hospedado com o Microsoft Edge
 
 A configuração do navegador usa como padrão o Google Chrome. Ao usar o Microsoft Edge para depuração, defina `browser` como `edge` . Para usar o Google Chrome, não defina a `browser` opção ou defina o valor da opção como `chrome` .
 

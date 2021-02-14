@@ -4,7 +4,7 @@ author: jamesnk
 description: Saiba como criar mensagens Protobuf para aplicativos .NET.
 monikerRange: '>= aspnetcore-3.0'
 ms.author: jamesnk
-ms.date: 08/23/2020
+ms.date: 02/12/2021
 no-loc:
 - appsettings.json
 - ASP.NET Core Identity
@@ -18,12 +18,12 @@ no-loc:
 - Razor
 - SignalR
 uid: grpc/protobuf
-ms.openlocfilehash: b70a5ee00405eecfce900b86dc631a54682dce1a
-ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
+ms.openlocfilehash: adb048c9b20e172ef8a7bc13f9b56928b1d4bf77
+ms.sourcegitcommit: 1166b0ff3828418559510c661e8240e5c5717bb7
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "93058890"
+ms.lasthandoff: 02/12/2021
+ms.locfileid: "100280288"
 ---
 # <a name="create-protobuf-messages-for-net-apps"></a>Criar mensagens Protobuf para aplicativos .NET
 
@@ -48,6 +48,8 @@ message Person {
 ```
 
 A definição de mensagem anterior especifica três campos como pares de nome-valor. Como as propriedades em tipos .NET, cada campo tem um nome e um tipo. O tipo de campo pode ser um [tipo de valor escalar Protobuf](#scalar-value-types), por exemplo `int32` , ou outra mensagem.
+
+O [Guia de estilo Protobuf](https://developers.google.com/protocol-buffers/docs/style) recomenda o uso `underscore_separated_names` de nomes de campo. Novas mensagens Protobuf criadas para aplicativos .NET devem seguir as diretrizes de estilo Protobuf. As ferramentas do .NET geram automaticamente tipos .NET que usam os padrões de nomenclatura do .NET. Por exemplo, um `first_name` campo Protobuf gera uma `FirstName` propriedade .net.
 
 Além de um nome, cada campo na definição de mensagem tem um número exclusivo. Os números de campo são usados para identificar campos quando a mensagem é serializada para Protobuf. A serialização de um pequeno número é mais rápida do que a serialização do nome inteiro do campo. Como os números de campo identificam um campo, é importante tomar cuidado ao alterá-los. Para obter mais informações sobre como alterar mensagens Protobuf, consulte <xref:grpc/versioning> .
 

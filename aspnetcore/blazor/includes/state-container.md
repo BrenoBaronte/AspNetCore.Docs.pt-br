@@ -1,3 +1,23 @@
+---
+no-loc:
+- appsettings.json
+- ASP.NET Core Identity
+- cookie
+- Cookie
+- Blazor
+- Blazor Server
+- Blazor WebAssembly
+- Identity
+- Let's Encrypt
+- Razor
+- SignalR
+ms.openlocfilehash: 76dbf3cae1c264fa474101bc4398da28f45a1c10
+ms.sourcegitcommit: 1166b0ff3828418559510c661e8240e5c5717bb7
+ms.translationtype: MT
+ms.contentlocale: pt-BR
+ms.lasthandoff: 02/12/2021
+ms.locfileid: "100254372"
+---
 Os componentes aninhados normalmente associam dados usando *Associação encadeada* , conforme descrito em <xref:blazor/components/data-binding> . Componentes aninhados e não aninhados podem compartilhar o acesso a dados usando um contêiner de estado na memória registrado. Uma classe de contêiner de estado personalizado pode usar um atribuível <xref:System.Action> para notificar componentes em diferentes partes do aplicativo de alterações de estado. No exemplo a seguir:
 
 * Um par de componentes usa um contêiner de estado para rastrear uma propriedade.
@@ -22,13 +42,13 @@ public class StateContainer
 }
 ```
 
-Em `Program.Main` (Webassembly mais incrivelmente):
+Em `Program.Main` ( Blazor WebAssembly ):
 
 ```csharp
 builder.Services.AddSingleton<StateContainer>();
 ```
 
-Em `Startup.ConfigureServices` (servidor mais incrivelmente):
+Em `Startup.ConfigureServices` ( Blazor Server ):
 
 ```csharp
 services.AddSingleton<StateContainer>();
@@ -59,7 +79,7 @@ services.AddSingleton<StateContainer>();
 
     private void ChangePropertyValue()
     {
-        StateContainer.SetProperty($"New value set in Component 1 {DateTime.Now}");
+        StateContainer.SetProperty($"New value set in Component 1: {DateTime.Now}");
     }
 
     public void Dispose()
@@ -91,7 +111,7 @@ services.AddSingleton<StateContainer>();
 
     private void ChangePropertyValue()
     {
-        StateContainer.SetProperty($"New value set in Component 2 {DateTime.Now}");
+        StateContainer.SetProperty($"New value set in Component 2: {DateTime.Now}");
     }
 
     public void Dispose()
@@ -100,3 +120,5 @@ services.AddSingleton<StateContainer>();
     }
 }
 ```
+
+Os componentes anteriores implementam <xref:System.IDisposable> , e os `OnChange` delegados têm cancelamento de assinatura nos `Dispose` métodos, que são chamados pelo Framework quando os componentes são descartados. Para obter mais informações, consulte <xref:blazor/components/lifecycle#component-disposal-with-idisposable>.

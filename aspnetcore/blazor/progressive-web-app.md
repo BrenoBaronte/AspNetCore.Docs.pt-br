@@ -19,16 +19,14 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/progressive-web-app
-ms.openlocfilehash: 63e6fc49283aec567f6a9d5bc05b7445fb38c33c
-ms.sourcegitcommit: 04ad9cd26fcaa8bd11e261d3661f375f5f343cdc
+ms.openlocfilehash: 515da543fc6b6cca0b90968b154d91b611ea3345
+ms.sourcegitcommit: 1166b0ff3828418559510c661e8240e5c5717bb7
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100106837"
+ms.lasthandoff: 02/12/2021
+ms.locfileid: "100280555"
 ---
 # <a name="build-progressive-web-applications-with-aspnet-core-blazor-webassembly"></a>Crie aplicativos Web progressivos com ASP.NET Core Blazor WebAssembly
-
-Por [Steve Sanderson](https://github.com/SteveSandersonMS)
 
 Um aplicativo Web progressivo (PWA) geralmente é um aplicativo de página única (SPA) que usa APIs de navegador e recursos modernos para se comportar como um aplicativo de desktop. Blazor WebAssembly é uma plataforma de aplicativo Web do lado do cliente baseada em padrões, portanto, ela pode usar qualquer API do navegador, incluindo as APIs do PWA necessárias para os seguintes recursos:
 

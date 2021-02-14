@@ -20,16 +20,14 @@ no-loc:
 - SignalR
 uid: blazor/state-management
 zone_pivot_groups: blazor-hosting-models
-ms.openlocfilehash: 5b7a6fefd13d7255fbe3ae7010df48c6211fa755
-ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
+ms.openlocfilehash: 811ec08eb457fcf0697a64dc4990d29082454f73
+ms.sourcegitcommit: 1166b0ff3828418559510c661e8240e5c5717bb7
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97854312"
+ms.lasthandoff: 02/12/2021
+ms.locfileid: "100280862"
 ---
-# <a name="aspnet-core-no-locblazor-state-management"></a>BlazorGerenciamento de estado ASP.NET Core
-
-Por [Steve Sanderson](https://github.com/SteveSandersonMS) e [Luke Latham](https://github.com/guardrex)
+# <a name="aspnet-core-blazor-state-management"></a>BlazorGerenciamento de estado ASP.NET Core
 
 ::: zone pivot="webassembly"
 
@@ -73,7 +71,7 @@ Existem localizações comuns para o estado persistente:
 
 Para persistência de dados permanente que abrange vários usuários e dispositivos, o aplicativo pode usar armazenamento independente do lado do servidor acessado por meio de uma API da Web. As opções incluem:
 
-* Armazenamento de blob
+* Armazenamento de Blobs
 * Armazenamento de chave-valor
 * Banco de dados relacional
 * Armazenamento de tabela
@@ -182,7 +180,7 @@ Existem localizações comuns para o estado persistente:
 
 Para persistência de dados permanente que abrange vários usuários e dispositivos, o aplicativo pode usar o armazenamento do lado do servidor. As opções incluem:
 
-* Armazenamento de blob
+* Armazenamento de Blobs
 * Armazenamento de chave-valor
 * Banco de dados relacional
 * Armazenamento de tabela

@@ -19,18 +19,16 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/advanced-scenarios
-ms.openlocfilehash: 95714b3c0d21d3b348a9a8a984e2a42e7708499e
-ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
+ms.openlocfilehash: ba2bf91f3318225383ec9d164c34be9124aa311b
+ms.sourcegitcommit: 1166b0ff3828418559510c661e8240e5c5717bb7
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "93056550"
+ms.lasthandoff: 02/12/2021
+ms.locfileid: "100280851"
 ---
-# <a name="aspnet-core-no-locblazor-advanced-scenarios"></a>ASP.NET Core Blazor cenários avançados
+# <a name="aspnet-core-blazor-advanced-scenarios"></a>ASP.NET Core Blazor cenários avançados
 
-De [Luke Latham](https://github.com/guardrex) e [Daniel Roth](https://github.com/danroth27)
-
-## <a name="no-locblazor-server-circuit-handler"></a>Blazor Server manipulador de circuito
+## <a name="blazor-server-circuit-handler"></a>Blazor Server manipulador de circuito
 
 Blazor Server permite que o código defina um *manipulador de circuito*, que permite a execução de código em alterações no estado do circuito de um usuário. Um manipulador de circuito é implementado derivando de `CircuitHandler` e registrando a classe no contêiner de serviço do aplicativo. O exemplo a seguir de um manipulador de circuito rastreia SignalR conexões abertas:
 
@@ -167,14 +165,14 @@ builder.AddContent(1, "Second");
 
 Quando o código é executado pela primeira vez, se `someFlag` for `true` , o Construtor receberá:
 
-| Sequência | Tipo      | Dados   |
+| Sequência | Digite      | Dados   |
 | :------: | --------- | :----: |
 | 0        | Nó de texto | Primeiro  |
 | 1        | Nó de texto | Segundo |
 
 Imagine que `someFlag` se torna `false` e a marcação é renderizada novamente. Desta vez, o Construtor recebe:
 
-| Sequência | Tipo       | Dados   |
+| Sequência | Digite       | Dados   |
 | :------: | ---------- | :----: |
 | 1        | Nó de texto  | Segundo |
 
@@ -199,14 +197,14 @@ builder.AddContent(seq++, "Second");
 
 Agora, a primeira saída é:
 
-| Sequência | Tipo      | Dados   |
+| Sequência | Digite      | Dados   |
 | :------: | --------- | :----: |
 | 0        | Nó de texto | Primeiro  |
 | 1        | Nó de texto | Segundo |
 
 Esse resultado é idêntico ao caso anterior, portanto, não existem problemas negativos. `someFlag` está `false` no segundo processamento e a saída é:
 
-| Sequência | Tipo      | Dados   |
+| Sequência | Digite      | Dados   |
 | :------: | --------- | ------ |
 | 0        | Nó de texto | Segundo |
 

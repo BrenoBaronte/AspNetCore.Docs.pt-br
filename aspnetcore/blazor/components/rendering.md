@@ -19,16 +19,14 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/components/rendering
-ms.openlocfilehash: 27701d175c86cdf4b74a9e6332b30b4d55806650
-ms.sourcegitcommit: 04ad9cd26fcaa8bd11e261d3661f375f5f343cdc
+ms.openlocfilehash: e1222981d4af3f4e233cdc0c57bb96a71972af15
+ms.sourcegitcommit: 1166b0ff3828418559510c661e8240e5c5717bb7
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100107032"
+ms.lasthandoff: 02/12/2021
+ms.locfileid: "100280047"
 ---
 # <a name="aspnet-core-blazor-component-rendering"></a>BlazorRenderização de componente ASP.NET Core
-
-Por [Steve Sanderson](https://github.com/SteveSandersonMS)
 
 Os componentes *devem* ser renderizados quando são adicionados pela primeira vez à hierarquia de componentes por seu componente pai. Essa é a única vez que um componente deve ser renderizado estritamente.
 
