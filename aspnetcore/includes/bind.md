@@ -1,4 +1,24 @@
-<span data-ttu-id="0bb2f-101">A maneira preferida de ler valores de configuração relacionados é usar o [padrão de opções](xref:fundamentals/configuration/options).</span><span class="sxs-lookup"><span data-stu-id="0bb2f-101">The preferred way to read related configuration values is using the [options pattern](xref:fundamentals/configuration/options).</span></span> <span data-ttu-id="0bb2f-102">Por exemplo, para ler os seguintes valores de configuração:</span><span class="sxs-lookup"><span data-stu-id="0bb2f-102">For example, to read the following configuration values:</span></span>
+---
+no-loc:
+- appsettings.json
+- ASP.NET Core Identity
+- cookie
+- Cookie
+- Blazor
+- Blazor Server
+- Blazor WebAssembly
+- Identity
+- Let's Encrypt
+- Razor
+- SignalR
+ms.openlocfilehash: 30baab0649268f4abf0dbd6c99dfeef3f43d0054
+ms.sourcegitcommit: a49c47d5a573379effee5c6b6e36f5c302aa756b
+ms.translationtype: MT
+ms.contentlocale: pt-BR
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100536268"
+---
+<span data-ttu-id="2336d-101">A maneira preferida de ler valores de configuração relacionados é usar o [padrão de opções](xref:fundamentals/configuration/options).</span><span class="sxs-lookup"><span data-stu-id="2336d-101">The preferred way to read related configuration values is using the [options pattern](xref:fundamentals/configuration/options).</span></span> <span data-ttu-id="2336d-102">Por exemplo, para ler os seguintes valores de configuração:</span><span class="sxs-lookup"><span data-stu-id="2336d-102">For example, to read the following configuration values:</span></span>
 
 ```json
   "Position": {
@@ -7,37 +27,37 @@
   }
 ```
 
-<span data-ttu-id="0bb2f-103">Crie a seguinte `PositionOptions` classe:</span><span class="sxs-lookup"><span data-stu-id="0bb2f-103">Create the following `PositionOptions` class:</span></span>
+<span data-ttu-id="2336d-103">Crie a seguinte `PositionOptions` classe:</span><span class="sxs-lookup"><span data-stu-id="2336d-103">Create the following `PositionOptions` class:</span></span>
 
 [!code-csharp[](~/fundamentals/configuration/index/samples/3.x/ConfigSample/Options/PositionOptions.cs?name=snippet)]
 
-<span data-ttu-id="0bb2f-104">Uma classe de opções:</span><span class="sxs-lookup"><span data-stu-id="0bb2f-104">An options class:</span></span>
+<span data-ttu-id="2336d-104">Uma classe de opções:</span><span class="sxs-lookup"><span data-stu-id="2336d-104">An options class:</span></span>
 
-* <span data-ttu-id="0bb2f-105">Deve ser não-abstrato com um construtor público sem parâmetros.</span><span class="sxs-lookup"><span data-stu-id="0bb2f-105">Must be non-abstract with a public parameterless constructor.</span></span>
-* <span data-ttu-id="0bb2f-106">Todas as propriedades de leitura/gravação públicas do tipo estão associadas.</span><span class="sxs-lookup"><span data-stu-id="0bb2f-106">All public read-write properties of the type are bound.</span></span>
-* <span data-ttu-id="0bb2f-107">Os campos são \***não** _ vinculados.</span><span class="sxs-lookup"><span data-stu-id="0bb2f-107">Fields are \***not** _ bound.</span></span> <span data-ttu-id="0bb2f-108">No código anterior, `Position` não está associado.</span><span class="sxs-lookup"><span data-stu-id="0bb2f-108">In the preceding code, `Position` is not bound.</span></span> <span data-ttu-id="0bb2f-109">A `Position` propriedade é usada para que a cadeia de caracteres `"Position"` não precise ser embutida em código no aplicativo ao associar a classe a um provedor de configuração.</span><span class="sxs-lookup"><span data-stu-id="0bb2f-109">The `Position` property is used so the string `"Position"` doesn't need to be hard coded in the app when binding the class to a configuration provider.</span></span>
+* <span data-ttu-id="2336d-105">Deve ser não-abstrato com um construtor público sem parâmetros.</span><span class="sxs-lookup"><span data-stu-id="2336d-105">Must be non-abstract with a public parameterless constructor.</span></span>
+* <span data-ttu-id="2336d-106">Todas as propriedades de leitura/gravação públicas do tipo estão associadas.</span><span class="sxs-lookup"><span data-stu-id="2336d-106">All public read-write properties of the type are bound.</span></span>
+* <span data-ttu-id="2336d-107">Os campos ***não*** estão associados.</span><span class="sxs-lookup"><span data-stu-id="2336d-107">Fields are ***not*** bound.</span></span> <span data-ttu-id="2336d-108">No código anterior, `Position` não está associado.</span><span class="sxs-lookup"><span data-stu-id="2336d-108">In the preceding code, `Position` is not bound.</span></span> <span data-ttu-id="2336d-109">A `Position` propriedade é usada para que a cadeia de caracteres `"Position"` não precise ser embutida em código no aplicativo ao associar a classe a um provedor de configuração.</span><span class="sxs-lookup"><span data-stu-id="2336d-109">The `Position` property is used so the string `"Position"` doesn't need to be hard coded in the app when binding the class to a configuration provider.</span></span>
 
-<span data-ttu-id="0bb2f-110">O seguinte código:</span><span class="sxs-lookup"><span data-stu-id="0bb2f-110">The following code:</span></span>
+<span data-ttu-id="2336d-110">O seguinte código:</span><span class="sxs-lookup"><span data-stu-id="2336d-110">The following code:</span></span>
 
-<span data-ttu-id="0bb2f-111">_ Chama [ConfigurationBinder. bind](xref:Microsoft.Extensions.Configuration.ConfigurationBinder.Bind*) para associar a `PositionOptions` classe à `Position` seção.</span><span class="sxs-lookup"><span data-stu-id="0bb2f-111">_ Calls [ConfigurationBinder.Bind](xref:Microsoft.Extensions.Configuration.ConfigurationBinder.Bind*) to bind the `PositionOptions` class to the `Position` section.</span></span>
-* <span data-ttu-id="0bb2f-112">Exibe os `Position` dados de configuração.</span><span class="sxs-lookup"><span data-stu-id="0bb2f-112">Displays the `Position` configuration data.</span></span>
+* <span data-ttu-id="2336d-111">Chama [ConfigurationBinder. bind](xref:Microsoft.Extensions.Configuration.ConfigurationBinder.Bind*) para associar a `PositionOptions` classe à `Position` seção.</span><span class="sxs-lookup"><span data-stu-id="2336d-111">Calls [ConfigurationBinder.Bind](xref:Microsoft.Extensions.Configuration.ConfigurationBinder.Bind*) to bind the `PositionOptions` class to the `Position` section.</span></span>
+* <span data-ttu-id="2336d-112">Exibe os `Position` dados de configuração.</span><span class="sxs-lookup"><span data-stu-id="2336d-112">Displays the `Position` configuration data.</span></span>
 
 [!code-csharp[](~/fundamentals/configuration/index/samples/3.x/ConfigSample/Pages/Test22.cshtml.cs?name=snippet)]
 
-<span data-ttu-id="0bb2f-113">No código anterior, por padrão, as alterações no arquivo de configuração JSON depois que o aplicativo é iniciado são lidas.</span><span class="sxs-lookup"><span data-stu-id="0bb2f-113">In the preceding code, by default, changes to the JSON configuration file after the app has started are read.</span></span>
+<span data-ttu-id="2336d-113">No código anterior, por padrão, as alterações no arquivo de configuração JSON depois que o aplicativo é iniciado são lidas.</span><span class="sxs-lookup"><span data-stu-id="2336d-113">In the preceding code, by default, changes to the JSON configuration file after the app has started are read.</span></span>
 
-<span data-ttu-id="0bb2f-114">[`ConfigurationBinder.Get<T>`](xref:Microsoft.Extensions.Configuration.ConfigurationBinder.Get*) associa e retorna o tipo especificado.</span><span class="sxs-lookup"><span data-stu-id="0bb2f-114">[`ConfigurationBinder.Get<T>`](xref:Microsoft.Extensions.Configuration.ConfigurationBinder.Get*) binds and returns the specified type.</span></span> <span data-ttu-id="0bb2f-115">`ConfigurationBinder.Get<T>` pode ser mais conveniente do que usar o `ConfigurationBinder.Bind` .</span><span class="sxs-lookup"><span data-stu-id="0bb2f-115">`ConfigurationBinder.Get<T>` may be more convenient than using `ConfigurationBinder.Bind`.</span></span> <span data-ttu-id="0bb2f-116">O código a seguir mostra como usar `ConfigurationBinder.Get<T>` com a `PositionOptions` classe:</span><span class="sxs-lookup"><span data-stu-id="0bb2f-116">The following code shows how to use `ConfigurationBinder.Get<T>` with the `PositionOptions` class:</span></span>
+<span data-ttu-id="2336d-114">[`ConfigurationBinder.Get<T>`](xref:Microsoft.Extensions.Configuration.ConfigurationBinder.Get*) associa e retorna o tipo especificado.</span><span class="sxs-lookup"><span data-stu-id="2336d-114">[`ConfigurationBinder.Get<T>`](xref:Microsoft.Extensions.Configuration.ConfigurationBinder.Get*) binds and returns the specified type.</span></span> <span data-ttu-id="2336d-115">`ConfigurationBinder.Get<T>` pode ser mais conveniente do que usar o `ConfigurationBinder.Bind` .</span><span class="sxs-lookup"><span data-stu-id="2336d-115">`ConfigurationBinder.Get<T>` may be more convenient than using `ConfigurationBinder.Bind`.</span></span> <span data-ttu-id="2336d-116">O código a seguir mostra como usar `ConfigurationBinder.Get<T>` com a `PositionOptions` classe:</span><span class="sxs-lookup"><span data-stu-id="2336d-116">The following code shows how to use `ConfigurationBinder.Get<T>` with the `PositionOptions` class:</span></span>
 
 [!code-csharp[](~/fundamentals/configuration/index/samples/3.x/ConfigSample/Pages/Test21.cshtml.cs?name=snippet)]
 
-<span data-ttu-id="0bb2f-117">No código anterior, por padrão, as alterações no arquivo de configuração JSON depois que o aplicativo é iniciado são lidas.</span><span class="sxs-lookup"><span data-stu-id="0bb2f-117">In the preceding code, by default, changes to the JSON configuration file after the app has started are read.</span></span>
+<span data-ttu-id="2336d-117">No código anterior, por padrão, as alterações no arquivo de configuração JSON depois que o aplicativo é iniciado são lidas.</span><span class="sxs-lookup"><span data-stu-id="2336d-117">In the preceding code, by default, changes to the JSON configuration file after the app has started are read.</span></span>
 
-<span data-ttu-id="0bb2f-118">Uma abordagem alternativa ao usar o **padrão de opções**\* é associar a `Position` seção e adicioná-la ao contêiner de serviço de injeção de [dependência](xref:fundamentals/dependency-injection).</span><span class="sxs-lookup"><span data-stu-id="0bb2f-118">An alternative approach when using the \***options pattern** _ is to bind the `Position` section and add it to the [dependency injection service container](xref:fundamentals/dependency-injection).</span></span> <span data-ttu-id="0bb2f-119">No código a seguir, `PositionOptions` é adicionado ao contêiner de serviço com <xref:Microsoft.Extensions.DependencyInjection.OptionsConfigurationServiceCollectionExtensions.Configure_> e associado à configuração:</span><span class="sxs-lookup"><span data-stu-id="0bb2f-119">In the following code, `PositionOptions` is added to the service container with <xref:Microsoft.Extensions.DependencyInjection.OptionsConfigurationServiceCollectionExtensions.Configure_> and bound to configuration:</span></span>
+<span data-ttu-id="2336d-118">Uma abordagem alternativa ao usar o **padrão de opções**\* é associar a `Position` seção e adicioná-la ao contêiner de serviço de injeção de [dependência](xref:fundamentals/dependency-injection).</span><span class="sxs-lookup"><span data-stu-id="2336d-118">An alternative approach when using the \***options pattern** _ is to bind the `Position` section and add it to the [dependency injection service container](xref:fundamentals/dependency-injection).</span></span> <span data-ttu-id="2336d-119">No código a seguir, `PositionOptions` é adicionado ao contêiner de serviço com <xref:Microsoft.Extensions.DependencyInjection.OptionsConfigurationServiceCollectionExtensions.Configure_> e associado à configuração:</span><span class="sxs-lookup"><span data-stu-id="2336d-119">In the following code, `PositionOptions` is added to the service container with <xref:Microsoft.Extensions.DependencyInjection.OptionsConfigurationServiceCollectionExtensions.Configure_> and bound to configuration:</span></span>
 
 [!code-csharp[](~/fundamentals/configuration/index/samples/3.x/ConfigSample/Startup.cs?name=snippet)]
 
-<span data-ttu-id="0bb2f-120">Usando o código anterior, o código a seguir lê as opções de posição:</span><span class="sxs-lookup"><span data-stu-id="0bb2f-120">Using the preceding code, the following code reads the position options:</span></span>
+<span data-ttu-id="2336d-120">Usando o código anterior, o código a seguir lê as opções de posição:</span><span class="sxs-lookup"><span data-stu-id="2336d-120">Using the preceding code, the following code reads the position options:</span></span>
 
 [!code-csharp[](~/fundamentals/configuration/index/samples/3.x/ConfigSample/Pages/Test2.cshtml.cs?name=snippet)]
 
-<span data-ttu-id="0bb2f-121">No código anterior, as alterações no arquivo de configuração JSON depois que o aplicativo foi iniciado ***não*** são lidas.</span><span class="sxs-lookup"><span data-stu-id="0bb2f-121">In the preceding code, changes to the JSON configuration file after the app has started are ***not*** read.</span></span> <span data-ttu-id="0bb2f-122">Para ler as alterações depois que o aplicativo for iniciado, use [IOptionsSnapshot](xref:fundamentals/configuration/options#ios).</span><span class="sxs-lookup"><span data-stu-id="0bb2f-122">To read changes after the app has started, use [IOptionsSnapshot](xref:fundamentals/configuration/options#ios).</span></span>
+<span data-ttu-id="2336d-121">No código anterior, as alterações no arquivo de configuração JSON depois que o aplicativo foi iniciado ***não*** são lidas.</span><span class="sxs-lookup"><span data-stu-id="2336d-121">In the preceding code, changes to the JSON configuration file after the app has started are ***not*** read.</span></span> <span data-ttu-id="2336d-122">Para ler as alterações depois que o aplicativo for iniciado, use [IOptionsSnapshot](xref:fundamentals/configuration/options#ios).</span><span class="sxs-lookup"><span data-stu-id="2336d-122">To read changes after the app has started, use [IOptionsSnapshot](xref:fundamentals/configuration/options#ios).</span></span>
