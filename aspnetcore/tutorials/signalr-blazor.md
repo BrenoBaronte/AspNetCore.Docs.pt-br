@@ -20,12 +20,12 @@ no-loc:
 - SignalR
 uid: tutorials/signalr-blazor
 zone_pivot_groups: blazor-hosting-models
-ms.openlocfilehash: 355db5ad5462747be0058096bc0132ed1071f290
-ms.sourcegitcommit: 1166b0ff3828418559510c661e8240e5c5717bb7
+ms.openlocfilehash: f4e51b39c4c3b0c444b08025e9bd74eec0747541
+ms.sourcegitcommit: a49c47d5a573379effee5c6b6e36f5c302aa756b
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 02/12/2021
-ms.locfileid: "100280995"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100536348"
 ---
 # <a name="use-aspnet-core-signalr-with-blazor"></a>Usar ASP.NET Core SignalR com Blazor
 
@@ -134,7 +134,7 @@ Siga as orientações para sua escolha de ferramentas:
    dotnet new blazorwasm -ho -o BlazorWebAssemblySignalRApp
    ```
 
-   A `-ho|--hosted` opção cria uma solução hospedada Blazor WebAssembly .
+   A `-ho|--hosted` opção cria uma solução hospedada Blazor WebAssembly . Para obter informações sobre como configurar os ativos de VS Code na `.vscode` pasta, consulte as diretrizes do sistema operacional **Linux** em <xref:blazor/tooling> .
 
    A `-o|--output` opção cria uma pasta para a solução. Se você tiver criado uma pasta para a solução e o Shell de comando estiver aberto nessa pasta, omita a `-o|--output` opção e o valor para criar a solução.
 
@@ -378,6 +378,8 @@ Siga as orientações para suas ferramentas:
 
 # <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
+Para obter informações sobre como configurar os ativos de VS Code na `.vscode` pasta, consulte as diretrizes do sistema operacional **Linux** em <xref:blazor/tooling> .
+
 1. Pressione <kbd>F5</kbd> para executar o aplicativo com depuração ou <kbd>Ctrl</kbd> + <kbd>F5</kbd> para executar o aplicativo sem depuração.
 
 1. Copie a URL da barra de endereços, abra outra instância ou guia do navegador e cole a URL na barra de endereços.
@@ -465,7 +467,7 @@ Siga as orientações para sua escolha de ferramentas:
 
 1. Em Visual Studio Code, abra a pasta do projeto do aplicativo.
 
-1. Quando a caixa de diálogo aparecer para adicionar ativos para compilar e depurar o aplicativo, selecione **Sim**. Visual Studio Code adiciona automaticamente a `.vscode` pasta com `launch.json` arquivos gerados e `tasks.json` .
+1. Quando a caixa de diálogo aparecer para adicionar ativos para compilar e depurar o aplicativo, selecione **Sim**. Visual Studio Code adiciona automaticamente a `.vscode` pasta com `launch.json` arquivos gerados e `tasks.json` . Para obter informações sobre como configurar os ativos de VS Code na `.vscode` pasta, consulte as diretrizes do sistema operacional **Linux** em <xref:blazor/tooling> .
 
 # <a name="visual-studio-for-mac"></a>[Visual Studio para Mac](#tab/visual-studio-mac)
 
@@ -625,7 +627,7 @@ Crie uma `Hubs` pasta (plural) e adicione a seguinte `ChatHub` classe ( `Hubs/Ch
 
 ## <a name="add-services-and-an-endpoint-for-the-signalr-hub"></a>Adicionar serviços e um ponto de extremidade para o SignalR Hub
 
-1. Abra o arquivo `Startup.cs`.
+1. Abra o arquivo `Startup.cs` .
 
 1. Adicione os namespaces para <xref:Microsoft.AspNetCore.ResponseCompression?displayProperty=fullName> e a `ChatHub` classe à parte superior do arquivo:
 
@@ -666,7 +668,7 @@ Crie uma `Hubs` pasta (plural) e adicione a seguinte `ChatHub` classe ( `Hubs/Ch
 
 ## <a name="add-razor-component-code-for-chat"></a>Adicionar Razor código de componente para o chat
 
-1. Abra o arquivo `Pages/Index.razor`.
+1. Abra o arquivo `Pages/Index.razor` .
 
 ::: moniker range=">= aspnetcore-5.0"
 

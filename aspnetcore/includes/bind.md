@@ -1,3 +1,23 @@
+---
+no-loc:
+- appsettings.json
+- ASP.NET Core Identity
+- cookie
+- Cookie
+- Blazor
+- Blazor Server
+- Blazor WebAssembly
+- Identity
+- Let's Encrypt
+- Razor
+- SignalR
+ms.openlocfilehash: 30baab0649268f4abf0dbd6c99dfeef3f43d0054
+ms.sourcegitcommit: a49c47d5a573379effee5c6b6e36f5c302aa756b
+ms.translationtype: MT
+ms.contentlocale: pt-BR
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100536268"
+---
 A maneira preferida de ler valores de configuração relacionados é usar o [padrão de opções](xref:fundamentals/configuration/options). Por exemplo, para ler os seguintes valores de configuração:
 
 ```json
@@ -15,11 +35,11 @@ Uma classe de opções:
 
 * Deve ser não-abstrato com um construtor público sem parâmetros.
 * Todas as propriedades de leitura/gravação públicas do tipo estão associadas.
-* Os campos são ***não** _ vinculados. No código anterior, `Position` não está associado. A `Position` propriedade é usada para que a cadeia de caracteres `"Position"` não precise ser embutida em código no aplicativo ao associar a classe a um provedor de configuração.
+* Os campos ***não*** estão associados. No código anterior, `Position` não está associado. A `Position` propriedade é usada para que a cadeia de caracteres `"Position"` não precise ser embutida em código no aplicativo ao associar a classe a um provedor de configuração.
 
 O seguinte código:
 
-_ Chama [ConfigurationBinder. bind](xref:Microsoft.Extensions.Configuration.ConfigurationBinder.Bind*) para associar a `PositionOptions` classe à `Position` seção.
+* Chama [ConfigurationBinder. bind](xref:Microsoft.Extensions.Configuration.ConfigurationBinder.Bind*) para associar a `PositionOptions` classe à `Position` seção.
 * Exibe os `Position` dados de configuração.
 
 [!code-csharp[](~/fundamentals/configuration/index/samples/3.x/ConfigSample/Pages/Test22.cshtml.cs?name=snippet)]

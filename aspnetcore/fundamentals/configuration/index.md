@@ -5,7 +5,7 @@ description: Saiba como usar a API de configuração para configurar um aplicati
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 11/24/2020
+ms.date: 1/29/2021
 no-loc:
 - appsettings.json
 - ASP.NET Core Identity
@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: fundamentals/configuration/index
-ms.openlocfilehash: 62c9d1a58e0f771d91e2bc57f39ec5ebb25baaed
-ms.sourcegitcommit: 37186f76e4a50d7fb7389026dd0e5e234b51ebb2
+ms.openlocfilehash: 0f069b049889f7caade493e238ac7a23db5e79af
+ms.sourcegitcommit: a49c47d5a573379effee5c6b6e36f5c302aa756b
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99541362"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100536270"
 ---
 # <a name="configuration-in-aspnet-core"></a>Configuração no ASP.NET Core
 
@@ -232,9 +232,30 @@ setx Logging__1__Name=ToConsole
 setx Logging__1__Level=Information
 ```
 
-### <a name="environment-variables-set-in-launchsettingsjson"></a>Variáveis de ambiente definidas no launchSettings.jsem
+### <a name="environment-variables-set-in-generated-launchsettingsjson"></a>Variáveis de ambiente definidas no launchSettings.jsgerado em
 
-As variáveis de ambiente definidas no *launchSettings.js* substituir aquelas definidas no ambiente do sistema.
+As variáveis de ambiente definidas no *launchSettings.js* substituir aquelas definidas no ambiente do sistema. Por exemplo, os modelos da Web ASP.NET Core geram uma *launchSettings.jsno* arquivo que define a configuração do ponto de extremidade como:
+
+```json
+"applicationUrl": "https://localhost:5001;http://localhost:5000"
+```
+
+Configurar o `applicationUrl` define a `ASPNETCORE_URLS` variável de ambiente e substitui os valores definidos no ambiente.
+
+### <a name="escape-environment-variables-on-linux"></a>Variáveis de ambiente de escape no Linux
+
+No Linux, o valor de variáveis de ambiente de URL deve ser ignorado para que `systemd` possa analisá-lo. Use a ferramenta Linux `systemd-escape` que produz `http:--localhost:5001`
+ 
+ ```cmd
+ groot@terminus:~$ systemd-escape http://localhost:5001
+ http:--localhost:5001
+ ```
+
+### <a name="display-environment-variables"></a>Exibir variáveis de ambiente
+
+O código a seguir exibe as variáveis de ambiente e os valores na inicialização do aplicativo, o que pode ser útil ao depurar configurações de ambiente:
+
+[!code-csharp[](~/fundamentals/configuration/index/samples_snippets/5.x/Program.cs?name=snippet)]
 
 <a name="clcp"></a>
 
@@ -349,7 +370,7 @@ A tabela a seguir mostra os provedores de configuração disponíveis para aplic
 | -------- | ----------------------------------- |
 | [Provedor de configuração de Azure Key Vault](xref:security/key-vault-configuration) | Cofre de Chave do Azure |
 | [Provedor de configuração de Azure App](/azure/azure-app-configuration/quickstart-aspnet-core-app) | Configuração de Aplicativo do Azure |
-| [Provedor de configuração de linha de comando](#clcp) | Parâmetros da linha de comando |
+| [Provedor de configuração de linha de comando](#clcp) | Parâmetros de linha de comando |
 | [Provedor de Configuração personalizado](#custom-configuration-provider) | Fonte personalizada |
 | [Provedor de configuração de variáveis de ambiente](#evcp) | Variáveis de ambiente |
 | [Provedor de configuração de arquivo](#file-configuration-provider) | Arquivos INI, JSON e XML |
@@ -555,6 +576,38 @@ O código a seguir do [download de exemplo](https://github.com/dotnet/AspNetCore
 No código anterior, `config.AddInMemoryCollection(Dict)` é adicionado após os [provedores de configuração padrão](#default). Para obter um exemplo de como ordenar os provedores de configuração, consulte [provedor de configuração JSON](#jcp).
 
 Consulte [associar uma matriz](#boa) para outro exemplo usando `MemoryConfigurationProvider` .
+
+::: moniker-end
+::: moniker range=">= aspnetcore-5.0"
+
+<a name="kestrel"></a>
+
+## <a name="kestrel-endpoint-configuration"></a>Configuração de ponto de extremidade do Kestrel
+
+A configuração de ponto de extremidade específico do Kestrel substitui todas as configurações de ponto [de extremidade entre servidores](xref:fundamentals/servers/index) . As configurações de ponto de extremidade entre servidores incluem:
+
+  * [UseUrls](xref:fundamentals/host/web-host#server-urls)
+  * `--urls` na [linha de comando](xref:fundamentals/configuration/index#command-line)
+  * A [variável de ambiente](xref:fundamentals/configuration/index#environment-variables)`ASPNETCORE_URLS`
+
+Considere o seguinte *appsettings.json* arquivo usado em um aplicativo web ASP.NET Core:
+
+[!code-json[](~/fundamentals/configuration/index/samples_snippets/5.x/appsettings.json?highlight=2-8)]
+
+Quando a marcação realçada anterior é usada em um aplicativo Web ASP.NET Core ***e*** o aplicativo é iniciado na linha de comando com a seguinte configuração de ponto de extremidade entre servidores:
+
+`dotnet run --urls="https://localhost:7777"`
+
+Kestrel associa-se ao ponto de extremidade configurado especificamente para Kestrel no *appsettings.json* arquivo ( `https://localhost:9999` ) e não `https://localhost:7777` .
+
+Considere o ponto de extremidade específico do Kestrel configurado como uma variável de ambiente:
+
+`set Kestrel__Endpoints__Https__Url=https://localhost:8888`
+
+Na variável de ambiente anterior, `Https` é o nome do ponto de extremidade específico do Kestrel. O *appsettings.json* arquivo anterior também define um ponto de extremidade específico de Kestrel chamado `Https` . Por [padrão](#default-configuration), as variáveis de ambiente que usam o [provedor de configuração de variáveis de ambiente](#evcp) são lidas após *appSettings.* `Environment` *. JSON*, portanto, a variável de ambiente anterior é usada para o `Https` ponto de extremidade.
+
+::: moniker-end
+::: moniker range=">= aspnetcore-3.0"
 
 ## <a name="getvalue"></a>GetValue
 
@@ -773,7 +826,7 @@ Antes do aplicativo ser configurado e iniciado, um *host* é configurado e inici
 
 ## <a name="default-host-configuration"></a>Configuração de host padrão
 
-Para obter detalhes sobre a configuração padrão ao usar o [host da Web](xref:fundamentals/host/web-host), confira a [versão do ASP.NET Core 2.2 deste tópico](?view=aspnetcore-2.2).
+Para obter detalhes sobre a configuração padrão ao usar o [host da Web](xref:fundamentals/host/web-host), confira a [versão do ASP.NET Core 2.2 deste tópico](?view=aspnetcore-2.2&preserve-view=true).
 
 * A configuração do host é fornecida de:
   * Variáveis de ambiente prefixadas com `DOTNET_` (por exemplo, `DOTNET_ENVIRONMENT` ) usando o [provedor de configuração de variáveis de ambiente](#environment-variables). O prefixo (`DOTNET_`) é removido durante o carregamento dos pares chave-valor de configuração.
@@ -977,7 +1030,7 @@ A tabela a seguir mostra os provedores de configuração disponíveis para aplic
 | -------- | ----------------------------------- |
 | [Provedor de Configuração do Azure Key Vault](xref:security/key-vault-configuration) (tópicos de *Segurança*) | Cofre de Chave do Azure |
 | [Provedor da Configuração de Aplicativos do Azure](/azure/azure-app-configuration/quickstart-aspnet-core-app) (documentação do Azure) | Configuração de Aplicativo do Azure |
-| [Provedor de Configuração de Linha de Comando](#command-line-configuration-provider) | Parâmetros da linha de comando |
+| [Provedor de Configuração de Linha de Comando](#command-line-configuration-provider) | Parâmetros de linha de comando |
 | [Provedor de Configuração personalizado](#custom-configuration-provider) | Fonte personalizada |
 | [Provedor de Configuração de Variáveis de Ambiente](#environment-variables-configuration-provider) | Variáveis de ambiente |
 | [Provedor de Configuração de Arquivo](#file-configuration-provider) | Arquivos (INI, JSON, XML) |

@@ -5,7 +5,7 @@ description: Saiba mais sobre as ferramentas disponíveis para criar Blazor apli
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 09/28/2020
+ms.date: 02/11/2021
 no-loc:
 - appsettings.json
 - ASP.NET Core Identity
@@ -20,12 +20,12 @@ no-loc:
 - SignalR
 uid: blazor/tooling
 zone_pivot_groups: operating-systems
-ms.openlocfilehash: a17b16563ac12d634e6bdc32638991f45e2a66d5
-ms.sourcegitcommit: 1166b0ff3828418559510c661e8240e5c5717bb7
+ms.openlocfilehash: 6b61d9a4645d273b0c78fae0388d569771c43a2d
+ms.sourcegitcommit: a49c47d5a573379effee5c6b6e36f5c302aa756b
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 02/12/2021
-ms.locfileid: "100280677"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100536240"
 ---
 # <a name="tooling-for-aspnet-core-blazor"></a>Ferramentas para ASP.NET Core Blazor
 
@@ -49,6 +49,8 @@ ms.locfileid: "100280677"
 
 Para obter mais informações sobre como confiar no certificado de desenvolvimento ASP.NET Core HTTPS, consulte <xref:security/enforcing-ssl#trust-the-aspnet-core-https-development-certificate-on-windows-and-macos> .
 
+Ao executar um Blazor WebAssembly aplicativo hospedado, execute o aplicativo do projeto da solução **`Server`** .
+
 ::: zone-end
 
 ::: zone pivot="linux"
@@ -70,11 +72,11 @@ Para obter mais informações sobre como confiar no certificado de desenvolvimen
    ```
 
    Para uma experiência hospedada Blazor WebAssembly , adicione a opção Hosted ( `-ho` ou `--hosted` ) ao comando:
-   
+
    ```dotnetcli
    dotnet new blazorwasm -o WebApplication1 -ho
    ```
-   
+
    Para obter uma Blazor Server experiência, execute o seguinte comando em um shell de comando:
 
    ```dotnetcli
@@ -86,6 +88,57 @@ Para obter mais informações sobre como confiar no certificado de desenvolvimen
 1. Abra a pasta `WebApplication1` no Visual Studio Code.
 
 1. O IDE solicita que você adicione ativos para compilar e depurar o projeto. Selecione **Sim**.
+
+   **Blazor WebAssemblyConfiguração de tarefa e inicialização hospedada**
+
+   Para soluções hospedadas Blazor WebAssembly , adicione (ou mova) a `.vscode` pasta com `launch.json` e `tasks.json` arquivos para a pasta pai da solução, que é a pasta que contém os nomes de pasta de projeto típicos de `Client` , `Server` e `Shared` . Atualize ou confirme se a configuração nos `launch.json` arquivos e `tasks.json` executa um aplicativo hospedado Blazor WebAssembly do **`Server`** projeto.
+
+   **`.vscode/launch.json`** ( `launch` configuração):
+
+   ```json
+   ...
+   "cwd": "${workspaceFolder}/{SERVER APP FOLDER}",
+   ...
+   ```
+
+   Na configuração anterior para o diretório de trabalho atual ( `cwd` ), o `{SERVER APP FOLDER}` espaço reservado é a **`Server`** pasta do projeto, normalmente " `Server` ".
+
+   Se o Microsoft Edge for usado e o Google Chrome não estiver instalado no sistema, adicione uma propriedade adicional de `"browser": "edge"` à configuração.
+
+   Exemplo de uma pasta de projeto do `Server` e que gera o Microsoft Edge como o navegador para execuções de depuração em vez do navegador padrão Google Chrome:
+
+   ```json
+   ...
+   "cwd": "${workspaceFolder}/Server",
+   "browser": "edge"
+   ...
+   ```
+
+   **`.vscode/tasks.json`**(argumentos de [ `dotnet` comando](/dotnet/core/tools/dotnet) ):
+
+   ```json
+   ...
+   "${workspaceFolder}/{SERVER APP FOLDER}/{PROJECT NAME}.csproj",
+   ...
+   ```
+
+   No argumento anterior:
+
+   * O `{SERVER APP FOLDER}` espaço reservado é a **`Server`** pasta do projeto, normalmente " `Server` ".
+   * O `{PROJECT NAME}` espaço reservado é o nome do aplicativo, normalmente com base no nome da solução seguido por " `.Server` " em um aplicativo gerado a partir do Blazor modelo de projeto.
+
+   O exemplo a seguir do [tutorial para usar SignalR com um Blazor WebAssembly aplicativo](xref:tutorials/signalr-blazor) usa um nome de pasta de projeto de `Server` e um nome de projeto de `BlazorWebAssemblySignalRApp.Server` :
+
+   ```json
+   ...
+   "args": [
+     "build",
+       "${workspaceFolder}/Server/BlazorWebAssemblySignalRApp.Server.csproj",
+       "/property:GenerateFullPaths=true",
+       "/consoleloggerparameters:NoSummary"
+   ],
+   ...
+   ```
 
 1. Pressione <kbd>Ctrl</kbd> + <kbd>F5</kbd> para executar o aplicativo.
 
@@ -122,6 +175,8 @@ Para obter mais informações, consulte a orientação fornecida pelo fabricante
 1. Selecione **executar**  >  **Iniciar sem depuração** para executar o aplicativo *sem o depurador*. Execute o aplicativo com **executar**  >  **Iniciar Depuração** ou o botão Executar (&#9654;) para executar o aplicativo *com o depurador*.
 
 Se aparecer um prompt para confiar no certificado de desenvolvimento, confie no certificado e continue. As senhas de usuário e de conjunto de chaves são necessárias para confiar no certificado. Para obter mais informações sobre como confiar no certificado de desenvolvimento ASP.NET Core HTTPS, consulte <xref:security/enforcing-ssl#trust-the-aspnet-core-https-development-certificate-on-windows-and-macos> .
+
+Ao executar um Blazor WebAssembly aplicativo hospedado, execute o aplicativo do projeto da solução **`Server`** .
 
 ::: zone-end
 

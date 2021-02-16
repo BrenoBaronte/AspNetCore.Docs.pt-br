@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/debug
-ms.openlocfilehash: aed9e800074dc72a2b55b816a2710722470cd7d1
-ms.sourcegitcommit: 1166b0ff3828418559510c661e8240e5c5717bb7
+ms.openlocfilehash: 9214fa10a2bf7d53a4cb12263a3fa69bded84b29
+ms.sourcegitcommit: a49c47d5a573379effee5c6b6e36f5c302aa756b
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 02/12/2021
-ms.locfileid: "100280054"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100536227"
 ---
 # <a name="debug-aspnet-core-blazor-webassembly"></a>ASP.NET Core de depuração Blazor WebAssembly
 
@@ -162,6 +162,8 @@ Para obter informações sobre como usar um caminho básico do aplicativo person
 
 <h2 id="vscode">Depurar autônomo Blazor WebAssembly</h2>
 
+Para obter informações sobre como configurar os ativos de VS Code na `.vscode` pasta, consulte as diretrizes do sistema operacional **Linux** em <xref:blazor/tooling> .
+
 1. Abra o Blazor WebAssembly aplicativo autônomo no vs Code.
 
    Você pode receber uma notificação de que a configuração adicional é necessária para habilitar a depuração:
@@ -197,6 +199,8 @@ Para obter informações sobre como usar um caminho básico do aplicativo person
 1. Se não houver uma configuração de inicialização definida para o projeto, a notificação a seguir será exibida. Selecione **Sim**.
 
    > Os ativos necessários para compilar e depurar estão ausentes em ' {nome do aplicativo} '. Deseja adicioná-los?
+
+   Para obter informações sobre como configurar os ativos de VS Code na `.vscode` pasta, consulte as diretrizes do sistema operacional **Linux** em <xref:blazor/tooling> .
 
 1. Na paleta de comandos na parte superior da janela, selecione o projeto de *servidor* dentro da solução hospedada.
 
