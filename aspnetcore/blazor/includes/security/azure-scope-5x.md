@@ -1,11 +1,31 @@
-<span data-ttu-id="409ee-101">Ao trabalhar com uma API de servidor registrada com o AAD e o registro do AAD do aplicativo está em um locatário que depende de um [domínio do Publicador não verificado](/azure/active-directory/develop/howto-configure-publisher-domain), o URI da ID do aplicativo do seu aplicativo de API do servidor não está `api://{SERVER API APP CLIENT ID OR CUSTOM VALUE}` , mas sim no formato `https://{TENANT}.onmicrosoft.com/{SERVER API APP CLIENT ID OR CUSTOM VALUE}` .</span><span class="sxs-lookup"><span data-stu-id="409ee-101">When working with a server API registered with AAD and the app's AAD registration is in an tenant that relies on an [unverified publisher domain](/azure/active-directory/develop/howto-configure-publisher-domain), the App ID URI of your server API app isn't `api://{SERVER API APP CLIENT ID OR CUSTOM VALUE}` but instead is in the format `https://{TENANT}.onmicrosoft.com/{SERVER API APP CLIENT ID OR CUSTOM VALUE}`.</span></span> <span data-ttu-id="409ee-102">Se esse for o caso, o escopo de token de acesso padrão em `Program.Main` ( `Program.cs` ) do *`Client`* aplicativo será semelhante ao seguinte:</span><span class="sxs-lookup"><span data-stu-id="409ee-102">If that's the case, the default access token scope in `Program.Main` (`Program.cs`) of the *`Client`* app appears similar to the following:</span></span>
+---
+no-loc:
+- appsettings.json
+- ASP.NET Core Identity
+- cookie
+- Cookie
+- Blazor
+- Blazor Server
+- Blazor WebAssembly
+- Identity
+- Let's Encrypt
+- Razor
+- SignalR
+ms.openlocfilehash: 5964554c36e2242b70faee390374828acd2bd860
+ms.sourcegitcommit: a49c47d5a573379effee5c6b6e36f5c302aa756b
+ms.translationtype: MT
+ms.contentlocale: pt-BR
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100551753"
+---
+<span data-ttu-id="e6fbc-101">Ao trabalhar com uma API de servidor registrada com o AAD e o registro do AAD do aplicativo está em um locatário que depende de um [domínio do Publicador não verificado](/azure/active-directory/develop/howto-configure-publisher-domain), o URI da ID do aplicativo do seu aplicativo de API do servidor não está `api://{SERVER API APP CLIENT ID OR CUSTOM VALUE}` , mas sim no formato `https://{TENANT}.onmicrosoft.com/{SERVER API APP CLIENT ID OR CUSTOM VALUE}` .</span><span class="sxs-lookup"><span data-stu-id="e6fbc-101">When working with a server API registered with AAD and the app's AAD registration is in an tenant that relies on an [unverified publisher domain](/azure/active-directory/develop/howto-configure-publisher-domain), the App ID URI of your server API app isn't `api://{SERVER API APP CLIENT ID OR CUSTOM VALUE}` but instead is in the format `https://{TENANT}.onmicrosoft.com/{SERVER API APP CLIENT ID OR CUSTOM VALUE}`.</span></span> <span data-ttu-id="e6fbc-102">Se esse for o caso, o escopo de token de acesso padrão em `Program.Main` ( `Program.cs` ) do *`Client`* aplicativo será semelhante ao seguinte:</span><span class="sxs-lookup"><span data-stu-id="e6fbc-102">If that's the case, the default access token scope in `Program.Main` (`Program.cs`) of the *`Client`* app appears similar to the following:</span></span>
 
 ```csharp
 options.ProviderOptions.DefaultAccessTokenScopes
     .Add("https://{TENANT}.onmicrosoft.com/{SERVER API APP CLIENT ID OR CUSTOM VALUE}/{DEFAULT SCOPE}");
 ```
 
-<span data-ttu-id="409ee-103">Para configurar o aplicativo de API do servidor para um público correspondente, defina o `Audience` no *`Server`* arquivo de configurações do aplicativo de API ( `appsettings.json` ) para corresponder ao público do aplicativo fornecido pelo portal do Azure:</span><span class="sxs-lookup"><span data-stu-id="409ee-103">To configure the server API app for a matching audience, set the `Audience` in the *`Server`* API app settings file (`appsettings.json`) to match the app's audience provided by the Azure portal:</span></span>
+<span data-ttu-id="e6fbc-103">Para configurar o aplicativo de API do servidor para um público correspondente, defina o `Audience` no *`Server`* arquivo de configurações do aplicativo de API ( `appsettings.json` ) para corresponder ao público do aplicativo fornecido pelo portal do Azure:</span><span class="sxs-lookup"><span data-stu-id="e6fbc-103">To configure the server API app for a matching audience, set the `Audience` in the *`Server`* API app settings file (`appsettings.json`) to match the app's audience provided by the Azure portal:</span></span>
 
 ```json
 {
@@ -18,18 +38,18 @@ options.ProviderOptions.DefaultAccessTokenScopes
 }
 ```
 
-<span data-ttu-id="409ee-104">Na configuração anterior, o final do valor não `Audience` inclui o  escopo padrão `/{DEFAULT SCOPE}` .</span><span class="sxs-lookup"><span data-stu-id="409ee-104">In the preceding configuration, the end of the `Audience` value does **not** include the default scope `/{DEFAULT SCOPE}`.</span></span>
+<span data-ttu-id="e6fbc-104">Na configuração anterior, o final do valor não `Audience` inclui o  escopo padrão `/{DEFAULT SCOPE}` .</span><span class="sxs-lookup"><span data-stu-id="e6fbc-104">In the preceding configuration, the end of the `Audience` value does **not** include the default scope `/{DEFAULT SCOPE}`.</span></span>
 
-<span data-ttu-id="409ee-105">Exemplo:</span><span class="sxs-lookup"><span data-stu-id="409ee-105">Example:</span></span>
+<span data-ttu-id="e6fbc-105">Exemplo:</span><span class="sxs-lookup"><span data-stu-id="e6fbc-105">Example:</span></span>
 
-<span data-ttu-id="409ee-106">`Program.Main` ( `Program.cs` ) do *`Client`* aplicativo:</span><span class="sxs-lookup"><span data-stu-id="409ee-106">`Program.Main` (`Program.cs`) of the *`Client`* app:</span></span>
+<span data-ttu-id="e6fbc-106">`Program.Main` ( `Program.cs` ) do *`Client`* aplicativo:</span><span class="sxs-lookup"><span data-stu-id="e6fbc-106">`Program.Main` (`Program.cs`) of the *`Client`* app:</span></span>
 
 ```csharp
 options.ProviderOptions.DefaultAccessTokenScopes
     .Add("https://contoso.onmicrosoft.com/41451fa7-82d9-4673-8fa5-69eff5a761fd/API.Access");
 ```
 
-<span data-ttu-id="409ee-107">Configure o *`Server`* arquivo de configurações do aplicativo de API ( `appsettings.json` ) com um público correspondente ( `Audience` ):</span><span class="sxs-lookup"><span data-stu-id="409ee-107">Configure the *`Server`* API app settings file (`appsettings.json`) with a matching audience (`Audience`):</span></span>
+<span data-ttu-id="e6fbc-107">Configure o *`Server`* arquivo de configurações do aplicativo de API ( `appsettings.json` ) com um público correspondente ( `Audience` ):</span><span class="sxs-lookup"><span data-stu-id="e6fbc-107">Configure the *`Server`* API app settings file (`appsettings.json`) with a matching audience (`Audience`):</span></span>
 
 ```json
 {
@@ -42,4 +62,4 @@ options.ProviderOptions.DefaultAccessTokenScopes
 }
 ```
 
-<span data-ttu-id="409ee-108">No exemplo anterior, o final do valor não `Audience` inclui o  escopo padrão `/API.Access` .</span><span class="sxs-lookup"><span data-stu-id="409ee-108">In the preceding example, the end of the `Audience` value does **not** include the default scope `/API.Access`.</span></span>
+<span data-ttu-id="e6fbc-108">No exemplo anterior, o final do valor não `Audience` inclui o  escopo padrão `/API.Access` .</span><span class="sxs-lookup"><span data-stu-id="e6fbc-108">In the preceding example, the end of the `Audience` value does **not** include the default scope `/API.Access`.</span></span>

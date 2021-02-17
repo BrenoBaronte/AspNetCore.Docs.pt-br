@@ -1,8 +1,28 @@
-<span data-ttu-id="c02ec-101">O código do banco de dados de identidade gerado requer [migrações Entity Framework Core](/ef/core/managing-schemas/migrations/).</span><span class="sxs-lookup"><span data-stu-id="c02ec-101">The generated Identity database code requires [Entity Framework Core Migrations](/ef/core/managing-schemas/migrations/).</span></span> <span data-ttu-id="c02ec-102">Criar uma migração e atualizar o banco de dados.</span><span class="sxs-lookup"><span data-stu-id="c02ec-102">Create a migration and update the database.</span></span> <span data-ttu-id="c02ec-103">Por exemplo, execute os seguintes comandos:</span><span class="sxs-lookup"><span data-stu-id="c02ec-103">For example, run the following commands:</span></span>
+---
+no-loc:
+- appsettings.json
+- ASP.NET Core Identity
+- cookie
+- Cookie
+- Blazor
+- Blazor Server
+- Blazor WebAssembly
+- Identity
+- Let's Encrypt
+- Razor
+- SignalR
+ms.openlocfilehash: 1700adafb58cad57ea1becbf53cad45edd047962
+ms.sourcegitcommit: a49c47d5a573379effee5c6b6e36f5c302aa756b
+ms.translationtype: MT
+ms.contentlocale: pt-BR
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100551364"
+---
+<span data-ttu-id="03bca-101">O Identity código de banco de dados gerado requer [migrações Entity Framework Core](/ef/core/managing-schemas/migrations/).</span><span class="sxs-lookup"><span data-stu-id="03bca-101">The generated Identity database code requires [Entity Framework Core Migrations](/ef/core/managing-schemas/migrations/).</span></span> <span data-ttu-id="03bca-102">Crie uma migração e atualize o banco de dados.</span><span class="sxs-lookup"><span data-stu-id="03bca-102">Create a migration and update the database.</span></span> <span data-ttu-id="03bca-103">Por exemplo, execute os seguintes comandos:</span><span class="sxs-lookup"><span data-stu-id="03bca-103">For example, run the following commands:</span></span>
 
-# <a name="visual-studio"></a>[<span data-ttu-id="c02ec-104">Visual Studio</span><span class="sxs-lookup"><span data-stu-id="c02ec-104">Visual Studio</span></span>](#tab/visual-studio)
+# <a name="visual-studio"></a>[<span data-ttu-id="03bca-104">Visual Studio</span><span class="sxs-lookup"><span data-stu-id="03bca-104">Visual Studio</span></span>](#tab/visual-studio)
 
-<span data-ttu-id="c02ec-105">No **console do Gerenciador de pacotes**do Visual Studio:</span><span class="sxs-lookup"><span data-stu-id="c02ec-105">In the Visual Studio **Package Manager Console**:</span></span>
+<span data-ttu-id="03bca-105">No **console do Gerenciador de pacotes** do Visual Studio:</span><span class="sxs-lookup"><span data-stu-id="03bca-105">In the Visual Studio **Package Manager Console**:</span></span>
 
 ```powershell
 Install-Package Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore
@@ -10,7 +30,7 @@ Add-Migration CreateIdentitySchema
 Update-Database
 ```
 
-# <a name="net-core-cli"></a>[<span data-ttu-id="c02ec-106">CLI do .NET Core</span><span class="sxs-lookup"><span data-stu-id="c02ec-106">.NET Core CLI</span></span>](#tab/netcore-cli)
+# <a name="net-core-cli"></a>[<span data-ttu-id="03bca-106">CLI do .NET Core</span><span class="sxs-lookup"><span data-stu-id="03bca-106">.NET Core CLI</span></span>](#tab/netcore-cli)
 
 ```dotnetcli
 dotnet ef migrations add CreateIdentitySchema
@@ -19,4 +39,4 @@ dotnet ef database update
 
 ---
 
-<span data-ttu-id="c02ec-107">O parâmetro de nome "CreateIdentitySchema" para o comando `Add-Migration` é arbitrário.</span><span class="sxs-lookup"><span data-stu-id="c02ec-107">The "CreateIdentitySchema" name parameter for the `Add-Migration` command is arbitrary.</span></span> <span data-ttu-id="c02ec-108">`"CreateIdentitySchema"` descreve a migração.</span><span class="sxs-lookup"><span data-stu-id="c02ec-108">`"CreateIdentitySchema"` describes the migration.</span></span>
+<span data-ttu-id="03bca-107">O parâmetro de Identity nome "criar esquema" para o `Add-Migration` comando é arbitrário.</span><span class="sxs-lookup"><span data-stu-id="03bca-107">The "CreateIdentitySchema" name parameter for the `Add-Migration` command is arbitrary.</span></span> <span data-ttu-id="03bca-108">`"CreateIdentitySchema"` Descreve a migração.</span><span class="sxs-lookup"><span data-stu-id="03bca-108">`"CreateIdentitySchema"` describes the migration.</span></span>
