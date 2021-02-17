@@ -1,3 +1,23 @@
+---
+no-loc:
+- appsettings.json
+- ASP.NET Core Identity
+- cookie
+- Cookie
+- Blazor
+- Blazor Server
+- Blazor WebAssembly
+- Identity
+- Let's Encrypt
+- Razor
+- SignalR
+ms.openlocfilehash: 44cef0c1491cc609dd9b821910014ec88ecaad81
+ms.sourcegitcommit: a49c47d5a573379effee5c6b6e36f5c302aa756b
+ms.translationtype: MT
+ms.contentlocale: pt-BR
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100552743"
+---
 ::: moniker range=">= aspnetcore-3.0"
 
 <a name="dc"></a>
@@ -14,7 +34,7 @@ O código anterior cria uma propriedade `DbSet` para o conjunto de entidades. Na
 
 ### <a name="add-a-database-connection-string"></a>Adicionar uma cadeia de conexão de banco de dados
 
-Adicione uma cadeia de conexão à *appsettings.jsno* arquivo:
+Adicione uma cadeia de conexão ao *appsettings.json* arquivo:
 
 [!code-json[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie3/appsettings_SQLite.json?highlight=10-12)]
 
@@ -53,7 +73,7 @@ O código anterior cria uma propriedade `DbSet` para o conjunto de entidades. Na
 
 ### <a name="add-a-database-connection-string"></a>Adicionar uma cadeia de conexão de banco de dados
 
-Adicione uma cadeia de conexão à *appsettings.jsno* arquivo:
+Adicione uma cadeia de conexão ao *appsettings.json* arquivo:
 
 [!code-json[](~/tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie/appsettings_SQLite.json?highlight=8-10)]
 

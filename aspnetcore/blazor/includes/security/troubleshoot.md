@@ -1,3 +1,23 @@
+---
+no-loc:
+- appsettings.json
+- ASP.NET Core Identity
+- cookie
+- Cookie
+- Blazor
+- Blazor Server
+- Blazor WebAssembly
+- Identity
+- Let's Encrypt
+- Razor
+- SignalR
+ms.openlocfilehash: 4e7c0e9b0a164e0181af5d6baaedf0669c1c06aa
+ms.sourcegitcommit: a49c47d5a573379effee5c6b6e36f5c302aa756b
+ms.translationtype: MT
+ms.contentlocale: pt-BR
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100551584"
+---
 ## <a name="troubleshoot"></a>Solucionar problemas
 
 ::: moniker range=">= aspnetcore-5.0"
@@ -20,18 +40,18 @@
 
 ::: moniker-end
 
-### <a name="cookies-and-site-data"></a>Cookies e dados do site
+### <a name="cookies-and-site-data"></a>Cookiedados de s e do site
 
-Cookies e dados do site podem persistir em atualizações de aplicativo e interferir no teste e na solução de problemas. Desmarque o seguinte ao fazer alterações no código do aplicativo, as alterações na conta do usuário com o provedor ou as alterações de configuração do aplicativo do provedor:
+Cookieos dados de s e do site podem persistir em atualizações de aplicativo e interferir no teste e na solução de problemas. Desmarque o seguinte ao fazer alterações no código do aplicativo, as alterações na conta do usuário com o provedor ou as alterações de configuração do aplicativo do provedor:
 
-* Cookies de entrada do usuário
-* Cookies do aplicativo
+* S de entrada do usuário cookie
+* S do aplicativo cookie
 * Dados do site armazenados e em cache
 
-Uma abordagem para impedir que cookies persistentes e dados do site interfira no teste e solução de problemas é:
+Uma abordagem para evitar que cookie os dados de s e do site remanescentes interfira no teste e solução de problemas é:
 
 * Configurar um navegador
-  * Use um navegador para teste que você possa configurar para excluir todos os dados de cookies e do site sempre que o navegador for fechado.
+  * Use um navegador para testar se você pode configurar o para excluir todos os cookie dados do e do site sempre que o navegador for fechado.
   * Verifique se o navegador está fechado manualmente ou pelo IDE para qualquer alteração no aplicativo, no usuário de teste ou na configuração do provedor.
 * Use um comando personalizado para abrir um navegador no modo Incognito ou privado no Visual Studio:
   * Abra a caixa de diálogo **procurar com** no botão **executar** do Visual Studio.
@@ -51,7 +71,7 @@ Uma abordagem para impedir que cookies persistentes e dados do site interfira no
 
 ### <a name="run-the-server-app"></a>Executar o aplicativo de servidor
 
-Ao testar e solucionar problemas de um aplicativo de mais de um prazer, verifique se você está executando o aplicativo do **`Server`** projeto. Por exemplo, no Visual Studio, confirme se o projeto do servidor está realçado em **Gerenciador de soluções** antes de iniciar o aplicativo com qualquer uma das seguintes abordagens:
+Ao testar e solucionar problemas de um Blazor aplicativo hospedado, verifique se você está executando o aplicativo do **`Server`** projeto. Por exemplo, no Visual Studio, confirme se o projeto do servidor está realçado em **Gerenciador de soluções** antes de iniciar o aplicativo com qualquer uma das seguintes abordagens:
 
 * Selecione o botão **Executar**.
 * Use **depurar**  >  **Iniciar Depuração** no menu.

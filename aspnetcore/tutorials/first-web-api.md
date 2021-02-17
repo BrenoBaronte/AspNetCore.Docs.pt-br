@@ -19,12 +19,12 @@ no-loc:
 - SignalR
 - Models
 uid: tutorials/first-web-api
-ms.openlocfilehash: bef6efab3e5e84908a36c2c70f019cdd3b3e059e
-ms.sourcegitcommit: 20a41c8e40a2e69e99291e2fe18caa04c02e7109
+ms.openlocfilehash: 1f7c7db857090ff0a174d37b86e1265bab40b4fd
+ms.sourcegitcommit: f77a7467651bab61b24261da9dc5c1dd75fc1fa9
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99578394"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100564072"
 ---
 # <a name="tutorial-create-a-web-api-with-aspnet-core"></a>Tutorial: criar uma API Web com o ASP.NET Core
 
@@ -51,10 +51,10 @@ Este tutorial cria a seguinte API:
 
 |API | Descrição | Corpo da solicitação | Corpo da resposta |
 |--- | ---- | ---- | ---- |
-|`GET /api/TodoItems` | Obter todos os itens de tarefas pendentes | Nenhuma | Matriz de itens de tarefas pendentes|
-|`GET /api/TodoItems/{id}` | Obter um item por ID | Nenhuma | Item de tarefas pendentes|
+|`GET /api/TodoItems` | Obter todos os itens de tarefas pendentes | Nenhum | Matriz de itens de tarefas pendentes|
+|`GET /api/TodoItems/{id}` | Obter um item por ID | Nenhum | Item de tarefas pendentes|
 |`POST /api/TodoItems` | Adicionar um novo item | Item de tarefas pendentes | Item de tarefas pendentes |
-|`PUT /api/TodoItems/{id}` | Atualizar um item &nbsp; existente | Item de tarefas pendentes | Nenhuma |
+|`PUT /api/TodoItems/{id}` | Atualizar um item &nbsp; existente | Item de tarefas pendentes | Nenhum |
 |`DELETE /api/TodoItems/{id}` &nbsp; &nbsp; | Excluir um item &nbsp;&nbsp; | Nenhum | Nenhum|
 
 O diagrama a seguir mostra o design do aplicativo.
@@ -350,7 +350,7 @@ Quando o `[action]` token não está no modelo de rota, o nome da [ação](xref:
 
 ## <a name="update-the-posttodoitem-create-method"></a>Atualizar o método de criação de PostTodoItem
 
-Substitua a instrução return no `PostTodoItem` para usar o operador [nameof](/dotnet/csharp/language-reference/operators/nameof):
+Atualize a instrução return no `PostTodoItem` para usar o operador [nameof](/dotnet/csharp/language-reference/operators/nameof) :
 
 [!code-csharp[](first-web-api/samples/5.x/TodoApi/Controllers/TodoItemsController.cs?name=snippet_Create)]
 
@@ -570,10 +570,10 @@ Este tutorial cria a seguinte API:
 
 |API | Descrição | Corpo da solicitação | Corpo da resposta |
 |--- | ---- | ---- | ---- |
-|`GET /api/TodoItems` | Obter todos os itens de tarefas pendentes | Nenhuma | Matriz de itens de tarefas pendentes|
-|`GET /api/TodoItems/{id}` | Obter um item por ID | Nenhuma | Item de tarefas pendentes|
+|`GET /api/TodoItems` | Obter todos os itens de tarefas pendentes | Nenhum | Matriz de itens de tarefas pendentes|
+|`GET /api/TodoItems/{id}` | Obter um item por ID | Nenhum | Item de tarefas pendentes|
 |`POST /api/TodoItems` | Adicionar um novo item | Item de tarefas pendentes | Item de tarefas pendentes |
-|`PUT /api/TodoItems/{id}` | Atualizar um item &nbsp; existente | Item de tarefas pendentes | Nenhuma |
+|`PUT /api/TodoItems/{id}` | Atualizar um item &nbsp; existente | Item de tarefas pendentes | Nenhum |
 |`DELETE /api/TodoItems/{id}` &nbsp; &nbsp; | Excluir um item &nbsp;&nbsp; | Nenhum | Nenhum|
 
 O diagrama a seguir mostra o design do aplicativo.
@@ -1058,10 +1058,10 @@ Este tutorial cria a seguinte API:
 
 |API | Descrição | Corpo da solicitação | Corpo da resposta |
 |--- | ---- | ---- | ---- |
-|GET /api/TodoItems | Obter todos os itens de tarefas pendentes | Nenhuma | Matriz de itens de tarefas pendentes|
-|GET /api/TodoItems/{id} | Obter um item por ID | Nenhuma | Item de tarefas pendentes|
+|GET /api/TodoItems | Obter todos os itens de tarefas pendentes | Nenhum | Matriz de itens de tarefas pendentes|
+|GET /api/TodoItems/{id} | Obter um item por ID | Nenhum | Item de tarefas pendentes|
 |POST /api/TodoItems | Adicionar um novo item | Item de tarefas pendentes | Item de tarefas pendentes |
-|PUT /api/TodoItems/{id} | Atualizar um item &nbsp; existente | Item de tarefas pendentes | Nenhuma |
+|PUT /api/TodoItems/{id} | Atualizar um item &nbsp; existente | Item de tarefas pendentes | Nenhum |
 |EXCLUIR/api/TodoItems/{id} &nbsp;&nbsp; | Excluir um item &nbsp;&nbsp; | Nenhum | Nenhum|
 
 O diagrama a seguir mostra o design do aplicativo.

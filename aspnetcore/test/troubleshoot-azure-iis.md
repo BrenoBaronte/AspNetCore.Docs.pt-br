@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: test/troubleshoot-azure-iis
-ms.openlocfilehash: d51a4a43f585b0a0b7e3aab2c5de1b2d215de494
-ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
+ms.openlocfilehash: a8bb659a72e8370c31cc9c213689399e74f11b5c
+ms.sourcegitcommit: f77a7467651bab61b24261da9dc5c1dd75fc1fa9
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "93059592"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100564063"
 ---
 # <a name="troubleshoot-aspnet-core-on-azure-app-service-and-iis"></a>Solucionar problemas ASP.NET Core no serviço Azure App e no IIS
 
@@ -321,6 +321,8 @@ O log de stdout do Módulo do ASP.NET Core geralmente registra mensagens de erro
 Desabilite o log de stdout quando a solução de problemas for concluída por meio da configuração `stdoutLogEnabled="false"` .
 
 Para obter mais informações, consulte <xref:host-and-deploy/aspnet-core-module#log-creation-and-redirection>.
+
+<a name="enhanced-diagnostic-logs"></a>
 
 ### <a name="aspnet-core-module-debug-log-azure-app-service"></a>Log de depuração do módulo ASP.NET Core (serviço Azure App)
 
