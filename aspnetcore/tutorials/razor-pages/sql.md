@@ -19,14 +19,14 @@ no-loc:
 - Razor
 - SignalR
 uid: tutorials/razor-pages/sql
-ms.openlocfilehash: 8c9d0d9c24e0ce81925ccde463bcf085531b665e
-ms.sourcegitcommit: 8b0e9a72c1599ce21830c843558a661ba908ce32
+ms.openlocfilehash: fa1060ae1a046a40d55e9fef4a094aa9e51a18af
+ms.sourcegitcommit: 422e8444b9f5cedc373be5efe8032822db54fcaf
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98024724"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101101165"
 ---
-# <a name="part-4-of-tutorial-series-on-no-locrazor-pages"></a>Parte 4 da série de tutoriais em Razor páginas
+# <a name="part-4-of-tutorial-series-on-razor-pages"></a>Parte 4 da série de tutoriais em Razor páginas
 
 Por [Rick Anderson](https://twitter.com/RickAndMSFT) e [Joe Audette](https://twitter.com/joeaudette)
 
@@ -142,7 +142,7 @@ No código anterior, o `Main` método foi modificado para fazer o seguinte:
 
 * Obtenha uma instância de contexto de banco de dados do contêiner de injeção de dependência.
 * Chame o `seedData.Initialize` método, passando a ele a instância de contexto do banco de dados.
-* Descarte o contexto quando o método de semente for concluído. A [instrução using](https://docs.microsoft.com/dotnet/csharp/language-reference/keywords/using-statement) garante que o contexto seja Descartado.
+* Descarte o contexto quando o método de semente for concluído. A [instrução using](/dotnet/csharp/language-reference/keywords/using-statement) garante que o contexto seja Descartado.
 
 A seguinte exceção ocorre quando `Update-Database` não foi executada:
 
@@ -296,7 +296,7 @@ No código anterior, o `Main` método foi modificado para fazer o seguinte:
 
 * Obtenha uma instância de contexto de banco de dados do contêiner de injeção de dependência.
 * Chame o `seedData.Initialize` método, passando a ele a instância de contexto do banco de dados.
-* Descarte o contexto quando o método de semente for concluído. A [instrução using](https://docs.microsoft.com/dotnet/csharp/language-reference/keywords/using-statement) garante que o contexto seja Descartado.
+* Descarte o contexto quando o método de semente for concluído. A [instrução using](/dotnet/csharp/language-reference/keywords/using-statement) garante que o contexto seja Descartado.
 
 A seguinte exceção ocorre quando `Update-Database` não foi executada:
 
@@ -440,7 +440,7 @@ No código anterior, o `Main` método foi modificado para fazer o seguinte:
 
 * Obtenha uma instância de contexto de banco de dados do contêiner de injeção de dependência.
 * Chame o `seedData.Initialize` método, passando a ele a instância de contexto do banco de dados.
-* Descarte o contexto quando o método de semente for concluído. A [instrução using](https://docs.microsoft.com/dotnet/csharp/language-reference/keywords/using-statement) garante que o contexto seja Descartado.
+* Descarte o contexto quando o método de semente for concluído. A [instrução using](/dotnet/csharp/language-reference/keywords/using-statement) garante que o contexto seja Descartado.
 
 Um aplicativo de produção não chamaria `Database.Migrate`. Ele é adicionado ao código anterior para evitar a exceção a seguir quando `Update-Database` não foi executado:
 

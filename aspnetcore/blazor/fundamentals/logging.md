@@ -20,14 +20,14 @@ no-loc:
 - SignalR
 uid: blazor/fundamentals/logging
 zone_pivot_groups: blazor-hosting-models
-ms.openlocfilehash: 10c96bd2d0cc64f3bd035e7079b0996eb5768595
-ms.sourcegitcommit: 3593c4efa707edeaaceffbfa544f99f41fc62535
+ms.openlocfilehash: e87b1a0dd54eb03dc1bdfdc7f2189a59df272026
+ms.sourcegitcommit: 422e8444b9f5cedc373be5efe8032822db54fcaf
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97666827"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101101022"
 ---
-# <a name="aspnet-core-no-locblazor-logging"></a>Log de ASP.NET Core Blazor
+# <a name="aspnet-core-blazor-logging"></a>Log de ASP.NET Core Blazor
 
 ::: zone pivot="webassembly"
 
@@ -52,7 +52,7 @@ A `Logging` propriedade é do tipo <xref:Microsoft.Extensions.Logging.ILoggingBu
 
 A configuração de log pode ser carregada de arquivos de configurações do aplicativo. Para obter mais informações, consulte <xref:blazor/fundamentals/configuration#logging-configuration>.
 
-## <a name="no-locsignalr-net-client-logging"></a>SignalR Log de cliente .NET
+## <a name="signalr-net-client-logging"></a>SignalR Log de cliente .NET
 
 Insira um <xref:Microsoft.Extensions.Logging.ILoggerProvider> para adicionar um `WebAssemblyConsoleLogger` aos provedores de log passados para <xref:Microsoft.AspNetCore.SignalR.Client.HubConnectionBuilder> . Ao contrário de um tradicional <xref:Microsoft.Extensions.Logging.Console.ConsoleLogger> , `WebAssemblyConsoleLogger` é um wrapper em relação às APIs de log específicas do navegador (por exemplo, `console.log` ). O uso de `WebAssemblyConsoleLogger` torna o registro em log possível no mono dentro de um contexto do navegador.
 
@@ -83,7 +83,7 @@ Para obter diretrizes gerais de log de ASP.NET Core relacionadas ao Blazor Serve
 
 ::: zone-end
 
-## <a name="log-in-no-locrazor-components"></a>Componentes de logon Razor
+## <a name="log-in-razor-components"></a>Componentes de logon Razor
 
 Os agentes respeitam a configuração de inicialização do aplicativo.
 
@@ -93,13 +93,33 @@ O exemplo a seguir demonstra o registro em log com um <xref:Microsoft.Extensions
 
 `Pages/Counter.razor`:
 
-[!code-razor[](logging/samples_snapshot/Counter1.razor?highlight=3,16)]
+::: moniker range=">= aspnetcore-5.0"
+
+[!code-razor[](~/blazor/common/samples/5.x/BlazorSample_WebAssembly/Pages/logging/Counter1.razor?highlight=3,16)]
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-5.0"
+
+[!code-razor[](~/blazor/common/samples/3.x/BlazorSample_WebAssembly/Pages/logging/Counter1.razor?highlight=3,16)]
+
+::: moniker-end
 
 O exemplo a seguir demonstra o registro em log com um <xref:Microsoft.Extensions.Logging.ILoggerFactory> nos componentes do.
 
 `Pages/Counter.razor`:
 
-[!code-razor[](logging/samples_snapshot/Counter2.razor?highlight=3,16-17)]
+::: moniker range=">= aspnetcore-5.0"
+
+[!code-razor[](~/blazor/common/samples/5.x/BlazorSample_WebAssembly/Pages/logging/Counter2.razor?highlight=3,16-17)]
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-5.0"
+
+[!code-razor[](~/blazor/common/samples/3.x/BlazorSample_WebAssembly/Pages/logging/Counter2.razor?highlight=3,16-17)]
+
+::: moniker-end
 
 ## <a name="additional-resources"></a>Recursos adicionais
 

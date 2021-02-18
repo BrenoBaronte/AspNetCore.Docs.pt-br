@@ -19,12 +19,12 @@ no-loc:
 - Razor
 - SignalR
 uid: tutorials/build-a-blazor-app
-ms.openlocfilehash: 939841ca7214e212a2f197ea1e00b0f6152c471e
-ms.sourcegitcommit: 1166b0ff3828418559510c661e8240e5c5717bb7
+ms.openlocfilehash: d984023a1c46c5383d47a1634c54e61747b83d60
+ms.sourcegitcommit: 422e8444b9f5cedc373be5efe8032822db54fcaf
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 02/12/2021
-ms.locfileid: "100280509"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101101204"
 ---
 # <a name="build-a-blazor-todo-list-app"></a>Compilar um Blazor aplicativo de lista de tarefas pendentes
 
@@ -117,7 +117,7 @@ No final deste tutorial, você terá um aplicativo de lista de tarefas em funcio
 
    Salve o arquivo `Shared/NavMenu.razor`.
 
-1. Compile e execute o aplicativo executando o [`dotnet watch run`](/aspnet/core/tutorials/dotnet-watch) comando no Shell de comando da `TodoList` pasta. Depois que o aplicativo estiver em execução, visite a nova página todo selecionando o **`Todo`** link na barra de navegação do aplicativo, que carrega a página em `/todo` .
+1. Compile e execute o aplicativo executando o [`dotnet watch run`](xref:tutorials/dotnet-watch) comando no Shell de comando da `TodoList` pasta. Depois que o aplicativo estiver em execução, visite a nova página todo selecionando o **`Todo`** link na barra de navegação do aplicativo, que carrega a página em `/todo` .
 
    Deixe o aplicativo executando o Shell de comando. Cada vez que um arquivo é salvo, o aplicativo é recriado automaticamente. O navegador perde temporariamente sua conexão com o aplicativo durante a compilação e a reinicialização. A página no navegador é recarregada automaticamente quando a conexão é restabelecida.
 
